@@ -7,10 +7,10 @@ To iterate calculation of Fresnel Zone and show reflexion points for GNSS-R
 
 
 # Usefull librairies
-from fresnelzone import *
-from getorbits import *
-from plotfresnel import *
-from geod import *
+from .fresnelzone import *
+from .getorbits import *
+from .plotfresnel import *
+from .geod import *
 import geopandas as gpd
 
 # Usefull constants
@@ -54,7 +54,7 @@ def reflZone(h, elev_list, lon, lat, output='gpkg', dirName=None, df_sp3=None):
     gdf: GeoDataFrame
         GeoDataFrame that is exported to the desired format.
     """
-    if df_sp3==None:
+    if type(df_sp3) is type(None):
         # Get orbits file
         orb = retrieve_orbits()
         df = read_sp3(orb)

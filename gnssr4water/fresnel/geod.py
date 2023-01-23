@@ -182,7 +182,7 @@ def elevazim(df_sp3,lon,lat,h):
     lat = m.radians(lat)
     colat=np.pi/2-lat 
     #cosntruct transformation matrix to transform fro global to local NEH frame
-    Rtrans=np.matmul(mirrorMat(0),np.matmul(rotMat(colat,1),rotMat(lon,2)))
+    Rtrans=np.matmul(mirrorMat(0),np.matmul(rotMat(1,colat),rotMat(2,lon)))
 
     ## Calcul elevation and azimut for each satellite of the file ##
 

@@ -8,14 +8,13 @@ This code is to retrieve the orbits of GPS and GLONASS satellites
 import requests
 import os
 import numpy as np
-import unlzw3
 from pathlib import Path
 import pandas as pd
 from datetime import datetime 
 from io import BytesIO
-import geod
+from .geod import *
 import matplotlib.pyplot as plt
-
+import gzip
 ###############################################################################
 
 def gpsweek(date=datetime.now()):
@@ -76,6 +75,7 @@ def retrieve_orbits(date=datetime.now()):
     # Retrieve first the gps week
     GPS_wk, GPS_sec_wk = gpsweek(date)    
     t = str(int(GPS_sec_wk/86400))
+    
 
     # Create directory
     dirName = 'Orbits'
@@ -90,30 +90,37 @@ def retrieve_orbits(date=datetime.now()):
     for i in range(len(update)):
         # Try to see which one is the latest file
         xx=update[a]
-        filenameZ = f'esu{GPS_wk}' + t + '_'+xx+'.sp3.Z' 
+        # http://navigation-office.esa.int/products/gnss-products/2245/ESA0OPSULT_20230201800_02D_15M_ORB.SP3.gz
+        datestr=date.strftime("%Y%j")
+        filenameGZ=f"ESA0OPSULT_{datestr}{xx}00_02D_15M_ORB.SP3.gz"
+        localf=os.path.join(dirName,filenameGZ)
         # If it exists localy, no need to download it
-        if os.path.exists('Orbits/{}'.format(filenameZ)) is True:
+        if os.path.exists(localf):
             print('File already exists')
-            orb = unlzw3.unlzw(Path(f'Orbits/{filenameZ}'))
-            return orb
+            with gzip.open(localf, 'rb') as forb:
+                return forb.read()
         # If not, download it
         else:
             # data link   
-            url = f'http://navigation-office.esa.int/products/gnss-products/{GPS_wk}/{filenameZ}'
+            url = f'http://navigation-office.esa.int/products/gnss-products/{GPS_wk}/{filenameGZ}'
             r = requests.get(url)
             # Check the latest file updated for the given date
             if r.status_code == 200:
-                open(dirName +'/' +filenameZ, 'wb').write(r.content)
+                with open(localf,'wb') as fout:
+                    fout.write(r.content)
+
                 # Data download success
-                if os.path.exists(f'Orbits/{filenameZ}') is True:
+                if os.path.exists(localf):
                     print("Data download success")
-                    orb = unlzw3.unlzw(Path(f'Orbits/{filenameZ}'))
-                    return orb
-                # Data download failled
-                if os.path.exists(f'Orbits/{filenameZ}') is False:
+                    with gzip.open(localf, 'rb') as forb:
+                        return forb.read()
+                else:
+                    # Data download failed
                     print("Fail to retrieve data") 
             else:
-                a+=1
+                a+=1 #try an older version
+    print("Failed to find data on the server") 
+    return b""
 
 ###############################################################################  
 

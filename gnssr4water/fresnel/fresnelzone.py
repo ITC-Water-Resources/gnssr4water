@@ -9,7 +9,7 @@ To compute and show the first Fresnel Zone.
 import numpy as np
 import matplotlib.pyplot as plt
 import math as m
-from geod import *
+from .geod import *
 from shapely.geometry.polygon import Polygon
 import pyproj
 

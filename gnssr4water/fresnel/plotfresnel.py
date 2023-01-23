@@ -19,9 +19,9 @@ from PIL import Image
 from pathlib import Path
 
 # Project import
-from fresnelzone import *
-from iterfresnel import *
-from intersect import *
+from .fresnelzone import *
+from .iterfresnel import *
+from .intersect import *
 
 ###############################################################################
 

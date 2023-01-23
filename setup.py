@@ -20,7 +20,7 @@ setuptools.setup(
     url="https://github.com/ITC-Water-Resources/gnssr4water",
     packages=find_packages("."),
     package_dir={"":"."},
-    install_requires=['numpy','math','pandas','shapely','matplotlib','astropy','os','geopandas','unlzw3','pathlib','GDAL','Shapely','io','cartopy','urllib'],
+    install_requires=['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy'],
     classifiers=["Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
         "Operating System :: POSIX :: Linux",
