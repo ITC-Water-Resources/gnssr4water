@@ -12,6 +12,7 @@ from datetime import datetime,timedelta
 import pandas as pd
 import numpy as np
 from scipy.interpolate import interp1d
+import lz4.frame
 
 ###############################################################################
 
@@ -93,7 +94,8 @@ def parseGNGSV(ln):
             elev=float(spl[i+1])
             az=float(spl[i+2])
             snr=float(spl[i+3])
-        except ValueError:
+        
+        except (ValueError,IndexError):
             #It may be possible that ,,, entries occur, so we'll just ignore those
             continue
 
@@ -111,6 +113,9 @@ def readnmea(fidorfile):
     if type(fidorfile) == str:
         if fidorfile.endswith('.gz'):
             fid=gz.open(fidorfile,'rt')
+        elif fidorfile.endswith(".lz4"):
+            # lz4 compressed file (e.g. from Actinius devices)
+            fid=lz4.frame.open(fidorfile, mode='rt')
         else:
             fid=open(fidorfile,'rt')
     else:
@@ -121,27 +126,34 @@ def readnmea(fidorfile):
     #loop over the buffer and parse messages as we go
     nmeacycle={}
     nmeadata=[]
-    for ln in fid:
-        if ln.startswith("$"):
-            try:
-                nmeacycle.update(dispatchParse[ln[0:6]](ln))
+    try:
+        for ln in fid:
+            # import pdb;pdb.set_trace()
+            if ln.startswith("$"):
+                try:
+                    nmeacycle.update(dispatchParse[ln[0:6]](ln))
 
-                #possibly append this cycle data to nmeadata when a time tag is present
-                if "time" in nmeacycle and (sum(k.startswith("PRN") for k in nmeacycle.keys()) > 0):
+                    #possibly append this cycle data to nmeadata when a time tag is present
+                    if "time" in nmeacycle and (sum(k.startswith("PRN") for k in nmeacycle.keys()) > 0):
 
-                    basedict={k:v for k,v in nmeacycle.items() if not k.startswith("PRN")}
+                        basedict={k:v for k,v in nmeacycle.items() if not k.startswith("PRN")}
 
-                    #unwrap the different PRN's into separate rows
-                    for ky,val in nmeacycle.items():
-                        if ky.startswith("PRN"):
-                            nmeadata.append({**basedict,"PRN":int(ky[3:]),**val})
-                    #reset nmeacycle dict
-                    nmeacycle={}
-            except KeyError:
-                continue
-
+                        #unwrap the different PRN's into separate rows
+                        for ky,val in nmeacycle.items():
+                            if ky.startswith("PRN"):
+                                nmeadata.append({**basedict,"PRN":int(ky[3:]),**val})
+                        #reset nmeacycle dict
+                        nmeacycle={}
+                except KeyError:
+                    continue
+    except UnicodeDecodeError:
+        return None
+    
+    if len(nmeadata) == 0:
+        return None
     #create a dataframe and set multiindex
     df=pd.DataFrame(nmeadata)
+    
     #We wan to get rid of rows which don;t have a elevation of azimuth in them
     # df.dropna(subset=["elev","az"],inplace=True)
     

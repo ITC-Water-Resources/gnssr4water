@@ -8,7 +8,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from astropy.timeseries import LombScargle
-
+from gnssr4water.core.gnss import GPSL1
+from numpy.polynomial import Polynomial
+from scipy.linalg import LinAlgError
 def plotSnr(df, azrange=None, xaxis=0, show=False, save=True):
     """
     Subplot of SNR ratio to time. Possible to select only from satellites of 
@@ -115,7 +117,7 @@ def detrende_signal(df,PRN,order=4):
     # Detrend the signal
     p = np.poly1d( np.polyfit(dfp['sinelev'],dfp['snrV'],order))
     t = np.linspace(0, 1, len(dfp['snrV']))
-    dfp['snrV'] = dfp['snrV']-p(t)
+    dfp['snrV'] = dfp['snrV']-p(dfp['sinelev'])
 
     # Remove data above 30°
     dfp = dfp.loc[dfp.sinelev < 0.4]
@@ -147,7 +149,7 @@ def plot_detrende(dfp,PRN):
 
     return
 
-def height_LSP(dfp,minH,maxH,PRN):
+def height_LSP(dfp,minH,maxH,PRN,plot=False):
     """
     Use LSP to calculate the height.
     
@@ -171,17 +173,80 @@ def height_LSP(dfp,minH,maxH,PRN):
 
     # Change x-axis to height instead of frequency
     cf = 299792458/1575.42e6
-    height = frequency*cf/2 
-
-    ij = np.argmax(power)
-    maxF = height[ij]
-    maxAmp = np.max(power)
-
-    plt.plot(height, power) 
-    plt.axvline(x=maxF, color='r', linestyle='-')
-    plt.xlim(minH,maxH)
-    plt.xlabel("Reflector height (meter)")
-    plt.ylabel("Amplitude")
-    plt.title("LSP for PRN{PRN}")
+    height = frequency*cf/2
+    #window to consider
+    iwin=(height>= minH) & (height<= maxH)
     
+    ij = np.argmax(power[iwin])
+    maxF = height[iwin][ij]
+    maxAmp = np.max(power[iwin])
+    
+    # also isolate the main peak and compute an estimate for the variance of the peak
+    searchrad=1 #meter to search for a local minimum at both sides of the peak
+    
+    ileftsearch=(height<maxF) & (height > maxF-searchrad)
+    irightsearch=(height>maxF) & (height < maxF+searchrad)
+    
+    iminleft=np.argmin(power[ileftsearch])
+    iminright=np.argmin(power[irightsearch])
+    
+    
+    #also compute the variance around the max for the considered window
+    hstd=np.sqrt(np.average((height[iwin]-maxF)**2,weights=power[iwin]))
+    
+    if plot:
+        plt.plot(height, power) 
+        plt.axvline(x=maxF, color='r', linestyle='-')
+        plt.axvline(x=maxF-hstd, color='r', linestyle='--')
+        plt.axvline(x=maxF+hstd, color='r', linestyle='--')
+        plt.xlim(minH,maxH)
+        plt.xlabel("Reflector height (meter)")
+        plt.ylabel("Amplitude")
+        plt.title("LSP for PRN{PRN}")
+
     return frequency,height,maxF,maxAmp
+
+
+def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1):
+    """
+    Process a single ascending/descending segment, by
+    (1) removing a direct signal 
+    (2) Computing the Lomb Scargle  
+    """
+    
+    ## sanity checks
+    if len(dfseg.index.get_level_values('PRN').unique()) != 1 or len(dfseg.index.get_level_values('segment').unique()) != 1:
+        raise RunTimeError(f"{height_LSP_fromSegment.__name__} excepts only a single PRN/segment")
+    if np.count_nonzero(~np.isnan(dfseg.snr)) < minPoints:
+        return None,None,None
+  
+    # remove a polynomial fit first
+    snrv_v=np.power(10,dfseg.snr/20)
+    sinelev=np.sin(np.deg2rad(dfseg.elevsmth))
+    #center x axis for a more stable fit
+    x=sinelev.values-sinelev.mean()
+    # type(x.values)
+    try:
+        p=Polynomial.fit(x, snrv_v, order)
+        snrv_v = snrv_v-p(x)
+    except LinAlgError:
+        return None,None,None
+        
+    # LSP
+    frequency, power = LombScargle(sinelev,snrv_v).autopower()
+
+    # Change x-axis to height instead of frequency
+    height = frequency*band.lenght/2
+    #window to consider to search for a max value
+    iwin=(height>= minH) & (height<= maxH)
+    imax = np.argmax(power[iwin])
+    maxF = height[iwin][imax]
+    maxAmp = power[iwin][imax]
+    if maxAmp < ampCutoff:
+        return None,None,None
+    
+    ctime=dfseg.index.get_level_values('time').mean()
+        
+    return ctime,maxF,maxAmp        
+        
+            
