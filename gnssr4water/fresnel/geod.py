@@ -212,7 +212,7 @@ def elevazim(df_sp3,lon,lat,h):
     df = df.dropna()
     
     # Set type, overwise it is String
-    df = df.astype({'week':'int','system':'str','tow':'float','clock':'float','azimuth':'int', 'elevation':'int','PRN':'int','date':'datetime64'})
+    df = df.astype({'week':'int','system':'str','tow':'float','clock':'float','azimuth':'int', 'elevation':'int','PRN':'int','date':'datetime64[ns]'})
     
     # Remove all values bellow 0° elevation, i.e satellites that are not visible
     df = df[df['elevation'] > 0]
