@@ -1,26 +1,30 @@
 from collections import namedtuple
 from scipy.constants import c
 
-GNSSfreq=namedtuple("GNSSfreq",["freq","lenght","width"])
+GNSSfreq=namedtuple("GNSSfreq",["freq","length","width"])
+
+def getGNSS(freqMhz,wMhz):
+    freq=freqMhz*1e6
+    return GNSSfreq(freq,c/freq,wMhz*1e6)
 
 # GNSS frequencies (source https://www.rfwireless-world.com/Terminology/GPS-Frequency-Band-and-GNSS-Frequency-Band.html)
-GPSL1=GNSSfreq(1575.42e6,c/1575.42e6,15.345e6)
-GPSL2=GNSSfreq(1227.6e6,c/1227.6e6,11e6)
-GPSL5=GNSSfreq(1176.45e6,c/1176.45e6,12.5e6)
+GPSL1=getGNSS(1575.42,15.345)
+GPSL2=getGNSS(1227.6,11)
+GPSL5=getGNSS(1176.45,12.5)
 
 # QZSS
-QZSSL5=GNSSfreq(1176.45e6, c/1176.45e6, 24e6)
-QZSSL2C=GNSSfreq(1227.6e6, c/1227.6e6, 11e6)
-QZSSE6=GNSSfreq(1278.75e6, c/1278.75e6,20e6)
-QZSSL1=GNSSfreq(1575.42e6,c/1575.42e6, 12e6)
+QZSSL5=getGNSS(1176.45, 24)
+QZSSL2C=getGNSS(1227.6, 11)
+QZSSE6=getGNSS(1278.75,20)
+QZSSL1=getGNSS(1575.42, 12)
 
 
-
-#GLONASSIL1 	1602 MHz, 0.187m, 6.5MHz
-# GLONASS I-L2 	1246MHz, 0.241m, 5MHz
-GLONASSIIL1=GNSSfreq(1575.42e6, c/1575.42e6, 6.5e6)
+#GLONASS
+GLONASSIL1=getGNSS(1602, 6.5)
+GLONASSIL2=getGNSS(1246,5)
+GLONASSIIL1=getGNSS(1575.42, 6.5)
 # GLONASS II-L1 	1600.995MHz, 0.1874m,15.365MHz
-# GLONASS II-L2 	1248.06MHz,0.2404m,8.75MHz
+GLONASSIIL2=getGNSS(1248.06,8.75)
 # GLONASS II-L3 	1202.025MHz, 0.2496m,20.46MHz
 # GLONASS II-L5 	1176.45MHz,0.255m,10.22MHz
 # GALILEO-E1 	1575.42MHz,0.1904m, 12MHz

@@ -2,6 +2,7 @@
 """
 This code is to retrieve the orbits of GPS and GLONASS satellites
 @author: Lubin Roineau, ENSG-Geomatics (internship at UT-ITC Enschede), Aug 26, 2022
+Modified R. Rietbroek, March 2024
 """
 
 ### Imports ###
@@ -17,7 +18,7 @@ import matplotlib.pyplot as plt
 import gzip
 ###############################################################################
 
-def gpsweek(date=datetime.now()):
+def gpsweek(date=None):
     """
     Return the gps week and secondes for a given date. 
     
@@ -31,6 +32,9 @@ def gpsweek(date=datetime.now()):
     GPS_wk, GPS_sec_wk : int       
         The gps week and second of the week.
     """
+    if date is None:
+        date=datetime.now()
+
     hour=date.hour
     minute=date.minute
     second=date.second
@@ -48,81 +52,52 @@ def gpsweek(date=datetime.now()):
     JD=np.floor(365.25*y) + np.floor(30.6001*(m+1)) + day + (UT/24.0) + 1720981.5
     GPS_wk=np.floor((JD-2444244.5)/7.0);
     GPS_wk = int(GPS_wk)
-    GPS_sec_wk=np.rint((((JD-2444244.5)/7)-GPS_wk)*7*24*3600)            
+    d_seconds=np.rint((((JD-2444244.5)/7)-GPS_wk)*7*24*3600)            
      
-    return GPS_wk, GPS_sec_wk
+    return GPS_wk, d_seconds
 
-###############################################################################
 
-def retrieve_orbits(date=datetime.now()):
+def download_gnss_sp3_orbits(date=None,outputdir=".",hour="00",provider="esa"):
     """
-    Retrieve the orbits of GPS and Glonass constellations from ESA site. If date is not specified, takes current date.
-    
-    Parameters
-    ----------
-    date: datetime
-        The date used to determine the GPS week for which the orbits will be downloaded (default takes the current date)  
-    
-    Return
-    ------
-    orb: bytes
-        sp3 file.
+    Retrieve an SP3 orbit file from one of the providers
+    :param date: Date to download orbit data for. Leave empty to retrieve the most recent data
+    :param outputdir: Specify an output directory to writei to (default is the current directory)
+    :param hour: For near real-time data: a specifc batch to download, eitther one of '00', '06','12','18'
+    :param provider: Provider to retrieve the GNSS orbits from (currently only "esa"))
+    :return: The local file name to which data has been downloaded
     """
-    # if user gives an incorrect date
-    if date > datetime.now():
-        raise RuntimeError("Cannot give a date that is yet to come!")  
+    if date is None:
+        date=datetime.now()
 
-    # Retrieve first the gps week
-    GPS_wk, GPS_sec_wk = gpsweek(date)    
-    t = str(int(GPS_sec_wk/86400))
-    
+    gpswk,dsec=gpsweek(date)
 
-    # Create directory
-    dirName = 'Orbits'
-    # Create target Directory if don't exist
-    if not os.path.exists(dirName):
-        os.mkdir(dirName)
-        print(f"Files will be stored in {dirName}")
-        
-    # List of possible file updated
-    update=['18','12','06','00']
-    a=0
-    for i in range(len(update)):
-        # Try to see which one is the latest file
-        xx=update[a]
-        # http://navigation-office.esa.int/products/gnss-products/2245/ESA0OPSULT_20230201800_02D_15M_ORB.SP3.gz
-        datestr=date.strftime("%Y%j")
-        filenameGZ=f"ESA0OPSULT_{datestr}{xx}00_02D_15M_ORB.SP3.gz"
-        localf=os.path.join(dirName,filenameGZ)
-        # If it exists localy, no need to download it
-        if os.path.exists(localf):
-            print('File already exists')
-            with gzip.open(localf, 'rb') as forb:
-                return forb.read()
-        # If not, download it
-        else:
-            # data link   
-            url = f'http://navigation-office.esa.int/products/gnss-products/{GPS_wk}/{filenameGZ}'
-            r = requests.get(url)
-            # Check the latest file updated for the given date
-            if r.status_code == 200:
-                with open(localf,'wb') as fout:
-                    fout.write(r.content)
 
-                # Data download success
-                if os.path.exists(localf):
-                    print("Data download success")
-                    with gzip.open(localf, 'rb') as forb:
-                        return forb.read()
-                else:
-                    # Data download failed
-                    print("Fail to retrieve data") 
-            else:
-                a+=1 #try an older version
-    print("Failed to find data on the server") 
-    return b""
+    if provider == "esa":
+        rooturl = f'http://navigation-office.esa.int/products/gnss-products/{gpswk}/'
+        yrdoy=date.strftime("%Y%j")
+        filebase=f"ESA0OPSULT_{yrdoy}{hour}00_02D_15M_ORB.SP3.gz"
+    else:
+        raise RuntimeError(f"Unknown SP3 orbit provider supplied: {provider}")
 
-###############################################################################  
+    #try downloading the file
+    url = f"{rooturl}{filebase}"
+
+    fout=os.path.join(outputdir,filebase)
+    if os.path.exists(fout):
+        print(f"{fout} already exists, no need to download")
+        return fout
+
+    r = requests.get(url)
+    # Check the latest file updated for the given date
+    if r.status_code == 200:
+        with open(fout, 'wb') as fid:
+            fid.write(r.content)
+        return fout
+    else:        
+        raise RuntimeError(f"Failed to retrieve SP3 orbit file {fout}")
+
+
+
 
 def read_sp3(file,predict_only=False):
     """
@@ -130,7 +105,7 @@ def read_sp3(file,predict_only=False):
     
     Parameters
     ----------
-    file: String or Bytes
+    file: String or file object like
         The sp3 file or the local unzipped file in Python.
     predict_only: Boolean
         Set to True if only predicted orbits are wanted.
@@ -141,15 +116,15 @@ def read_sp3(file,predict_only=False):
         The content of the sp3 on a DataFrame.
     """
     # See if the file is a sp3 on hard drive or directly a Bytes in Python
-    if type(file)==bytes:        
-        f = BytesIO(file) 
+    if type(file)==str:        
+        f = gzip.open(file,'rb')
     else:
-        f = open(f'Orbits/{file}')
-    
+        f=file
     # Read the file 
     try:      
         raw = f.read()
-        f.close()
+        if type(file) == str:
+            f.close()
         lines  = raw.splitlines()
         nprn = int(lines[2].split()[1])
         lines  = raw.splitlines()[22:-1]
@@ -169,17 +144,18 @@ def read_sp3(file,predict_only=False):
                 elif str(lines[i*(nprn+1)+j+1][1:2])=="b'G'":
                     sys.append('GPS')
                 date.append(dtepoch)
+                
                 prn[i*nprn+j] =  int(lines[i*(nprn+1)+j+1][2:4])
                 x[i*nprn+j] = float(lines[i*(nprn+1)+j+1][4:18])
                 y[i*nprn+j] = float(lines[i*(nprn+1)+j+1][18:32])
                 z[i*nprn+j] = float(lines[i*(nprn+1)+j+1][32:46])
                 clock[i*nprn+j] = float(lines[(i)*(nprn+1)+j+1][46:60])
                 
+                
     # if file not found
     except Exception as exc:
-        print('sorry - the sp3file does not exist')
+        raise RuntimeError('i Error reading orbits from the sp3file')
         week,tow,x,y,z,prn,clock=[0,0,0,0,0,0,0]
-		
     # Set the DataFrame
     df_sp3 = pd.DataFrame({"date":date,
                            "system":sys,

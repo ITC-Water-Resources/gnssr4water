@@ -138,9 +138,9 @@ def plot_detrende(dfp,PRN):
     -------
     Plot
     """
-    ax = plt.subplot()
+    fig,ax=plt.subplots(figsize=(12,4))
     leg=[]
-    ax.plot(dfp.sinelev,dfp.snrV)
+    ax.plot(dfp.sinelev,dfp.snrV,'b.-')
 
 
     ax.set_ylabel('SNR [Volt/Volt]')
@@ -207,7 +207,7 @@ def height_LSP(dfp,minH,maxH,PRN,plot=False):
     return frequency,height,maxF,maxAmp
 
 
-def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1):
+def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1,noiseBandwidth=1):
     """
     Process a single ascending/descending segment, by
     (1) removing a direct signal 
@@ -218,10 +218,10 @@ def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1)
     if len(dfseg.index.get_level_values('PRN').unique()) != 1 or len(dfseg.index.get_level_values('segment').unique()) != 1:
         raise RunTimeError(f"{height_LSP_fromSegment.__name__} excepts only a single PRN/segment")
     if np.count_nonzero(~np.isnan(dfseg.snr)) < minPoints:
-        return None,None,None
+        return None,None,None,None,None
   
     # remove a polynomial fit first
-    snrv_v=np.power(10,dfseg.snr/20)
+    snrv_v=np.power(10,dfseg.snr/(20*noiseBandwidth))
     sinelev=np.sin(np.deg2rad(dfseg.elevsmth))
     #center x axis for a more stable fit
     x=sinelev.values-sinelev.mean()
@@ -230,23 +230,23 @@ def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1)
         p=Polynomial.fit(x, snrv_v, order)
         snrv_v = snrv_v-p(x)
     except LinAlgError:
-        return None,None,None
+        return None,None,None,None,None
         
     # LSP
     frequency, power = LombScargle(sinelev,snrv_v).autopower()
 
     # Change x-axis to height instead of frequency
-    height = frequency*band.lenght/2
+    height = frequency*band.length/2
     #window to consider to search for a max value
     iwin=(height>= minH) & (height<= maxH)
     imax = np.argmax(power[iwin])
     maxF = height[iwin][imax]
     maxAmp = power[iwin][imax]
     if maxAmp < ampCutoff:
-        return None,None,None
+        return None,None,None,None,None
     
     ctime=dfseg.index.get_level_values('time').mean()
         
-    return ctime,maxF,maxAmp        
+    return ctime,maxF,maxAmp,height,power        
         
             

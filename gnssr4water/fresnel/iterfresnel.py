@@ -8,21 +8,10 @@ To iterate calculation of Fresnel Zone and show reflexion points for GNSS-R
 
 # Usefull librairies
 from .fresnelzone import *
-from .getorbits import *
+from .orbits import *
 from .plotfresnel import *
 from .geod import *
 import geopandas as gpd
-
-# Usefull constants
-c = 299792458                   # m.s-1 Speed of light
-L1_GPS = 1575.42e6              # Hz L1 frequency for GPS
-L2_GPS = 1227.60e6              # Hz L2 frequency for GPS
-L1_Glo = 1602.0e6               # Hz L1 frequency for GLONASS
-L2_Glo = 1246.0e6               # Hz 21 frequency for GLONASS
-lambda_L1_GPS = (c/L1_GPS)      # m wavelenght for L1 GPS
-lambda_L2_GPS = (c/L2_GPS)      # m wavelenght for L2 GPS
-lambda_L1_Glo = (c/L1_Glo)      # m wavelenght for L1 Glo
-lambda_L2_Glo = (c/L2_Glo)      # m wavelenght for L2 Glo
 
 ###############################################################################
 

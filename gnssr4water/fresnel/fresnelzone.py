@@ -3,6 +3,7 @@
 To compute and show the first Fresnel Zone.
 
 @author: Lubin Roineau, ENSG-Geomatics (internship at UT-ITC Enschede), Aug 26, 2022
+Modified R.Rietbroek, March 2024
 """
 
 # Usefull librairies
@@ -12,34 +13,22 @@ import math as m
 from .geod import *
 from shapely.geometry.polygon import Polygon
 import pyproj
-
-# Usefull constants
-c = 299792458                   # m.s-1 Speed of light
-L1_GPS = 1575.42e6              # Hz L1 frequency for GPS
-L2_GPS = 1227.60e6              # Hz L2 frequency for GPS
-L1_Glo = 1602.0e6               # Hz L1 frequency for GLONASS
-L2_Glo = 1246.0e6               # Hz 21 frequency for GLONASS
-lambda_L1_GPS = (c/L1_GPS)      # m wavelenght for L1 GPS
-lambda_L2_GPS = (c/L2_GPS)      # m wavelenght for L2 GPS
-lambda_L1_Glo = (c/L1_Glo)      # m wavelenght for L1 Glo
-lambda_L2_Glo = (c/L2_Glo)      # m wavelenght for L2 Glo
-
-###############################################################################
+from gnssr4water.core.gnss import *
 
 # Calculation of the First Fresnel Zone
 
-def firstFresnelZone(freq, h, elev):
+def firstFresnelZone(GNSSlambda, h, elev):
     """
     This function gets the size and center of the First Fresnel Zone ellipse.
     (based on a code by Kristine Larson and Carolyn Roesler).
     
     Parameters
     ----------
-    freq: float
-        Frequence of L_band in Hz.
+    GNSSlambda: float 
+        wavelength of the GNSS signal
     h: float
         Hight of the receiver in meters.
-    elev: float
+    elev: float array_like
         Satellite elevation angle in degrees.
     
     Return
@@ -52,52 +41,60 @@ def firstFresnelZone(freq, h, elev):
         Locates the center of the ellispe on the satellite azimuth direction 
         and R meters away from the base of the Antenna.
     """
-    # Valid frequencies
-    lfreqgps = [L1_GPS, L2_GPS]
-    lfreqglo = [L1_Glo, L2_Glo]
-
-    # Check if frequency is valid
-    if freq in lfreqgps and freq in lfreqglo:
-        raise Exception("Wrong value for L_band frequency")  
-
-    if elev>90:
+    if np.any(elev>90):
         raise Exception("Wrong value for elevation, can't excede 90° !")  
 
     # Directly put elevation in radians
     elevR = np.radians(elev)
     
-    if freq in lfreqgps:
-        # delta = locus of points corresponding to a fixed delay;
-        # typically the first Fresnel zone is is the
-        # "zone for which the differential phase change across
-        # the surface is constrained to lambda/2" (i.e. 1/2 the wavelength)
-        d = lambda_L1_GPS/2
+    # delta = locus of points corresponding to a fixed delay;
+    # typically the first Fresnel zone is is the
+    # "zone for which the differential phase change across
+    # the surface is constrained to lambda/2" (i.e. 1/2 the wavelength)
+    d = GNSSlambda/2
 
-        # from the appendix of Larson and Nievinski, 2013
-        # semi-minor axis
-        b = ((lambda_L1_GPS*h)/np.sin(elevR)) + (lambda_L1_GPS/(2*np.sin(elevR)))**2
-        b = np.sqrt(b)
-        # semi-majpr axis
-        a = b/np.sin(elevR)
+    # from the appendix of Larson and Nievinski, 2013
+    # semi-minor axis
+    b = ((GNSSlambda*h)/np.sin(elevR)) + (GNSSlambda/(2*np.sin(elevR)))**2
+    b = np.sqrt(b)
+    # semi-major axis
+    a = b/np.sin(elevR)
 
-    elif freq in lfreqglo:
-        # delta = locus of points corresponding to a fixed delay;
-        # typically the first Fresnel zone is is the
-        # "zone for which the differential phase change across
-        # the surface is constrained to lambda/2" (i.e. 1/2 the wavelength)
-        d = lambda_L1_Glo/2
-
-        # from the appendix of Larson and Nievinski, 2013
-        # semi-minor axis
-        b = ((lambda_L1_Glo*h)/np.sin(elevR)) + (lambda_L1_Glo/(2*np.sin(elevR)))**2
-        b = np.sqrt(b)
-        # semi-majpr axis
-        a = b/np.sin(elevR)
-        
     # determine distance to ellipse center in meters
     R = (h + d/np.sin(elevR)) / np.tan(elevR)
+    a.name='semi-major'
+    b.name='semi-minor'
+    R.name='distance'
+    area=np.pi*a*b
+    area.name='area'
+    return a, b, R, area
 
-    return a, b, R
+def generate_enu_ellipses(a,b,R,azim,npoints=100):
+    
+    # Change angle to match orientation of Python
+    #az_rad = np.radians(azim)
+    az_rad = 2*np.pi - np.radians(azim) + np.pi/2
+
+    cos_az=np.cos(az_rad)
+    sin_az=np.sin(az_rad)
+
+    # Coordinates of the center in the local EN (U) frame
+    c_e = R*cos_az                    
+    c_n = R*sin_az
+    # c_u = all zero
+    #broadcast
+    nell=len(R)
+    c_n=np.broadcast_to(c_n,[npoints,nell]).T
+    c_e=np.broadcast_to(c_e,[npoints,nell]).T
+
+    t = np.linspace(0, 2*np.pi, npoints)
+    cos_t=np.cos(t)
+    sin_t=np.sin(t)
+    # Parametric equation of ellipse
+    el_e = c_e + np.outer(a*cos_az,cos_t) - np.outer(b*sin_az,sin_t)
+    el_n = c_n + np.outer(a*sin_az,cos_t) + np.outer(b*cos_az,sin_t)
+    return el_e,el_n
+
 
 ###############################################################################
 
@@ -212,3 +209,12 @@ def specularPoint(a, b, R, azim, color=None):
     return
 
 ###############################################################################
+
+def fresnelZones(elev,azim,lon,lat,orthoHeight,antennaHeight,GNSSsys=GPSL1):
+    """
+    Compute Fresnel zones from satellite positions, geographical location and antenna height
+    returns a geopandas dataframe Fresnel zones and properties
+    """
+    
+    fresnelIsotropic=firstFresnelZone(GNSSsys.length,antennaHeight,elev)
+    return fresnelIsotropic
