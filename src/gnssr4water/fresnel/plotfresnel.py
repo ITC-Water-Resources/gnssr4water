@@ -259,4 +259,35 @@ def fresnelMap(lon,lat,dist=25,filezone=None,filewb=None,azmin=None,azmax=None,a
     else:
         return
 
+def fresnelBaseMap(lon,lat,distance=30):
+    
+    #generate a new map
+    cimgt.QuadtreeTiles.get_image = image_spoof # reformat web request for street map spoofing
+    img = cimgt.QuadtreeTiles()
+    # img = cimgt.OSM()
+
+    data_crs = ccrs.PlateCarree()
+
+    fig = plt.figure(figsize=(10,10)) # open matplotlib figure
+    ax = plt.axes(projection=data_crs) # project using coordinate reference system (CRS) of street map
+
+
+
+
+    scale = int(120/np.log(distance))
+    scale = (scale<20) and scale or 19
+    extent = calc_extent(lon,lat,distance*2.5)
+    ax.set_extent(extent) # set extents
+    ax.add_image(img, int(scale)) # add OSM with zoom specification
+    grdcolor='#bcd42f'
+    gl = ax.gridlines(draw_labels=True, crs=data_crs,color=grdcolor,lw=0.5,zorder=12)
+    gl.xlabel_style = {'size': 12, 'color': grdcolor}
+    gl.ylabel_style = {'size': 12, 'color': grdcolor}
+    gl.top_labels = False
+    gl.right_labels= False
+    gl.xpadding = -8
+    gl.ypadding = -8
+
+    return ax
+
 

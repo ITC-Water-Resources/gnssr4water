@@ -248,5 +248,49 @@ def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1,
     ctime=dfseg.index.get_level_values('time').mean()
         
     return ctime,maxF,maxAmp,height,power        
+
+
+
+    
+def cn0_2_vv(cn0,noiseBandwidth=1.0):
+    """Compute the Signal To noise Ratio as volts/volts from carrior to noise density as follows
         
-            
+        snr = 10^(cn0/(20*noiseBandwidth)
+
+        Parameters
+        ----------
+        cn0 : array-like
+            Carrier to noise density in Db-Hz 
+        noiseBandwidth : float
+            noise bandwidth of the receiver 
+
+        Returns
+        -------
+            numpy.array
+            Signal to noise ratio in Volts/Volts
+    """
+    return np.power(10,np.array(cn0)/(20*noiseBandwidth))
+
+def vv_2_cn0(snrvv,noiseBandwidth=1.0):
+    """Compute the carrier noise density as dB-Hz from Signal to noise ration in Volts/Volts as follows
+        
+        cn0 = log10(snr*20*noiseBandwidth)
+
+        Parameters
+        ----------
+        snr : array-like
+            Signal to noise ratio in Volts/Volts
+        noiseBandwidth : float
+            noise bandwidth of the receiver 
+
+        Returns
+        -------
+            numpy.array
+            Carrier to noise density in Db-Hz
+    """
+    return 20*noiseBandwidth*np.log10(snrvv)
+
+
+
+
+

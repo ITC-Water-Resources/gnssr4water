@@ -16,6 +16,9 @@ from io import BytesIO
 from .geod import *
 import matplotlib.pyplot as plt
 import gzip
+
+import pymap3d as pm
+
 ###############################################################################
 
 def gpsweek(date=None):
@@ -135,7 +138,7 @@ def read_sp3(file,predict_only=False):
         date = []
         for i in range(nepoch):
             year, month, day, hour, minute, second = np.array(epochs[i].split()[1:], dtype=float)
-            dtepoch=datetime(year=int(year),month=int(month),day=int(day),hour=int(hour),second=int(second))
+            dtepoch=datetime(year=int(year),month=int(month),day=int(day),hour=int(hour),minute=int(minute),second=int(second))
             week[i*nprn:(i+1)*nprn], tow[i*nprn:(i+1)*nprn] = \
 				gpsweek(dtepoch)
             for j in range(nprn):
@@ -172,6 +175,11 @@ def read_sp3(file,predict_only=False):
         df_sp3 = df_sp3.loc[(df_sp3['date'] >= datetime.now())]
     
     return df_sp3
+
+
+def orbitxyz2aer(x,y,z,lon,lat,height):
+    ell=pm.Ellipsoid.from_name('wgs84')
+    return pm.enu.enu2aer(*pm.ecef.ecef2enu(x,y,z, lat,lon,height, ell=ell))
 
 ###############################################################################
 

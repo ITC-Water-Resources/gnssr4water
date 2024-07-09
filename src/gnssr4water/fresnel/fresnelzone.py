@@ -3,7 +3,7 @@
 To compute and show the first Fresnel Zone.
 
 @author: Lubin Roineau, ENSG-Geomatics (internship at UT-ITC Enschede), Aug 26, 2022
-Modified R.Rietbroek, March 2024
+Modified/rewritten R.Rietbroek, March-June 2024
 """
 
 # Usefull librairies
@@ -12,8 +12,12 @@ import matplotlib.pyplot as plt
 import math as m
 from .geod import *
 from shapely.geometry.polygon import Polygon
+from shapely import GEOSException
 import pyproj
 from gnssr4water.core.gnss import *
+import pymap3d as pm
+import geopandas as gpd
+from scipy.optimize import fsolve
 
 # Calculation of the First Fresnel Zone
 
@@ -40,6 +44,8 @@ def firstFresnelZone(GNSSlambda, h, elev):
     R: float 
         Locates the center of the ellispe on the satellite azimuth direction 
         and R meters away from the base of the Antenna.
+    area: float
+        Area of the elliptical first Fresnel zone
     """
     if np.any(elev>90):
         raise Exception("Wrong value for elevation, can't excede 90° !")  
@@ -62,38 +68,63 @@ def firstFresnelZone(GNSSlambda, h, elev):
 
     # determine distance to ellipse center in meters
     R = (h + d/np.sin(elevR)) / np.tan(elevR)
-    a.name='semi-major'
-    b.name='semi-minor'
-    R.name='distance'
+    #for debugging
+    #import pdb;pdb.set_trace()
+    #R = (h) / np.tan(elevR)
+    #R = 40* np.ones(elevR.shape)
+    # a.name='semi-major'
+    # b.name='semi-minor'
+    # R.name='distance'
     area=np.pi*a*b
-    area.name='area'
+    # area.name='area'
     return a, b, R, area
 
+def elev_from_radius(radius,antennaHeight,wavelength=GPSL1.length):
+    """
+    Retrieve the elevation angles associated with the radial distances of the centroids of the first Fresnel ellipses
+    """
+    
+    #compute specular point as  a starting value
+    elevspecular=np.arctan2(antennaHeight,radius)
+
+    def rootfunc(elev):
+        sinel=np.sin(elev)
+        tanel=np.tan(elev)
+        rootval=radius-(antennaHeight+wavelength/(2*sinel))/tanel
+        return rootval
+
+    #solve the non-linear problem using scipy's fsolve
+    elevroots=fsolve(rootfunc,x0=elevspecular)
+    return np.rad2deg(elevroots)
+    
 def generate_enu_ellipses(a,b,R,azim,npoints=100):
     
     # Change angle to match orientation of Python
+    az_rad=np.deg2rad(azim)
     #az_rad = np.radians(azim)
-    az_rad = 2*np.pi - np.radians(azim) + np.pi/2
-
+    #az_rad = 2*np.pi - np.deg2rad(azim) + np.pi/2
     cos_az=np.cos(az_rad)
     sin_az=np.sin(az_rad)
 
     # Coordinates of the center in the local EN (U) frame
-    c_e = R*cos_az                    
-    c_n = R*sin_az
+    ce = R*sin_az                    
+    cn = R*cos_az
+    # import pdb;pdb.set_trace()
     # c_u = all zero
     #broadcast
     nell=len(R)
-    c_n=np.broadcast_to(c_n,[npoints,nell]).T
-    c_e=np.broadcast_to(c_e,[npoints,nell]).T
+    c_n=np.broadcast_to(cn,[npoints,nell]).T
+    c_e=np.broadcast_to(ce,[npoints,nell]).T
 
     t = np.linspace(0, 2*np.pi, npoints)
     cos_t=np.cos(t)
     sin_t=np.sin(t)
     # Parametric equation of ellipse
-    el_e = c_e + np.outer(a*cos_az,cos_t) - np.outer(b*sin_az,sin_t)
-    el_n = c_n + np.outer(a*sin_az,cos_t) + np.outer(b*cos_az,sin_t)
-    return el_e,el_n
+    # el_e = c_e + np.outer(a*cos_az,cos_t) - np.outer(b*sin_az,sin_t)
+    # el_n = c_n + np.outer(a*sin_az,cos_t) + np.outer(b*cos_az,sin_t)
+    el_e = c_e + np.outer(a*sin_az,cos_t) - np.outer(b*cos_az,sin_t)
+    el_n = c_n + np.outer(a*cos_az,cos_t) + np.outer(b*sin_az,sin_t)
+    return el_e,el_n,ce,cn
 
 
 ###############################################################################
@@ -210,11 +241,37 @@ def specularPoint(a, b, R, azim, color=None):
 
 ###############################################################################
 
-def fresnelZones(elev,azim,lon,lat,orthoHeight,antennaHeight,GNSSsys=GPSL1):
+def fresnelZones(elev,azim,lon,lat,orthoHeight,antennaHeight,GNSSWavelength=GPSL1.length,npoints=100):
     """
-    Compute Fresnel zones from satellite positions, geographical location and antenna height
+    Compute Fresnel zones (center, and ellipses from satellite positions, geographical location, antenna height, and GNSS wavelength
     returns a geopandas dataframe Fresnel zones and properties
     """
     
-    fresnelIsotropic=firstFresnelZone(GNSSsys.length,antennaHeight,elev)
-    return fresnelIsotropic
+
+    #First compute the first fresnel zones
+    a,b,r,area=firstFresnelZone(GNSSWavelength,antennaHeight,elev)
+    
+    #generate ellipses and centroid locations in the ENU frame
+    el_e,el_n,ce_e,ce_n=generate_enu_ellipses(a,b,r,azim,npoints=npoints)
+
+
+    # convert the centroids to lon,lat
+    ell=pm.Ellipsoid.from_name('wgs84')
+    
+    lat0,lon0,alt0=pm.enu.enu2geodetic(ce_e, ce_n, np.zeros(ce_e.shape), lat0=lat, lon0=lon, h0=orthoHeight, ell=ell,deg=True)
+    #convert ellipses in enu coordinates to lon,lat crs 4326)
+    el_lats,el_lons,el_alt=pm.enu.enu2geodetic(el_e, el_n, np.zeros(el_e.shape), lat0=lat, lon0=lon, h0=orthoHeight, ell=ell,deg=True)
+
+    #create Shapely Polygons for the ellipses
+    el_geoms=[]
+    for i in range(el_lats.shape[0]):
+        el_geoms.append(Polygon(zip(el_lons[i,:],el_lats[i,:])))
+
+    #build a geopandas dataframe
+    gdfout=gpd.GeoDataFrame(dict(elevation=elev,azimuth=azim,distance=r,lon=lon0,lat=lat0,alt=alt0),geometry=el_geoms,crs="EPSG:4326") 
+    
+
+
+    return gdfout
+
+
