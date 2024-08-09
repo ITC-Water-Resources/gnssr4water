@@ -23,9 +23,10 @@ class NMEAFileStream:
     """
     Creates a continuous stream from a list of compressed nmea file logs. Note: the files must be chronological order!
     """
-    def __init__(self,nmeafiles,check=True):
-        self.nmeafiles=iter(nmeafiles)
+    def __init__(self,nmeaobjs,check=True):
+        self.nmeaobjs=iter(nmeaobjs)
         self.fid=None 
+        self.isFile=False
         self.openNext()
         self.check=check
         
@@ -63,8 +64,10 @@ class NMEAFileStream:
                 line="invalid"
                 log.warning("gibberish encountered in NMEA stream, trying next line")
                 continue
-
-            yield line
+            if line is not None:            
+                yield line
+        #stop iteration
+        return
     
     def readnmeas(self):
         """Iterate over the lines of an NMEA stream, while checking their checksums
@@ -85,6 +88,11 @@ class NMEAFileStream:
                 continue
             if nmeavalid(line):
                 yield line
+            else:
+                log.warning("Invalid nmea line encountered, trying next line")
+
+        #stop iteration
+        return
 
     def satsInView(self):
         """Iterate over the NMEA cycles build from SV and RMC NMEA messages
@@ -111,19 +119,34 @@ class NMEAFileStream:
                         nmeacycle={}
                 except KeyError:
                     continue
-        log.info("NMEA stream is exhausted, stoppping")
-        raise StopIteration
+        log.info("NMEA stream is exhausted, stopping")
+        return
 
     def openNext(self):
-        if self.fid is not None:
+        if self.fid is not None and self.isFile:
             #close previous stream
             self.fid.close()
-        try: 
-            self.openfile=next(self.nmeafiles)
-            if self.openfile.endswith('.gz'):
-                log.info(f"Opening {self.openfile}")
-                self.fid = gzip.open(self.openfile,'rt')
+        try:
+            #determine  whether we have a file object or need to open a new file
+            nmeaobj=next(self.nmeaobjs)
+            if hasattr(nmeaobj,'readline'):
+                try:
+                    name=nmeaobj.name
+                except:
+                    name=''
+        
+                log.info(f"Reading from next stream object {name}")
+                #no need to open as a file just copy it as a file descriptor
+                self.fid=nmeaobj
+                self.isFile=False
+            else:
+                if nmeaobj.endswith('.gz'):
+                    self.fid = gzip.open(nmeaobj,'rt')
+                else:
+                    self.fid = open(nmeaobj,'rt')
+                
+                log.info(f"Opening file {nmeaobj}")
+                self.isFile=True
         except StopIteration:
-            self.openfile=None
             self.fid=None
 

@@ -211,7 +211,7 @@ def height_LSP_fromSegment(dfseg,order,minH,maxH,ampCutoff,minPoints,band=GPSL1,
     """
     Process a single ascending/descending segment, by
     (1) removing a direct signal 
-    (2) Computing the Lomb Scargle  
+    (2) Computing the Lomb Scargle  periodogram 
     """
     
     ## sanity checks

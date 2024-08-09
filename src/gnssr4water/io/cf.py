@@ -16,7 +16,7 @@
 # Author Roelof Rietbroek (r.rietbroek@utwente.nl), 2024
 
 from datetime import datetime
-
+from gnssr4water import __version__ as g4w_version
 def global_attrs():
     
-    return {"source":"gnssr4water","references":"https://github.com/ITC-Water-Resources/gnssr4water","history":[datetime.now().isoformat()+": created"]}
+    return {"source":f"gnssr4water version: {g4w_version}","references":"https://github.com/ITC-Water-Resources/gnssr4water","history":[datetime.now().isoformat()+": created"]}

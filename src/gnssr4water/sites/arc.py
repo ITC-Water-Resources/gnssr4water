@@ -65,8 +65,9 @@ class Arc:
         # self.az=smoothDegrees(self.az,self.time)
         self.az=resolveSubValues(self.time,self.az)
         
-        self.cn0int=self.cn0.copy()
-        self.cn0=resolveSubValues(self.time,self.cn0)
+        # don't refine the actual Cn0 values
+        # self.cn0int=self.cn0.copy()
+        # self.cn0=resolveSubValues(self.time,self.cn0)
          
     def __len__(self):
         return len(self.time)

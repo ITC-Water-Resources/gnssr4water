@@ -1,0 +1,1 @@
+from gnssr4water._version import __version__,__version_tuple__

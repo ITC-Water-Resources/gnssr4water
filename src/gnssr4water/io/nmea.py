@@ -34,10 +34,12 @@ GNSSlookup={"GL":GLONASSIIL1,"GP":GPSL1}
 ###############################################################################
 
 def nmeavalid(nmea):
-    if nmea is None:return False
+    # if nmea is None or nmea == '':return False
     #checks the checksum of the nmea string (XOR of all bytes between $ and *)
-    return f"{np.bitwise_xor.reduce([ord(a) for a in nmea[1:-3]]):02X}" == nmea[-2:]
-
+    try:
+        return f"{np.bitwise_xor.reduce([ord(a) for a in nmea[1:-3]]):02X}" == nmea[-2:]
+    except:
+        return False
 cconv=(1-100/60)
 swopfac={"E":+1,"W":-1,"N":1,"S":-1}
 def parseDeg(deg,EWNS):
@@ -118,8 +120,13 @@ def resolveSubValues(time, dataint):
     #first guess
     s=len(time)*2
     # # s=10
-    bSplApprox = UnivariateSpline(dx, dataint)
-    
+    try:
+        bSplApprox = UnivariateSpline(dx, dataint)
+    except:
+        # log.warning("Cannot fit spline to Arc segment is, ignoring")
+
+        return dataint
+
     # def smooth_trunc(x,smooth):
         # bSplApprox.set_smoothing_factor(smooth)
         # print(f"Trying s {smooth}")

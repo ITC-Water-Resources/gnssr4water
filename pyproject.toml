@@ -37,14 +37,13 @@ classifiers = [
     "Development Status :: Beta"
 ]
 
-dependencies = ['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy','lz4','pymap3d']
+dependencies = ['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy','lz4','pymap3d','xarray >= 2023.1.0','zarr']
 
 [project.optional-dependencies]
-dset=["xarray >= 2023.1.0"]
 
 
 [tool.setuptools_scm]
-# empty for now
+version_file = "src/gnssr4water/_version.py"
 
 [project.urls]
 "Homepage" = "https://github.com/ITC-Water-Resources/gnssr4water"

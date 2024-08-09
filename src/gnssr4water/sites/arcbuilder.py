@@ -46,6 +46,18 @@ class SatArcBuilder:
         self.minpoints=4
         self.minElevationSpan=minElevationSpan
     
+    
+    def attrs(self):
+        """
+        Get as list of attributes of the arcbuilder setting
+        """
+        return {"max_arc_gap_sec":self.expiry.seconds,"minimum DbHz":self.mindb,
+                "min_segment_length_sec":self.minlength.seconds,
+                "min_elevation_span_deg":self.minElevationSpan,
+                "split_asc_desc":self.split,
+                "mask_title":self.mask.title,
+                "noisebandwidth_hz":self.mask.noiseBandwidth}
+
     def __len__(self) -> int: 
         """
         Return amount of arcs available
@@ -112,16 +124,19 @@ class SatArcBuilder:
                         
                         await self.submitArc(Arc(**self.arccache.pop(ky)))
                         continue
+                    elif (tm-self.arccache[ky]["time"][-1]) > self.expiry:
+                        await self.submitArc(Arc(**self.arccache.pop(ky)))
+                        #satellite is within the mask but last point was too far in the past -> submit existing arc but allow the current values to start a new arc
                     else:
                         #append values to existing arc
                         self.arccache[ky]["time"].append(tm)
                         self.arccache[ky]["elev"].append(el)
                         self.arccache[ky]["az"].append(az)
                         self.arccache[ky]["cn0"].append(snr)
-                        
-                else:
-                    #initialize a new arc
-                    self.arccache[ky]={"prn":ky,"system":system,"time":[tm],"elev":[el],"az":[az],"cn0":[snr]}
+                        continue 
+                
+                #When we land here we should initialize a new arc
+                self.arccache[ky]={"prn":ky,"system":system,"time":[tm],"elev":[el],"az":[az],"cn0":[snr]}
 
         #check for expired arc (e.g. lost tracking) and submit
         expiredarcs=[ky for ky,val in self.arccache.items() if  (tm-val['time'][-1]) > self.expiry]

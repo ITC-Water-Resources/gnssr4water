@@ -1,5 +1,5 @@
 __pycache__
 .ipynb_checkpoints/
 *egg-info/
-
+src/gnssr4water/_version.py
 
