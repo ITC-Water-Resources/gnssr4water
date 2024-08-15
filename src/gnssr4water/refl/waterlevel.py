@@ -132,10 +132,11 @@ class WaterLevelArc(Arc):
             # time,ah,err_ah=self.estimateAntennaHeight(antennaHeightBounds=antennaHeightBounds)
             time,ah,err_ah=self.estimateAntennaHeight(antennaHeightBounds=antennaHeightBounds,**kwargs)
             
-            ax.axvline(x=ah, color='r', linestyle='-')
+            ax.axvline(x=ah, color='r', linestyle='-',label=f"height: {ah:0.2f}m,err: {err_ah:0.2f}m")
             ax.axvline(x=ah-err_ah, color='r', linestyle='--')
             ax.axvline(x=ah+err_ah, color='r', linestyle='--')
-            
+            ax.axvline(x=ah+err_ah, color='r', linestyle='--')
+        ax.legend()
         return ax
     
     def estimateNoiseBandwidth(self,antennaHeight):

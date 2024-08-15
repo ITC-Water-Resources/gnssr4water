@@ -126,13 +126,14 @@ class SkyMask:
 
         globattr=global_attrs()
         globattr["title"]="GNSS-R selection skymask"
+        globattr['GNSSWavelength']=wavelength
+        self._ds=xr.Dataset(attrs=globattr) #xarray structure to store things into
+        
         # Note all arguments are optional so an empty mask can be created 
         self.lon=lon
         self.lat=lat
         self.ellipseHeight=ellipsHeight
 
-        globattr['GNSSWavelength']=wavelength
-        self._ds=xr.Dataset(attrs=globattr) #xarray structure to store things into
         
         self.antennaHeight=antennaHeight
         self.noiseBandwidth=noisebandwidth

@@ -18,6 +18,7 @@ import gzip
 from gnssr4water.core.logger import log
 from datetime import datetime,timedelta
 from gnssr4water.io.nmea import dispatchParse,nmeavalid
+import lz4.frame
 
 class NMEAFileStream:
     """
@@ -36,8 +37,10 @@ class NMEAFileStream:
             #no buffer available to read from
             return None
 
-
-        nmealine=self.fid.readline()
+        try:
+            nmealine=self.fid.readline()
+        except EOFError:
+            nmealine=None
 
         if not nmealine:
             #end of file: open the next stream and try again
@@ -89,6 +92,7 @@ class NMEAFileStream:
             if nmeavalid(line):
                 yield line
             else:
+                # import pdb;pdb.set_trace()
                 log.warning("Invalid nmea line encountered, trying next line")
 
         #stop iteration
@@ -142,6 +146,9 @@ class NMEAFileStream:
             else:
                 if nmeaobj.endswith('.gz'):
                     self.fid = gzip.open(nmeaobj,'rt')
+                elif nmeaobj.endswith(".lz4"):
+                    # lz4 compressed file (e.g. from Actinius devices)
+                    self.fid=lz4.frame.open(nmeaobj, mode='rt')
                 else:
                     self.fid = open(nmeaobj,'rt')
                 

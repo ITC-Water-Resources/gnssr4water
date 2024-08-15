@@ -219,7 +219,6 @@ def readnmea(fidorfile):
     nmeadata=[]
     try:
         for ln in fid:
-            # import pdb;pdb.set_trace()
             if ln.startswith("$"):
                 try:
                     nmeacycle.update(dispatchParse[ln[0:6]](ln))

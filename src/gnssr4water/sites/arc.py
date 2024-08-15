@@ -113,7 +113,7 @@ class Arc:
             ax.set_xlabel(f'elevation {chr(952)} [deg]')
         
         
-        ax.scatter(self.elev,self.cn0int,label=self.prn,**kwargs)
+        # ax.scatter(self.elev,self.cn0int,label=self.prn,**kwargs)
         ax.scatter(self.elev,self.cn0,label=self.prn,**kwargs)
 
         return ax
