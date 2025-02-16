@@ -17,7 +17,7 @@
 # Author Roelof Rietbroek (r.rietbroek@utwente.nl), 2024
 
 [build-system]
-requires = ["setuptools>=61.0","setuptools-scm>=8"]
+requires = ["setuptools>=61.0","setuptools-scm>=8","Cython>=3","wheel","numpy"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "gnssr4water"
@@ -30,11 +30,11 @@ readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPSv3)",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
     "Operating System :: POSIX :: Linux",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering",
-    "Development Status :: Beta"
+    "Development Status :: 4 - Beta"
 ]
 
 dependencies = ['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy','lz4','pymap3d','xarray >= 2023.1.0','zarr']

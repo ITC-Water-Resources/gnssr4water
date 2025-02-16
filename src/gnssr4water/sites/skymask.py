@@ -292,7 +292,7 @@ class SkyMask:
         
         if ax is None:
             fig,ax=mpl.subplots(1,1,subplot_kw={'projection': 'polar'})
-            ax.title='Skyplot mask'
+            ax.set_title='Skyplot mask'
 
             ax.set_rlim([90,0])
             ax.set_theta_zero_location("N")
@@ -315,7 +315,7 @@ class SkyMask:
         return ax
 
 
-    def save(self,arName,mode='a'):
+    def save(self,arName,mode='a',group=None):
         """ Save the mask to an archive (netcdf or zarr), for later reuse
 
             Parameters
@@ -325,17 +325,18 @@ class SkyMask:
             mode: str
             Mode to write ('a' for appending,'w' for overwriting)
         """
+        if group is None:
+            group=SkyMask.group
         #save the polygon  as a WKT attribute to the netcdf file
         self._ds.attrs["azelpoly_wkt"]=to_wkt(self.poly)
         self._ds.attrs["lonlatpoly_wkt"]=to_wkt(self.geopoly)
         if arName.endswith('.nc'):
-            self._ds.to_netcdf(arName,mode=mode,group=SkyMask.group)
+            self._ds.to_netcdf(arName,mode=mode,group=group)
         elif arName.endswith(".zarr"):
-            self._ds.to_zarr(arName,mode=mode,group=SkyMask.group)
+            self._ds.to_zarr(arName,mode=mode,group=group)
         else:
             raise RuntimeError(f"archive not supported {arName}")
-    
-        
+   
     def segmentize(self,max_segment_length=1):
         """
         Segmentize the azimuth-elevation polygon and create a new Skymask 

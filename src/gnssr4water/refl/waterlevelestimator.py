@@ -240,7 +240,13 @@ class WaterLevelEstimator:
         try:
             async for arc in tqdmasync(self.arcbuilder.arcs()):
                 self.wlarc=WaterLevelArc(arc,noiseBandwidth=self.arcbuilder.mask.noiseBandwidth)
-                time,aheight,erraheight=self.wlarc.estimateAntennaHeight(self.ahbnds,**self.processParam)
+                try:
+                    time,aheight,erraheight=self.wlarc.estimateAntennaHeight(self.ahbnds,**self.processParam)
+                except Exception as e:
+                    log.info("Error estimating reflector height for this arc, continuing")
+                    # import pdb;pdb.set_trace()
+                    continue
+
                 if self.outlier is not None and self.iest > self.warmupstop:
                     if self.outlier < abs(self.aheight-aheight):
                         log.info(f"outlier rejected previous: {self.aheight}, new: {aheight}, diff: {aheight-self.aheight}")

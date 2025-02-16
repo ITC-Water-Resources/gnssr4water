@@ -98,45 +98,46 @@ class SatArcBuilder:
                 self.arcqueue.task_done()
 
         
-    async def append(self,satinviews):
+    async def append(self,sativ):
         """
         Process a set of SNR observations
         """
-        tm=satinviews["time"]
+        
+        tm=datetime(sativ['year'],sativ['month'],sativ['day'],sativ['hr'],sativ['min'])+timedelta(seconds=sativ['sec'])
         lon=satinviews["lon"]
         lat=satinviews["lat"]
         # log.info(f"Appending {tm}")
         # import pdb;pdb.set_trace()
-        for ky,val in satinviews.items():
-            if ky.startswith("PRN"):
-                el=val['elev']
-                az=val['az']
-                snr=val['snr']
-                system=val["system"]
-                if snr < self.mindb:
-                    continue
+        for i in range(sativ['sats_in_view']):
+            prn=sativ['prn'][i] 
+            el=sativ['elevation'][i]
+            az=sativ['azimuth'][i]
+            cnr0=sativ['cnr0'][i]
+            system=sativ['system'][i]
+            if cnr0 < self.mindb:
+                continue
 
-                masked=self.mask.masked(el,az)
-        
-                if ky in self.arccache:
-                    if masked:
-                        # satellite moved out of view of the mask -> close the arc and move to queue for processing
-                        
-                        await self.submitArc(Arc(**self.arccache.pop(ky)))
-                        continue
-                    elif (tm-self.arccache[ky]["time"][-1]) > self.expiry:
-                        await self.submitArc(Arc(**self.arccache.pop(ky)))
-                        #satellite is within the mask but last point was too far in the past -> submit existing arc but allow the current values to start a new arc
-                    else:
-                        #append values to existing arc
-                        self.arccache[ky]["time"].append(tm)
-                        self.arccache[ky]["elev"].append(el)
-                        self.arccache[ky]["az"].append(az)
-                        self.arccache[ky]["cn0"].append(snr)
-                        continue 
-                
-                #When we land here we should initialize a new arc
-                self.arccache[ky]={"prn":ky,"system":system,"time":[tm],"elev":[el],"az":[az],"cn0":[snr]}
+            masked=self.mask.masked(el,az)
+    
+            if ky in self.arccache:
+                if masked:
+                    # satellite moved out of view of the mask -> close the arc and move to queue for processing
+                    
+                    await self.submitArc(Arc(**self.arccache.pop(ky)))
+                    continue
+                elif (tm-self.arccache[ky]["time"][-1]) > self.expiry:
+                    await self.submitArc(Arc(**self.arccache.pop(ky)))
+                    #satellite is within the mask but last point was too far in the past -> submit existing arc but allow the current values to start a new arc
+                else:
+                    #append values to existing arc
+                    self.arccache[ky]["time"].append(tm)
+                    self.arccache[ky]["elev"].append(el)
+                    self.arccache[ky]["az"].append(az)
+                    self.arccache[ky]["cnr0"].append(cnr0)
+                    continue 
+            
+            #When we land here we should initialize a new arc
+            self.arccache[ky]={"prn":prn,"system":system,"time":[tm],"elev":[el],"az":[az],"cnr0":[cnr0]}
 
         #check for expired arc (e.g. lost tracking) and submit
         expiredarcs=[ky for ky,val in self.arccache.items() if  (tm-val['time'][-1]) > self.expiry]
@@ -154,7 +155,7 @@ class SatArcBuilder:
         
         self.isStreaming=True
         try: 
-            for sv_snr in self.snrStream.satsInView():
+            for sv_snr in self.snrStream.readcycles():
                 await self.append(sv_snr)
         except CancelledError:
                 log.warning("canceling streaming task") 

@@ -225,8 +225,10 @@ class WaterLevelArc(Arc):
         deltax=abs(np.median(np.diff(sinelev)))
         xstart=sinelev.min()
         xend=sinelev.max()
-        sinelev_bp=np.arange(xstart,xend,deltax)
-
+        try:
+            sinelev_bp=np.arange(xstart,xend,deltax)
+        except:
+            import pdb;pdb.set_trace()
         lofreq=2*bandpass[0]/self.system.length
         hifreq=2*bandpass[1]/self.system.length
         sos = butter(butorder, [lofreq,hifreq], 'bandpass', fs=1/deltax, output='sos')

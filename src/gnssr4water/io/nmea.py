@@ -196,6 +196,18 @@ def parseGNGSV(ln):
 
 
 dispatchParse={"$GPRMC":parseGNRMC,"$GPGSV":parseGNGSV,"$GNRMC":parseGNRMC,"$GLGSV":parseGNGSV}
+   # def to_geopkg(self,arName):
+        # """
+        # Save the mask as a layer to a geopackage file
+        # Parameters
+        # ----------
+        # self : 
+        
+        # arName : 
+        
+        # """
+
+        # pass
 
 ###############################################################################
 
