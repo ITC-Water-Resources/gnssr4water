@@ -17,7 +17,7 @@
 import gzip
 from gnssr4water.core.logger import log
 from datetime import datetime,timedelta
-from gnssr4water.gnsrlib import NMEAFile
+from gnssr4water.gnssrlib import NMEAFile
 
 
 
@@ -31,12 +31,10 @@ class NMEAFileStream:
         self.openNext()
         
     def readcycles(self):
-        for nmeacyc in self.fid.read_cycles():
-            if self.eof():
-                self.openNext()
-                continue
-            yield nmeacycle
-
+        while self.fid is not None:
+            for nmeacycle in self.fid.readcycles():
+                yield nmeacycle
+            self.openNext()
     # def readline(self):
         # if self.fid is None:
             # #no buffer available to read from
@@ -139,7 +137,7 @@ class NMEAFileStream:
             #open new NMEA file
             nmeafile=next(self.nmeaobjs)
             self.fid=NMEAFile(nmeafile)
-            log.info(f"Reading from next stream object {name}")
+            log.info(f"Reading from next stream object {nmeafile}")
         except StopIteration:
             self.fid=None
 
