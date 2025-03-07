@@ -1,31 +1,71 @@
-# setup.py  
-# This file is part of gnssr4water.
-# Author Roelof Rietbroek (r.rietbroek@utwente.nl), 2022
-# Author Lubin Roineau (lubin.roineau@ensg.eu), 2022
-import setuptools
-from setuptools import find_packages
-
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+# This file is part of the shxarray software which is licensed
+# under the Apache License version 2.0 (see the LICENSE file in the main repository)
+# Copyright Roelof Rietbroek (r.rietbroek@utwente.nl), 2023
+#
 
 
-setuptools.setup(
-    name="gnssr4water",
-    author="Roelof Rietbroek",
-    author_email="r.rietbroek@utwente.nl",
-    version="1.0",
-    description="Python library to help perform gnss reflectometry for water applications",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/ITC-Water-Resources/gnssr4water",
-    packages=find_packages("."),
-    package_dir={"":"."},
-    install_requires=['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy'],
-    classifiers=["Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
-        "Operating System :: POSIX :: Linux",
-        "Topic :: Scientific/Engineering",
-        "Intended Audience :: Science/Research",
-        "Development Status :: Beta"]
+
+
+from setuptools import setup,Extension
+from setuptools_scm import get_version
+from Cython.Build import cythonize
+import Cython.Compiler.Options
+import os 
+import numpy as np
+import sys
+
+
+
+debug=True
+usegzip=True
+uselz4=False
+
+extra_args=[]
+if debug:
+    extra_args.append("-g")
+    extra_args.append("-O0")
+
+if usegzip:
+    extra_args.append("-DUSE_GZIP")
+    extra_args.append("-lz")
+
+if uselz4:
+    extra_args.append("-DUSE_LZ4")
+
+
+
+#don't necessarily cythonize on the fly
+if "USE_CYTHON" in os.environ:
+    useCython=True
+    ext=".pyx"
+    Cython.Compiler.Options.annotate = True
+else:
+    useCython=False
+    ext=".c"
+
+def listexts():
+    nm="gnssrlib_wrap"
+    exts=[]
+    srcd="src/gnssrlib"
+    sources=[f"{srcd}/{nm+ext}"]
+    for csrc in ["nmea.c","stream.c","gnssrlib.c"]:
+        sources.append(f"{srcd}/src/{csrc}")
     
-)
+    if uselz4:
+        for csrc in ["lz4stream.c","lz4static/lz4file.c","lz4static/lz4.c","lz4static/lz4hc.c","lz4static/xxhash.c","lz4static/lz4frame.c"]:
+            sources.append(f"{srcd}/src/{csrc}")
+
+    exts.append(Extension(f"gnssr4water.gnssrlib",sources,include_dirs=[np.get_include(),"."], define_macros=[('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')],extra_compile_args=extra_args,extra_link_args=extra_args))
+    return exts
+
+extensions=listexts()
+
+
+if useCython:
+    #additionally cythonize pyx files before building
+    extensions=cythonize(extensions,language_level=3,annotate=True,gdb_debug=debug)
+
+setup(
+    version = get_version(root='.', relative_to=__file__),
+    ext_modules=extensions
+    )

@@ -1,25 +1,51 @@
-# -*- coding: utf-8 -*-
-"""
-Read nmea file. This code is part of frommle2 made by Roelof Rietbrock. See more here:
-https://github.com/strawpants/frommle2
+# This file is part of gnssr4water
+# gnssr4water is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 3 of the License, or (at your option) any later version.
 
-@author: Lubin Roineau, ENSG-Geomatics (internship at UT-ITC Enschede), Aug 26, 2022
-"""
+# gnssr4water is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+
+# You should have received a copy of the GNU Lesser General Public
+# License along with gnssr4water if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+# Author Roelof Rietbroek (r.rietbroek@utwente.nl), 2024
+
 
 # Imports
 import gzip as gz
 from datetime import datetime,timedelta
 import pandas as pd
 import numpy as np
-from scipy.interpolate import interp1d
+from scipy.interpolate import interp1d,UnivariateSpline
+from scipy.optimize import curve_fit
+import lz4.frame
+
+from gnssr4water.core.logger import log
+from gnssr4water.core.gnss import GPSL1,GLONASSIIL1
+
+
+GNSSlookup={"GL":GLONASSIIL1,"GP":GPSL1}
 
 ###############################################################################
 
+def nmeavalid(nmea):
+    # if nmea is None or nmea == '':return False
+    #checks the checksum of the nmea string (XOR of all bytes between $ and *)
+    try:
+        return f"{np.bitwise_xor.reduce([ord(a) for a in nmea[1:-3]]):02X}" == nmea[-2:]
+    except:
+        return False
 cconv=(1-100/60)
 swopfac={"E":+1,"W":-1,"N":1,"S":-1}
 def parseDeg(deg,EWNS):
     decdeg=deg/60+cconv*int(deg/100)
     return swopfac[EWNS]*decdeg
+
 
 def smoothDegrees(degarray,timev,irec=0):
         """ Smooths degree array which only have degree resolution to a version which varies more smoothly (i.e. no jumps)"""
@@ -66,6 +92,71 @@ def smoothDegrees(degarray,timev,irec=0):
         
         return degsmth
 
+def resolveSubValues(time, dataint):
+    """Retrieve a smoothly varying degree vector from a integer-truncated vector of data, based on the assumption that it varies smoothly 
+
+        Parameters
+        ----------
+        time : datetime array
+            Time tags associated with the integer degree values
+        dataint : float array
+            Degrees as integer
+
+        Returns
+        -------
+        float array
+            Smoothly varying degree vector
+    """
+    nmin=4
+    if len(time) < nmin:
+        # log.warning(f"Arc segment is less than {nmin}, ignoring")
+        return dataint
+
+    icenter=int(len(time)/2)
+    
+    x0=time[icenter]
+    dx=[td.total_seconds() for td in time-x0]
+    
+    #first guess
+    s=len(time)*2
+    # # s=10
+    try:
+        bSplApprox = UnivariateSpline(dx, dataint)
+    except:
+        # log.warning("Cannot fit spline to Arc segment is, ignoring")
+
+        return dataint
+
+    # def smooth_trunc(x,smooth):
+        # bSplApprox.set_smoothing_factor(smooth)
+        # print(f"Trying s {smooth}")
+        # return np.floor(bSplApprox(x))
+
+    # popt,pcov,info,mesg,ier=curve_fit(smooth_trunc, dx,dataint,p0=[s],bounds=[5,len(time)],full_output=True)
+
+
+    datasub=bSplApprox(dx)
+    
+    return datasub
+    # npoly=2
+    
+    # npara=npoly+1 #amount of unknown parameters
+    # nobs=len(time)
+    
+
+    # A=np.ones([nobs,npara])
+    # for n in range(1,npoly+1):
+        # A[:,n]=np.power(dx,n)
+
+
+    # def fwd(timev,*para):
+        
+    # fwd(time)
+
+    
+
+
+
 def parseGNRMC(ln):
     
     spl=ln.split(",")
@@ -82,10 +173,11 @@ def parseGNRMC(ln):
     return dt
 
 def parseGNGSV(ln):
-    #split line without considering the checksum at the end
+    #split line without considerindexng the checksum at the end
     spl=ln[0:-4].split(",")
     dt={}
-    system=spl[0][1:3].replace('GL','GLONASS').replace('GP','GPS')
+    # system=spl[0][1:3].replace('GL','GLONASS').replace('GP','GPS')
+    system=GNSSlookup[spl[0][1:3]]
     #loop over available satellite prn's
     for i in range(4,len(spl),4):
         try:
@@ -93,7 +185,8 @@ def parseGNGSV(ln):
             elev=float(spl[i+1])
             az=float(spl[i+2])
             snr=float(spl[i+3])
-        except ValueError:
+        
+        except (ValueError,IndexError):
             #It may be possible that ,,, entries occur, so we'll just ignore those
             continue
 
@@ -103,6 +196,18 @@ def parseGNGSV(ln):
 
 
 dispatchParse={"$GPRMC":parseGNRMC,"$GPGSV":parseGNGSV,"$GNRMC":parseGNRMC,"$GLGSV":parseGNGSV}
+   # def to_geopkg(self,arName):
+        # """
+        # Save the mask as a layer to a geopackage file
+        # Parameters
+        # ----------
+        # self : 
+        
+        # arName : 
+        
+        # """
+
+        # pass
 
 ###############################################################################
 
@@ -111,6 +216,9 @@ def readnmea(fidorfile):
     if type(fidorfile) == str:
         if fidorfile.endswith('.gz'):
             fid=gz.open(fidorfile,'rt')
+        elif fidorfile.endswith(".lz4"):
+            # lz4 compressed file (e.g. from Actinius devices)
+            fid=lz4.frame.open(fidorfile, mode='rt')
         else:
             fid=open(fidorfile,'rt')
     else:
@@ -121,27 +229,33 @@ def readnmea(fidorfile):
     #loop over the buffer and parse messages as we go
     nmeacycle={}
     nmeadata=[]
-    for ln in fid:
-        if ln.startswith("$"):
-            try:
-                nmeacycle.update(dispatchParse[ln[0:6]](ln))
+    try:
+        for ln in fid:
+            if ln.startswith("$"):
+                try:
+                    nmeacycle.update(dispatchParse[ln[0:6]](ln))
 
-                #possibly append this cycle data to nmeadata when a time tag is present
-                if "time" in nmeacycle and (sum(k.startswith("PRN") for k in nmeacycle.keys()) > 0):
+                    #possibly append this cycle data to nmeadata when a time tag is present
+                    if "time" in nmeacycle and (sum(k.startswith("PRN") for k in nmeacycle.keys()) > 0):
 
-                    basedict={k:v for k,v in nmeacycle.items() if not k.startswith("PRN")}
+                        basedict={k:v for k,v in nmeacycle.items() if not k.startswith("PRN")}
 
-                    #unwrap the different PRN's into separate rows
-                    for ky,val in nmeacycle.items():
-                        if ky.startswith("PRN"):
-                            nmeadata.append({**basedict,"PRN":int(ky[3:]),**val})
-                    #reset nmeacycle dict
-                    nmeacycle={}
-            except KeyError:
-                continue
-
+                        #unwrap the different PRN's into separate rows
+                        for ky,val in nmeacycle.items():
+                            if ky.startswith("PRN"):
+                                nmeadata.append({**basedict,"PRN":int(ky[3:]),**val})
+                        #reset nmeacycle dict
+                        nmeacycle={}
+                except KeyError:
+                    continue
+    except UnicodeDecodeError:
+        return None
+    
+    if len(nmeadata) == 0:
+        return None
     #create a dataframe and set multiindex
     df=pd.DataFrame(nmeadata)
+    
     #We wan to get rid of rows which don;t have a elevation of azimuth in them
     # df.dropna(subset=["elev","az"],inplace=True)
     
@@ -172,4 +286,4 @@ def readnmea(fidorfile):
 
                 df=df.loc[df.snr.notna()]
                 
-    return df.set_index(["time","system","PRN","segment"])
+    return df.set_index(["time","PRN","segment"])
