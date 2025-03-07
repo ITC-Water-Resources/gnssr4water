@@ -18,7 +18,7 @@ import sys
 
 debug=True
 usegzip=True
-uselz4=True
+uselz4=False
 
 extra_args=[]
 if debug:
@@ -43,13 +43,12 @@ else:
     useCython=False
     ext=".c"
 
-
 def listexts():
     nm="gnssrlib_wrap"
     exts=[]
     srcd="src/gnssrlib"
     sources=[f"{srcd}/{nm+ext}"]
-    for csrc in ["nmea.c","stream.c"]:
+    for csrc in ["nmea.c","stream.c","gnssrlib.c"]:
         sources.append(f"{srcd}/src/{csrc}")
     
     if uselz4:

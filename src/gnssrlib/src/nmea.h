@@ -65,9 +65,9 @@ struct nmea_cycle{
 	int sats_in_view;
 	gnss_system system[NMEA_GSV_MAX_SATELLITES];
 	int prn[NMEA_GSV_MAX_SATELLITES];
-	int elevation[NMEA_GSV_MAX_SATELLITES];
-	int azimuth[NMEA_GSV_MAX_SATELLITES];
-	int cnr0[NMEA_GSV_MAX_SATELLITES];
+	float elevation[NMEA_GSV_MAX_SATELLITES];
+	float azimuth[NMEA_GSV_MAX_SATELLITES];
+	float cnr0[NMEA_GSV_MAX_SATELLITES];
 };
 
 typedef struct nmea_cycle nmea_cycle;
@@ -82,6 +82,7 @@ int update_nmea_GGA(const char * nmea, nmea_cycle *data);
 
 nmea_type check_nmea(char * nmea);
 
+int init_nmea_cycle(nmea_cycle * data);
 
 int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data);
 

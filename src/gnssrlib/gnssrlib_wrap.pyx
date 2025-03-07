@@ -16,6 +16,10 @@
 # distutils: language = c
 # cython: profile=False
 
+from cython.operator cimport dereference as deref
+from libc.stdlib cimport malloc, free
+from datetime import datetime,timedelta
+import numpy as np
 
 cdef extern from "src/stream.h" nogil:
     cdef const int _GNSSR_SUCCESS "GNSSR_SUCCESS"
@@ -28,14 +32,20 @@ cdef extern from "src/stream.h" nogil:
     int readline(gnssrstream *gz, char * line,size_t slen)
 
 cdef extern from "src/gnssrlib.h" nogil:
-    cpdef enum gnss_system:
-        GPSL1=0,
-        GLONASSIIL1,
-        UNKNOWN
+    cdef struct _gnss_system "gnss_system":
+        char * system,
+        double frequency,
+        double length,
+        double bandwidth
+    # cdef void init_GNSS(_gnss_system * system, const char * sysname)
+    cdef _gnss_system gnss_gpsl1
+    cdef _gnss_system gnss_gpsl2
+    cdef _gnss_system gnss_glonassiil1
+    cdef void copy_GNSS_as(_gnss_system *sys, const _gnss_system * sysfrom);
 
 cdef extern from "src/nmea.h" nogil:
     cdef const int _NMEA_GSV_MAX_SATELLITES "NMEA_GSV_MAX_SATELLITES"
-    struct nmea_cycle:
+    struct _nmea_cycle "nmea_cycle":
         int year,
         int month,
         int day,
@@ -48,11 +58,11 @@ cdef extern from "src/nmea.h" nogil:
         float ortho_height,
         float geoid_height,
         int sats_in_view,
-        gnss_system system[_NMEA_GSV_MAX_SATELLITES],
+        _gnss_system system[_NMEA_GSV_MAX_SATELLITES],
         int prn[_NMEA_GSV_MAX_SATELLITES],
-        int elevation[_NMEA_GSV_MAX_SATELLITES],
-        int azimuth[_NMEA_GSV_MAX_SATELLITES],
-        int cnr0[_NMEA_GSV_MAX_SATELLITES]
+        float elevation[_NMEA_GSV_MAX_SATELLITES],
+        float azimuth[_NMEA_GSV_MAX_SATELLITES],
+        float cnr0[_NMEA_GSV_MAX_SATELLITES]
 
     cpdef enum nmea_type:
         NMEA_GGA,
@@ -67,7 +77,102 @@ cdef extern from "src/nmea.h" nogil:
     
     unsigned char calculate_checksum(const char * nmea)
     nmea_type check_nmea(char * nmea) 
-    int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data);
+    int read_nmea_cycle(gnssrstream *sid, _nmea_cycle * data);
+    int init_nmea_cycle(_nmea_cycle * data)
+
+cdef class gnss_sys:
+    cdef _gnss_system* system_ptr
+    def __cinit__(self):
+        self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))
+    
+    @staticmethod
+    cdef from_(_gnss_system sys):
+        cdef gnss_sys system=gnss_sys()
+        copy_GNSS_as(system.system_ptr,&sys)
+        return system
+
+    def __dealloc__(self):
+        free(self.system_ptr)
+
+    @property
+    def system(self):
+        return deref(self.system_ptr).system.decode('utf-8')
+    
+    @property
+    def frequency(self):
+        return deref(self.system_ptr).frequency
+
+    @property
+    def bandwidth(self):
+        return deref(self.system_ptr).bandwidth
+
+    @property 
+    def length(self):
+        return deref(self.system_ptr).length
+    
+GPSL1=gnss_sys.from_(gnss_gpsl1)
+GPSL2=gnss_sys.from_(gnss_gpsl2)
+GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
+
+
+cdef class gnss_cycle:
+    cdef _nmea_cycle* cycle_ptr
+    def __cinit__(self):
+        self.cycle_ptr=<_nmea_cycle*>malloc(sizeof(_nmea_cycle))
+        init_nmea_cycle(self.cycle_ptr)
+
+    def __dealloc__(self):
+        if self.cycle_ptr is not NULL:
+            free(self.cycle_ptr)
+
+    @property
+    def time(self):
+        tm=datetime(deref(self.cycle_ptr).year,deref(self.cycle_ptr).month,deref(self.cycle_ptr).day,deref(self.cycle_ptr).hr,deref(self.cycle_ptr).min)+timedelta(seconds=deref(self.cycle_ptr).sec)
+        return tm
+    
+    @property
+    def sats_in_view(self):
+        return deref(self.cycle_ptr).sats_in_view
+    
+    @property
+    def lon(self):
+        return deref(self.cycle_ptr).lon
+    
+    @property
+    def lat(self):
+        return deref(self.cycle_ptr).lat
+    
+    @property
+    def ortho_height(self):
+        return deref(self.cycle_ptr).ortho_height
+
+    @property
+    def geoid_height(self):
+        return deref(self.cycle_ptr).ortho_height
+
+    @property
+    def system(self):
+        return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)]) 
+
+    @property
+    def prn(self):
+        cdef int [:] prn=deref(self.cycle_ptr).prn
+        return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
+
+    @property
+    def azimuth(self):
+        cdef float [:] az=deref(self.cycle_ptr).azimuth
+        return np.asarray(az[0:deref(self.cycle_ptr).sats_in_view])
+
+    @property
+    def elevation(self):
+        cdef float [:] elev=deref(self.cycle_ptr).elevation
+        return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])
+
+    @property
+    def cnr0(self):
+        cdef float [:] cnr0=deref(self.cycle_ptr).cnr0
+        return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])
 
 cdef class NMEAFile:
     cdef public int _eof 
@@ -123,12 +228,13 @@ cdef class NMEAFile:
         return StopIteration
 
     def readcycles(self):
-        cdef nmea_cycle cycle
-        cdef int err=0
+        cdef gnss_cycle cycle=gnss_cycle()
+        cdef int err=_GNSSR_SUCCESS
         while err == _GNSSR_SUCCESS:
-            err = read_nmea_cycle(&self._sid,&cycle)
+            err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
             if err == _GNSSR_SUCCESS:
-                yield cycle
+                if cycle.sats_in_view > 0:
+                    yield cycle
             elif err == _GNSSR_EOF:
                 self._eof = 1
                 break

@@ -200,14 +200,17 @@ class SkyMask:
         self._ds.attrs['receiver_noisebandwidth']=bw
 
     @staticmethod
-    def load(filename):
+    def load(filename,group=None):
         #start with an empty skymask
         skmsk=SkyMask()
         engine=None
         if filename.endswith('.zarr'):
             engine='zarr'
+
+        if group is None:
+            group=SkyMask.group
         
-        with xr.open_dataset(filename,group=SkyMask.group,engine=engine) as ds:
+        with xr.open_dataset(filename,group=group,engine=engine) as ds:
             skmsk._ds=ds.copy()
 
         skmsk.poly=from_wkt(skmsk._ds.attrs['azelpoly_wkt'])

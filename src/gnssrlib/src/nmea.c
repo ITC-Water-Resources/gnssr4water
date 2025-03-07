@@ -62,6 +62,7 @@ void extract_time(const char * nmeaPtr, int * hr, int * min, float * sec){
 }
 
 int init_nmea_cycle(nmea_cycle * data){
+	const gnss_system system=GNSS_UNKNOWN;
 	data->year=NMEA_FILL;
 	data->month=NMEA_FILL;
 	data->day=NMEA_FILL;
@@ -78,7 +79,7 @@ int init_nmea_cycle(nmea_cycle * data){
 	    data->elevation[i]=0;
 	    data->azimuth[i]=0;
 	    data->cnr0[i]=0;
-	    data->system[i]=UNKNOWN;
+	    memcpy(&data->system[i],&system,sizeof(system));
 	}
 	return GNSSR_SUCCESS;
 }
@@ -236,21 +237,25 @@ int update_nmea_RMC(const char * nmea, nmea_cycle *data){
 	return GNSSR_SUCCESS;
 }
 
-gnss_system get_gnss_system(const char * nmea){
+void get_gnss_system(const char * nmea,gnss_system *system){
 	if (strncmp(nmea+1,"GP",2)==0){
-	    return GPSL1;
+	    /*gnss_system gsystem=GPSL1;*/
+	    memcpy(system,&gnss_gpsl1,sizeof(gnss_gpsl1));
 	}else if (strncmp(nmea+1,"GL",2)==0){
-	    return GLONASSIIL1;
+	    memcpy(system,&gnss_glonassiil1,sizeof(gnss_glonassiil1));
 	}else{
-	    return UNKNOWN;
+	    gnss_system gsystem=GNSS_UNKNOWN;
+	    memcpy(system,&gnss_unknown,sizeof(gnss_unknown));
 	}
+
 }
 
 int update_nmea_GSV(const char * nmea, nmea_cycle *data){
 	const char * nmeaPtr=nmea;
 	const char* kommaPtr=NULL;
 	//check satellite system
-	gnss_system system=get_gnss_system(nmeaPtr);
+	gnss_system system;
+	get_gnss_system(nmeaPtr,&system);
 
 	if (shift_to_komma(&nmeaPtr,&kommaPtr,4) == GNSSR_IO_ERROR){
 	    return GNSSR_IO_ERROR;
@@ -307,7 +312,7 @@ int update_nmea_GSV(const char * nmea, nmea_cycle *data){
 	    data->elevation[idx]=elev; 
 	    data->azimuth[idx]=az;
 	    data->cnr0[idx]=cnr0;
-	    data->system[idx]=system;
+	    memcpy(&data->system[idx],&system,sizeof(system));
 	    data->sats_in_view++;
 	    if (data->sats_in_view >= NMEA_GSV_MAX_SATELLITES){
 		//maximum number of satellites in view reached (start over)

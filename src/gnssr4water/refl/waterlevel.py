@@ -14,32 +14,46 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 # Author Roelof Rietbroek (r.rietbroek@utwente.nl), 2024
-from gnssr4water.refl.snr import cn0_2_vv, vv_2_cn0
+from gnssr4water.refl.snr import cnr0_2_vv, vv_2_cnr0
+from gnssr4water.refl.models import InterferometricCurve_damped
 from gnssr4water.sites.arc import Arc
 import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as mpl
 from astropy.timeseries import LombScargle 
 from scipy.constants import speed_of_light
+from scipy.signal import find_peaks
 from numpy.polynomial import Polynomial
 from scipy.signal import butter, sosfilt
 from gnssr4water.core.logger import log
-
+from copy import copy
 
 atmo_corr_tag="atmo_corr"
 
 
+
+
 class WaterLevelArc(Arc):
     def __init__(self,arc,noiseBandwidth=1):
-        super().__init__(arc.prn,arc.system,arc.time,arc.elev,arc.az,arc.cn0)
+        super().__init__(arc.prn,arc.system,arc.time,arc.elev,arc.az,arc.cnr0)
         self.sinelev=np.sin(np.deg2rad(self.elev))
         self.setNoisebandwidth(noiseBandwidth)
         
 
     def setNoisebandwidth(self,noiseBandwidth):
-        self.snrv_v=cn0_2_vv(self.cn0,noiseBandwidth)
-        # self.snrv_vspline=cn0_2_vv(self.cn0spline,noiseBandwidth)
-    
+        self.noiseBandwidth=noiseBandwidth
+        self.snrv_v=cnr0_2_vv(self.cnr0,noiseBandwidth)
+   
+    def set_cnr0(self,snr,noiseBandwidth=None):
+        if noiseBandwidth is None:
+            noiseBandwidth=self.noiseBandwidth
+        else:
+            self.noiseBandwidth=noiseBandwidth
+        self.cnr0=vv_2_cnr0(snr,noiseBandwidth)
+
+    def get_omega(self,antennaHeight):
+        return 4*np.pi*antennaHeight/(self.system.length)
+
     def setAntennaHeight(self,antennaHeight):
         self.antennaHeight=antennaHeight
         if antennaHeight is not None:
@@ -48,11 +62,57 @@ class WaterLevelArc(Arc):
             self.omega=None
 
 
-    
-    def mkDesignMat(self):
-        assert(self.omega is not None)
+    def get_residuals(self,aheight,**kwargs):
+        """
+        Create a new water level arc where a prescribed antenna height is used to fit an interferometric curve which is removed from the data
+
+        Parameters
+        ----------
+        aheight : 
+        Prescribed antenna height above the reflecting surface
+     
+
+        
+        -------
+        A water level arc with the fitted interferometric curve removed from the data
+        """
+
+        wlarc=copy(self)
+        intcurve=InterferometricCurve_damped(self.system.length)
+        sinelev,snr=self.preprocess(**kwargs)
+        popt,fwd=intcurve.fit(sinelev,snr,aheight=aheight)
+        if len(fwd) != len(snr):
+            #Potentially interpolate on original sineelev points
+            fwd=np.interp(self.sinelev,sinelev,fwd)
+        
+        wlarc.snrv_v-=snr-fwd
+        wlarc.set_cnr0(wlarc.snrv_v)
+        
+        return wlarc
+
+    def interferometricCurve(self,antennaHeight):
+        """Compute the interferometric curve for a given antennaHeight
+            The amplitude and phase will be fitted to the data
+            Parameters
+            ----------
+            antennaHeight : float
+                The antenna height in meters
+
+            Returns
+            -------
+            np.array
+                The interferometric curve
+        """
+        omega=self.get_omega(antennaHeight)
+        A=self.mkDesignMat(omega,npoly=1)
+
+
+
+    def mkDesignMat(self,omega,npoly=0):
+        """Create a design matrix for fitting the amplitude of the interferometric curve"""
+
         #make a design matrix mapping
-        npara=self.npoly+1+2 #amount of unknown parameters
+        npara=npoly+1+2 #amount of unknown parameters
         nobs=len(self.sinelev)
         
 
@@ -61,13 +121,13 @@ class WaterLevelArc(Arc):
 
         x0=0.0 #sin(0)
         dx=self.sinelev-x0
-        for n in range(1,self.npoly+1):
+        for n in range(1,npoly+1):
             A[:,n]=np.power(dx,n)
 
         #add harmonics (as separate sin and cos to keep linearity
 
-        A[:,self.npoly+1]=np.sin(self.omega*dx)
-        A[:,self.npoly+2]=np.cos(self.omega*dx)
+        A[:,npoly+1]=np.sin(omega*dx)
+        A[:,npoly+2]=np.cos(omega*dx)
         return A
 
     def fitInterferometricCurve(self):
@@ -157,7 +217,7 @@ class WaterLevelArc(Arc):
         # self.setNoisebandwidth(bandwidthCandidates[iopt])
         # return bandwidthCandidates[iopt],resopt        
         noiseBWbounds=[0.2,15] #bounds to search for the optimum
-        popt,pcov,info,mesg,ier=curve_fit(self._obseqNoiseBandwidth,self.sinelev,self.cn0int,bounds=noiseBWbounds,full_output=True)
+        popt,pcov,info,mesg,ier=curve_fit(self._obseqNoiseBandwidth,self.sinelev,self.cnr0int,bounds=noiseBWbounds,full_output=True)
         
         
         return popt[0],np.sqrt(np.diag(pcov))[0]
@@ -170,7 +230,7 @@ class WaterLevelArc(Arc):
         x,fwd,_,res=self.fitInterferometricCurve()
         
         #step 3 return fitted curve as CNO
-        yfit=vv_2_cn0(fwd,noiseBandwidth)
+        yfit=vv_2_cnr0(fwd,noiseBandwidth)
         return yfit
 
     def removePolyfit(self,npoly=3,sinelev=None):
@@ -189,11 +249,11 @@ class WaterLevelArc(Arc):
             sinelev=kwargs[atmo_corr_tag](self.time,self.elev)
         else:
             sinelev=self.sinelev
-
+        
         if "npoly" in kwargs:
             #preprocess SNR by removing a polynomial fit from the data
             sinelev,snrvv=self.removePolyfit(npoly=kwargs['npoly'],sinelev=sinelev)
-        if "bandpass" in kwargs:
+        elif "bandpass" in kwargs:
             sinelev,snrvv=self.butterBandPass(bandpass=kwargs["bandpass"],sinelev=sinelev)
         else:
             snrvv=self.snrv_v
@@ -241,13 +301,18 @@ class WaterLevelArc(Arc):
             snrv_v_bp=filtered
         return sinelev_bp,snrv_v_bp 
 
-    def getLombScargle(self,antennaHeightBounds,sinelev,snr,npoints=200):
+    def getLombScargle(self,antennaHeightBounds,sinelev,snr,npoints=200,resolution=None):
 
-        
         # LSP
         freqbounds=np.array(antennaHeightBounds)*2/self.system.length
         #setup predetermined frequencies 
-        frequency=np.linspace(freqbounds[0],freqbounds[1],npoints)
+        if resolution is not None:
+
+            frequency=np.arange(freqbounds[0],freqbounds[1],resolution)
+        else:
+            # use the provided number of points
+            frequency=np.linspace(freqbounds[0],freqbounds[1],npoints)
+        
         power = LombScargle(sinelev,snr).power(frequency,method="fastchi2",assume_regular_frequency=True)
 
         height=frequency*self.system.length/2
@@ -256,7 +321,7 @@ class WaterLevelArc(Arc):
 
     def estimateAntennaHeightLombScargle(self,antennaHeightBounds,sinelev,snr,npoints=200):
         """Use a LombScargle periodogram to find the best"""
-
+    
         height,power=self.getLombScargle(antennaHeightBounds,sinelev,snr,npoints=npoints)
         imax=np.argmax(power)
         
@@ -297,7 +362,7 @@ class WaterLevelArc(Arc):
         _,fwd,_,_=self.fitInterferometricCurve()
         
         #step 3 return fitted curve as CNO
-        yfit=vv_2_cn0(fwd,noiseBandwidth)
+        yfit=vv_2_cnr0(fwd,noiseBandwidth)
         return yfit
     
     def _obseqAntennaHeight(self,sinelev,antennaHeight):
@@ -311,8 +376,33 @@ class WaterLevelArc(Arc):
 
 
 
+    def estimateAntennaHeight_multi_LombScargle(self,antennaHeightBounds,maxpeaks=3,resolution=0.01,**kwargs):
+        """Use a LombScargle periodogram to find one or more dominant peaks"""
 
+        sinelev,snr=self.preprocess(**kwargs) 
+        height,power=self.getLombScargle(antennaHeightBounds,sinelev,snr,resolution=resolution)
+        promabs=np.max(power)-np.min(power)
 
+        #find peaks
+        relprom=0.6 # relative, w.r.t to the largest peak, prominence to keep the peaks for 
+        pks,props=find_peaks(power,prominence=relprom*promabs)
+        
+    
 
+        #use  heuristic approach to estimate the errors
+        # we assume the bounds represent the left and right 3 sigma bounds
+        sigma_h=(height[props['right_bases']]-height[props['left_bases']])/6
+        h=height[pks]
+        prom=props['prominences']
+        if len(h) > 1: 
+            #sort the result according to the prominencs (most prominent first)
+            idx=np.argsort(prom)[::-1]
+            if len(idx) > maxpeaks:
+                idx=idx[:maxpeaks]
+            sigma_h=sigma_h[idx]
+            h=h[idx]
+            prom=prom[idx]
+        height_est={"time":self.centralT,"height":h,"height_sigma":sigma_h,"prominence":prom}
+        return height_est
 
 

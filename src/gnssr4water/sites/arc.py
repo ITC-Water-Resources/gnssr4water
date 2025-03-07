@@ -25,12 +25,12 @@ class Arc:
     """ 
     Represents a certain Arc seen from a dedicated location
     """
-    def __init__(self,prn,system,time,elev,az,cn0,refinenmea=True):
+    def __init__(self,prn,system,time,elev,az,cnr0,refinenmea=True):
         self.prn=prn
         self.time=np.array(time)
         self.elev=np.array(elev)
         self.az=np.array(az)
-        self.cn0=np.array(cn0)
+        self.cnr0=np.array(cnr0)
 
         self.system=system
         if refinenmea:
@@ -66,8 +66,8 @@ class Arc:
         self.az=resolveSubValues(self.time,self.az)
         
         # don't refine the actual Cn0 values
-        # self.cn0int=self.cn0.copy()
-        # self.cn0=resolveSubValues(self.time,self.cn0)
+        # self.cnr0int=self.cnr0.copy()
+        # self.cnr0=resolveSubValues(self.time,self.cnr0)
          
     def __len__(self):
         return len(self.time)
@@ -95,8 +95,8 @@ class Arc:
         slice2=slice(self.isplit,len(self.time))
         refinenmea=hasattr(self,'elevint')
 
-        arc1=Arc(self.prn,self.system,self.time[slice1],self.elev[slice1],self.az[slice1],self.cn0[slice1],refinenmea=refinenmea)
-        arc2=Arc(self.prn,self.system,self.time[slice2],self.elev[slice2],self.az[slice2],self.cn0[slice2],refinenmea=refinenmea)
+        arc1=Arc(self.prn,self.system,self.time[slice1],self.elev[slice1],self.az[slice1],self.cnr0[slice1],refinenmea=refinenmea)
+        arc2=Arc(self.prn,self.system,self.time[slice2],self.elev[slice2],self.az[slice2],self.cnr0[slice2],refinenmea=refinenmea)
         
         return arc1,arc2 
         
@@ -113,8 +113,8 @@ class Arc:
             ax.set_xlabel(f'elevation {chr(952)} [deg]')
         
         
-        # ax.scatter(self.elev,self.cn0int,label=self.prn,**kwargs)
-        ax.scatter(self.elev,self.cn0,label=self.prn,**kwargs)
+        # ax.scatter(self.elev,self.cnr0int,label=self.prn,**kwargs)
+        ax.scatter(self.elev,self.cnr0,label=self.prn,**kwargs)
 
         return ax
 
