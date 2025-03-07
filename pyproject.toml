@@ -37,7 +37,7 @@ classifiers = [
     "Development Status :: 4 - Beta"
 ]
 
-dependencies = ['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy','lz4','pymap3d','xarray >= 2023.1.0','zarr']
+dependencies = ['numpy','pandas','shapely','matplotlib','astropy','geopandas','pathlib','GDAL','Shapely','cartopy','lz4','pymap3d','xarray >= 2023.1.0','zarr','numba','scipy']
 
 [project.optional-dependencies]
 
