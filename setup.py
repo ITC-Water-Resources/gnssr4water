@@ -16,9 +16,9 @@ import sys
 
 
 
-debug=True
+debug=False
 usegzip=True
-uselz4=False
+uselz4=True
 
 extra_args=[]
 if debug:
