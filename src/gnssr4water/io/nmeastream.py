@@ -18,6 +18,7 @@ import gzip
 from gnssr4water.core.logger import log
 from datetime import datetime,timedelta
 from gnssr4water.gnssrlib import NMEAFile
+import os
 
 
 
@@ -134,10 +135,20 @@ class NMEAFileStream:
             #close previous nmeafile
             self.fid.close()
         try:
-            #open new NMEA file
-            nmeafile=next(self.nmeaobjs)
-            self.fid=NMEAFile(nmeafile)
+            #open new  (non-empty) NMEA file
+            while True:
+                #get the next file from the iterator
+                nmeafile=next(self.nmeaobjs)
+                if os.path.getsize(nmeafile) == 0:
+                    #skip empty files
+                    log.warning(f"Skipping empty NMEA file {nmeafile}")
+                    continue
+                
+                break
+            
+
             log.info(f"Reading from next stream object {nmeafile}")
+            self.fid=NMEAFile(nmeafile)
         except StopIteration:
             self.fid=None
 

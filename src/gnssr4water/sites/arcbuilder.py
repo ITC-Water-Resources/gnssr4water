@@ -45,7 +45,7 @@ class SatArcBuilder:
 
         self.minpoints=4
         self.minElevationSpan=minElevationSpan
-    
+
     
     def attrs(self):
         """
@@ -63,49 +63,42 @@ class SatArcBuilder:
         Return amount of arcs available
         """
         return self.arcqueue.qsize()
-
-    async def submitArc(self,arc):
+    
+    def prepareArc(self,arc):
+        arcs=[]
         if len(arc) < self.minpoints:
             #basic sanity check to exclude all arcs with less them minpoints
-            return
+            return []
 
         if self.split and "-" in arc.direction:
-            #split into ascending and descending arc before filtering and resubmit them to the queue
+            #split into ascending and descending arc before filtering and resubmit to this function
             a1,a2=arc.split()
-            #resubmit splitted arcs
-            await self.submitArc(a1)
-            await self.submitArc(a2)
-            return
+            arcs=self.prepareArc(a1)
+            arcs.extend(self.prepareArc(a2))
+            return arcs
 
         if self.minElevationSpan is not None and (np.max(arc.elev) - np.min(arc.elev) < self.minElevationSpan):
             #possibly check for minimum elevation span
-            return
+            return []
 
         if arc.deltaT < self.minlength:
             #check for minimum timelength
             # log.warning(f"arc is too short, {arc.deltaT}")
-            return
-        
-        if self.block:
-            await self.arcqueue.put(arc)
-        else:
-            try:
-                self.arcqueue.put_nowait(arc)
-            except QueueFull:
-                log.warning("Arc queue is full, deleting oldest entry, without using it")
-                # get rid of the oldest arc in the queue without using it
-                self.arcqueue.get_nowait()
-                self.arcqueue.task_done()
+            return []
 
-        
-    async def append(self,sativ):
+        return [arc]
+
+
+    def append(self,sativ):
         """
         Process a cycle of SNR observations
         """
         if sativ.sats_in_view == 0: 
             #nothing to add
-            return
+            return []
         tm=sativ.time
+        arcsout=[]
+
         for i in range(sativ.sats_in_view):
             prn=sativ.prn[i] 
             el=sativ.elevation[i]
@@ -119,13 +112,12 @@ class SatArcBuilder:
     
             if prn in self.arccache:
                 if masked:
-                    # satellite moved out of view of the mask -> close the arc and move to queue for processing
-                    
-                    await self.submitArc(Arc(**self.arccache.pop(prn)))
+                    # satellite moved out of view of the mask -> close the arc generate a new arc object ( or 2 if a split is requested)
+                    arcsout.extend(self.prepareArc(Arc(**self.arccache.pop(prn))))
                     continue
                 elif (tm-self.arccache[prn]["time"][-1]) > self.expiry:
-                    await self.submitArc(Arc(**self.arccache.pop(prn)))
-                    #satellite is within the mask but last point was too far in the past -> submit existing arc but allow the current values to start a new arc
+                    arcsout.extend(self.prepareArc(Arc(**self.arccache.pop(prn))))
+                    #satellite is within the mask but last point was too far in the past -> submit existing arc but allow the current values to start a new arc (do not continue the loop)
                 else:
                     #append values to existing arc
                     self.arccache[prn]["time"].append(tm)
@@ -143,7 +135,12 @@ class SatArcBuilder:
         #check for expired arc (e.g. lost tracking) and submit
         expiredarcs=[prn for prn,val in self.arccache.items() if  (tm-val['time'][-1]) > self.expiry]
         for prn in expiredarcs:
-            await self.submitArc(Arc(**self.arccache.pop(prn)))
+            arcsout.extend(self.prepareArc(Arc(**self.arccache.pop(prn))))
+        
+        #return all arcs that are ready to be processed further
+        return arcsout
+    
+
 
     async def start(self):
         """
@@ -157,7 +154,20 @@ class SatArcBuilder:
         self.isStreaming=True
         try: 
             for sv_snr in self.snrStream.readcycles():
-                await self.append(sv_snr)
+                arcs_ready=self.append(sv_snr)
+                for arc in arcs_ready:
+                    
+                    #add arcs to the async queue
+                    if self.block:
+                        await self.arcqueue.put(arc)
+                    else:
+                        try:
+                            self.arcqueue.put_nowait(arc)
+                        except QueueFull:
+                            log.warning("Arc queue is full, deleting oldest entry, without using it")
+                            # get rid of the oldest arc in the queue without using it
+                            self.arcqueue.get_nowait()
+                            self.arcqueue.task_done()
         except CancelledError:
                 log.warning("canceling streaming task") 
                 pass #ok, pass so to set the isStreaming status to False below
@@ -166,7 +176,7 @@ class SatArcBuilder:
         self.isStreaming=False
 
 
-    async def arcs(self):
+    async def async_arcs(self):
         """
         Async generator to retrieve completed arcs
         """
@@ -191,8 +201,20 @@ class SatArcBuilder:
         if not self.streamtask.done():
             #cancel (stop) streaming new messages into the arc builder
             self.streamtask.cancel()
-        log.info("No more arcs")
+        log.info("No more arcs in the async queue")
         return
         
 
+    def arcs(self):
+        """
+            Generator to retrieve completed arcs from a stream
+        """
+        while True:
+            for sv_snr in self.snrStream.readcycles():
+                arcs=self.append(sv_snr)
+                for arc in arcs:
+                    yield arc
+
+            log.info("No more arcs")
+            return
 

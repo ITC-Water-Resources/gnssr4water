@@ -41,6 +41,7 @@ cdef extern from "src/gnssrlib.h" nogil:
     cdef _gnss_system gnss_gpsl1
     cdef _gnss_system gnss_gpsl2
     cdef _gnss_system gnss_glonassiil1
+    cdef _gnss_system gnss_unknown
     cdef void copy_GNSS_as(_gnss_system *sys, const _gnss_system * sysfrom);
 
 cdef extern from "src/nmea.h" nogil:
@@ -84,7 +85,20 @@ cdef class gnss_sys:
     cdef _gnss_system* system_ptr
     def __cinit__(self):
         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))
+
+    def __init__(self,sysstr='UNKNOWN'):
+        if sysstr == 'GPSL1':
+           copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
+        elif sysstr == 'GPSL2':
+           copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
+        elif sysstr == 'GLONASSIIL1':
+           copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)
+        else:
+           copy_GNSS_as(self.system_ptr,&gnss_unknown)
     
+    def __reduce__(self):
+        return (gnss_sys,(self.system,))
+
     @staticmethod
     cdef from_(_gnss_system sys):
         cdef gnss_sys system=gnss_sys()

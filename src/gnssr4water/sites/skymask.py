@@ -32,6 +32,9 @@ from datetime import datetime
 from gnssr4water.core.gnss import GPSL1
 from gnssr4water.fresnel import firstFresnelZone,elev_from_radius
 from numba import jit
+from gnssr4water.plot.sites import siteBaseMap
+from gnssr4water.plot.colors import gnssr_darkblue,gnssr_lightgreen,gnssr_yellow,add_alpha
+from cartopy import crs as ccrs
 
 def geo2azelpoly(geopoly,lon,lat,ellipsHeight,antennaHeight,wavelength=GPSL1.length):
     if not geopoly.is_simple:
@@ -317,6 +320,21 @@ class SkyMask:
 
         return ax
 
+    def geoplot(self,ax=None,**kwargs):
+        """Plot the mask in a geographical plot"""
+        style=kwargs.pop("style",None)
+        distance=kwargs.pop("distance",40)
+    
+        edgecolor=kwargs.pop("edgecolor",gnssr_darkblue)
+        facecolor=kwargs.pop("facecolor",add_alpha(edgecolor,0.3))
+
+
+        if ax is None:
+            ax=siteBaseMap(self.lon,self.lat,style=style,distance=distance)
+            ax.set_title('Mask site plot')
+        maskfine=self.segmentize(2)
+        ax.add_geometries([maskfine.geopoly],crs=ccrs.PlateCarree(),facecolor=facecolor,edgecolor=edgecolor,lw=2)
+        return ax
 
     def save(self,arName,mode='a',group=None):
         """ Save the mask to an archive (netcdf or zarr), for later reuse

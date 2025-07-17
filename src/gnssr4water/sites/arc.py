@@ -20,6 +20,7 @@ import numpy as np
 import matplotlib.pyplot as mpl
 from gnssr4water.io.nmea import smoothDegrees
 from gnssr4water.io.nmea import resolveSubValues
+from gnssr4water.gnssrlib import gnss_sys
 
 class Arc:
     """ 
@@ -31,7 +32,9 @@ class Arc:
         self.elev=np.array(elev)
         self.az=np.array(az)
         self.cnr0=np.array(cnr0)
-
+        if type(system) is str:
+            system=gnss_sys(system)
+        
         self.system=system
         if refinenmea:
             self.refinenmea()
@@ -100,8 +103,55 @@ class Arc:
         
         return arc1,arc2 
         
+    def to_xarray(self,reserve=-1):
+        """
+        Convert to xarray dataset
+        """
+        import xarray as xr
+        npoints= len(self)
+        if reserve > 0 and reserve < npoints:
+            raise ValueError(f"Reserve {reserve} is set but smaller than the length of the arc {len(self)}")
+        elif reserve < 0:
+            reserve=npoints
 
+
+        ds=xr.Dataset(
+            {
+                "elevation":("maxpoints",np.zeros([reserve]),{"long_name":"elevation angle","units":"degrees"}),
+                "azimuth":("maxpoints",np.zeros([reserve]),{"long_name":"azimuth angle","units":"degrees"}),
+                "cnr0":("maxpoints",np.zeros([reserve]),{"long_name":"carrier to noise density","units":"dB-Hz"}),
+                "time":("maxpoints",np.zeros([reserve],dtype='datetime64[ns]'),{"long_name":"time of observation","units":"seconds since 1970-01-01T00:00:00Z"}),
+                "npoints":npoints,
+                "system":self.system.system,
+                "prn":self.prn,
+                },attrs={"Description":f"GNSS elev-az Arc segment","creator":"gnssr4water.io.arc.Arc.to_xarray","created":np.datetime64('now')},
+        )
+        ds['elevation'][:npoints]=self.elev
+        ds['azimuth'][:npoints]=self.az
+        ds['cnr0'][:npoints]=self.cnr0
         
+        ds['time'][:npoints]=self.time
+
+        return ds
+
+    @staticmethod
+    def from_xarray(ds):
+        """
+        Convert from xarray dataset to Arc
+        """
+        if 'elevation' not in ds or 'azimuth' not in ds or 'cnr0' not in ds or 'time' not in ds:
+            raise ValueError("Dataset does not contain the required variables")
+        
+        npoints=ds.npoints.values
+        prn=ds.prn.values
+        system=ds.system.values
+        time=ds.time.values[:npoints]
+        elev=ds.elevation.values[:npoints]
+        az=ds.azimuth.values[:npoints]
+        cnr0=ds.cnr0.values[:npoints]
+
+        return Arc(prn,system,time,elev,az,cnr0,refinenmea=False)
+
     def plot(self,ax=None,**kwargs):
         """
         Plot C/N0 as a function of the elevation

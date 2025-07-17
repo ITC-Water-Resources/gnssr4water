@@ -28,11 +28,27 @@ import os
 import numpy as np
 import shutil
 
+class WaterLevelBaseEstimator:
+    def __init__(self,arcbuilder,antennaheight_ref=None):
+        self._arcbuilder=arcbuilder
+        self.ah0=antennaheight_ref
+        #intial guess for the antennaHeight
+        if antennaheight_ref is None:
+            #take the reference height from the arcbuilder object 
+            self.ah0=self._arcbuilder.mask.antennaHeight
+        else:
+            self.ah0=antennaheight_ref
 
-class WaterLevelEstimator:
+    
+
+
+
+
+class WaterLevelEMAEstimator(WaterLevelBaseEstimator):
     
     encoding={'timev': {'units': 'milliseconds since 1970-01-01'}}
     def __init__(self,arcbuilder,ah0=None,ahalf_width=2,outlier=None,tau_ema_sec=6*3600,zarrlog=None,freq=None,group="waterlevel_ema",mode="a",realign=True,**kwargs):
+        super().__init__(arcbuilder)
         self.group=group
         self.arcbuilder=arcbuilder
         self.processParam={ky:val for ky,val in kwargs.items() if ky in ["npoly","bandpass",atmo_corr_tag]}
