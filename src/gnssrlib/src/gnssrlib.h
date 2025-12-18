@@ -23,30 +23,31 @@
 
 #define SPEED_OF_LIGHT 299792458.0
 
-#define GNSS_BAND( FREQ, WMHZ, NAME )     \
+#define GNSS_BAND( FREQ, WMHZ, NAME, RINEXCODE )     \
 	{                             \
 	  .system=NAME,		      \
+	  .rinexcode=RINEXCODE,	      \
 	  .frequency=FREQ,              \
 	  .length=1e-6*SPEED_OF_LIGHT/FREQ,  \
 	  .bandwidth=1e6*WMHZ           \
 	};
 
-#define GPSL1 GNSS_BAND(1575.42,15.345,"GPSL1");
-#define GPSL2 GNSS_BAND(1227.6,11,"GPSL2");
-#define GPSL5 GNSS_BAND(1176.45,12.5,"GPSL5");
+#define GPSL1 GNSS_BAND(1575.42,15.345,"GPSL1","G");
+#define GPSL2 GNSS_BAND(1227.6,11,"GPSL2","G");
+#define GPSL5 GNSS_BAND(1176.45,12.5,"GPSL5","G");
 
 
-#define QZSSL5  GNSS_BAND(1176.45,24,"QZSSL5");
-#define QZSSL2C GNSS_BAND(1227.6,11,"QZSSL2");
-#define QZSSE6 GNSS_BAND(1278.75,20,"QZSSE6");
-#define QZSSL1 GNSS_BAND(1575.42,12,"QZSSL1")
+#define QZSSL5  GNSS_BAND(1176.45,24,"QZSSL5","J");
+#define QZSSL2C GNSS_BAND(1227.6,11,"QZSSL2","J");
+#define QZSSE6 GNSS_BAND(1278.75,20,"QZSSE6","J");
+#define QZSSL1 GNSS_BAND(1575.42,12,"QZSSL1","J")
 
-#define GLONASSIL1 GNSS_BAND(1602,6.5,"GLONASSIL1");
-#define GLONASSIL2  GNSS_BAND(1246,5,"GLONASSIL2");
-#define GLONASSIIL1 GNSS_BAND(1575.42,6.5,"GLONASSIIL1");
-#define GLONASSIIL2 GNSS_BAND(1248.06,8.75,"GLONASSIIL2");
+#define GLONASSIL1 GNSS_BAND(1602,6.5,"GLONASSIL1","R");
+#define GLONASSIL2  GNSS_BAND(1246,5,"GLONASSIL2","R");
+#define GLONASSIIL1 GNSS_BAND(1575.42,6.5,"GLONASSIIL1","R");
+#define GLONASSIIL2 GNSS_BAND(1248.06,8.75,"GLONASSIIL2","R");
 
-#define GNSS_UNKNOWN GNSS_BAND(-1,-1,"UNKNOWN");
+#define GNSS_UNKNOWN GNSS_BAND(-1,-1,"UNKNOWN","_");
 //possible other GNSS bands
 //  GNSS frequencies (source https://www.rfwireless-world.com/Terminology/GPS-Frequency-Band-and-GNSS-Frequency-Band.html)
 //# GLONASS II-L1 	1600.995MHz, 0.1874m,15.365MHz
@@ -77,6 +78,7 @@
 
 struct gnss_system{
 	const char system[12];
+	const char rinexcode[1];
 	double frequency;
 	double length;
 	double bandwidth;

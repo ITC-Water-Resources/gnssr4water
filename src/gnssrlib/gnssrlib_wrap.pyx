@@ -20,6 +20,7 @@ from cython.operator cimport dereference as deref
 from libc.stdlib cimport malloc, free
 from datetime import datetime,timedelta
 import numpy as np
+from cython.view cimport array as cvarray
 
 cdef extern from "src/stream.h" nogil:
     cdef const int _GNSSR_SUCCESS "GNSSR_SUCCESS"
@@ -34,6 +35,7 @@ cdef extern from "src/stream.h" nogil:
 cdef extern from "src/gnssrlib.h" nogil:
     cdef struct _gnss_system "gnss_system":
         char * system,
+        char * rinexcode,
         double frequency,
         double length,
         double bandwidth
@@ -44,8 +46,15 @@ cdef extern from "src/gnssrlib.h" nogil:
     cdef _gnss_system gnss_unknown
     cdef void copy_GNSS_as(_gnss_system *sys, const _gnss_system * sysfrom);
 
+# cdef extern from "src/nmea.h" nogil:
+    # cdef const int NMEA_GSV_MAX_SATELLITES 
+
+# cdef const int _NMEA_GSV_MAX_SATELLITES=NMEA_GSV_MAX_SATELLITES
+
 cdef extern from "src/nmea.h" nogil:
-    cdef const int _NMEA_GSV_MAX_SATELLITES "NMEA_GSV_MAX_SATELLITES"
+    #import the #define NMEA_GSV_MAX_SATELLITES in a constant for later use in cython.view.array's
+    cdef const int NMEA_GSV_MAX_SATELLITES
+
     struct _nmea_cycle "nmea_cycle":
         int year,
         int month,
@@ -59,11 +68,13 @@ cdef extern from "src/nmea.h" nogil:
         float ortho_height,
         float geoid_height,
         int sats_in_view,
-        _gnss_system system[_NMEA_GSV_MAX_SATELLITES],
-        int prn[_NMEA_GSV_MAX_SATELLITES],
-        float elevation[_NMEA_GSV_MAX_SATELLITES],
-        float azimuth[_NMEA_GSV_MAX_SATELLITES],
-        float cnr0[_NMEA_GSV_MAX_SATELLITES]
+        #note arrays are declared with size 1 but since they are extern,
+        #they actually have size NMEA_GSV_MAX_SATELLITES (but cython won't eat the #define from nmea.h)
+        _gnss_system system[1],
+        int prn[1],
+        float elevation[1],
+        float azimuth[1],
+        float cnr0[1]
 
     cpdef enum nmea_type:
         NMEA_GGA,
@@ -124,6 +135,10 @@ cdef class gnss_sys:
     def length(self):
         return deref(self.system_ptr).length
     
+    def rinexcode(self,satno):
+        satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"
+        return satcode
+
 GPSL1=gnss_sys.from_(gnss_gpsl1)
 GPSL2=gnss_sys.from_(gnss_gpsl2)
 GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
@@ -170,22 +185,26 @@ cdef class gnss_cycle:
 
     @property
     def prn(self):
-        cdef int [:] prn=deref(self.cycle_ptr).prn
+        cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).prn[0])
+        # cdef int [:] prn=deref(self.cycle_ptr).prn
         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
 
     @property
     def azimuth(self):
-        cdef float [:] az=deref(self.cycle_ptr).azimuth
-        return np.asarray(az[0:deref(self.cycle_ptr).sats_in_view])
+        cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).azimuth[0])
+        # cdef float [:] az=deref(self.cycle_ptr).azimuth
+        return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])
 
     @property
     def elevation(self):
-        cdef float [:] elev=deref(self.cycle_ptr).elevation
+        cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).elevation[0])
+        # cdef float [:] elev=deref(self.cycle_ptr).elevation
         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])
 
     @property
     def cnr0(self):
-        cdef float [:] cnr0=deref(self.cycle_ptr).cnr0
+        cdef cvarray cnr0 = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).cnr0[0])
+        # cdef float [:] cnr0=deref(self.cycle_ptr).cnr0
         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])
 
 cdef class NMEAFile:

@@ -28,6 +28,7 @@
 #define NMEA_BUFFER_SIZE 82
 
 //maximum number of satellites in view to deal with
+// If you change this also check hardcoded array sizes in gnssrlib_wrap.pyx
 #ifndef NMEA_GSV_MAX_SATELLITES
 #define NMEA_GSV_MAX_SATELLITES 40
 #endif
