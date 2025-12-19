@@ -32,7 +32,7 @@ cdef extern from "src/stream.h" nogil:
     void close_stream(gnssrstream *gz)
     int readline(gnssrstream *gz, char * line,size_t slen)
 
-cdef extern from "src/gnssrlib.h" nogil:
+cdef extern from "src/gnssir.h" nogil:
     cdef struct _gnss_system "gnss_system":
         char * system,
         char * rinexcode,
@@ -75,6 +75,25 @@ cdef extern from "src/nmea.h" nogil:
         float elevation[1],
         float azimuth[1],
         float cnr0[1]
+    
+    struct _nmea_trans_cycle "nmea_trans_cycle":
+        int year[2],
+        int month[2],
+        int day[2],
+        int hr[2],
+        int min[2],
+        float sec[2],
+        float lat[2],
+        float lon[2],
+        float ortho_height[2],
+        float geoid_height[2],
+        int sats_in_view,
+        _gnss_system system[1],
+        int prn[1],
+        float elevation[1],
+        float azimuth[1],
+        float cnr0[2][1],
+        float gamma[1]	
 
     cpdef enum nmea_type:
         NMEA_GGA,
@@ -91,6 +110,9 @@ cdef extern from "src/nmea.h" nogil:
     nmea_type check_nmea(char * nmea) 
     int read_nmea_cycle(gnssrstream *sid, _nmea_cycle * data);
     int init_nmea_cycle(_nmea_cycle * data)
+    int init_nmea_trans_cycle(_nmea_trans_cycle * data)
+
+    int pair_nmea_trans_cycle(const _nmea_cycle * c_clear,const _nmea_cycle * c_obstr , int delta_sec, _nmea_trans_cycle * tc_out)
 
 cdef class gnss_sys:
     cdef _gnss_system* system_ptr
@@ -206,6 +228,76 @@ cdef class gnss_cycle:
         cdef cvarray cnr0 = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).cnr0[0])
         # cdef float [:] cnr0=deref(self.cycle_ptr).cnr0
         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])
+
+cdef class gnss_trans_cycle:
+    cdef _nmea_trans_cycle* tcycle_ptr
+    def __cinit__(self):
+        self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+        init_nmea_trans_cycle(self.tcycle_ptr)
+    def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):
+        # self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+        # init_nmea_trans_cycle(self.tcycle_ptr)
+        cdef int err=pair_nmea_trans_cycle(c_clear.cycle_ptr,c_obstr.cycle_ptr , delta_sec, self.tcycle_ptr)
+        # if err != 0:
+            # raise RuntimeError("No transmissivity pairs found")
+
+    def __dealloc__(self):
+        if self.tcycle_ptr is not NULL:
+            free(self.tcycle_ptr)
+
+    @property
+    def time(self):
+        tm=[datetime(deref(self.tcycle_ptr).year[i],deref(self.tcycle_ptr).month[i],deref(self.tcycle_ptr).day[i],deref(self.tcycle_ptr).hr[i],deref(self.tcycle_ptr).min[i])+timedelta(seconds=deref(self.tcycle_ptr).sec[i]) for i in range(2)]
+        return tm
+    
+    @property
+    def sats_in_view(self):
+        return deref(self.tcycle_ptr).sats_in_view
+    
+    @property
+    def lon(self):
+        return deref(self.tcycle_ptr).lon
+    
+    @property
+    def lat(self):
+        return deref(self.tcycle_ptr).lat
+    
+    @property
+    def ortho_height(self):
+        return deref(self.tcycle_ptr).ortho_height
+
+    @property
+    def geoid_height(self):
+        return deref(self.tcycle_ptr).ortho_height
+
+    @property
+    def system(self):
+        return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)]) 
+
+    @property
+    def prn(self):
+        cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])
+        return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])
+
+    @property
+    def azimuth(self):
+        cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])
+        return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])
+
+    @property
+    def elevation(self):
+        cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])
+        return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])
+
+    @property
+    def cnr0(self):
+        cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])
+        return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])
+    
+    @property
+    def gamma(self):
+        cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])
+        return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])
 
 cdef class NMEAFile:
     cdef public int _eof 

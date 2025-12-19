@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <zlib.h>
 #include <string.h>
-#include "gnssrlib.h"
+#include "gnssir.h"
 #include "stream.h"
 
 #ifndef NMEA_H
@@ -28,12 +28,12 @@
 #define NMEA_BUFFER_SIZE 82
 
 //maximum number of satellites in view to deal with
-// If you change this also check hardcoded array sizes in gnssrlib_wrap.pyx
 #ifndef NMEA_GSV_MAX_SATELLITES
 #define NMEA_GSV_MAX_SATELLITES 40
 #endif
 
 #define NMEA_FILL -9999
+
 
 typedef enum nmea_type { 
 	NMEA_GGA,
@@ -71,6 +71,31 @@ struct nmea_cycle{
 	float cnr0[NMEA_GSV_MAX_SATELLITES];
 };
 
+///Cycle structure holding a paired nmea-cycle with a transmissivity cycle 
+struct nmea_trans_cycle{
+	//RMC stuff
+	int year[2];
+	int month[2];
+	int day[2];
+	int hr[2];
+	int min[2];
+	float sec[2];
+	float lat[2];
+	float lon[2];
+	float ortho_height[2];
+	float geoid_height[2];
+	//GSV Stuff
+	int sats_in_view;
+	gnss_system system[NMEA_GSV_MAX_SATELLITES];
+	int prn[NMEA_GSV_MAX_SATELLITES];
+	float elevation[NMEA_GSV_MAX_SATELLITES];
+	float azimuth[NMEA_GSV_MAX_SATELLITES];
+	float cnr0[2][NMEA_GSV_MAX_SATELLITES];
+	float gamma[NMEA_GSV_MAX_SATELLITES];	
+};
+
+typedef struct nmea_trans_cycle nmea_trans_cycle;
+
 typedef struct nmea_cycle nmea_cycle;
 
 unsigned char calculate_checksum(const char * nmea);
@@ -85,6 +110,12 @@ nmea_type check_nmea(char * nmea);
 
 int init_nmea_cycle(nmea_cycle * data);
 
+int init_nmea_trans_cycle(nmea_trans_cycle * data);
+
 int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data);
+
+int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr , int delta_sec, nmea_trans_cycle * tc_out);
+
+double mjd_cycle(const nmea_cycle * cyc);
 
 #endif //NMEA_H

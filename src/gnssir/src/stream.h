@@ -26,6 +26,7 @@
 #define GNSSR_IO_ERROR -1
 #define GNSSR_EOF 2
 #define GNSSR_SUCCESS 0
+#define GNSSR_NOMATCH -2
 
 typedef enum { 
 	UNCOMPRESSED,

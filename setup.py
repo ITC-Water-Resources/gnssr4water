@@ -44,18 +44,18 @@ else:
     ext=".c"
 
 def listexts():
-    nm="gnssrlib_wrap"
+    nm="gnssir_wrap"
     exts=[]
-    srcd="src/gnssrlib"
+    srcd="src/gnssir"
     sources=[f"{srcd}/{nm+ext}"]
-    for csrc in ["nmea.c","stream.c","gnssrlib.c"]:
+    for csrc in ["nmea.c","stream.c","gnssir.c"]:
         sources.append(f"{srcd}/src/{csrc}")
     
     if uselz4:
         for csrc in ["lz4stream.c","lz4static/lz4file.c","lz4static/lz4.c","lz4static/lz4hc.c","lz4static/xxhash.c","lz4static/lz4frame.c"]:
             sources.append(f"{srcd}/src/{csrc}")
 
-    exts.append(Extension(f"gnssr4water.gnssrlib",sources,include_dirs=[np.get_include(),"."], define_macros=[('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')],extra_compile_args=extra_args,extra_link_args=extra_args))
+    exts.append(Extension(f"gnssr4water.gnssir",sources,include_dirs=[np.get_include(),"."], define_macros=[('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')],extra_compile_args=extra_args,extra_link_args=extra_args))
     return exts
 
 extensions=listexts()

@@ -20,7 +20,7 @@ import numpy as np
 import matplotlib.pyplot as mpl
 from gnssr4water.io.nmea import smoothDegrees
 from gnssr4water.io.nmea import resolveSubValues
-from gnssr4water.gnssrlib import gnss_sys
+from gnssr4water.gnssir import gnss_sys
 
 class Arc:
     """ 

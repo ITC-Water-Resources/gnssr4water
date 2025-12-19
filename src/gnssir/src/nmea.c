@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "gnssrlib.h"
+#include <math.h>
 #include "nmea.h"
 
 unsigned char calculate_checksum(const char * nmea){
@@ -29,6 +29,10 @@ unsigned char calculate_checksum(const char * nmea){
 		xorval=xorval^nmea[i];
 	}
 	return xorval;
+}
+
+double mjd_cycle(const nmea_cycle * cyc){
+    return mjd(cyc->year,cyc->month,cyc->day,cyc->hr,cyc->min,cyc->sec);
 }
 
 int shift_to_komma(const  char ** nmeaPtr,const char ** kommaPtr,int skip){
@@ -85,6 +89,32 @@ int init_nmea_cycle(nmea_cycle * data){
 }
 
 
+int init_nmea_trans_cycle(nmea_trans_cycle * data){
+	const gnss_system system=GNSS_UNKNOWN;
+	for (int i=0; i <2;++i){
+	    data->year[i]=NMEA_FILL;
+	    data->month[i]=NMEA_FILL;
+	    data->day[i]=NMEA_FILL;
+	    data->hr[i]=NMEA_FILL;
+	    data->min[i]=NMEA_FILL;
+	    data->sec[i]=NMEA_FILL;
+	    data->lon[i]=NMEA_FILL;
+	    data->lat[i]=NMEA_FILL;
+	    data->ortho_height[i]=NMEA_FILL;
+	    data->geoid_height[i]=NMEA_FILL;
+	}	
+	data->sats_in_view=0;
+	for (int i=0;i<NMEA_GSV_MAX_SATELLITES;++i){
+	    data->prn[i]=0;
+	    data->elevation[i]=0;
+	    data->azimuth[i]=0;
+	    data->cnr0[0][i]=0;
+	    data->cnr0[1][i]=0;
+	    data->gamma[i]=0;
+	    memcpy(&data->system[i],&system,sizeof(system));
+	}
+	return GNSSR_SUCCESS;
+}
 nmea_type check_nmea(char * nmea){
     //remove possible line ends and carriage returns and determine the type of NMEA message
 
@@ -169,6 +199,86 @@ int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data){
     return GNSSR_SUCCESS;
 
 }
+
+/// Create a transmissivity cycle from two individual cycles (no checks on matching time will be done!! (this is a user choice)
+int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr, int delta_sec,nmea_trans_cycle * tc_out){
+   
+    double delta_t=mjd_cycle(c_clear)-mjd_cycle(c_obstr);
+
+    if (delta_sec < delta_t*86400 ){
+	return GNSSR_NOMATCH;
+    }
+    
+
+    int err;
+    //re-initialize the tc_out
+    err=init_nmea_trans_cycle(tc_out);
+    if (err != GNSSR_SUCCESS){
+	return err;
+    }
+
+    //helper array
+    const nmea_cycle * c_ptrs[2];
+    c_ptrs[0]=c_clear;
+    c_ptrs[1]=c_obstr;
+
+    //compute the intersecting PRN's
+    int ix=0;
+    
+    //perform an inner left join on the PRN number
+    for (int i=0;i< c_clear->sats_in_view;++i){
+	for(int j=0 ;j < c_obstr->sats_in_view;++j){
+	    if (c_clear->prn[i] == c_obstr->prn[j]){
+			
+		tc_out->prn[ix]=c_clear->prn[i];
+		memcpy(&tc_out->system[ix],&c_clear->system[i],sizeof(c_clear->system[i]));
+		
+		//take the elevation and azimuth from the clear sky cycle 
+		tc_out->elevation[ix]=c_clear->elevation[i];	
+		tc_out->azimuth[ix]=c_clear->azimuth[i];
+		
+		tc_out->cnr0[0][ix]=c_clear->cnr0[i];
+		tc_out->cnr0[1][ix]=c_obstr->cnr0[j];
+		tc_out->gamma[ix]=pow(10,(c_obstr->cnr0[j]-c_clear->cnr0[i])/10.0);
+		++ix;
+		//stop searching (i.e. take first match found)
+		break;
+	    }
+	    
+	}
+    }
+    
+    if (ix ==0){
+	//nothing found
+	return GNSSR_NOMATCH;
+    }
+
+    //copy constant parts
+    for (int i=0;i<2;++i){
+	tc_out->year[i]=c_ptrs[i]->year;
+	tc_out->month[i]=c_ptrs[i]->month;
+	tc_out->day[i]=c_ptrs[i]->day;
+	tc_out->hr[i]=c_ptrs[i]->hr;
+	tc_out->min[i]=c_ptrs[i]->min;
+	tc_out->sec[i]=c_ptrs[i]->sec;
+    
+	tc_out->lon[i]=c_ptrs[i]->lon;
+	tc_out->lat[i]=c_ptrs[i]->lat;
+	
+	tc_out->ortho_height[i]=c_ptrs[i]->ortho_height;
+	tc_out->geoid_height[i]=c_ptrs[i]->geoid_height;
+
+    }
+
+    
+    
+
+    tc_out->sats_in_view=ix;
+
+    return GNSSR_SUCCESS;
+
+}
+
 
 int update_nmea_RMC(const char * nmea, nmea_cycle *data){
 	const char * nmeaPtr=nmea;

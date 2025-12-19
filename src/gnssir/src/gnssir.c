@@ -16,7 +16,7 @@
 
 /*# Author Roelof Rietbroek (r.rietbroek@utwente.nl), 2025*/
 
-#include "gnssrlib.h"
+#include "gnssir.h"
 
 #include <string.h>
 
@@ -30,3 +30,12 @@ void copy_GNSS_as(gnss_system *sys, const gnss_system * sysfrom){
 }
 
 
+double mjd(const int yr, const int month,const int day, const int hr, const int min, const int sec){
+  
+int jd= day-32075+1461*(yr+4800+(month-14)/12)/4+367*(month-2-(month-14)/12*12)/12-3*((yr+4900+(month-14)/12)/100)/4;
+
+  return (double)jd - 2400000.5 + ((double)hr+(double)min/60+(double)sec/3600)/24;
+
+
+
+}

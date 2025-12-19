@@ -17,7 +17,7 @@
 import gzip
 from gnssr4water.core.logger import log
 from datetime import datetime,timedelta
-from gnssr4water.gnssrlib import NMEAFile
+from gnssr4water.gnssir import NMEAFile
 import os
 
 

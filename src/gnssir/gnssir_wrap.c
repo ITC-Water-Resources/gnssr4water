@@ -10,9 +10,9 @@
             ]
         ],
         "depends": [
-            "src/gnssrlib/src/gnssrlib.h",
-            "src/gnssrlib/src/nmea.h",
-            "src/gnssrlib/src/stream.h"
+            "src/gnssir/src/gnssir.h",
+            "src/gnssir/src/nmea.h",
+            "src/gnssir/src/stream.h"
         ],
         "extra_compile_args": [
             "-DUSE_GZIP",
@@ -25,26 +25,26 @@
             "-DUSE_LZ4"
         ],
         "include_dirs": [
-            "src/gnssrlib",
-            "/tmp/pip-build-env-kzmu6yt2/overlay/lib/python3.13/site-packages/numpy/_core/include",
+            "src/gnssir",
+            "/tmp/pip-build-env-ivkkfwqi/overlay/lib/python3.13/site-packages/numpy/_core/include",
             "."
         ],
         "language": "c",
-        "name": "gnssr4water.gnssrlib",
+        "name": "gnssr4water.gnssir",
         "sources": [
-            "src/gnssrlib/gnssrlib_wrap.pyx",
-            "src/gnssrlib/src/nmea.c",
-            "src/gnssrlib/src/stream.c",
-            "src/gnssrlib/src/gnssrlib.c",
-            "src/gnssrlib/src/lz4stream.c",
-            "src/gnssrlib/src/lz4static/lz4file.c",
-            "src/gnssrlib/src/lz4static/lz4.c",
-            "src/gnssrlib/src/lz4static/lz4hc.c",
-            "src/gnssrlib/src/lz4static/xxhash.c",
-            "src/gnssrlib/src/lz4static/lz4frame.c"
+            "src/gnssir/gnssir_wrap.pyx",
+            "src/gnssir/src/nmea.c",
+            "src/gnssir/src/stream.c",
+            "src/gnssir/src/gnssir.c",
+            "src/gnssir/src/lz4stream.c",
+            "src/gnssir/src/lz4static/lz4file.c",
+            "src/gnssir/src/lz4static/lz4.c",
+            "src/gnssir/src/lz4static/lz4hc.c",
+            "src/gnssir/src/lz4static/xxhash.c",
+            "src/gnssir/src/lz4static/lz4frame.c"
         ]
     },
-    "module_name": "gnssr4water.gnssrlib"
+    "module_name": "gnssr4water.gnssir"
 }
 END: Cython Metadata */
 
@@ -1162,13 +1162,13 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__gnssr4water__gnssrlib
-#define __PYX_HAVE_API__gnssr4water__gnssrlib
+#define __PYX_HAVE__gnssr4water__gnssir
+#define __PYX_HAVE_API__gnssr4water__gnssir
 /* Early includes */
 #include <string.h>
 #include <stdlib.h>
 #include "src/stream.h"
-#include "src/gnssrlib.h"
+#include "src/gnssir.h"
 #include "src/nmea.h"
 #include "pythread.h"
 #ifdef _OPENMP
@@ -1387,7 +1387,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "src/gnssrlib/gnssrlib_wrap.pyx",
+  "src/gnssir/gnssir_wrap.pyx",
   "<stringsource>",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -1643,104 +1643,118 @@ typedef struct {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys;
-struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle;
-struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile;
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines;
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas;
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles;
+struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys;
+struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle;
+struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle;
+struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile;
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines;
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas;
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles;
 struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":95
- *     int init_nmea_cycle(_nmea_cycle * data)
+/* "src/gnssir/gnssir_wrap.pyx":117
+ *     int pair_nmea_trans_cycle(const _nmea_cycle * c_clear,const _nmea_cycle * c_obstr , int delta_sec, _nmea_trans_cycle * tc_out)
  * 
  * cdef class gnss_sys:             # <<<<<<<<<<<<<<
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):
 */
-struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys {
+struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys {
   PyObject_HEAD
-  struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_gnss_sys *__pyx_vtab;
+  struct __pyx_vtabstruct_11gnssr4water_6gnssir_gnss_sys *__pyx_vtab;
   struct gnss_system *system_ptr;
 };
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":147
+/* "src/gnssir/gnssir_wrap.pyx":169
  * 
  * 
  * cdef class gnss_cycle:             # <<<<<<<<<<<<<<
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):
 */
-struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle {
+struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle {
   PyObject_HEAD
   struct nmea_cycle *cycle_ptr;
 };
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":210
+/* "src/gnssir/gnssir_wrap.pyx":232
  *         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])
+ * 
+ * cdef class gnss_trans_cycle:             # <<<<<<<<<<<<<<
+ *     cdef _nmea_trans_cycle* tcycle_ptr
+ *     def __cinit__(self):
+*/
+struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle {
+  PyObject_HEAD
+  struct nmea_trans_cycle *tcycle_ptr;
+};
+
+
+/* "src/gnssir/gnssir_wrap.pyx":302
+ *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  * cdef class NMEAFile:             # <<<<<<<<<<<<<<
  *     cdef public int _eof
  *     cdef gnssrstream _sid
 */
-struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile {
+struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile {
   PyObject_HEAD
-  struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_NMEAFile *__pyx_vtab;
+  struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *__pyx_vtab;
   int _eof;
   struct gnssrstream _sid;
   PyObject *name;
 };
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":246
+/* "src/gnssir/gnssir_wrap.pyx":338
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
  *         line = self.readline()
  * 
 */
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines {
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines {
   PyObject_HEAD
   PyObject *__pyx_v_line;
-  struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self;
+  struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self;
 };
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":255
+/* "src/gnssir/gnssir_wrap.pyx":347
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():
 */
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas {
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas {
   PyObject_HEAD
   PyObject *__pyx_v_nmea;
   enum nmea_type __pyx_v_nmea_t;
-  struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self;
+  struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self;
   PyObject *__pyx_t_0;
   Py_ssize_t __pyx_t_1;
   PyObject *(*__pyx_t_2)(PyObject *);
 };
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":263
+/* "src/gnssir/gnssir_wrap.pyx":355
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS
 */
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles {
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles {
   PyObject_HEAD
-  struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_cycle;
+  struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_cycle;
   int __pyx_v_err;
-  struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self;
+  struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self;
 };
 
 
@@ -1835,32 +1849,32 @@ struct __pyx_vtabstruct_array {
 static struct __pyx_vtabstruct_array *__pyx_vtabptr_array;
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":95
- *     int init_nmea_cycle(_nmea_cycle * data)
+/* "src/gnssir/gnssir_wrap.pyx":117
+ *     int pair_nmea_trans_cycle(const _nmea_cycle * c_clear,const _nmea_cycle * c_obstr , int delta_sec, _nmea_trans_cycle * tc_out)
  * 
  * cdef class gnss_sys:             # <<<<<<<<<<<<<<
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):
 */
 
-struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_gnss_sys {
+struct __pyx_vtabstruct_11gnssr4water_6gnssir_gnss_sys {
   PyObject *(*from_)(struct gnss_system);
 };
-static struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_gnss_sys *__pyx_vtabptr_11gnssr4water_8gnssrlib_gnss_sys;
+static struct __pyx_vtabstruct_11gnssr4water_6gnssir_gnss_sys *__pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys;
 
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":210
- *         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])
+/* "src/gnssir/gnssir_wrap.pyx":302
+ *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  * cdef class NMEAFile:             # <<<<<<<<<<<<<<
  *     cdef public int _eof
  *     cdef gnssrstream _sid
 */
 
-struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_NMEAFile {
-  PyObject *(*readline)(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *, int __pyx_skip_dispatch);
+struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile {
+  PyObject *(*readline)(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_NMEAFile *__pyx_vtabptr_11gnssr4water_8gnssrlib_NMEAFile;
+static struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *__pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile;
 
 
 /* "View.MemoryView":334
@@ -2997,6 +3011,9 @@ static struct __pyx_typeinfo_string __Pyx_TypeInfoToFormat(const __Pyx_TypeInfo 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyLong_As_int(PyObject *);
 
+/* CIntFromPy.proto */
+static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *);
+
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_enum__nmea_type(enum nmea_type value);
 
@@ -3005,9 +3022,6 @@ static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t 
 
 /* CheckUnpickleChecksum.proto */
 static CYTHON_INLINE int __Pyx_CheckUnpickleChecksum(long checksum, long checksum1, long checksum2, long checksum3, const char *members);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_long(long value);
@@ -3202,8 +3216,8 @@ static PyObject *__pyx_memoryview__get_base(struct __pyx_memoryview_obj *__pyx_v
 static PyObject *__pyx_memoryviewslice_convert_item_to_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
 static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
 static PyObject *__pyx_memoryviewslice__get_base(struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto*/
-static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_system __pyx_v_sys); /* proto*/
-static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_system __pyx_v_sys); /* proto*/
+static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from "libc.string" */
 
@@ -3212,7 +3226,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 /* Module declarations from "cython.view" */
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 
-/* Module declarations from "gnssr4water.gnssrlib" */
+/* Module declarations from "gnssr4water.gnssir" */
 static PyObject *__Pyx_EnumBase = 0;
 static PyObject *__Pyx_FlagBase = 0;
 static PyObject *__pyx_collections_abc_Sequence = 0;
@@ -3223,7 +3237,9 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static PyObject *__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(enum nmea_type); /*proto*/
+static CYTHON_INLINE PyObject *__Pyx_carray_to_py_float(float *, Py_ssize_t); /*proto*/
+static CYTHON_INLINE PyObject *__Pyx_carray_to_tuple_float(float *, Py_ssize_t); /*proto*/
+static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(enum nmea_type); /*proto*/
 static int __pyx_array_allocate_buffer(struct __pyx_array_obj *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo const *); /*proto*/
@@ -3263,11 +3279,11 @@ static PyObject *__pyx_format_from_typeinfo(__Pyx_TypeInfo const *); /*proto*/
 static const __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), { 0 }, 0, __PYX_IS_UNSIGNED(int) ? 'U' : 'I', __PYX_IS_UNSIGNED(int), 0 };
 static const __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "gnssr4water.gnssrlib"
-extern int __pyx_module_is_main_gnssr4water__gnssrlib;
-int __pyx_module_is_main_gnssr4water__gnssrlib = 0;
+#define __Pyx_MODULE_NAME "gnssr4water.gnssir"
+extern int __pyx_module_is_main_gnssr4water__gnssir;
+int __pyx_module_is_main_gnssr4water__gnssir = 0;
 
-/* Implementation of "gnssr4water.gnssrlib" */
+/* Implementation of "gnssr4water.gnssir" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin___import__;
 static PyObject *__pyx_builtin_enumerate;
@@ -3319,52 +3335,70 @@ static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewsl
 static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys___cinit__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self, PyObject *__pyx_v_sysstr); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static void __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6__dealloc__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self, PyObject *__pyx_v_satno); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, PyObject *__pyx_v_filename); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4__enter__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_10readline(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_12readlines(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_15readnmeas(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_18readcycles(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_2__set__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_2__set__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_4__del__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib_gnss_sys(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib_gnss_cycle(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib_NMEAFile(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self, PyObject *__pyx_v_sysstr); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_4__reduce__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static void __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6system___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9frequency___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9bandwidth___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6length___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self, PyObject *__pyx_v_satno); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4time___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lon___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lat___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_2__init__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self, struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_c_clear, struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_c_obstr, PyObject *__pyx_v_delta_sec); /* proto */
+static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_view___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3lon___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3lat___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12ortho_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12geoid_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, PyObject *__pyx_v_filename); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_2eof(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4__enter__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_6__exit__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_10readline(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_12readlines(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_15readnmeas(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_18readcycles(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof___get__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof_2__set__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name___get__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_2__set__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_4__del__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_gnss_sys(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_gnss_cycle(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_gnss_trans_cycle(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_NMEAFile(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct__readlines(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -3389,22 +3423,24 @@ typedef struct {
   PyObject *__pyx_empty_tuple;
   PyObject *__pyx_empty_bytes;
   PyObject *__pyx_empty_unicode;
-  PyObject *__pyx_type_11gnssr4water_8gnssrlib_gnss_sys;
-  PyObject *__pyx_type_11gnssr4water_8gnssrlib_gnss_cycle;
-  PyObject *__pyx_type_11gnssr4water_8gnssrlib_NMEAFile;
-  PyObject *__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines;
-  PyObject *__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas;
-  PyObject *__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles;
+  PyObject *__pyx_type_11gnssr4water_6gnssir_gnss_sys;
+  PyObject *__pyx_type_11gnssr4water_6gnssir_gnss_cycle;
+  PyObject *__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle;
+  PyObject *__pyx_type_11gnssr4water_6gnssir_NMEAFile;
+  PyObject *__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines;
+  PyObject *__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas;
+  PyObject *__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles;
   PyObject *__pyx_type___pyx_array;
   PyObject *__pyx_type___pyx_MemviewEnum;
   PyObject *__pyx_type___pyx_memoryview;
   PyObject *__pyx_type___pyx_memoryviewslice;
-  PyTypeObject *__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys;
-  PyTypeObject *__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle;
-  PyTypeObject *__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile;
-  PyTypeObject *__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines;
-  PyTypeObject *__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas;
-  PyTypeObject *__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir_gnss_sys;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir_NMEAFile;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas;
+  PyTypeObject *__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles;
   PyTypeObject *__pyx_array_type;
   PyTypeObject *__pyx_MemviewEnum_type;
   PyTypeObject *__pyx_memoryview_type;
@@ -3414,24 +3450,24 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_slice[1];
   PyObject *__pyx_tuple[3];
-  PyObject *__pyx_codeobj_tab[14];
-  PyObject *__pyx_string_tab[207];
+  PyObject *__pyx_codeobj_tab[16];
+  PyObject *__pyx_string_tab[213];
   PyObject *__pyx_number_tab[4];
 /* #### Code section: module_state_contents ### */
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines[8];
-int __pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines;
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct__readlines[8];
+int __pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct__readlines;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas[8];
-int __pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas;
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas[8];
+int __pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles[8];
-int __pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles;
+struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles[8];
+int __pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles;
 #endif
 /* CommonTypesMetaclass.module_state_decls */
 PyTypeObject *__pyx_CommonTypesMetaclassType;
@@ -3519,7 +3555,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_disable __pyx_string_tab[36]
 #define __pyx_kp_u_enable __pyx_string_tab[37]
 #define __pyx_kp_u_gc __pyx_string_tab[38]
-#define __pyx_kp_u_gnssr4water_gnssrlib __pyx_string_tab[39]
+#define __pyx_kp_u_gnssr4water_gnssir __pyx_string_tab[39]
 #define __pyx_kp_u_got __pyx_string_tab[40]
 #define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[41]
 #define __pyx_kp_u_isenabled __pyx_string_tab[42]
@@ -3527,7 +3563,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[44]
 #define __pyx_kp_u_object __pyx_string_tab[45]
 #define __pyx_kp_u_self_name_is_not_None __pyx_string_tab[46]
-#define __pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx __pyx_string_tab[47]
+#define __pyx_kp_u_src_gnssir_gnssir_wrap_pyx __pyx_string_tab[47]
 #define __pyx_kp_u_strided_and_direct __pyx_string_tab[48]
 #define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[49]
 #define __pyx_kp_u_strided_and_indirect __pyx_string_tab[50]
@@ -3572,121 +3608,127 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_asyncio_coroutines __pyx_string_tab[89]
 #define __pyx_n_u_base __pyx_string_tab[90]
 #define __pyx_n_u_c __pyx_string_tab[91]
-#define __pyx_n_u_class __pyx_string_tab[92]
-#define __pyx_n_u_class_getitem __pyx_string_tab[93]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[94]
-#define __pyx_n_u_close __pyx_string_tab[95]
-#define __pyx_n_u_count __pyx_string_tab[96]
-#define __pyx_n_u_cycle __pyx_string_tab[97]
-#define __pyx_n_u_datetime __pyx_string_tab[98]
-#define __pyx_n_u_dict __pyx_string_tab[99]
-#define __pyx_n_u_dtype_is_object __pyx_string_tab[100]
-#define __pyx_n_u_encode __pyx_string_tab[101]
-#define __pyx_n_u_enter __pyx_string_tab[102]
-#define __pyx_n_u_enum __pyx_string_tab[103]
-#define __pyx_n_u_enumerate __pyx_string_tab[104]
-#define __pyx_n_u_eof __pyx_string_tab[105]
-#define __pyx_n_u_err __pyx_string_tab[106]
-#define __pyx_n_u_error __pyx_string_tab[107]
-#define __pyx_n_u_exit __pyx_string_tab[108]
-#define __pyx_n_u_filename __pyx_string_tab[109]
-#define __pyx_n_u_flags __pyx_string_tab[110]
-#define __pyx_n_u_format __pyx_string_tab[111]
-#define __pyx_n_u_fortran __pyx_string_tab[112]
-#define __pyx_n_u_func __pyx_string_tab[113]
-#define __pyx_n_u_get __pyx_string_tab[114]
-#define __pyx_n_u_getstate __pyx_string_tab[115]
-#define __pyx_n_u_gnss_cycle __pyx_string_tab[116]
-#define __pyx_n_u_gnss_cycle___reduce_cython __pyx_string_tab[117]
-#define __pyx_n_u_gnss_cycle___setstate_cython __pyx_string_tab[118]
-#define __pyx_n_u_gnss_sys __pyx_string_tab[119]
-#define __pyx_n_u_gnss_sys___reduce __pyx_string_tab[120]
-#define __pyx_n_u_gnss_sys_rinexcode __pyx_string_tab[121]
-#define __pyx_n_u_gnssr4water_gnssrlib __pyx_string_tab[122]
-#define __pyx_n_u_id __pyx_string_tab[123]
-#define __pyx_n_u_import __pyx_string_tab[124]
-#define __pyx_n_u_index __pyx_string_tab[125]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[126]
-#define __pyx_n_u_items __pyx_string_tab[127]
-#define __pyx_n_u_itemsize __pyx_string_tab[128]
-#define __pyx_n_u_join __pyx_string_tab[129]
-#define __pyx_n_u_line __pyx_string_tab[130]
-#define __pyx_n_u_main __pyx_string_tab[131]
-#define __pyx_n_u_member_names __pyx_string_tab[132]
-#define __pyx_n_u_members __pyx_string_tab[133]
-#define __pyx_n_u_memview __pyx_string_tab[134]
-#define __pyx_n_u_mode __pyx_string_tab[135]
-#define __pyx_n_u_module __pyx_string_tab[136]
-#define __pyx_n_u_module_2 __pyx_string_tab[137]
-#define __pyx_n_u_name __pyx_string_tab[138]
-#define __pyx_n_u_name_2 __pyx_string_tab[139]
-#define __pyx_n_u_ndim __pyx_string_tab[140]
-#define __pyx_n_u_new __pyx_string_tab[141]
-#define __pyx_n_u_next __pyx_string_tab[142]
-#define __pyx_n_u_nmea __pyx_string_tab[143]
-#define __pyx_n_u_nmea_t __pyx_string_tab[144]
-#define __pyx_n_u_nmea_type __pyx_string_tab[145]
-#define __pyx_n_u_np __pyx_string_tab[146]
-#define __pyx_n_u_numpy __pyx_string_tab[147]
-#define __pyx_n_u_obj __pyx_string_tab[148]
-#define __pyx_n_u_pack __pyx_string_tab[149]
-#define __pyx_n_u_pop __pyx_string_tab[150]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[151]
-#define __pyx_n_u_pyx_state __pyx_string_tab[152]
-#define __pyx_n_u_pyx_type __pyx_string_tab[153]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[154]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[155]
-#define __pyx_n_u_qualname __pyx_string_tab[156]
-#define __pyx_n_u_readcycles __pyx_string_tab[157]
-#define __pyx_n_u_readline __pyx_string_tab[158]
-#define __pyx_n_u_readlines __pyx_string_tab[159]
-#define __pyx_n_u_readnmeas __pyx_string_tab[160]
-#define __pyx_n_u_reduce __pyx_string_tab[161]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[162]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[163]
-#define __pyx_n_u_register __pyx_string_tab[164]
-#define __pyx_n_u_rinexcode __pyx_string_tab[165]
-#define __pyx_n_u_satcode __pyx_string_tab[166]
-#define __pyx_n_u_satno __pyx_string_tab[167]
-#define __pyx_n_u_sats_in_view __pyx_string_tab[168]
-#define __pyx_n_u_seconds __pyx_string_tab[169]
-#define __pyx_n_u_self __pyx_string_tab[170]
-#define __pyx_n_u_send __pyx_string_tab[171]
-#define __pyx_n_u_set_name __pyx_string_tab[172]
-#define __pyx_n_u_setdefault __pyx_string_tab[173]
-#define __pyx_n_u_setstate __pyx_string_tab[174]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[175]
-#define __pyx_n_u_shape __pyx_string_tab[176]
-#define __pyx_n_u_size __pyx_string_tab[177]
-#define __pyx_n_u_start __pyx_string_tab[178]
-#define __pyx_n_u_step __pyx_string_tab[179]
-#define __pyx_n_u_stop __pyx_string_tab[180]
-#define __pyx_n_u_struct __pyx_string_tab[181]
-#define __pyx_n_u_sysstr __pyx_string_tab[182]
-#define __pyx_n_u_system __pyx_string_tab[183]
-#define __pyx_n_u_test __pyx_string_tab[184]
-#define __pyx_n_u_throw __pyx_string_tab[185]
-#define __pyx_n_u_timedelta __pyx_string_tab[186]
-#define __pyx_n_u_unpack __pyx_string_tab[187]
-#define __pyx_n_u_update __pyx_string_tab[188]
-#define __pyx_n_u_value __pyx_string_tab[189]
-#define __pyx_n_u_values __pyx_string_tab[190]
-#define __pyx_n_u_x __pyx_string_tab[191]
-#define __pyx_kp_b_T __pyx_string_tab[192]
-#define __pyx_kp_b__6 __pyx_string_tab[193]
-#define __pyx_kp_b__7 __pyx_string_tab[194]
-#define __pyx_kp_b__8 __pyx_string_tab[195]
-#define __pyx_kp_b__9 __pyx_string_tab[196]
-#define __pyx_kp_b_iso88591_A __pyx_string_tab[197]
-#define __pyx_kp_b_iso88591_A_6_7_9AU_q __pyx_string_tab[198]
-#define __pyx_kp_b_iso88591_A_F __pyx_string_tab[199]
-#define __pyx_kp_b_iso88591_A_HA_AQd __pyx_string_tab[200]
-#define __pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q __pyx_string_tab[201]
-#define __pyx_kp_b_iso88591_A_a __pyx_string_tab[202]
-#define __pyx_kp_b_iso88591_A_q __pyx_string_tab[203]
-#define __pyx_kp_b_iso88591_A_t6_A __pyx_string_tab[204]
-#define __pyx_kp_b_iso88591_Q __pyx_string_tab[205]
-#define __pyx_n_b_O __pyx_string_tab[206]
+#define __pyx_n_u_c_clear __pyx_string_tab[92]
+#define __pyx_n_u_c_obstr __pyx_string_tab[93]
+#define __pyx_n_u_class __pyx_string_tab[94]
+#define __pyx_n_u_class_getitem __pyx_string_tab[95]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[96]
+#define __pyx_n_u_close __pyx_string_tab[97]
+#define __pyx_n_u_count __pyx_string_tab[98]
+#define __pyx_n_u_cycle __pyx_string_tab[99]
+#define __pyx_n_u_datetime __pyx_string_tab[100]
+#define __pyx_n_u_delta_sec __pyx_string_tab[101]
+#define __pyx_n_u_dict __pyx_string_tab[102]
+#define __pyx_n_u_dtype_is_object __pyx_string_tab[103]
+#define __pyx_n_u_encode __pyx_string_tab[104]
+#define __pyx_n_u_enter __pyx_string_tab[105]
+#define __pyx_n_u_enum __pyx_string_tab[106]
+#define __pyx_n_u_enumerate __pyx_string_tab[107]
+#define __pyx_n_u_eof __pyx_string_tab[108]
+#define __pyx_n_u_err __pyx_string_tab[109]
+#define __pyx_n_u_error __pyx_string_tab[110]
+#define __pyx_n_u_exit __pyx_string_tab[111]
+#define __pyx_n_u_filename __pyx_string_tab[112]
+#define __pyx_n_u_flags __pyx_string_tab[113]
+#define __pyx_n_u_format __pyx_string_tab[114]
+#define __pyx_n_u_fortran __pyx_string_tab[115]
+#define __pyx_n_u_func __pyx_string_tab[116]
+#define __pyx_n_u_get __pyx_string_tab[117]
+#define __pyx_n_u_getstate __pyx_string_tab[118]
+#define __pyx_n_u_gnss_cycle __pyx_string_tab[119]
+#define __pyx_n_u_gnss_cycle___reduce_cython __pyx_string_tab[120]
+#define __pyx_n_u_gnss_cycle___setstate_cython __pyx_string_tab[121]
+#define __pyx_n_u_gnss_sys __pyx_string_tab[122]
+#define __pyx_n_u_gnss_sys___reduce __pyx_string_tab[123]
+#define __pyx_n_u_gnss_sys_rinexcode __pyx_string_tab[124]
+#define __pyx_n_u_gnss_trans_cycle __pyx_string_tab[125]
+#define __pyx_n_u_gnss_trans_cycle___reduce_cython __pyx_string_tab[126]
+#define __pyx_n_u_gnss_trans_cycle___setstate_cyth __pyx_string_tab[127]
+#define __pyx_n_u_gnssr4water_gnssir __pyx_string_tab[128]
+#define __pyx_n_u_id __pyx_string_tab[129]
+#define __pyx_n_u_import __pyx_string_tab[130]
+#define __pyx_n_u_index __pyx_string_tab[131]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[132]
+#define __pyx_n_u_items __pyx_string_tab[133]
+#define __pyx_n_u_itemsize __pyx_string_tab[134]
+#define __pyx_n_u_join __pyx_string_tab[135]
+#define __pyx_n_u_line __pyx_string_tab[136]
+#define __pyx_n_u_main __pyx_string_tab[137]
+#define __pyx_n_u_member_names __pyx_string_tab[138]
+#define __pyx_n_u_members __pyx_string_tab[139]
+#define __pyx_n_u_memview __pyx_string_tab[140]
+#define __pyx_n_u_mode __pyx_string_tab[141]
+#define __pyx_n_u_module __pyx_string_tab[142]
+#define __pyx_n_u_module_2 __pyx_string_tab[143]
+#define __pyx_n_u_name __pyx_string_tab[144]
+#define __pyx_n_u_name_2 __pyx_string_tab[145]
+#define __pyx_n_u_ndim __pyx_string_tab[146]
+#define __pyx_n_u_new __pyx_string_tab[147]
+#define __pyx_n_u_next __pyx_string_tab[148]
+#define __pyx_n_u_nmea __pyx_string_tab[149]
+#define __pyx_n_u_nmea_t __pyx_string_tab[150]
+#define __pyx_n_u_nmea_type __pyx_string_tab[151]
+#define __pyx_n_u_np __pyx_string_tab[152]
+#define __pyx_n_u_numpy __pyx_string_tab[153]
+#define __pyx_n_u_obj __pyx_string_tab[154]
+#define __pyx_n_u_pack __pyx_string_tab[155]
+#define __pyx_n_u_pop __pyx_string_tab[156]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[157]
+#define __pyx_n_u_pyx_state __pyx_string_tab[158]
+#define __pyx_n_u_pyx_type __pyx_string_tab[159]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[160]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[161]
+#define __pyx_n_u_qualname __pyx_string_tab[162]
+#define __pyx_n_u_readcycles __pyx_string_tab[163]
+#define __pyx_n_u_readline __pyx_string_tab[164]
+#define __pyx_n_u_readlines __pyx_string_tab[165]
+#define __pyx_n_u_readnmeas __pyx_string_tab[166]
+#define __pyx_n_u_reduce __pyx_string_tab[167]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[168]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[169]
+#define __pyx_n_u_register __pyx_string_tab[170]
+#define __pyx_n_u_rinexcode __pyx_string_tab[171]
+#define __pyx_n_u_satcode __pyx_string_tab[172]
+#define __pyx_n_u_satno __pyx_string_tab[173]
+#define __pyx_n_u_sats_in_view __pyx_string_tab[174]
+#define __pyx_n_u_seconds __pyx_string_tab[175]
+#define __pyx_n_u_self __pyx_string_tab[176]
+#define __pyx_n_u_send __pyx_string_tab[177]
+#define __pyx_n_u_set_name __pyx_string_tab[178]
+#define __pyx_n_u_setdefault __pyx_string_tab[179]
+#define __pyx_n_u_setstate __pyx_string_tab[180]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[181]
+#define __pyx_n_u_shape __pyx_string_tab[182]
+#define __pyx_n_u_size __pyx_string_tab[183]
+#define __pyx_n_u_start __pyx_string_tab[184]
+#define __pyx_n_u_step __pyx_string_tab[185]
+#define __pyx_n_u_stop __pyx_string_tab[186]
+#define __pyx_n_u_struct __pyx_string_tab[187]
+#define __pyx_n_u_sysstr __pyx_string_tab[188]
+#define __pyx_n_u_system __pyx_string_tab[189]
+#define __pyx_n_u_test __pyx_string_tab[190]
+#define __pyx_n_u_throw __pyx_string_tab[191]
+#define __pyx_n_u_timedelta __pyx_string_tab[192]
+#define __pyx_n_u_unpack __pyx_string_tab[193]
+#define __pyx_n_u_update __pyx_string_tab[194]
+#define __pyx_n_u_value __pyx_string_tab[195]
+#define __pyx_n_u_values __pyx_string_tab[196]
+#define __pyx_n_u_x __pyx_string_tab[197]
+#define __pyx_kp_b_T __pyx_string_tab[198]
+#define __pyx_kp_b__6 __pyx_string_tab[199]
+#define __pyx_kp_b__7 __pyx_string_tab[200]
+#define __pyx_kp_b__8 __pyx_string_tab[201]
+#define __pyx_kp_b__9 __pyx_string_tab[202]
+#define __pyx_kp_b_iso88591_A __pyx_string_tab[203]
+#define __pyx_kp_b_iso88591_A_6_7_9AU_q __pyx_string_tab[204]
+#define __pyx_kp_b_iso88591_A_F __pyx_string_tab[205]
+#define __pyx_kp_b_iso88591_A_HA_AQd __pyx_string_tab[206]
+#define __pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q __pyx_string_tab[207]
+#define __pyx_kp_b_iso88591_A_a __pyx_string_tab[208]
+#define __pyx_kp_b_iso88591_A_q __pyx_string_tab[209]
+#define __pyx_kp_b_iso88591_A_t6_A __pyx_string_tab[210]
+#define __pyx_kp_b_iso88591_Q __pyx_string_tab[211]
+#define __pyx_n_b_O __pyx_string_tab[212]
 #define __pyx_int_0 __pyx_number_tab[0]
 #define __pyx_int_neg_1 __pyx_number_tab[1]
 #define __pyx_int_1 __pyx_number_tab[2]
@@ -3705,18 +3747,20 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys);
-  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_8gnssrlib_gnss_sys);
-  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle);
-  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_8gnssrlib_gnss_cycle);
-  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile);
-  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_8gnssrlib_NMEAFile);
-  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines);
-  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines);
-  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas);
-  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas);
-  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles);
-  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir_gnss_sys);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir_gnss_cycle);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir_NMEAFile);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles);
+  Py_CLEAR(clear_module_state->__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles);
   Py_CLEAR(clear_module_state->__pyx_array_type);
   Py_CLEAR(clear_module_state->__pyx_type___pyx_array);
   Py_CLEAR(clear_module_state->__pyx_MemviewEnum_type);
@@ -3727,8 +3771,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<3; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<14; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<207; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<16; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<213; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<4; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -3755,18 +3799,20 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_tuple);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
-  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys);
-  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_8gnssrlib_gnss_sys);
-  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle);
-  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_8gnssrlib_gnss_cycle);
-  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile);
-  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_8gnssrlib_NMEAFile);
-  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines);
-  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines);
-  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas);
-  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas);
-  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles);
-  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir_gnss_sys);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir_gnss_cycle);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir_NMEAFile);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles);
+  Py_VISIT(traverse_module_state->__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles);
   Py_VISIT(traverse_module_state->__pyx_array_type);
   Py_VISIT(traverse_module_state->__pyx_type___pyx_array);
   Py_VISIT(traverse_module_state->__pyx_MemviewEnum_type);
@@ -3777,8 +3823,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<3; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
-  for (int i=0; i<14; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<207; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<16; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<213; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<4; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -3796,14 +3842,235 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
+/* "carray.to_py":113
+ * 
+ * 
+ * @cname("__Pyx_carray_to_py_float")             # <<<<<<<<<<<<<<
+ * cdef inline list __Pyx_carray_to_py_float(base_type *v, Py_ssize_t length):
+ *     cdef Py_ssize_t i
+*/
+
+static CYTHON_INLINE PyObject *__Pyx_carray_to_py_float(float *__pyx_v_v, Py_ssize_t __pyx_v_length) {
+  Py_ssize_t __pyx_v_i;
+  PyObject *__pyx_v_value = 0;
+  PyObject *__pyx_v_l = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__Pyx_carray_to_py_float", 0);
+
+  /* "carray.to_py":117
+ *     cdef Py_ssize_t i
+ *     cdef object value
+ *     l = PyList_New(length)             # <<<<<<<<<<<<<<
+ *     for i in range(length):
+ *         value = v[<size_t> i]
+*/
+  __pyx_t_1 = PyList_New(__pyx_v_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_l = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "carray.to_py":118
+ *     cdef object value
+ *     l = PyList_New(length)
+ *     for i in range(length):             # <<<<<<<<<<<<<<
+ *         value = v[<size_t> i]
+ *         Py_INCREF(value)
+*/
+  __pyx_t_2 = __pyx_v_length;
+  __pyx_t_3 = __pyx_t_2;
+  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_i = __pyx_t_4;
+
+    /* "carray.to_py":119
+ *     l = PyList_New(length)
+ *     for i in range(length):
+ *         value = v[<size_t> i]             # <<<<<<<<<<<<<<
+ *         Py_INCREF(value)
+ *         __Pyx_PyList_SET_ITEM(l, i, value)
+*/
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_v[((size_t)__pyx_v_i)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 119, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_1);
+    __pyx_t_1 = 0;
+
+    /* "carray.to_py":120
+ *     for i in range(length):
+ *         value = v[<size_t> i]
+ *         Py_INCREF(value)             # <<<<<<<<<<<<<<
+ *         __Pyx_PyList_SET_ITEM(l, i, value)
+ *     return l
+*/
+    Py_INCREF(__pyx_v_value);
+
+    /* "carray.to_py":121
+ *         value = v[<size_t> i]
+ *         Py_INCREF(value)
+ *         __Pyx_PyList_SET_ITEM(l, i, value)             # <<<<<<<<<<<<<<
+ *     return l
+ * 
+*/
+    __pyx_t_5 = __Pyx_PyList_SET_ITEM(__pyx_v_l, __pyx_v_i, __pyx_v_value); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 121, __pyx_L1_error)
+  }
+
+  /* "carray.to_py":122
+ *         Py_INCREF(value)
+ *         __Pyx_PyList_SET_ITEM(l, i, value)
+ *     return l             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_l);
+  __pyx_r = __pyx_v_l;
+  goto __pyx_L0;
+
+  /* "carray.to_py":113
+ * 
+ * 
+ * @cname("__Pyx_carray_to_py_float")             # <<<<<<<<<<<<<<
+ * cdef inline list __Pyx_carray_to_py_float(base_type *v, Py_ssize_t length):
+ *     cdef Py_ssize_t i
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("carray.to_py.__Pyx_carray_to_py_float", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_value);
+  __Pyx_XDECREF(__pyx_v_l);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "carray.to_py":125
+ * 
+ * 
+ * @cname("__Pyx_carray_to_tuple_float")             # <<<<<<<<<<<<<<
+ * cdef inline tuple __Pyx_carray_to_tuple_float(base_type *v, Py_ssize_t length):
+ *     cdef Py_ssize_t i
+*/
+
+static CYTHON_INLINE PyObject *__Pyx_carray_to_tuple_float(float *__pyx_v_v, Py_ssize_t __pyx_v_length) {
+  Py_ssize_t __pyx_v_i;
+  PyObject *__pyx_v_value = 0;
+  PyObject *__pyx_v_t = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_t_5;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__Pyx_carray_to_tuple_float", 0);
+
+  /* "carray.to_py":129
+ *     cdef Py_ssize_t i
+ *     cdef object value
+ *     t = PyTuple_New(length)             # <<<<<<<<<<<<<<
+ *     for i in range(length):
+ *         value = v[<size_t> i]
+*/
+  __pyx_t_1 = PyTuple_New(__pyx_v_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_t = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "carray.to_py":130
+ *     cdef object value
+ *     t = PyTuple_New(length)
+ *     for i in range(length):             # <<<<<<<<<<<<<<
+ *         value = v[<size_t> i]
+ *         Py_INCREF(value)
+*/
+  __pyx_t_2 = __pyx_v_length;
+  __pyx_t_3 = __pyx_t_2;
+  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_i = __pyx_t_4;
+
+    /* "carray.to_py":131
+ *     t = PyTuple_New(length)
+ *     for i in range(length):
+ *         value = v[<size_t> i]             # <<<<<<<<<<<<<<
+ *         Py_INCREF(value)
+ *         __Pyx_PyTuple_SET_ITEM(t, i, value)
+*/
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_v[((size_t)__pyx_v_i)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 131, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_1);
+    __pyx_t_1 = 0;
+
+    /* "carray.to_py":132
+ *     for i in range(length):
+ *         value = v[<size_t> i]
+ *         Py_INCREF(value)             # <<<<<<<<<<<<<<
+ *         __Pyx_PyTuple_SET_ITEM(t, i, value)
+ *     return t
+*/
+    Py_INCREF(__pyx_v_value);
+
+    /* "carray.to_py":133
+ *         value = v[<size_t> i]
+ *         Py_INCREF(value)
+ *         __Pyx_PyTuple_SET_ITEM(t, i, value)             # <<<<<<<<<<<<<<
+ *     return t
+*/
+    __pyx_t_5 = __Pyx_PyTuple_SET_ITEM(__pyx_v_t, __pyx_v_i, __pyx_v_value); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(1, 133, __pyx_L1_error)
+  }
+
+  /* "carray.to_py":134
+ *         Py_INCREF(value)
+ *         __Pyx_PyTuple_SET_ITEM(t, i, value)
+ *     return t             # <<<<<<<<<<<<<<
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_t);
+  __pyx_r = __pyx_v_t;
+  goto __pyx_L0;
+
+  /* "carray.to_py":125
+ * 
+ * 
+ * @cname("__Pyx_carray_to_tuple_float")             # <<<<<<<<<<<<<<
+ * cdef inline tuple __Pyx_carray_to_tuple_float(base_type *v, Py_ssize_t length):
+ *     cdef Py_ssize_t i
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("carray.to_py.__Pyx_carray_to_tuple_float", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_value);
+  __Pyx_XDECREF(__pyx_v_t);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "EnumTypeToPy":2
  * 
- * @cname("__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
- * cdef __Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(nmea_type c_val):
+ * @cname("__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
+ * cdef __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(nmea_type c_val):
  *     cdef object __pyx_enum
 */
 
-static PyObject *__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(enum nmea_type __pyx_v_c_val) {
+static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(enum nmea_type __pyx_v_c_val) {
   PyObject *__pyx_v___pyx_enum = 0;
   int __pyx_v_underlying_c_val;
   PyObject *__pyx_r = NULL;
@@ -3817,10 +4084,10 @@ static PyObject *__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py", 0);
+  __Pyx_RefNannySetupContext("__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py", 0);
 
   /* "EnumTypeToPy":5
- * cdef __Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(nmea_type c_val):
+ * cdef __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(nmea_type c_val):
  *     cdef object __pyx_enum
  *     __pyx_enum = nmea_type             # <<<<<<<<<<<<<<
  * 
@@ -4176,8 +4443,8 @@ static PyObject *__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(
 
   /* "EnumTypeToPy":2
  * 
- * @cname("__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
- * cdef __Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(nmea_type c_val):
+ * @cname("__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
+ * cdef __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(nmea_type c_val):
  *     cdef object __pyx_enum
 */
 
@@ -4187,7 +4454,7 @@ static PyObject *__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("EnumTypeToPy.__Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("EnumTypeToPy.__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v___pyx_enum);
@@ -17819,7 +18086,7 @@ static PyObject *__pyx_format_from_typeinfo(__Pyx_TypeInfo const *__pyx_v_type) 
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":97
+/* "src/gnssir/gnssir_wrap.pyx":119
  * cdef class gnss_sys:
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -17828,8 +18095,8 @@ static PyObject *__pyx_format_from_typeinfo(__Pyx_TypeInfo const *__pyx_v_type) 
 */
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
@@ -17845,17 +18112,17 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_1__cinit__(PyObject *__pyx
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return -1;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__cinit__", __pyx_kwds); return -1;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys___cinit__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys___cinit__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys___cinit__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   int __pyx_r;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":98
+  /* "src/gnssir/gnssir_wrap.pyx":120
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):
  *         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))             # <<<<<<<<<<<<<<
@@ -17864,7 +18131,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys___cinit__(struct __pyx_obj
 */
   __pyx_v_self->system_ptr = ((struct gnss_system *)malloc((sizeof(struct gnss_system))));
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":97
+  /* "src/gnssir/gnssir_wrap.pyx":119
  * cdef class gnss_sys:
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -17877,7 +18144,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys___cinit__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":100
+/* "src/gnssir/gnssir_wrap.pyx":122
  *         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))
  * 
  *     def __init__(self,sysstr='UNKNOWN'):             # <<<<<<<<<<<<<<
@@ -17886,8 +18153,8 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys___cinit__(struct __pyx_obj
 */
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_sysstr = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -17907,24 +18174,24 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__(PyObject *__pyx_
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_sysstr,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 100, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 122, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 100, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 122, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 100, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 122, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_n_u_UNKNOWN));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 100, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 122, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -17935,18 +18202,18 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__(PyObject *__pyx_
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 100, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 122, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self), __pyx_v_sysstr);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self), __pyx_v_sysstr);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -17956,24 +18223,24 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__(PyObject *__pyx_
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self, PyObject *__pyx_v_sysstr) {
+static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self, PyObject *__pyx_v_sysstr) {
   int __pyx_r;
   int __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":101
+  /* "src/gnssir/gnssir_wrap.pyx":123
  * 
  *     def __init__(self,sysstr='UNKNOWN'):
  *         if sysstr == 'GPSL1':             # <<<<<<<<<<<<<<
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':
 */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 123, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":102
+    /* "src/gnssir/gnssir_wrap.pyx":124
  *     def __init__(self,sysstr='UNKNOWN'):
  *         if sysstr == 'GPSL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)             # <<<<<<<<<<<<<<
@@ -17982,7 +18249,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
 */
     copy_GNSS_as(__pyx_v_self->system_ptr, (&gnss_gpsl1));
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":101
+    /* "src/gnssir/gnssir_wrap.pyx":123
  * 
  *     def __init__(self,sysstr='UNKNOWN'):
  *         if sysstr == 'GPSL1':             # <<<<<<<<<<<<<<
@@ -17992,17 +18259,17 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":103
+  /* "src/gnssir/gnssir_wrap.pyx":125
  *         if sysstr == 'GPSL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':             # <<<<<<<<<<<<<<
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':
 */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL2, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL2, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 125, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":104
+    /* "src/gnssir/gnssir_wrap.pyx":126
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)             # <<<<<<<<<<<<<<
@@ -18011,7 +18278,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
 */
     copy_GNSS_as(__pyx_v_self->system_ptr, (&gnss_gpsl2));
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":103
+    /* "src/gnssir/gnssir_wrap.pyx":125
  *         if sysstr == 'GPSL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':             # <<<<<<<<<<<<<<
@@ -18021,17 +18288,17 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":105
+  /* "src/gnssir/gnssir_wrap.pyx":127
  *         elif sysstr == 'GPSL2':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':             # <<<<<<<<<<<<<<
  *            copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)
  *         else:
 */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":106
+    /* "src/gnssir/gnssir_wrap.pyx":128
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)             # <<<<<<<<<<<<<<
@@ -18040,7 +18307,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
 */
     copy_GNSS_as(__pyx_v_self->system_ptr, (&gnss_glonassiil1));
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":105
+    /* "src/gnssir/gnssir_wrap.pyx":127
  *         elif sysstr == 'GPSL2':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':             # <<<<<<<<<<<<<<
@@ -18050,7 +18317,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":108
+  /* "src/gnssir/gnssir_wrap.pyx":130
  *            copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)
  *         else:
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)             # <<<<<<<<<<<<<<
@@ -18062,7 +18329,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
   }
   __pyx_L3:;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":100
+  /* "src/gnssir/gnssir_wrap.pyx":122
  *         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))
  * 
  *     def __init__(self,sysstr='UNKNOWN'):             # <<<<<<<<<<<<<<
@@ -18074,13 +18341,13 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":110
+/* "src/gnssir/gnssir_wrap.pyx":132
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -18089,15 +18356,15 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_2__init__(struct __pyx_obj
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_5__reduce__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_5__reduce__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8gnss_sys_5__reduce__ = {"__reduce__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_5__reduce__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_5__reduce__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_5__reduce__ = {"__reduce__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_5__reduce__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_5__reduce__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -18123,14 +18390,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_4__reduce__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_4__reduce__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -18140,7 +18407,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__reduce__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":111
+  /* "src/gnssir/gnssir_wrap.pyx":133
  * 
  *     def __reduce__(self):
  *         return (gnss_sys,(self.system,))             # <<<<<<<<<<<<<<
@@ -18148,26 +18415,26 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct _
  *     @staticmethod
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_system); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_system); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 133, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys);
-  __Pyx_GIVEREF((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys)) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
+  __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
+  __Pyx_GIVEREF((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)) != (0)) __PYX_ERR(0, 133, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 133, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":110
+  /* "src/gnssir/gnssir_wrap.pyx":132
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -18179,7 +18446,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct _
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.__reduce__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.__reduce__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18187,7 +18454,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct _
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":113
+/* "src/gnssir/gnssir_wrap.pyx":135
  *         return (gnss_sys,(self.system,))
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -18195,8 +18462,8 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_4__reduce__(struct _
  *         cdef gnss_sys system=gnss_sys()
 */
 
-static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_system __pyx_v_sys) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_system = 0;
+static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_system __pyx_v_sys) {
+  struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_system = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -18207,7 +18474,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":115
+  /* "src/gnssir/gnssir_wrap.pyx":137
  *     @staticmethod
  *     cdef from_(_gnss_system sys):
  *         cdef gnss_sys system=gnss_sys()             # <<<<<<<<<<<<<<
@@ -18218,15 +18485,15 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
   __pyx_t_3 = 1;
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
-    __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
-  __pyx_v_system = ((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_t_1);
+  __pyx_v_system = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":116
+  /* "src/gnssir/gnssir_wrap.pyx":138
  *     cdef from_(_gnss_system sys):
  *         cdef gnss_sys system=gnss_sys()
  *         copy_GNSS_as(system.system_ptr,&sys)             # <<<<<<<<<<<<<<
@@ -18235,7 +18502,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
 */
   copy_GNSS_as(__pyx_v_system->system_ptr, (&__pyx_v_sys));
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":117
+  /* "src/gnssir/gnssir_wrap.pyx":139
  *         cdef gnss_sys system=gnss_sys()
  *         copy_GNSS_as(system.system_ptr,&sys)
  *         return system             # <<<<<<<<<<<<<<
@@ -18247,7 +18514,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
   __pyx_r = ((PyObject *)__pyx_v_system);
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":113
+  /* "src/gnssir/gnssir_wrap.pyx":135
  *         return (gnss_sys,(self.system,))
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -18259,7 +18526,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.from_", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.from_", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_system);
@@ -18268,7 +18535,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":119
+/* "src/gnssir/gnssir_wrap.pyx":141
  *         return system
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18277,21 +18544,21 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(struct gnss_sys
 */
 
 /* Python wrapper */
-static void __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_7__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_7__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_7__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_7__dealloc__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6__dealloc__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6__dealloc__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6__dealloc__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static void __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":120
+  /* "src/gnssir/gnssir_wrap.pyx":142
  * 
  *     def __dealloc__(self):
  *         free(self.system_ptr)             # <<<<<<<<<<<<<<
@@ -18300,7 +18567,7 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6__dealloc__(struct __pyx
 */
   free(__pyx_v_self->system_ptr);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":119
+  /* "src/gnssir/gnssir_wrap.pyx":141
  *         return system
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18311,7 +18578,7 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6__dealloc__(struct __pyx
   /* function exit code */
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":122
+/* "src/gnssir/gnssir_wrap.pyx":144
  *         free(self.system_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18320,21 +18587,21 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6__dealloc__(struct __pyx
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_6system_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_6system_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_6system_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_6system_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6system___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6system___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   char *__pyx_t_1;
@@ -18345,7 +18612,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":124
+  /* "src/gnssir/gnssir_wrap.pyx":146
  *     @property
  *     def system(self):
  *         return deref(self.system_ptr).system.decode('utf-8')             # <<<<<<<<<<<<<<
@@ -18354,15 +18621,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(stru
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = (*__pyx_v_self->system_ptr).system;
-  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 124, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":122
+  /* "src/gnssir/gnssir_wrap.pyx":144
  *         free(self.system_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18373,7 +18640,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(stru
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.system.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.system.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18381,7 +18648,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":126
+/* "src/gnssir/gnssir_wrap.pyx":148
  *         return deref(self.system_ptr).system.decode('utf-8')
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18390,21 +18657,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6system___get__(stru
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9frequency_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9frequency_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9frequency_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9frequency_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9frequency___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9frequency___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -18413,7 +18680,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":128
+  /* "src/gnssir/gnssir_wrap.pyx":150
  *     @property
  *     def frequency(self):
  *         return deref(self.system_ptr).frequency             # <<<<<<<<<<<<<<
@@ -18421,13 +18688,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(s
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).frequency); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).frequency); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":126
+  /* "src/gnssir/gnssir_wrap.pyx":148
  *         return deref(self.system_ptr).system.decode('utf-8')
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18438,7 +18705,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.frequency.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.frequency.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18446,7 +18713,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(s
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":130
+/* "src/gnssir/gnssir_wrap.pyx":152
  *         return deref(self.system_ptr).frequency
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18455,21 +18722,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9frequency___get__(s
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9bandwidth_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9bandwidth_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9bandwidth___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9bandwidth___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -18478,7 +18745,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":132
+  /* "src/gnssir/gnssir_wrap.pyx":154
  *     @property
  *     def bandwidth(self):
  *         return deref(self.system_ptr).bandwidth             # <<<<<<<<<<<<<<
@@ -18486,13 +18753,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(s
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).bandwidth); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).bandwidth); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":130
+  /* "src/gnssir/gnssir_wrap.pyx":152
  *         return deref(self.system_ptr).frequency
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18503,7 +18770,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.bandwidth.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.bandwidth.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18511,7 +18778,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(s
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":134
+/* "src/gnssir/gnssir_wrap.pyx":156
  *         return deref(self.system_ptr).bandwidth
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18520,21 +18787,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth___get__(s
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_6length_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_6length_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_6length_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_6length_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6length___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6length___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -18543,7 +18810,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":136
+  /* "src/gnssir/gnssir_wrap.pyx":158
  *     @property
  *     def length(self):
  *         return deref(self.system_ptr).length             # <<<<<<<<<<<<<<
@@ -18551,13 +18818,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(stru
  *     def rinexcode(self,satno):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":134
+  /* "src/gnssir/gnssir_wrap.pyx":156
  *         return deref(self.system_ptr).bandwidth
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18568,7 +18835,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(stru
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.length.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.length.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -18576,7 +18843,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":138
+/* "src/gnssir/gnssir_wrap.pyx":160
  *         return deref(self.system_ptr).length
  * 
  *     def rinexcode(self,satno):             # <<<<<<<<<<<<<<
@@ -18585,15 +18852,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_6length___get__(stru
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9rinexcode(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9rinexcode(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8gnss_sys_9rinexcode = {"rinexcode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9rinexcode, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9rinexcode(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_9rinexcode = {"rinexcode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9rinexcode, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9rinexcode(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -18623,43 +18890,43 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_satno,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 138, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 160, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 160, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "rinexcode", 0) < (0)) __PYX_ERR(0, 138, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "rinexcode", 0) < (0)) __PYX_ERR(0, 160, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, i); __PYX_ERR(0, 138, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, i); __PYX_ERR(0, 160, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 138, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 160, __pyx_L3_error)
     }
     __pyx_v_satno = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 138, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 160, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.rinexcode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.rinexcode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)__pyx_v_self), __pyx_v_satno);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_v_self), __pyx_v_satno);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -18669,7 +18936,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *__pyx_v_self, PyObject *__pyx_v_satno) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self, PyObject *__pyx_v_satno) {
   PyObject *__pyx_v_satcode = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -18683,7 +18950,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("rinexcode", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":139
+  /* "src/gnssir/gnssir_wrap.pyx":161
  * 
  *     def rinexcode(self,satno):
  *         satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"             # <<<<<<<<<<<<<<
@@ -18691,19 +18958,19 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __
  * 
 */
   __pyx_t_1 = (*__pyx_v_self->system_ptr).rinexcode;
-  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 139, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Format(__pyx_v_satno, __pyx_mstate_global->__pyx_kp_u_02d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Format(__pyx_v_satno, __pyx_mstate_global->__pyx_kp_u_02d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_satcode = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":140
+  /* "src/gnssir/gnssir_wrap.pyx":162
  *     def rinexcode(self,satno):
  *         satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"
  *         return satcode             # <<<<<<<<<<<<<<
@@ -18715,7 +18982,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __
   __pyx_r = __pyx_v_satcode;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":138
+  /* "src/gnssir/gnssir_wrap.pyx":160
  *         return deref(self.system_ptr).length
  * 
  *     def rinexcode(self,satno):             # <<<<<<<<<<<<<<
@@ -18728,7 +18995,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_sys.rinexcode", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_sys.rinexcode", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_satcode);
@@ -18737,7 +19004,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":149
+/* "src/gnssir/gnssir_wrap.pyx":171
  * cdef class gnss_cycle:
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -18746,8 +19013,8 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8gnss_sys_8rinexcode(struct __
 */
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
@@ -18763,17 +19030,17 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_1__cinit__(PyObject *__
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return -1;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__cinit__", __pyx_kwds); return -1;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static int __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   int __pyx_r;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":150
+  /* "src/gnssir/gnssir_wrap.pyx":172
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):
  *         self.cycle_ptr=<_nmea_cycle*>malloc(sizeof(_nmea_cycle))             # <<<<<<<<<<<<<<
@@ -18782,7 +19049,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(struct __pyx_
 */
   __pyx_v_self->cycle_ptr = ((struct nmea_cycle *)malloc((sizeof(struct nmea_cycle))));
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":151
+  /* "src/gnssir/gnssir_wrap.pyx":173
  *     def __cinit__(self):
  *         self.cycle_ptr=<_nmea_cycle*>malloc(sizeof(_nmea_cycle))
  *         init_nmea_cycle(self.cycle_ptr)             # <<<<<<<<<<<<<<
@@ -18791,7 +19058,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(struct __pyx_
 */
   (void)(init_nmea_cycle(__pyx_v_self->cycle_ptr));
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":149
+  /* "src/gnssir/gnssir_wrap.pyx":171
  * cdef class gnss_cycle:
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -18804,7 +19071,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(struct __pyx_
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":153
+/* "src/gnssir/gnssir_wrap.pyx":175
  *         init_nmea_cycle(self.cycle_ptr)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18813,22 +19080,22 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle___cinit__(struct __pyx_
 */
 
 /* Python wrapper */
-static void __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3__dealloc__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":154
+  /* "src/gnssir/gnssir_wrap.pyx":176
  * 
  *     def __dealloc__(self):
  *         if self.cycle_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -18838,7 +19105,7 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __
   __pyx_t_1 = (__pyx_v_self->cycle_ptr != NULL);
   if (__pyx_t_1) {
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":155
+    /* "src/gnssir/gnssir_wrap.pyx":177
  *     def __dealloc__(self):
  *         if self.cycle_ptr is not NULL:
  *             free(self.cycle_ptr)             # <<<<<<<<<<<<<<
@@ -18847,7 +19114,7 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __
 */
     free(__pyx_v_self->cycle_ptr);
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":154
+    /* "src/gnssir/gnssir_wrap.pyx":176
  * 
  *     def __dealloc__(self):
  *         if self.cycle_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -18856,7 +19123,7 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __
 */
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":153
+  /* "src/gnssir/gnssir_wrap.pyx":175
  *         init_nmea_cycle(self.cycle_ptr)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18867,7 +19134,7 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __
   /* function exit code */
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":157
+/* "src/gnssir/gnssir_wrap.pyx":179
  *             free(self.cycle_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -18876,21 +19143,21 @@ static void __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_2__dealloc__(struct __
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_4time_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_4time_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_4time_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_4time_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4time___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4time___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_v_tm = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -18908,7 +19175,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":159
+  /* "src/gnssir/gnssir_wrap.pyx":181
  *     @property
  *     def time(self):
  *         tm=datetime(deref(self.cycle_ptr).year,deref(self.cycle_ptr).month,deref(self.cycle_ptr).day,deref(self.cycle_ptr).hr,deref(self.cycle_ptr).min)+timedelta(seconds=deref(self.cycle_ptr).sec)             # <<<<<<<<<<<<<<
@@ -18916,17 +19183,17 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_datetime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_datetime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).year); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).month); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).month); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).day); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).day); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).hr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).hr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).min); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).min); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_9 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -18950,13 +19217,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_t_8 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_timedelta); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_timedelta); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).sec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).sec); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_9 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -18972,25 +19239,25 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_8, NULL};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_seconds, __pyx_t_6, __pyx_t_5, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 159, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_seconds, __pyx_t_6, __pyx_t_5, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 181, __pyx_L1_error)
     __pyx_t_3 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (1-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  __pyx_t_7 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_7 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_tm = __pyx_t_7;
   __pyx_t_7 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":160
+  /* "src/gnssir/gnssir_wrap.pyx":182
  *     def time(self):
  *         tm=datetime(deref(self.cycle_ptr).year,deref(self.cycle_ptr).month,deref(self.cycle_ptr).day,deref(self.cycle_ptr).hr,deref(self.cycle_ptr).min)+timedelta(seconds=deref(self.cycle_ptr).sec)
  *         return tm             # <<<<<<<<<<<<<<
@@ -19002,7 +19269,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
   __pyx_r = __pyx_v_tm;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":157
+  /* "src/gnssir/gnssir_wrap.pyx":179
  *             free(self.cycle_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19020,7 +19287,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.time.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.time.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_tm);
@@ -19029,7 +19296,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":162
+/* "src/gnssir/gnssir_wrap.pyx":184
  *         return tm
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19038,21 +19305,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4time___get__(str
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -19061,7 +19328,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":164
+  /* "src/gnssir/gnssir_wrap.pyx":186
  *     @property
  *     def sats_in_view(self):
  *         return deref(self.cycle_ptr).sats_in_view             # <<<<<<<<<<<<<<
@@ -19069,13 +19336,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":162
+  /* "src/gnssir/gnssir_wrap.pyx":184
  *         return tm
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19086,7 +19353,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.sats_in_view.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.sats_in_view.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19094,7 +19361,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":166
+/* "src/gnssir/gnssir_wrap.pyx":188
  *         return deref(self.cycle_ptr).sats_in_view
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19103,21 +19370,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view___
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3lon_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3lon_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3lon_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3lon_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lon___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lon___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -19126,7 +19393,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":168
+  /* "src/gnssir/gnssir_wrap.pyx":190
  *     @property
  *     def lon(self):
  *         return deref(self.cycle_ptr).lon             # <<<<<<<<<<<<<<
@@ -19134,13 +19401,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(stru
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).lon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).lon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":166
+  /* "src/gnssir/gnssir_wrap.pyx":188
  *         return deref(self.cycle_ptr).sats_in_view
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19151,7 +19418,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(stru
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.lon.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.lon.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19159,7 +19426,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":170
+/* "src/gnssir/gnssir_wrap.pyx":192
  *         return deref(self.cycle_ptr).lon
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19168,21 +19435,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lon___get__(stru
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3lat_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3lat_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3lat_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3lat_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lat___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lat___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -19191,7 +19458,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":172
+  /* "src/gnssir/gnssir_wrap.pyx":194
  *     @property
  *     def lat(self):
  *         return deref(self.cycle_ptr).lat             # <<<<<<<<<<<<<<
@@ -19199,13 +19466,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(stru
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).lat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).lat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":170
+  /* "src/gnssir/gnssir_wrap.pyx":192
  *         return deref(self.cycle_ptr).lon
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19216,7 +19483,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(stru
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.lat.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.lat.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19224,7 +19491,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":174
+/* "src/gnssir/gnssir_wrap.pyx":196
  *         return deref(self.cycle_ptr).lat
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19233,21 +19500,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3lat___get__(stru
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -19256,7 +19523,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":176
+  /* "src/gnssir/gnssir_wrap.pyx":198
  *     @property
  *     def ortho_height(self):
  *         return deref(self.cycle_ptr).ortho_height             # <<<<<<<<<<<<<<
@@ -19264,13 +19531,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":174
+  /* "src/gnssir/gnssir_wrap.pyx":196
  *         return deref(self.cycle_ptr).lat
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19281,7 +19548,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.ortho_height.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.ortho_height.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19289,7 +19556,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":178
+/* "src/gnssir/gnssir_wrap.pyx":200
  *         return deref(self.cycle_ptr).ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19298,21 +19565,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height___
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -19321,7 +19588,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":180
+  /* "src/gnssir/gnssir_wrap.pyx":202
  *     @property
  *     def geoid_height(self):
  *         return deref(self.cycle_ptr).ortho_height             # <<<<<<<<<<<<<<
@@ -19329,13 +19596,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":178
+  /* "src/gnssir/gnssir_wrap.pyx":200
  *         return deref(self.cycle_ptr).ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19346,7 +19613,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.geoid_height.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.geoid_height.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19354,7 +19621,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":182
+/* "src/gnssir/gnssir_wrap.pyx":204
  *         return deref(self.cycle_ptr).ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19363,21 +19630,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height___
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_6system_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_6system_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_6system_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_6system_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   int __pyx_7genexpr__pyx_v_i;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19395,7 +19662,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":184
+  /* "src/gnssir/gnssir_wrap.pyx":206
  *     @property
  *     def system(self):
  *         return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)])             # <<<<<<<<<<<<<<
@@ -19404,21 +19671,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(s
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   { /* enter inner scope */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = (*__pyx_v_self->cycle_ptr).sats_in_view;
     __pyx_t_6 = __pyx_t_5;
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_7genexpr__pyx_v_i = __pyx_t_7;
-      __pyx_t_8 = __pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(((*__pyx_v_self->cycle_ptr).system[__pyx_7genexpr__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 184, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(((*__pyx_v_self->cycle_ptr).system[__pyx_7genexpr__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 206, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 184, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 206, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   } /* exit inner scope */
@@ -19440,14 +19707,14 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(s
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":182
+  /* "src/gnssir/gnssir_wrap.pyx":204
  *         return deref(self.cycle_ptr).ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19462,7 +19729,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(s
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.system.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.system.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -19470,7 +19737,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(s
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":186
+/* "src/gnssir/gnssir_wrap.pyx":208
  *         return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19479,21 +19746,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6system___get__(s
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3prn_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3prn_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3prn_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3prn_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   struct __pyx_array_obj *__pyx_v_prn = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19510,7 +19777,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":188
+  /* "src/gnssir/gnssir_wrap.pyx":210
  *     @property
  *     def prn(self):
  *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).prn[0])             # <<<<<<<<<<<<<<
@@ -19520,25 +19787,25 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).prn[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 188, __pyx_L1_error)
+    __PYX_ERR(0, 210, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_prn = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":190
+  /* "src/gnssir/gnssir_wrap.pyx":212
  *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).prn[0])
  *         # cdef int [:] prn=deref(self.cycle_ptr).prn
  *         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -19547,12 +19814,12 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -19572,14 +19839,14 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":186
+  /* "src/gnssir/gnssir_wrap.pyx":208
  *         return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19594,7 +19861,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.prn.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.prn.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_prn);
@@ -19603,7 +19870,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":192
+/* "src/gnssir/gnssir_wrap.pyx":214
  *         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19612,21 +19879,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_3prn___get__(stru
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7azimuth_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7azimuth_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   struct __pyx_array_obj *__pyx_v_azimuth = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19643,7 +19910,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":194
+  /* "src/gnssir/gnssir_wrap.pyx":216
  *     @property
  *     def azimuth(self):
  *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).azimuth[0])             # <<<<<<<<<<<<<<
@@ -19653,25 +19920,25 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).azimuth[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 194, __pyx_L1_error)
+    __PYX_ERR(0, 216, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 216, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_azimuth = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":196
+  /* "src/gnssir/gnssir_wrap.pyx":218
  *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).azimuth[0])
  *         # cdef float [:] az=deref(self.cycle_ptr).azimuth
  *         return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -19680,12 +19947,12 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -19705,14 +19972,14 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":192
+  /* "src/gnssir/gnssir_wrap.pyx":214
  *         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19727,7 +19994,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.azimuth.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.azimuth.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_azimuth);
@@ -19736,7 +20003,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":198
+/* "src/gnssir/gnssir_wrap.pyx":220
  *         return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19745,21 +20012,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth___get__(
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_9elevation_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_9elevation_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   struct __pyx_array_obj *__pyx_v_elev = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19776,7 +20043,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":200
+  /* "src/gnssir/gnssir_wrap.pyx":222
  *     @property
  *     def elevation(self):
  *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).elevation[0])             # <<<<<<<<<<<<<<
@@ -19786,25 +20053,25 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).elevation[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 200, __pyx_L1_error)
+    __PYX_ERR(0, 222, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 222, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_elev = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":202
+  /* "src/gnssir/gnssir_wrap.pyx":224
  *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).elevation[0])
  *         # cdef float [:] elev=deref(self.cycle_ptr).elevation
  *         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -19813,12 +20080,12 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -19838,14 +20105,14 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":198
+  /* "src/gnssir/gnssir_wrap.pyx":220
  *         return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19860,7 +20127,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.elevation.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.elevation.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_elev);
@@ -19869,7 +20136,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":204
+/* "src/gnssir/gnssir_wrap.pyx":226
  *         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19878,21 +20145,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation___get_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_4cnr0_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_4cnr0_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   struct __pyx_array_obj *__pyx_v_cnr0 = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -19909,7 +20176,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":206
+  /* "src/gnssir/gnssir_wrap.pyx":228
  *     @property
  *     def cnr0(self):
  *         cdef cvarray cnr0 = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).cnr0[0])             # <<<<<<<<<<<<<<
@@ -19919,39 +20186,39 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(str
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).cnr0[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 206, __pyx_L1_error)
+    __PYX_ERR(0, 228, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cnr0 = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":208
+  /* "src/gnssir/gnssir_wrap.pyx":230
  *         cdef cvarray cnr0 = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).cnr0[0])
  *         # cdef float [:] cnr0=deref(self.cycle_ptr).cnr0
  *         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
  * 
- * cdef class NMEAFile:
+ * cdef class gnss_trans_cycle:
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_cnr0), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_cnr0), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -19971,14 +20238,14 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(str
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":204
+  /* "src/gnssir/gnssir_wrap.pyx":226
  *         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19993,7 +20260,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(str
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.cnr0.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.cnr0.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_cnr0);
@@ -20009,15 +20276,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0___get__(str
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_5__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_10gnss_cycle_5__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_5__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_5__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20043,14 +20310,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4__reduce_cython__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4__reduce_cython__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -20075,7 +20342,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4__reduce_cython_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -20090,15 +20357,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_4__reduce_cython_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_10gnss_cycle_7__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20160,11 +20427,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6__setstate_cython__(((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6__setstate_cython__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -20174,7 +20441,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -20199,14 +20466,1791 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6__setstate_cytho
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.gnss_cycle.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_cycle.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":214
+/* "src/gnssir/gnssir_wrap.pyx":234
+ * cdef class gnss_trans_cycle:
+ *     cdef _nmea_trans_cycle* tcycle_ptr
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         init_nmea_trans_cycle(self.tcycle_ptr)
+*/
+
+/* Python wrapper */
+static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return -1;
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, __pyx_nargs); return -1; }
+  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
+  if (unlikely(__pyx_kwds_len < 0)) return -1;
+  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__cinit__", __pyx_kwds); return -1;}
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  int __pyx_r;
+
+  /* "src/gnssir/gnssir_wrap.pyx":235
+ *     cdef _nmea_trans_cycle* tcycle_ptr
+ *     def __cinit__(self):
+ *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))             # <<<<<<<<<<<<<<
+ *         init_nmea_trans_cycle(self.tcycle_ptr)
+ *     def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):
+*/
+  __pyx_v_self->tcycle_ptr = ((struct nmea_trans_cycle *)malloc((sizeof(struct nmea_trans_cycle))));
+
+  /* "src/gnssir/gnssir_wrap.pyx":236
+ *     def __cinit__(self):
+ *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         init_nmea_trans_cycle(self.tcycle_ptr)             # <<<<<<<<<<<<<<
+ *     def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):
+ *         # self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+*/
+  (void)(init_nmea_trans_cycle(__pyx_v_self->tcycle_ptr));
+
+  /* "src/gnssir/gnssir_wrap.pyx":234
+ * cdef class gnss_trans_cycle:
+ *     cdef _nmea_trans_cycle* tcycle_ptr
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         init_nmea_trans_cycle(self.tcycle_ptr)
+*/
+
+  /* function exit code */
+  __pyx_r = 0;
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":237
+ *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         init_nmea_trans_cycle(self.tcycle_ptr)
+ *     def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):             # <<<<<<<<<<<<<<
+ *         # self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         # init_nmea_trans_cycle(self.tcycle_ptr)
+*/
+
+/* Python wrapper */
+static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_c_clear = 0;
+  struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_c_obstr = 0;
+  PyObject *__pyx_v_delta_sec = 0;
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return -1;
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_c_clear,&__pyx_mstate_global->__pyx_n_u_c_obstr,&__pyx_mstate_global->__pyx_n_u_delta_sec,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 237, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 237, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 237, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 237, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 237, __pyx_L3_error)
+      if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_1));
+      for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, i); __PYX_ERR(0, 237, __pyx_L3_error) }
+      }
+    } else {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 237, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 237, __pyx_L3_error)
+        values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 237, __pyx_L3_error)
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_1));
+    }
+    __pyx_v_c_clear = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)values[0]);
+    __pyx_v_c_obstr = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)values[1]);
+    __pyx_v_delta_sec = values[2];
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 237, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_c_clear), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, 0, "c_clear", 0))) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_c_obstr), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, 0, "c_obstr", 0))) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_2__init__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self), __pyx_v_c_clear, __pyx_v_c_obstr, __pyx_v_delta_sec);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = -1;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  goto __pyx_L7_cleaned_up;
+  __pyx_L0:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __pyx_L7_cleaned_up:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_2__init__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self, struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_c_clear, struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_c_obstr, PyObject *__pyx_v_delta_sec) {
+  CYTHON_UNUSED int __pyx_v_err;
+  int __pyx_r;
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":240
+ *         # self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         # init_nmea_trans_cycle(self.tcycle_ptr)
+ *         cdef int err=pair_nmea_trans_cycle(c_clear.cycle_ptr,c_obstr.cycle_ptr , delta_sec, self.tcycle_ptr)             # <<<<<<<<<<<<<<
+ *         # if err != 0:
+ *             # raise RuntimeError("No transmissivity pairs found")
+*/
+  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_delta_sec); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_v_err = pair_nmea_trans_cycle(__pyx_v_c_clear->cycle_ptr, __pyx_v_c_obstr->cycle_ptr, __pyx_t_1, __pyx_v_self->tcycle_ptr);
+
+  /* "src/gnssir/gnssir_wrap.pyx":237
+ *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         init_nmea_trans_cycle(self.tcycle_ptr)
+ *     def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):             # <<<<<<<<<<<<<<
+ *         # self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
+ *         # init_nmea_trans_cycle(self.tcycle_ptr)
+*/
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":244
+ *             # raise RuntimeError("No transmissivity pairs found")
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.tcycle_ptr is not NULL:
+ *             free(self.tcycle_ptr)
+*/
+
+/* Python wrapper */
+static void __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5__dealloc__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  int __pyx_t_1;
+
+  /* "src/gnssir/gnssir_wrap.pyx":245
+ * 
+ *     def __dealloc__(self):
+ *         if self.tcycle_ptr is not NULL:             # <<<<<<<<<<<<<<
+ *             free(self.tcycle_ptr)
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_self->tcycle_ptr != NULL);
+  if (__pyx_t_1) {
+
+    /* "src/gnssir/gnssir_wrap.pyx":246
+ *     def __dealloc__(self):
+ *         if self.tcycle_ptr is not NULL:
+ *             free(self.tcycle_ptr)             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+    free(__pyx_v_self->tcycle_ptr);
+
+    /* "src/gnssir/gnssir_wrap.pyx":245
+ * 
+ *     def __dealloc__(self):
+ *         if self.tcycle_ptr is not NULL:             # <<<<<<<<<<<<<<
+ *             free(self.tcycle_ptr)
+ * 
+*/
+  }
+
+  /* "src/gnssir/gnssir_wrap.pyx":244
+ *             # raise RuntimeError("No transmissivity pairs found")
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.tcycle_ptr is not NULL:
+ *             free(self.tcycle_ptr)
+*/
+
+  /* function exit code */
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":248
+ *             free(self.tcycle_ptr)
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def time(self):
+ *         tm=[datetime(deref(self.tcycle_ptr).year[i],deref(self.tcycle_ptr).month[i],deref(self.tcycle_ptr).day[i],deref(self.tcycle_ptr).hr[i],deref(self.tcycle_ptr).min[i])+timedelta(seconds=deref(self.tcycle_ptr).sec[i]) for i in range(2)]
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_4time_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_4time_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_v_tm = NULL;
+  long __pyx_8genexpr1__pyx_v_i;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  long __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  size_t __pyx_t_11;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":250
+ *     @property
+ *     def time(self):
+ *         tm=[datetime(deref(self.tcycle_ptr).year[i],deref(self.tcycle_ptr).month[i],deref(self.tcycle_ptr).day[i],deref(self.tcycle_ptr).hr[i],deref(self.tcycle_ptr).min[i])+timedelta(seconds=deref(self.tcycle_ptr).sec[i]) for i in range(2)]             # <<<<<<<<<<<<<<
+ *         return tm
+ * 
+*/
+  { /* enter inner scope */
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    for (__pyx_t_2 = 0; __pyx_t_2 < 2; __pyx_t_2+=1) {
+      __pyx_8genexpr1__pyx_v_i = __pyx_t_2;
+      __pyx_t_4 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_datetime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_6 = __Pyx_PyLong_From_int(((*__pyx_v_self->tcycle_ptr).year[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_7 = __Pyx_PyLong_From_int(((*__pyx_v_self->tcycle_ptr).month[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_8 = __Pyx_PyLong_From_int(((*__pyx_v_self->tcycle_ptr).day[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_9 = __Pyx_PyLong_From_int(((*__pyx_v_self->tcycle_ptr).hr[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_10 = __Pyx_PyLong_From_int(((*__pyx_v_self->tcycle_ptr).min[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_11 = 1;
+      #if CYTHON_UNPACK_METHODS
+      if (unlikely(PyMethod_Check(__pyx_t_5))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
+        assert(__pyx_t_4);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(__pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_5, __pyx__function);
+        __pyx_t_11 = 0;
+      }
+      #endif
+      {
+        PyObject *__pyx_callargs[6] = {__pyx_t_4, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10};
+        __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_5, __pyx_callargs+__pyx_t_11, (6-__pyx_t_11) | (__pyx_t_11*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+      }
+      __pyx_t_10 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_timedelta); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_8 = PyFloat_FromDouble(((*__pyx_v_self->tcycle_ptr).sec[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_11 = 1;
+      #if CYTHON_UNPACK_METHODS
+      if (unlikely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_9);
+        assert(__pyx_t_10);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_9);
+        __Pyx_INCREF(__pyx_t_10);
+        __Pyx_INCREF(__pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_9, __pyx__function);
+        __pyx_t_11 = 0;
+      }
+      #endif
+      {
+        PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_10, NULL};
+        __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_seconds, __pyx_t_8, __pyx_t_7, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_11, (1-__pyx_t_11) | (__pyx_t_11*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+        __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+      }
+      __pyx_t_9 = PyNumber_Add(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 250, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    }
+  } /* exit inner scope */
+  __pyx_v_tm = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":251
+ *     def time(self):
+ *         tm=[datetime(deref(self.tcycle_ptr).year[i],deref(self.tcycle_ptr).month[i],deref(self.tcycle_ptr).day[i],deref(self.tcycle_ptr).hr[i],deref(self.tcycle_ptr).min[i])+timedelta(seconds=deref(self.tcycle_ptr).sec[i]) for i in range(2)]
+ *         return tm             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_tm);
+  __pyx_r = __pyx_v_tm;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":248
+ *             free(self.tcycle_ptr)
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def time(self):
+ *         tm=[datetime(deref(self.tcycle_ptr).year[i],deref(self.tcycle_ptr).month[i],deref(self.tcycle_ptr).day[i],deref(self.tcycle_ptr).hr[i],deref(self.tcycle_ptr).min[i])+timedelta(seconds=deref(self.tcycle_ptr).sec[i]) for i in range(2)]
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.time.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_tm);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":253
+ *         return tm
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def sats_in_view(self):
+ *         return deref(self.tcycle_ptr).sats_in_view
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_view_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_view_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_view___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_view___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":255
+ *     @property
+ *     def sats_in_view(self):
+ *         return deref(self.tcycle_ptr).sats_in_view             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->tcycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":253
+ *         return tm
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def sats_in_view(self):
+ *         return deref(self.tcycle_ptr).sats_in_view
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.sats_in_view.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":257
+ *         return deref(self.tcycle_ptr).sats_in_view
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def lon(self):
+ *         return deref(self.tcycle_ptr).lon
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3lon_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3lon_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3lon___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3lon___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":259
+ *     @property
+ *     def lon(self):
+ *         return deref(self.tcycle_ptr).lon             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_carray_to_py_float((*__pyx_v_self->tcycle_ptr).lon, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":257
+ *         return deref(self.tcycle_ptr).sats_in_view
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def lon(self):
+ *         return deref(self.tcycle_ptr).lon
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.lon.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":261
+ *         return deref(self.tcycle_ptr).lon
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def lat(self):
+ *         return deref(self.tcycle_ptr).lat
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3lat_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3lat_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3lat___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3lat___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":263
+ *     @property
+ *     def lat(self):
+ *         return deref(self.tcycle_ptr).lat             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_carray_to_py_float((*__pyx_v_self->tcycle_ptr).lat, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":261
+ *         return deref(self.tcycle_ptr).lon
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def lat(self):
+ *         return deref(self.tcycle_ptr).lat
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.lat.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":265
+ *         return deref(self.tcycle_ptr).lat
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def ortho_height(self):
+ *         return deref(self.tcycle_ptr).ortho_height
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12ortho_height_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12ortho_height_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12ortho_height___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12ortho_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":267
+ *     @property
+ *     def ortho_height(self):
+ *         return deref(self.tcycle_ptr).ortho_height             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_carray_to_py_float((*__pyx_v_self->tcycle_ptr).ortho_height, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":265
+ *         return deref(self.tcycle_ptr).lat
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def ortho_height(self):
+ *         return deref(self.tcycle_ptr).ortho_height
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.ortho_height.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":269
+ *         return deref(self.tcycle_ptr).ortho_height
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def geoid_height(self):
+ *         return deref(self.tcycle_ptr).ortho_height
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12geoid_height_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12geoid_height_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12geoid_height___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12geoid_height___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":271
+ *     @property
+ *     def geoid_height(self):
+ *         return deref(self.tcycle_ptr).ortho_height             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_carray_to_py_float((*__pyx_v_self->tcycle_ptr).ortho_height, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":269
+ *         return deref(self.tcycle_ptr).ortho_height
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def geoid_height(self):
+ *         return deref(self.tcycle_ptr).ortho_height
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.geoid_height.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":273
+ *         return deref(self.tcycle_ptr).ortho_height
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def system(self):
+ *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_6system_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_6system_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  int __pyx_8genexpr2__pyx_v_i;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  size_t __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":275
+ *     @property
+ *     def system(self):
+ *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  { /* enter inner scope */
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = (*__pyx_v_self->tcycle_ptr).sats_in_view;
+    __pyx_t_6 = __pyx_t_5;
+    for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+      __pyx_8genexpr2__pyx_v_i = __pyx_t_7;
+      __pyx_t_8 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(((*__pyx_v_self->tcycle_ptr).system[__pyx_8genexpr2__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 275, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 275, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    }
+  } /* exit inner scope */
+  __pyx_t_9 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
+    assert(__pyx_t_2);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+    __pyx_t_9 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_t_3};
+    __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":273
+ *         return deref(self.tcycle_ptr).ortho_height
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def system(self):
+ *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.system.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":277
+ *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def prn(self):
+ *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  struct __pyx_array_obj *__pyx_v_prn = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int *__pyx_t_1;
+  struct __pyx_array_obj *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  char *__pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  size_t __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":279
+ *     @property
+ *     def prn(self):
+ *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])             # <<<<<<<<<<<<<<
+ *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+*/
+  __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).prn[0]));
+  if (!__pyx_t_1) {
+    PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
+    __PYX_ERR(0, 279, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  #if CYTHON_COMPILING_IN_LIMITED_API
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
+  #else
+  __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
+  #endif
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __Pyx_GOTREF((PyObject *)__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_prn = ((struct __pyx_array_obj *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":280
+ *     def prn(self):
+ *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])
+ *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_8 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_7))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+    __pyx_t_8 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_6};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":277
+ *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def prn(self):
+ *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF((PyObject *)__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.prn.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_prn);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":282
+ *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def azimuth(self):
+ *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  struct __pyx_array_obj *__pyx_v_azimuth = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float *__pyx_t_1;
+  struct __pyx_array_obj *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  char *__pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  size_t __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":284
+ *     @property
+ *     def azimuth(self):
+ *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])             # <<<<<<<<<<<<<<
+ *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+*/
+  __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).azimuth[0]));
+  if (!__pyx_t_1) {
+    PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
+    __PYX_ERR(0, 284, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  #if CYTHON_COMPILING_IN_LIMITED_API
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 284, __pyx_L1_error)
+  #else
+  __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
+  #endif
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __Pyx_GOTREF((PyObject *)__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_azimuth = ((struct __pyx_array_obj *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":285
+ *     def azimuth(self):
+ *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])
+ *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_8 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_7))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+    __pyx_t_8 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_6};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 285, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":282
+ *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def azimuth(self):
+ *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF((PyObject *)__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.azimuth.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_azimuth);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":287
+ *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def elevation(self):
+ *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  struct __pyx_array_obj *__pyx_v_elev = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float *__pyx_t_1;
+  struct __pyx_array_obj *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  char *__pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  size_t __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":289
+ *     @property
+ *     def elevation(self):
+ *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])             # <<<<<<<<<<<<<<
+ *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+*/
+  __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).elevation[0]));
+  if (!__pyx_t_1) {
+    PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
+    __PYX_ERR(0, 289, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  #if CYTHON_COMPILING_IN_LIMITED_API
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
+  #else
+  __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
+  #endif
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __Pyx_GOTREF((PyObject *)__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_elev = ((struct __pyx_array_obj *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":290
+ *     def elevation(self):
+ *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])
+ *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_8 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_7))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+    __pyx_t_8 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_6};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 290, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":287
+ *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def elevation(self):
+ *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF((PyObject *)__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.elevation.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_elev);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":292
+ *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def cnr0(self):
+ *         cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  struct __pyx_array_obj *__pyx_v_cnr0 = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float *__pyx_t_1;
+  struct __pyx_array_obj *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  char *__pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  size_t __pyx_t_9;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":294
+ *     @property
+ *     def cnr0(self):
+ *         cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])             # <<<<<<<<<<<<<<
+ *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+*/
+  __pyx_t_1 = (&(((*__pyx_v_self->tcycle_ptr).cnr0[0])[0]));
+  if (!__pyx_t_1) {
+    PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
+    __PYX_ERR(0, 294, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)2), ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  #if CYTHON_COMPILING_IN_LIMITED_API
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
+  #else
+  __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
+  #endif
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __Pyx_GOTREF((PyObject *)__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_cnr0 = ((struct __pyx_array_obj *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":295
+ *     def cnr0(self):
+ *         cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])
+ *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyLong_From_int((*__pyx_v_self->tcycle_ptr).sats_in_view); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_8 = PySlice_New(__pyx_mstate_global->__pyx_int_0, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_INCREF(__pyx_mstate_global->__pyx_slice[0]);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_mstate_global->__pyx_slice[0]) != (0)) __PYX_ERR(0, 295, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_8);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 295, __pyx_L1_error);
+  __pyx_t_8 = 0;
+  __pyx_t_8 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_cnr0), __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_9 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_7))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+    __pyx_t_9 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_8};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":292
+ *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def cnr0(self):
+ *         cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF((PyObject *)__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.cnr0.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_cnr0);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":297
+ *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def gamma(self):
+ *         cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma_1__get__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  struct __pyx_array_obj *__pyx_v_gamma = 0;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float *__pyx_t_1;
+  struct __pyx_array_obj *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  char *__pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  size_t __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "src/gnssir/gnssir_wrap.pyx":299
+ *     @property
+ *     def gamma(self):
+ *         cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])             # <<<<<<<<<<<<<<
+ *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+*/
+  __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).gamma[0]));
+  if (!__pyx_t_1) {
+    PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
+    __PYX_ERR(0, 299, __pyx_L1_error)
+  }
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 299, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 299, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  #if CYTHON_COMPILING_IN_LIMITED_API
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 299, __pyx_L1_error)
+  #else
+  __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
+  #endif
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
+  __Pyx_GOTREF((PyObject *)__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_gamma = ((struct __pyx_array_obj *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":300
+ *     def gamma(self):
+ *         cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])
+ *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
+ * 
+ * cdef class NMEAFile:
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_gamma), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_8 = 1;
+  #if CYTHON_UNPACK_METHODS
+  if (unlikely(PyMethod_Check(__pyx_t_7))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_7);
+    assert(__pyx_t_3);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+    __Pyx_INCREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+    __pyx_t_8 = 0;
+  }
+  #endif
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_6};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+  }
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":297
+ *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def gamma(self):
+ *         cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF((PyObject *)__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.gamma.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_gamma);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  if (unlikely(__pyx_nargs > 0)) { __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL; }
+  const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+  if (unlikely(__pyx_kwds_len < 0)) return NULL;
+  if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6__reduce_cython__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+*/
+  __Pyx_Raise(((PyObject *)(((PyTypeObject*)PyExc_TypeError))), __pyx_mstate_global->__pyx_kp_u_no_default___reduce___due_to_non, 0, 0);
+  __PYX_ERR(1, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  CYTHON_UNUSED PyObject *__pyx_v___pyx_state = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_pyx_state,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(1, 3, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 3, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__setstate_cython__", 0) < (0)) __PYX_ERR(1, 3, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__setstate_cython__", 1, 1, 1, i); __PYX_ERR(1, 3, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(1, 3, __pyx_L3_error)
+    }
+    __pyx_v___pyx_state = values[0];
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__setstate_cython__", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 3, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_8__setstate_cython__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self), __pyx_v___pyx_state);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"             # <<<<<<<<<<<<<<
+*/
+  __Pyx_Raise(((PyObject *)(((PyTypeObject*)PyExc_TypeError))), __pyx_mstate_global->__pyx_kp_u_no_default___reduce___due_to_non, 0, 0);
+  __PYX_ERR(1, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("gnssr4water.gnssir.gnss_trans_cycle.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "src/gnssir/gnssir_wrap.pyx":306
  *     cdef gnssrstream _sid
  *     cdef public str name
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -20215,8 +22259,8 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_10gnss_cycle_6__setstate_cytho
 */
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_filename = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -20236,43 +22280,43 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_1__init__(PyObject *__pyx_
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 214, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 306, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 214, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 306, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 214, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 306, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, i); __PYX_ERR(0, 214, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, i); __PYX_ERR(0, 306, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 214, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 306, __pyx_L3_error)
     }
     __pyx_v_filename = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 214, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 306, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self), __pyx_v_filename);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self), __pyx_v_filename);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -20282,7 +22326,7 @@ static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_1__init__(PyObject *__pyx_
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, PyObject *__pyx_v_filename) {
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, PyObject *__pyx_v_filename) {
   int __pyx_v_err;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
@@ -20298,7 +22342,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":215
+  /* "src/gnssir/gnssir_wrap.pyx":307
  *     cdef public str name
  *     def __init__(self, filename):
  *         self.name = filename             # <<<<<<<<<<<<<<
@@ -20307,14 +22351,14 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
 */
   __pyx_t_1 = __pyx_v_filename;
   __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 215, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->name);
   __Pyx_DECREF(__pyx_v_self->name);
   __pyx_v_self->name = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":216
+  /* "src/gnssir/gnssir_wrap.pyx":308
  *     def __init__(self, filename):
  *         self.name = filename
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)             # <<<<<<<<<<<<<<
@@ -20323,15 +22367,15 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
 */
   if (unlikely(__pyx_v_self->name == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 216, __pyx_L1_error)
+    __PYX_ERR(0, 308, __pyx_L1_error)
   }
-  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_self->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_self->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_t_1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_t_1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 308, __pyx_L1_error)
   __pyx_v_err = open_stream(__pyx_t_2, (&__pyx_v_self->_sid));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":217
+  /* "src/gnssir/gnssir_wrap.pyx":309
  *         self.name = filename
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)
  *         if err is not 0:             # <<<<<<<<<<<<<<
@@ -20341,7 +22385,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
   __pyx_t_3 = (__pyx_v_err != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":218
+    /* "src/gnssir/gnssir_wrap.pyx":310
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)
  *         if err is not 0:
  *             raise ValueError(f"Error opening {self.name}")             # <<<<<<<<<<<<<<
@@ -20349,9 +22393,9 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
  * 
 */
     __pyx_t_4 = NULL;
-    __pyx_t_5 = __Pyx_PyUnicode_Unicode(__pyx_v_self->name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Unicode(__pyx_v_self->name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Error_opening, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Error_opening, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_7 = 1;
@@ -20360,14 +22404,14 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
       __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 218, __pyx_L1_error)
+    __PYX_ERR(0, 310, __pyx_L1_error)
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":217
+    /* "src/gnssir/gnssir_wrap.pyx":309
  *         self.name = filename
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)
  *         if err is not 0:             # <<<<<<<<<<<<<<
@@ -20376,7 +22420,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
 */
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":219
+  /* "src/gnssir/gnssir_wrap.pyx":311
  *         if err is not 0:
  *             raise ValueError(f"Error opening {self.name}")
  *         self._eof = 0             # <<<<<<<<<<<<<<
@@ -20385,7 +22429,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
 */
   __pyx_v_self->_eof = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":214
+  /* "src/gnssir/gnssir_wrap.pyx":306
  *     cdef gnssrstream _sid
  *     cdef public str name
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -20401,14 +22445,14 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":221
+/* "src/gnssir/gnssir_wrap.pyx":313
  *         self._eof = 0
  * 
  *     def eof(self):             # <<<<<<<<<<<<<<
@@ -20417,15 +22461,15 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile___init__(struct __pyx_obj_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_3eof(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_3eof(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_3eof = {"eof", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_3eof, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_3eof(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_3eof = {"eof", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_3eof, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_3eof(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20451,14 +22495,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("eof", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_2eof(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_2eof(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -20467,7 +22511,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("eof", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":222
+  /* "src/gnssir/gnssir_wrap.pyx":314
  * 
  *     def eof(self):
  *         return self._eof == 1             # <<<<<<<<<<<<<<
@@ -20475,13 +22519,13 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_ob
  *     def __enter__(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_v_self->_eof == 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_v_self->_eof == 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":221
+  /* "src/gnssir/gnssir_wrap.pyx":313
  *         self._eof = 0
  * 
  *     def eof(self):             # <<<<<<<<<<<<<<
@@ -20492,7 +22536,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_ob
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.eof", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.eof", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -20500,7 +22544,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":224
+/* "src/gnssir/gnssir_wrap.pyx":316
  *         return self._eof == 1
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
@@ -20509,15 +22553,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_2eof(struct __pyx_ob
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_5__enter__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_5__enter__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_5__enter__ = {"__enter__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_5__enter__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_5__enter__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_5__enter__ = {"__enter__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_5__enter__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_5__enter__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20543,19 +22587,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__enter__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4__enter__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4__enter__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4__enter__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4__enter__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__enter__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":225
+  /* "src/gnssir/gnssir_wrap.pyx":317
  * 
  *     def __enter__(self):
  *         return self             # <<<<<<<<<<<<<<
@@ -20567,7 +22611,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4__enter__(struct __
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":224
+  /* "src/gnssir/gnssir_wrap.pyx":316
  *         return self._eof == 1
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
@@ -20582,7 +22626,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4__enter__(struct __
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":227
+/* "src/gnssir/gnssir_wrap.pyx":319
  *         return self
  * 
  *     def __exit__(self, *args):             # <<<<<<<<<<<<<<
@@ -20591,9 +22635,9 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4__enter__(struct __
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__ = {"__exit__", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_7__exit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_7__exit__ = {"__exit__", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_7__exit__, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_7__exit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -20611,7 +22655,7 @@ static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__(PyObject *
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__exit__", __pyx_kwds); return NULL;}
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self), __pyx_v_args);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_6__exit__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self), __pyx_v_args);
 
   /* function exit code */
   __Pyx_DECREF(__pyx_v_args);
@@ -20619,7 +22663,7 @@ static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__(PyObject *
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_6__exit__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -20630,7 +22674,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__exit__", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":228
+  /* "src/gnssir/gnssir_wrap.pyx":320
  * 
  *     def __exit__(self, *args):
  *         self.close()             # <<<<<<<<<<<<<<
@@ -20644,12 +22688,12 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_close, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":227
+  /* "src/gnssir/gnssir_wrap.pyx":319
  *         return self
  * 
  *     def __exit__(self, *args):             # <<<<<<<<<<<<<<
@@ -20663,7 +22707,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __p
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.__exit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.__exit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -20671,7 +22715,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __p
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":230
+/* "src/gnssir/gnssir_wrap.pyx":322
  *         self.close()
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
@@ -20680,15 +22724,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_6__exit__(struct __p
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_9close(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_9close(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_9close = {"close", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_9close, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_9close(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_9close = {"close", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_9close, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_9close(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20714,19 +22758,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("close", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("close", 0);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":231
+  /* "src/gnssir/gnssir_wrap.pyx":323
  * 
  *     def close(self):
  *         self._eof = 1             # <<<<<<<<<<<<<<
@@ -20735,7 +22779,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(struct __pyx_
 */
   __pyx_v_self->_eof = 1;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":232
+  /* "src/gnssir/gnssir_wrap.pyx":324
  *     def close(self):
  *         self._eof = 1
  *         close_stream(&self._sid)             # <<<<<<<<<<<<<<
@@ -20744,7 +22788,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(struct __pyx_
 */
   close_stream((&__pyx_v_self->_sid));
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":230
+  /* "src/gnssir/gnssir_wrap.pyx":322
  *         self.close()
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
@@ -20759,7 +22803,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(struct __pyx_
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":234
+/* "src/gnssir/gnssir_wrap.pyx":326
  *         close_stream(&self._sid)
  * 
  *     cpdef readline(self):             # <<<<<<<<<<<<<<
@@ -20767,14 +22811,14 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_8close(struct __pyx_
  *         cdef int err=0
 */
 
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_11readline(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_11readline(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, int __pyx_skip_dispatch) {
   int __pyx_v_err;
   char __pyx_v_nmealine[82];
   PyObject *__pyx_r = NULL;
@@ -20794,7 +22838,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
   /* Check if overridden in Python */
   else if (
   #if !CYTHON_USE_TYPE_SLOTS
-  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile &&
+  unlikely(Py_TYPE(((PyObject *)__pyx_v_self)) != __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile &&
   __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), Py_TPFLAGS_HAVE_GC))
   #else
   unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0 || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))
@@ -20805,9 +22849,9 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_readline); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_readline); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_11readline)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_11readline)) {
         __Pyx_XDECREF(__pyx_r);
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
@@ -20829,7 +22873,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __pyx_r = __pyx_t_2;
@@ -20850,7 +22894,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
     #endif
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":236
+  /* "src/gnssir/gnssir_wrap.pyx":328
  *     cpdef readline(self):
  * 
  *         cdef int err=0             # <<<<<<<<<<<<<<
@@ -20859,7 +22903,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 */
   __pyx_v_err = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":238
+  /* "src/gnssir/gnssir_wrap.pyx":330
  *         cdef int err=0
  *         cdef char nmealine[82]
  *         err=readline(&self._sid,&nmealine[0],82)             # <<<<<<<<<<<<<<
@@ -20868,7 +22912,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 */
   __pyx_v_err = readline((&__pyx_v_self->_sid), (&(__pyx_v_nmealine[0])), 82);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":239
+  /* "src/gnssir/gnssir_wrap.pyx":331
  *         cdef char nmealine[82]
  *         err=readline(&self._sid,&nmealine[0],82)
  *         if err == _GNSSR_EOF :             # <<<<<<<<<<<<<<
@@ -20878,7 +22922,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
   __pyx_t_6 = (__pyx_v_err == GNSSR_EOF);
   if (__pyx_t_6) {
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":241
+    /* "src/gnssir/gnssir_wrap.pyx":333
  *         if err == _GNSSR_EOF :
  *         #eof encountered
  *             nmealine[0]=0             # <<<<<<<<<<<<<<
@@ -20887,7 +22931,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 */
     (__pyx_v_nmealine[0]) = 0;
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":242
+    /* "src/gnssir/gnssir_wrap.pyx":334
  *         #eof encountered
  *             nmealine[0]=0
  *             self._eof = 1             # <<<<<<<<<<<<<<
@@ -20896,7 +22940,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 */
     __pyx_v_self->_eof = 1;
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":239
+    /* "src/gnssir/gnssir_wrap.pyx":331
  *         cdef char nmealine[82]
  *         err=readline(&self._sid,&nmealine[0],82)
  *         if err == _GNSSR_EOF :             # <<<<<<<<<<<<<<
@@ -20905,7 +22949,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 */
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":244
+  /* "src/gnssir/gnssir_wrap.pyx":336
  *             self._eof = 1
  * 
  *         return nmealine             # <<<<<<<<<<<<<<
@@ -20913,13 +22957,13 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
  *     def readlines(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_nmealine); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_nmealine); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":234
+  /* "src/gnssir/gnssir_wrap.pyx":326
  *         close_stream(&self._sid)
  * 
  *     cpdef readline(self):             # <<<<<<<<<<<<<<
@@ -20933,7 +22977,7 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.readline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.readline", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -20942,15 +22986,15 @@ static PyObject *__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(struct __pyx
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_11readline(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_11readline(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_11readline = {"readline", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_11readline, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_11readline(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_11readline = {"readline", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_11readline, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_11readline(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -20976,14 +23020,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("readline", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_10readline(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_10readline(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_10readline(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_10readline(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -20992,7 +23036,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_10readline(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("readline", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -21001,16 +23045,16 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_10readline(struct __
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.readline", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.readline", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":246
+/* "src/gnssir/gnssir_wrap.pyx":338
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
@@ -21019,15 +23063,15 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_13readlines(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_13readlines(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_13readlines = {"readlines", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_13readlines, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_13readlines(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_13readlines = {"readlines", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_13readlines, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_13readlines(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21053,26 +23097,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("readlines", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_12readlines(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_12readlines(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_12readlines(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *__pyx_cur_scope;
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_12readlines(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("readlines", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *)__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct__readlines(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 246, __pyx_L1_error)
+    __PYX_ERR(0, 338, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -21080,7 +23124,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_12readlines(struct _
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib); if (unlikely(!gen)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -21088,7 +23132,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_12readlines(struct _
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.readlines", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.readlines", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -21096,9 +23140,9 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_12readlines(struct _
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *__pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *)__pyx_generator->closure);
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *__pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -21118,23 +23162,23 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 246, __pyx_L1_error)
+    __PYX_ERR(0, 338, __pyx_L1_error)
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":247
+  /* "src/gnssir/gnssir_wrap.pyx":339
  * 
  *     def readlines(self):
  *         line = self.readline()             # <<<<<<<<<<<<<<
  * 
  *         while len(line) != 0:
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_line = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":249
+  /* "src/gnssir/gnssir_wrap.pyx":341
  *         line = self.readline()
  * 
  *         while len(line) != 0:             # <<<<<<<<<<<<<<
@@ -21142,11 +23186,11 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
  *             line = self.readline()
 */
   while (1) {
-    __pyx_t_2 = PyObject_Length(__pyx_cur_scope->__pyx_v_line); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_2 = PyObject_Length(__pyx_cur_scope->__pyx_v_line); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 341, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (!__pyx_t_3) break;
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":250
+    /* "src/gnssir/gnssir_wrap.pyx":342
  * 
  *         while len(line) != 0:
  *             yield line             # <<<<<<<<<<<<<<
@@ -21162,16 +23206,16 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
     __pyx_generator->resume_label = 1;
     return __pyx_r;
     __pyx_L6_resume_from_yield:;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 250, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 342, __pyx_L1_error)
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":251
+    /* "src/gnssir/gnssir_wrap.pyx":343
  *         while len(line) != 0:
  *             yield line
  *             line = self.readline()             # <<<<<<<<<<<<<<
  *         self._eof = 1
  *         return StopIteration
 */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_line);
     __Pyx_DECREF_SET(__pyx_cur_scope->__pyx_v_line, __pyx_t_1);
@@ -21179,7 +23223,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
     __pyx_t_1 = 0;
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":252
+  /* "src/gnssir/gnssir_wrap.pyx":344
  *             yield line
  *             line = self.readline()
  *         self._eof = 1             # <<<<<<<<<<<<<<
@@ -21188,7 +23232,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
 */
   __pyx_cur_scope->__pyx_v_self->_eof = 1;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":253
+  /* "src/gnssir/gnssir_wrap.pyx":345
  *             line = self.readline()
  *         self._eof = 1
  *         return StopIteration             # <<<<<<<<<<<<<<
@@ -21201,7 +23245,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":246
+  /* "src/gnssir/gnssir_wrap.pyx":338
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
@@ -21226,9 +23270,9 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_14generator(__pyx_Co
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":255
+/* "src/gnssir/gnssir_wrap.pyx":347
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
@@ -21237,15 +23281,15 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_16readnmeas(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_16readnmeas(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_16readnmeas = {"readnmeas", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_16readnmeas, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_16readnmeas(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_16readnmeas = {"readnmeas", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_16readnmeas, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_16readnmeas(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21271,26 +23315,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("readnmeas", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_15readnmeas(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_15readnmeas(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_15readnmeas(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *__pyx_cur_scope;
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_15readnmeas(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("readnmeas", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *)__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 255, __pyx_L1_error)
+    __PYX_ERR(0, 347, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -21298,7 +23342,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_15readnmeas(struct _
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib); if (unlikely(!gen)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -21306,7 +23350,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_15readnmeas(struct _
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.readnmeas", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.readnmeas", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -21314,9 +23358,9 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_15readnmeas(struct _
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *__pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *)__pyx_generator->closure);
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *__pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -21340,10 +23384,10 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 255, __pyx_L1_error)
+    __PYX_ERR(0, 347, __pyx_L1_error)
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":257
+  /* "src/gnssir/gnssir_wrap.pyx":349
  *     def readnmeas(self):
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():             # <<<<<<<<<<<<<<
@@ -21357,7 +23401,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_readlines, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -21365,9 +23409,9 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
     __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 349, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 349, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -21376,7 +23420,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 257, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 349, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -21386,7 +23430,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 257, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 349, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -21397,13 +23441,13 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
         #endif
         ++__pyx_t_4;
       }
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
     } else {
       __pyx_t_1 = __pyx_t_5(__pyx_t_2);
       if (unlikely(!__pyx_t_1)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 257, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 349, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -21415,32 +23459,32 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":258
+    /* "src/gnssir/gnssir_wrap.pyx":350
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():
  *             nmea_t = check_nmea(nmea)             # <<<<<<<<<<<<<<
  *             yield nmea_t,nmea
  *         self._eof = 1
 */
-    __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_cur_scope->__pyx_v_nmea); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 258, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_cur_scope->__pyx_v_nmea); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 350, __pyx_L1_error)
     __pyx_cur_scope->__pyx_v_nmea_t = check_nmea(__pyx_t_6);
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":259
+    /* "src/gnssir/gnssir_wrap.pyx":351
  *         for nmea in self.readlines():
  *             nmea_t = check_nmea(nmea)
  *             yield nmea_t,nmea             # <<<<<<<<<<<<<<
  *         self._eof = 1
  *         return StopIteration
 */
-    __pyx_t_1 = __Pyx_Enum_11gnssr4water_8gnssrlib_enum__space_nmea_type_to_py(__pyx_cur_scope->__pyx_v_nmea_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(__pyx_cur_scope->__pyx_v_nmea_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 351, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_1);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 259, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 351, __pyx_L1_error);
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_nmea);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_nmea);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_cur_scope->__pyx_v_nmea) != (0)) __PYX_ERR(0, 259, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_cur_scope->__pyx_v_nmea) != (0)) __PYX_ERR(0, 351, __pyx_L1_error);
     __pyx_t_1 = 0;
     __pyx_r = __pyx_t_7;
     __pyx_t_7 = 0;
@@ -21460,9 +23504,9 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 259, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 351, __pyx_L1_error)
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":257
+    /* "src/gnssir/gnssir_wrap.pyx":349
  *     def readnmeas(self):
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():             # <<<<<<<<<<<<<<
@@ -21472,7 +23516,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":260
+  /* "src/gnssir/gnssir_wrap.pyx":352
  *             nmea_t = check_nmea(nmea)
  *             yield nmea_t,nmea
  *         self._eof = 1             # <<<<<<<<<<<<<<
@@ -21481,7 +23525,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
 */
   __pyx_cur_scope->__pyx_v_self->_eof = 1;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":261
+  /* "src/gnssir/gnssir_wrap.pyx":353
  *             yield nmea_t,nmea
  *         self._eof = 1
  *         return StopIteration             # <<<<<<<<<<<<<<
@@ -21494,7 +23538,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":255
+  /* "src/gnssir/gnssir_wrap.pyx":347
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
@@ -21521,9 +23565,9 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_17generator1(__pyx_C
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":263
+/* "src/gnssir/gnssir_wrap.pyx":355
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
@@ -21532,15 +23576,15 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_19readcycles(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_19readcycles(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_19readcycles = {"readcycles", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_19readcycles, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_19readcycles(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_19readcycles = {"readcycles", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_19readcycles, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_19readcycles(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -21566,26 +23610,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("readcycles", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_18readcycles(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_18readcycles(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_18readcycles(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *__pyx_cur_scope;
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_18readcycles(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("readcycles", 0);
-  __pyx_cur_scope = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *)__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 263, __pyx_L1_error)
+    __PYX_ERR(0, 355, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -21593,7 +23637,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_18readcycles(struct 
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib); if (unlikely(!gen)) __PYX_ERR(0, 263, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 355, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -21601,7 +23645,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_18readcycles(struct 
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.readcycles", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.readcycles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -21609,9 +23653,9 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_18readcycles(struct 
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *__pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *)__pyx_generator->closure);
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *__pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -21632,10 +23676,10 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 263, __pyx_L1_error)
+    __PYX_ERR(0, 355, __pyx_L1_error)
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":264
+  /* "src/gnssir/gnssir_wrap.pyx":356
  * 
  *     def readcycles(self):
  *         cdef gnss_cycle cycle=gnss_cycle()             # <<<<<<<<<<<<<<
@@ -21646,16 +23690,16 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
   __pyx_t_3 = 1;
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
-    __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __Pyx_GIVEREF((PyObject *)__pyx_t_1);
-  __pyx_cur_scope->__pyx_v_cycle = ((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle *)__pyx_t_1);
+  __pyx_cur_scope->__pyx_v_cycle = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":265
+  /* "src/gnssir/gnssir_wrap.pyx":357
  *     def readcycles(self):
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS             # <<<<<<<<<<<<<<
@@ -21664,7 +23708,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
   __pyx_cur_scope->__pyx_v_err = GNSSR_SUCCESS;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":266
+  /* "src/gnssir/gnssir_wrap.pyx":358
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS
  *         while err == _GNSSR_SUCCESS:             # <<<<<<<<<<<<<<
@@ -21675,7 +23719,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
     __pyx_t_4 = (__pyx_cur_scope->__pyx_v_err == GNSSR_SUCCESS);
     if (!__pyx_t_4) break;
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":267
+    /* "src/gnssir/gnssir_wrap.pyx":359
  *         cdef int err=_GNSSR_SUCCESS
  *         while err == _GNSSR_SUCCESS:
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)             # <<<<<<<<<<<<<<
@@ -21684,7 +23728,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
     __pyx_cur_scope->__pyx_v_err = read_nmea_cycle((&__pyx_cur_scope->__pyx_v_self->_sid), __pyx_cur_scope->__pyx_v_cycle->cycle_ptr);
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":268
+    /* "src/gnssir/gnssir_wrap.pyx":360
  *         while err == _GNSSR_SUCCESS:
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:             # <<<<<<<<<<<<<<
@@ -21694,22 +23738,22 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
     __pyx_t_4 = (__pyx_cur_scope->__pyx_v_err == GNSSR_SUCCESS);
     if (__pyx_t_4) {
 
-      /* "src/gnssrlib/gnssrlib_wrap.pyx":269
+      /* "src/gnssir/gnssir_wrap.pyx":361
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:
  *                 if cycle.sats_in_view > 0:             # <<<<<<<<<<<<<<
  *                     yield cycle
  *             elif err == _GNSSR_EOF:
 */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_cycle), __pyx_mstate_global->__pyx_n_u_sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_cycle), __pyx_mstate_global->__pyx_n_u_sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_mstate_global->__pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_mstate_global->__pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 361, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 269, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 361, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_4) {
 
-        /* "src/gnssrlib/gnssrlib_wrap.pyx":270
+        /* "src/gnssir/gnssir_wrap.pyx":362
  *             if err == _GNSSR_SUCCESS:
  *                 if cycle.sats_in_view > 0:
  *                     yield cycle             # <<<<<<<<<<<<<<
@@ -21725,9 +23769,9 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
         __pyx_generator->resume_label = 1;
         return __pyx_r;
         __pyx_L8_resume_from_yield:;
-        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 270, __pyx_L1_error)
+        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 362, __pyx_L1_error)
 
-        /* "src/gnssrlib/gnssrlib_wrap.pyx":269
+        /* "src/gnssir/gnssir_wrap.pyx":361
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:
  *                 if cycle.sats_in_view > 0:             # <<<<<<<<<<<<<<
@@ -21736,7 +23780,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
       }
 
-      /* "src/gnssrlib/gnssrlib_wrap.pyx":268
+      /* "src/gnssir/gnssir_wrap.pyx":360
  *         while err == _GNSSR_SUCCESS:
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:             # <<<<<<<<<<<<<<
@@ -21746,7 +23790,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
       goto __pyx_L6;
     }
 
-    /* "src/gnssrlib/gnssrlib_wrap.pyx":271
+    /* "src/gnssir/gnssir_wrap.pyx":363
  *                 if cycle.sats_in_view > 0:
  *                     yield cycle
  *             elif err == _GNSSR_EOF:             # <<<<<<<<<<<<<<
@@ -21756,7 +23800,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
     __pyx_t_4 = (__pyx_cur_scope->__pyx_v_err == GNSSR_EOF);
     if (__pyx_t_4) {
 
-      /* "src/gnssrlib/gnssrlib_wrap.pyx":272
+      /* "src/gnssir/gnssir_wrap.pyx":364
  *                     yield cycle
  *             elif err == _GNSSR_EOF:
  *                 self._eof = 1             # <<<<<<<<<<<<<<
@@ -21765,7 +23809,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
       __pyx_cur_scope->__pyx_v_self->_eof = 1;
 
-      /* "src/gnssrlib/gnssrlib_wrap.pyx":273
+      /* "src/gnssir/gnssir_wrap.pyx":365
  *             elif err == _GNSSR_EOF:
  *                 self._eof = 1
  *                 break             # <<<<<<<<<<<<<<
@@ -21774,7 +23818,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
       goto __pyx_L5_break;
 
-      /* "src/gnssrlib/gnssrlib_wrap.pyx":271
+      /* "src/gnssir/gnssir_wrap.pyx":363
  *                 if cycle.sats_in_view > 0:
  *                     yield cycle
  *             elif err == _GNSSR_EOF:             # <<<<<<<<<<<<<<
@@ -21786,7 +23830,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
   }
   __pyx_L5_break:;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":274
+  /* "src/gnssir/gnssir_wrap.pyx":366
  *                 self._eof = 1
  *                 break
  *         return StopIteration             # <<<<<<<<<<<<<<
@@ -21798,7 +23842,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":263
+  /* "src/gnssir/gnssir_wrap.pyx":355
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
@@ -21825,7 +23869,7 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":211
+/* "src/gnssir/gnssir_wrap.pyx":303
  * 
  * cdef class NMEAFile:
  *     cdef public int _eof             # <<<<<<<<<<<<<<
@@ -21834,21 +23878,21 @@ static PyObject *__pyx_gb_11gnssr4water_8gnssrlib_8NMEAFile_20generator2(__pyx_C
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4_eof_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4_eof_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof___get__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof___get__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -21857,7 +23901,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_self->_eof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_self->_eof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -21866,7 +23910,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof___get__(struct
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile._eof.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile._eof.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -21875,40 +23919,40 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof___get__(struct
 }
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4_eof_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4_eof_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_2__set__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof_2__set__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_2__set__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof_2__set__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   int __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 303, __pyx_L1_error)
   __pyx_v_self->_eof = __pyx_t_1;
 
   /* function exit code */
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile._eof.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile._eof.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "src/gnssrlib/gnssrlib_wrap.pyx":213
+/* "src/gnssir/gnssir_wrap.pyx":305
  *     cdef public int _eof
  *     cdef gnssrstream _sid
  *     cdef public str name             # <<<<<<<<<<<<<<
@@ -21917,21 +23961,21 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_2__set__(struct __py
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name___get__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name___get__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name___get__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name___get__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -21948,21 +23992,21 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name___get__(struct
 }
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_2__set__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_2__set__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_2__set__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_2__set__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -21972,7 +24016,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_2__set__(struct __py
   __Pyx_RefNannySetupContext("__set__", 0);
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 305, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->name);
   __Pyx_DECREF(__pyx_v_self->name);
@@ -21984,7 +24028,7 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_2__set__(struct __py
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.name.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.name.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -21992,21 +24036,21 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_2__set__(struct __py
 }
 
 /* Python wrapper */
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_5__del__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_4__del__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_4__del__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_4__del__(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_4__del__(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -22029,15 +24073,15 @@ static int __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_4name_4__del__(struct __py
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_22__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_22__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_22__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_22__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -22063,14 +24107,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   const Py_ssize_t __pyx_kwds_len = unlikely(__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
   if (unlikely(__pyx_kwds_len < 0)) return NULL;
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("__reduce_cython__", __pyx_kwds); return NULL;}
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_21__reduce_cython__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_21__reduce_cython__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_21__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -22095,7 +24139,7 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_21__reduce_cython__(
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -22110,15 +24154,15 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_21__reduce_cython__(
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_24__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_24__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_24__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_24__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -22180,11 +24224,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_23__setstate_cython__(((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_23__setstate_cython__(((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -22194,7 +24238,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_23__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -22219,33 +24263,33 @@ static PyObject *__pyx_pf_11gnssr4water_8gnssrlib_8NMEAFile_23__setstate_cython_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("gnssr4water.gnssrlib.NMEAFile.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("gnssr4water.gnssir.NMEAFile.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 /* #### Code section: module_exttypes ### */
-static struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_gnss_sys __pyx_vtable_11gnssr4water_8gnssrlib_gnss_sys;
+static struct __pyx_vtabstruct_11gnssr4water_6gnssir_gnss_sys __pyx_vtable_11gnssr4water_6gnssir_gnss_sys;
 
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib_gnss_sys(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *p;
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_gnss_sys(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *p;
   PyObject *o;
   o = __Pyx_AllocateExtensionType(t, 0);
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys *)o);
-  p->__pyx_vtab = __pyx_vtabptr_11gnssr4water_8gnssrlib_gnss_sys;
-  if (unlikely(__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_1__cinit__(o, __pyx_mstate_global->__pyx_empty_tuple, NULL) < 0)) goto bad;
+  p = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)o);
+  p->__pyx_vtab = __pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys;
+  if (unlikely(__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_1__cinit__(o, __pyx_mstate_global->__pyx_empty_tuple, NULL) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_sys(PyObject *o) {
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_sys(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_sys) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_sys) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -22254,7 +24298,7 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_sys(PyObject *o) {
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_7__dealloc__(o);
+    __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_7__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
@@ -22272,59 +24316,59 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_sys(PyObject *o) {
   #endif
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_system(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_6system_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_system(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_6system_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_frequency(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9frequency_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_frequency(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9frequency_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_bandwidth(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9bandwidth_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_bandwidth(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9bandwidth_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_length(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_6length_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_length(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_6length_1__get__(o);
 }
 
-static PyMethodDef __pyx_methods_11gnssr4water_8gnssrlib_gnss_sys[] = {
-  {"__reduce__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_5__reduce__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"rinexcode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_9rinexcode, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_11gnssr4water_6gnssir_gnss_sys[] = {
+  {"__reduce__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_5__reduce__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"rinexcode", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_9rinexcode, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_11gnssr4water_8gnssrlib_gnss_sys[] = {
-  {"system", __pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_system, 0, 0, 0},
-  {"frequency", __pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_frequency, 0, 0, 0},
-  {"bandwidth", __pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_bandwidth, 0, 0, 0},
-  {"length", __pyx_getprop_11gnssr4water_8gnssrlib_8gnss_sys_length, 0, 0, 0},
+static struct PyGetSetDef __pyx_getsets_11gnssr4water_6gnssir_gnss_sys[] = {
+  {"system", __pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_system, 0, 0, 0},
+  {"frequency", __pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_frequency, 0, 0, 0},
+  {"bandwidth", __pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_bandwidth, 0, 0, 0},
+  {"length", __pyx_getprop_11gnssr4water_6gnssir_8gnss_sys_length, 0, 0, 0},
   {0, 0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_11gnssr4water_8gnssrlib_gnss_sys_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_sys},
-  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_8gnssrlib_gnss_sys},
-  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_8gnssrlib_gnss_sys},
-  {Py_tp_init, (void *)__pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__},
-  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_8gnssrlib_gnss_sys},
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir_gnss_sys_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_sys},
+  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_6gnssir_gnss_sys},
+  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_6gnssir_gnss_sys},
+  {Py_tp_init, (void *)__pyx_pw_11gnssr4water_6gnssir_8gnss_sys_3__init__},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir_gnss_sys},
   {0, 0},
 };
-static PyType_Spec __pyx_type_11gnssr4water_8gnssrlib_gnss_sys_spec = {
-  "gnssr4water.gnssrlib.gnss_sys",
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys),
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir_gnss_sys_spec = {
+  "gnssr4water.gnssir.gnss_sys",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_11gnssr4water_8gnssrlib_gnss_sys_slots,
+  __pyx_type_11gnssr4water_6gnssir_gnss_sys_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_sys = {
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir_gnss_sys = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""gnss_sys", /*tp_name*/
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_sys), /*tp_basicsize*/
+  "gnssr4water.gnssir.""gnss_sys", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_sys, /*tp_dealloc*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_sys, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -22347,9 +24391,9 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_sys = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_11gnssr4water_8gnssrlib_gnss_sys, /*tp_methods*/
+  __pyx_methods_11gnssr4water_6gnssir_gnss_sys, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_11gnssr4water_8gnssrlib_gnss_sys, /*tp_getset*/
+  __pyx_getsets_11gnssr4water_6gnssir_gnss_sys, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -22357,9 +24401,9 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_sys = {
   #if !CYTHON_USE_TYPE_SPECS
   0, /*tp_dictoffset*/
   #endif
-  __pyx_pw_11gnssr4water_8gnssrlib_8gnss_sys_3__init__, /*tp_init*/
+  __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_3__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11gnssr4water_8gnssrlib_gnss_sys, /*tp_new*/
+  __pyx_tp_new_11gnssr4water_6gnssir_gnss_sys, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -22392,21 +24436,21 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_sys = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib_gnss_cycle(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_gnss_cycle(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   o = __Pyx_AllocateExtensionType(t, 0);
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_1__cinit__(o, __pyx_mstate_global->__pyx_empty_tuple, NULL) < 0)) goto bad;
+  if (unlikely(__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_1__cinit__(o, __pyx_mstate_global->__pyx_empty_tuple, NULL) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_cycle(PyObject *o) {
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_cycle(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_cycle) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_cycle) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -22415,7 +24459,7 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_cycle(PyObject *o) {
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3__dealloc__(o);
+    __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
@@ -22433,93 +24477,93 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_cycle(PyObject *o) {
   #endif
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_time(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_4time_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_time(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_4time_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_sats_in_view(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12sats_in_view_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_sats_in_view(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_lon(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3lon_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_lon(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3lon_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_lat(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3lat_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_lat(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3lat_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_ortho_height(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12ortho_height_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_ortho_height(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_geoid_height(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_12geoid_height_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_geoid_height(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_system(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_6system_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_system(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_6system_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_prn(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_3prn_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_prn(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3prn_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_azimuth(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7azimuth_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_azimuth(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7azimuth_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_elevation(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_9elevation_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_elevation(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_9elevation_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_cnr0(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_4cnr0_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_cnr0(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_4cnr0_1__get__(o);
 }
 
-static PyMethodDef __pyx_methods_11gnssr4water_8gnssrlib_gnss_cycle[] = {
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_5__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_10gnss_cycle_7__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_11gnssr4water_6gnssir_gnss_cycle[] = {
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_11gnssr4water_8gnssrlib_gnss_cycle[] = {
-  {"time", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_time, 0, 0, 0},
-  {"sats_in_view", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_sats_in_view, 0, 0, 0},
-  {"lon", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_lon, 0, 0, 0},
-  {"lat", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_lat, 0, 0, 0},
-  {"ortho_height", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_ortho_height, 0, 0, 0},
-  {"geoid_height", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_geoid_height, 0, 0, 0},
-  {"system", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_system, 0, 0, 0},
-  {"prn", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_prn, 0, 0, 0},
-  {"azimuth", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_azimuth, 0, 0, 0},
-  {"elevation", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_elevation, 0, 0, 0},
-  {"cnr0", __pyx_getprop_11gnssr4water_8gnssrlib_10gnss_cycle_cnr0, 0, 0, 0},
+static struct PyGetSetDef __pyx_getsets_11gnssr4water_6gnssir_gnss_cycle[] = {
+  {"time", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_time, 0, 0, 0},
+  {"sats_in_view", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_sats_in_view, 0, 0, 0},
+  {"lon", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_lon, 0, 0, 0},
+  {"lat", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_lat, 0, 0, 0},
+  {"ortho_height", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_ortho_height, 0, 0, 0},
+  {"geoid_height", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_geoid_height, 0, 0, 0},
+  {"system", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_system, 0, 0, 0},
+  {"prn", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_prn, 0, 0, 0},
+  {"azimuth", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_azimuth, 0, 0, 0},
+  {"elevation", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_elevation, 0, 0, 0},
+  {"cnr0", __pyx_getprop_11gnssr4water_6gnssir_10gnss_cycle_cnr0, 0, 0, 0},
   {0, 0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_cycle},
-  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_8gnssrlib_gnss_cycle},
-  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_8gnssrlib_gnss_cycle},
-  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_8gnssrlib_gnss_cycle},
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir_gnss_cycle_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_cycle},
+  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_6gnssir_gnss_cycle},
+  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_6gnssir_gnss_cycle},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir_gnss_cycle},
   {0, 0},
 };
-static PyType_Spec __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle_spec = {
-  "gnssr4water.gnssrlib.gnss_cycle",
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle),
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec = {
+  "gnssr4water.gnssir.gnss_cycle",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle_slots,
+  __pyx_type_11gnssr4water_6gnssir_gnss_cycle_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle = {
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir_gnss_cycle = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""gnss_cycle", /*tp_name*/
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib_gnss_cycle), /*tp_basicsize*/
+  "gnssr4water.gnssir.""gnss_cycle", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11gnssr4water_8gnssrlib_gnss_cycle, /*tp_dealloc*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_cycle, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -22542,9 +24586,9 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_11gnssr4water_8gnssrlib_gnss_cycle, /*tp_methods*/
+  __pyx_methods_11gnssr4water_6gnssir_gnss_cycle, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_11gnssr4water_8gnssrlib_gnss_cycle, /*tp_getset*/
+  __pyx_getsets_11gnssr4water_6gnssir_gnss_cycle, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -22554,7 +24598,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11gnssr4water_8gnssrlib_gnss_cycle, /*tp_new*/
+  __pyx_tp_new_11gnssr4water_6gnssir_gnss_cycle, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -22586,24 +24630,225 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_gnss_cycle = {
   #endif
 };
 #endif
-static struct __pyx_vtabstruct_11gnssr4water_8gnssrlib_NMEAFile __pyx_vtable_11gnssr4water_8gnssrlib_NMEAFile;
 
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib_NMEAFile(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *p;
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_gnss_trans_cycle(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   o = __Pyx_AllocateExtensionType(t, 0);
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)o);
-  p->__pyx_vtab = __pyx_vtabptr_11gnssr4water_8gnssrlib_NMEAFile;
+  if (unlikely(__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_1__cinit__(o, __pyx_mstate_global->__pyx_empty_tuple, NULL) < 0)) goto bad;
+  return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
+}
+
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_trans_cycle(PyObject *o) {
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_trans_cycle) {
+      if (PyObject_CallFinalizerFromDealloc(o)) return;
+    }
+  }
+  #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
+  PyTypeObject *tp = Py_TYPE(o);
+  #if CYTHON_USE_TYPE_SLOTS
+  (*tp->tp_free)(o);
+  #else
+  {
+    freefunc tp_free = (freefunc)PyType_GetSlot(tp, Py_tp_free);
+    if (tp_free) tp_free(o);
+  }
+  #endif
+  #if CYTHON_USE_TYPE_SPECS
+  Py_DECREF(tp);
+  #endif
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_time(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_4time_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_sats_in_view(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_view_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_lon(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3lon_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_lat(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3lat_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_ortho_height(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12ortho_height_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_geoid_height(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_12geoid_height_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_system(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_6system_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_prn(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_azimuth(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_elevation(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_cnr0(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_gamma(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma_1__get__(o);
+}
+
+static PyMethodDef __pyx_methods_11gnssr4water_6gnssir_gnss_trans_cycle[] = {
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {0, 0, 0, 0}
+};
+
+static struct PyGetSetDef __pyx_getsets_11gnssr4water_6gnssir_gnss_trans_cycle[] = {
+  {"time", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_time, 0, 0, 0},
+  {"sats_in_view", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_sats_in_view, 0, 0, 0},
+  {"lon", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_lon, 0, 0, 0},
+  {"lat", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_lat, 0, 0, 0},
+  {"ortho_height", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_ortho_height, 0, 0, 0},
+  {"geoid_height", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_geoid_height, 0, 0, 0},
+  {"system", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_system, 0, 0, 0},
+  {"prn", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_prn, 0, 0, 0},
+  {"azimuth", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_azimuth, 0, 0, 0},
+  {"elevation", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_elevation, 0, 0, 0},
+  {"cnr0", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_cnr0, 0, 0, 0},
+  {"gamma", __pyx_getprop_11gnssr4water_6gnssir_16gnss_trans_cycle_gamma, 0, 0, 0},
+  {0, 0, 0, 0, 0}
+};
+#if CYTHON_USE_TYPE_SPECS
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_trans_cycle},
+  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_6gnssir_gnss_trans_cycle},
+  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_6gnssir_gnss_trans_cycle},
+  {Py_tp_init, (void *)__pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir_gnss_trans_cycle},
+  {0, 0},
+};
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec = {
+  "gnssr4water.gnssir.gnss_trans_cycle",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle),
+  0,
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
+  __pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_slots,
+};
+#else
+
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "gnssr4water.gnssir.""gnss_trans_cycle", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir_gnss_trans_cycle, /*tp_dealloc*/
+  0, /*tp_vectorcall_offset*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  0, /*tp_as_async*/
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  0, /*tp_doc*/
+  0, /*tp_traverse*/
+  0, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_11gnssr4water_6gnssir_gnss_trans_cycle, /*tp_methods*/
+  0, /*tp_members*/
+  __pyx_getsets_11gnssr4water_6gnssir_gnss_trans_cycle, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  #if !CYTHON_USE_TYPE_SPECS
+  0, /*tp_dictoffset*/
+  #endif
+  __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_11gnssr4water_6gnssir_gnss_trans_cycle, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if CYTHON_USE_TP_FINALIZE
+  0, /*tp_finalize*/
+  #else
+  NULL, /*tp_finalize*/
+  #endif
+  #if !CYTHON_COMPILING_IN_PYPY || PYPY_VERSION_NUM >= 0x07030800
+  0, /*tp_vectorcall*/
+  #endif
+  #if __PYX_NEED_TP_PRINT_SLOT == 1
+  0, /*tp_print*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030C0000
+  0, /*tp_watched*/
+  #endif
+  #if PY_VERSION_HEX >= 0x030d00A4
+  0, /*tp_versions_used*/
+  #endif
+  #if CYTHON_COMPILING_IN_PYPY && PY_VERSION_HEX >= 0x03090000 && PY_VERSION_HEX < 0x030a0000
+  0, /*tp_pypy_flags*/
+  #endif
+};
+#endif
+static struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile __pyx_vtable_11gnssr4water_6gnssir_NMEAFile;
+
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir_NMEAFile(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *p;
+  PyObject *o;
+  o = __Pyx_AllocateExtensionType(t, 0);
+  if (unlikely(!o)) return 0;
+  p = ((struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)o);
+  p->__pyx_vtab = __pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile;
   p->name = ((PyObject*)Py_None); Py_INCREF(Py_None);
   return o;
 }
 
-static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_NMEAFile(PyObject *o) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *p = (struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *)o;
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir_NMEAFile(PyObject *o) {
+  struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *p = (struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_8gnssrlib_NMEAFile) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir_NMEAFile) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -22623,13 +24868,13 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib_NMEAFile(PyObject *o) {
   #endif
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_8NMEAFile__eof(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_8NMEAFile__eof(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4_eof_1__get__(o);
 }
 
-static int __pyx_setprop_11gnssr4water_8gnssrlib_8NMEAFile__eof(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_11gnssr4water_6gnssir_8NMEAFile__eof(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4_eof_3__set__(o, v);
+    return __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4_eof_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -22637,61 +24882,61 @@ static int __pyx_setprop_11gnssr4water_8gnssrlib_8NMEAFile__eof(PyObject *o, PyO
   }
 }
 
-static PyObject *__pyx_getprop_11gnssr4water_8gnssrlib_8NMEAFile_name(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_1__get__(o);
+static PyObject *__pyx_getprop_11gnssr4water_6gnssir_8NMEAFile_name(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_1__get__(o);
 }
 
-static int __pyx_setprop_11gnssr4water_8gnssrlib_8NMEAFile_name(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_11gnssr4water_6gnssir_8NMEAFile_name(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_3__set__(o, v);
+    return __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_3__set__(o, v);
   }
   else {
-    return __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_4name_5__del__(o);
+    return __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_4name_5__del__(o);
   }
 }
 
-static PyMethodDef __pyx_methods_11gnssr4water_8gnssrlib_NMEAFile[] = {
-  {"eof", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_3eof, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__enter__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_5__enter__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__exit__", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__, METH_VARARGS|METH_KEYWORDS, 0},
-  {"close", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_9close, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"readlines", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_13readlines, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"readnmeas", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_16readnmeas, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"readcycles", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_19readcycles, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_22__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_24__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_11gnssr4water_6gnssir_NMEAFile[] = {
+  {"eof", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_3eof, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__enter__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_5__enter__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__exit__", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_7__exit__, METH_VARARGS|METH_KEYWORDS, 0},
+  {"close", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_9close, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"readlines", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_13readlines, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"readnmeas", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_16readnmeas, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"readcycles", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_19readcycles, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_11gnssr4water_8gnssrlib_NMEAFile[] = {
-  {"_eof", __pyx_getprop_11gnssr4water_8gnssrlib_8NMEAFile__eof, __pyx_setprop_11gnssr4water_8gnssrlib_8NMEAFile__eof, 0, 0},
-  {"name", __pyx_getprop_11gnssr4water_8gnssrlib_8NMEAFile_name, __pyx_setprop_11gnssr4water_8gnssrlib_8NMEAFile_name, 0, 0},
+static struct PyGetSetDef __pyx_getsets_11gnssr4water_6gnssir_NMEAFile[] = {
+  {"_eof", __pyx_getprop_11gnssr4water_6gnssir_8NMEAFile__eof, __pyx_setprop_11gnssr4water_6gnssir_8NMEAFile__eof, 0, 0},
+  {"name", __pyx_getprop_11gnssr4water_6gnssir_8NMEAFile_name, __pyx_setprop_11gnssr4water_6gnssir_8NMEAFile_name, 0, 0},
   {0, 0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_11gnssr4water_8gnssrlib_NMEAFile_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_8gnssrlib_NMEAFile},
-  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_8gnssrlib_NMEAFile},
-  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_8gnssrlib_NMEAFile},
-  {Py_tp_init, (void *)__pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_1__init__},
-  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_8gnssrlib_NMEAFile},
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir_NMEAFile_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir_NMEAFile},
+  {Py_tp_methods, (void *)__pyx_methods_11gnssr4water_6gnssir_NMEAFile},
+  {Py_tp_getset, (void *)__pyx_getsets_11gnssr4water_6gnssir_NMEAFile},
+  {Py_tp_init, (void *)__pyx_pw_11gnssr4water_6gnssir_8NMEAFile_1__init__},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir_NMEAFile},
   {0, 0},
 };
-static PyType_Spec __pyx_type_11gnssr4water_8gnssrlib_NMEAFile_spec = {
-  "gnssr4water.gnssrlib.NMEAFile",
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile),
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir_NMEAFile_spec = {
+  "gnssr4water.gnssir.NMEAFile",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_11gnssr4water_8gnssrlib_NMEAFile_slots,
+  __pyx_type_11gnssr4water_6gnssir_NMEAFile_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_NMEAFile = {
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir_NMEAFile = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""NMEAFile", /*tp_name*/
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile), /*tp_basicsize*/
+  "gnssr4water.gnssir.""NMEAFile", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11gnssr4water_8gnssrlib_NMEAFile, /*tp_dealloc*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir_NMEAFile, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -22714,9 +24959,9 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_NMEAFile = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_11gnssr4water_8gnssrlib_NMEAFile, /*tp_methods*/
+  __pyx_methods_11gnssr4water_6gnssir_NMEAFile, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_11gnssr4water_8gnssrlib_NMEAFile, /*tp_getset*/
+  __pyx_getsets_11gnssr4water_6gnssir_NMEAFile, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -22724,9 +24969,9 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_NMEAFile = {
   #if !CYTHON_USE_TYPE_SPECS
   0, /*tp_dictoffset*/
   #endif
-  __pyx_pw_11gnssr4water_8gnssrlib_8NMEAFile_1__init__, /*tp_init*/
+  __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_1__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11gnssr4water_8gnssrlib_NMEAFile, /*tp_new*/
+  __pyx_tp_new_11gnssr4water_6gnssir_NMEAFile, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -22759,16 +25004,16 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib_NMEAFile = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct__readlines(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct__readlines > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines[--__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct__readlines[--__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct__readlines];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines));
+    memset(o, 0, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -22784,11 +25029,11 @@ static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct__readli
   return o;
 }
 
-static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines(PyObject *o) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *p = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *)o;
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct__readlines(PyObject *o) {
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *p = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct__readlines) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -22797,9 +25042,9 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct__readlin
   Py_CLEAR(p->__pyx_v_line);
   Py_CLEAR(p->__pyx_v_self);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct__readlines < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines))))
   {
-    __pyx_mstate_global->__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines[__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines++] = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *)o);
+    __pyx_mstate_global->__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct__readlines[__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct__readlines++] = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)o);
   } else
   #endif
   {
@@ -22818,9 +25063,9 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct__readlin
   }
 }
 
-static int __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct__readlines(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *p = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines *)o;
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *p = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -22834,27 +25079,27 @@ static int __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct__readlin
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines},
-  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines},
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct__readlines},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct__readlines},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct__readlines},
   {0, 0},
 };
-static PyType_Spec __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines_spec = {
-  "gnssr4water.gnssrlib.__pyx_scope_struct__readlines",
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines),
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec = {
+  "gnssr4water.gnssir.__pyx_scope_struct__readlines",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines_slots,
+  __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines = {
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""__pyx_scope_struct__readlines", /*tp_name*/
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines), /*tp_basicsize*/
+  "gnssr4water.gnssir.""__pyx_scope_struct__readlines", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines, /*tp_dealloc*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct__readlines, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -22871,7 +25116,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readl
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines, /*tp_traverse*/
+  __pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct__readlines, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -22889,7 +25134,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readl
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines, /*tp_new*/
+  __pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct__readlines, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -22922,16 +25167,16 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readl
 };
 #endif
 
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas[--__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas[--__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas));
+    memset(o, 0, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -22947,11 +25192,11 @@ static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readn
   return o;
 }
 
-static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas(PyObject *o) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *p = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *)o;
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas(PyObject *o) {
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *p = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -22961,9 +25206,9 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnm
   Py_CLEAR(p->__pyx_v_self);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas))))
   {
-    __pyx_mstate_global->__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas[__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas++] = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *)o);
+    __pyx_mstate_global->__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas[__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas++] = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)o);
   } else
   #endif
   {
@@ -22982,9 +25227,9 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnm
   }
 }
 
-static int __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *p = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas *)o;
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *p = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -23001,27 +25246,27 @@ static int __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnm
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas},
-  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas},
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas},
   {0, 0},
 };
-static PyType_Spec __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas_spec = {
-  "gnssr4water.gnssrlib.__pyx_scope_struct_1_readnmeas",
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas),
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec = {
+  "gnssr4water.gnssir.__pyx_scope_struct_1_readnmeas",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas_slots,
+  __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas = {
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""__pyx_scope_struct_1_readnmeas", /*tp_name*/
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas), /*tp_basicsize*/
+  "gnssr4water.gnssir.""__pyx_scope_struct_1_readnmeas", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas, /*tp_dealloc*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -23038,7 +25283,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_read
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas, /*tp_traverse*/
+  __pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -23056,7 +25301,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_read
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas, /*tp_new*/
+  __pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -23089,16 +25334,16 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_read
 };
 #endif
 
-static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles[--__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles[--__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles));
+    memset(o, 0, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -23114,11 +25359,11 @@ static PyObject *__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readc
   return o;
 }
 
-static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles(PyObject *o) {
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *p = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *)o;
+static void __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles(PyObject *o) {
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *p = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -23127,9 +25372,9 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcy
   Py_CLEAR(p->__pyx_v_cycle);
   Py_CLEAR(p->__pyx_v_self);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles, sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles, sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles))))
   {
-    __pyx_mstate_global->__pyx_freelist_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles[__pyx_mstate_global->__pyx_freecount_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles++] = ((struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *)o);
+    __pyx_mstate_global->__pyx_freelist_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles[__pyx_mstate_global->__pyx_freecount_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles++] = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)o);
   } else
   #endif
   {
@@ -23148,9 +25393,9 @@ static void __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcy
   }
 }
 
-static int __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *p = (struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles *)o;
+  struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *p = (struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -23164,27 +25409,27 @@ static int __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcy
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles},
-  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles},
+static PyType_Slot __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles},
+  {Py_tp_new, (void *)__pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles},
   {0, 0},
 };
-static PyType_Spec __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles_spec = {
-  "gnssr4water.gnssrlib.__pyx_scope_struct_2_readcycles",
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles),
+static PyType_Spec __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec = {
+  "gnssr4water.gnssir.__pyx_scope_struct_2_readcycles",
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles_slots,
+  __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles = {
+static PyTypeObject __pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""__pyx_scope_struct_2_readcycles", /*tp_name*/
-  sizeof(struct __pyx_obj_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles), /*tp_basicsize*/
+  "gnssr4water.gnssir.""__pyx_scope_struct_2_readcycles", /*tp_name*/
+  sizeof(struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles, /*tp_dealloc*/
+  __pyx_tp_dealloc_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -23201,7 +25446,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_read
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles, /*tp_traverse*/
+  __pyx_tp_traverse_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -23219,7 +25464,7 @@ static PyTypeObject __pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_read
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles, /*tp_new*/
+  __pyx_tp_new_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -23377,7 +25622,7 @@ static PyType_Slot __pyx_type___pyx_array_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_array_spec = {
-  "gnssr4water.gnssrlib.array",
+  "gnssr4water.gnssir.array",
   sizeof(struct __pyx_array_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_SEQUENCE,
@@ -23411,7 +25656,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""array", /*tp_name*/
+  "gnssr4water.gnssir.""array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -23556,7 +25801,7 @@ static PyType_Slot __pyx_type___pyx_MemviewEnum_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
-  "gnssr4water.gnssrlib.Enum",
+  "gnssr4water.gnssir.Enum",
   sizeof(struct __pyx_MemviewEnum_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -23566,7 +25811,7 @@ static PyType_Spec __pyx_type___pyx_MemviewEnum_spec = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""Enum", /*tp_name*/
+  "gnssr4water.gnssir.""Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -23833,7 +26078,7 @@ static PyType_Slot __pyx_type___pyx_memoryview_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryview_spec = {
-  "gnssr4water.gnssrlib.memoryview",
+  "gnssr4water.gnssir.memoryview",
   sizeof(struct __pyx_memoryview_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC,
@@ -23867,7 +26112,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""memoryview", /*tp_name*/
+  "gnssr4water.gnssir.""memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -24010,7 +26255,7 @@ static PyType_Slot __pyx_type___pyx_memoryviewslice_slots[] = {
   {0, 0},
 };
 static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
-  "gnssr4water.gnssrlib._memoryviewslice",
+  "gnssr4water.gnssir._memoryviewslice",
   sizeof(struct __pyx_memoryviewslice_obj),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_SEQUENCE,
@@ -24020,7 +26265,7 @@ static PyType_Spec __pyx_type___pyx_memoryviewslice_spec = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "gnssr4water.gnssrlib.""_memoryviewslice", /*tp_name*/
+  "gnssr4water.gnssir.""_memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -24161,131 +26406,152 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  __pyx_vtabptr_11gnssr4water_8gnssrlib_gnss_sys = &__pyx_vtable_11gnssr4water_8gnssrlib_gnss_sys;
-  __pyx_vtable_11gnssr4water_8gnssrlib_gnss_sys.from_ = (PyObject *(*)(struct gnss_system))__pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_;
+  __pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys = &__pyx_vtable_11gnssr4water_6gnssir_gnss_sys;
+  __pyx_vtable_11gnssr4water_6gnssir_gnss_sys.from_ = (PyObject *(*)(struct gnss_system))__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_8gnssrlib_gnss_sys_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys)) __PYX_ERR(0, 95, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_8gnssrlib_gnss_sys_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_sys_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_sys_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 117, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys = &__pyx_type_11gnssr4water_8gnssrlib_gnss_sys;
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys = &__pyx_type_11gnssr4water_6gnssir_gnss_sys;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 117, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys, __pyx_vtabptr_11gnssr4water_8gnssrlib_gnss_sys) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_sys, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys) < (0)) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_sys, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 117, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_8gnssrlib_gnss_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle)) __PYX_ERR(0, 147, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_8gnssrlib_gnss_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle)) __PYX_ERR(0, 169, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 169, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle = &__pyx_type_11gnssr4water_8gnssrlib_gnss_cycle;
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle = &__pyx_type_11gnssr4water_6gnssir_gnss_cycle;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 169, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_cycle) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
-  __pyx_vtabptr_11gnssr4water_8gnssrlib_NMEAFile = &__pyx_vtable_11gnssr4water_8gnssrlib_NMEAFile;
-  __pyx_vtable_11gnssr4water_8gnssrlib_NMEAFile.readline = (PyObject *(*)(struct __pyx_obj_11gnssr4water_8gnssrlib_NMEAFile *, int __pyx_skip_dispatch))__pyx_f_11gnssr4water_8gnssrlib_8NMEAFile_readline;
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 169, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 169, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_8gnssrlib_NMEAFile_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile)) __PYX_ERR(0, 210, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_8gnssrlib_NMEAFile_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle)) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 232, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile = &__pyx_type_11gnssr4water_8gnssrlib_NMEAFile;
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle = &__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 232, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_vtabptr_11gnssr4water_8gnssrlib_NMEAFile) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_NMEAFile, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile = &__pyx_vtable_11gnssr4water_6gnssir_NMEAFile;
+  __pyx_vtable_11gnssr4water_6gnssir_NMEAFile.readline = (PyObject *(*)(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *, int __pyx_skip_dispatch))__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines)) __PYX_ERR(0, 246, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_NMEAFile_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile)) __PYX_ERR(0, 302, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_NMEAFile_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 302, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines = &__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines;
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile = &__pyx_type_11gnssr4water_6gnssir_NMEAFile;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 246, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 302, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct__readlines->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile->tp_getattro = PyObject_GenericGetAttr;
+  }
+  #endif
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 302, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 302, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_NMEAFile, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 302, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 302, __pyx_L1_error)
+  #if CYTHON_USE_TYPE_SPECS
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines)) __PYX_ERR(0, 338, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 338, __pyx_L1_error)
+  #else
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines = &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines;
+  #endif
+  #if !CYTHON_COMPILING_IN_LIMITED_API
+  #endif
+  #if !CYTHON_USE_TYPE_SPECS
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 338, __pyx_L1_error)
+  #endif
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines);
+  #endif
+  #if !CYTHON_COMPILING_IN_LIMITED_API
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas)) __PYX_ERR(0, 255, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas)) __PYX_ERR(0, 347, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 347, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas = &__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas;
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas = &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 347, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_1_readnmeas->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles)) __PYX_ERR(0, 263, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles)) __PYX_ERR(0, 355, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 355, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles = &__pyx_type_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles;
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles = &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 263, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 355, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_11gnssr4water_8gnssrlib___pyx_scope_struct_2_readcycles->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles->tp_dictoffset && __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   __pyx_vtabptr_array = &__pyx_vtable_array;
@@ -24451,10 +26717,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_gnssrlib(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_gnssir(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_gnssrlib},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_gnssir},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, __Pyx_FREETHREADING_COMPATIBLE},
   #endif
@@ -24473,7 +26739,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "gnssrlib",
+      "gnssir",
       0, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
@@ -24511,8 +26777,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit_gnssrlib(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_gnssrlib(void)
+__Pyx_PyMODINIT_FUNC PyInit_gnssir(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_gnssir(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -24619,7 +26885,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_gnssrlib(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_gnssir(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -24654,7 +26920,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_gnssrlib(PyObject *__pyx_pyinit_mo
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'gnssrlib' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'gnssir' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -24670,7 +26936,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_gnssrlib(PyObject *__pyx_pyinit_mo
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "gnssrlib" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "gnssir" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -24698,7 +26964,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_gnssrlib(PyObject *__pyx_pyinit_mo
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
+__Pyx_RefNannySetupContext("PyInit_gnssir", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -24709,13 +26975,13 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_gnssr4water__gnssrlib) {
+  if (__pyx_module_is_main_gnssr4water__gnssir) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "gnssr4water.gnssrlib")) {
-      if (unlikely((PyDict_SetItemString(modules, "gnssr4water.gnssrlib", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "gnssr4water.gnssir")) {
+      if (unlikely((PyDict_SetItemString(modules, "gnssr4water.gnssir", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -25406,7 +27672,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
  *     ('NMEA_UNSUPPORTED', __Pyx_PyLong_From_enum__nmea_type(NMEA_UNSUPPORTED)),
  *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),             # <<<<<<<<<<<<<<
  * 
- * ], module=globals().get("__module__", 'gnssr4water.gnssrlib'))
+ * ], module=globals().get("__module__", 'gnssr4water.gnssir'))
 */
   __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
@@ -25436,7 +27702,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   /* "EnumType":34
  *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),
  * 
- * ], module=globals().get("__module__", 'gnssr4water.gnssrlib'))             # <<<<<<<<<<<<<<
+ * ], module=globals().get("__module__", 'gnssr4water.gnssir'))             # <<<<<<<<<<<<<<
  * 
  * if PY_VERSION_HEX >= 0x030B0000:
 */
@@ -25467,7 +27733,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "EnumType":36
- * ], module=globals().get("__module__", 'gnssr4water.gnssrlib'))
+ * ], module=globals().get("__module__", 'gnssr4water.gnssir'))
  * 
  * if PY_VERSION_HEX >= 0x030B0000:             # <<<<<<<<<<<<<<
  * 
@@ -25496,7 +27762,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
     /* "EnumType":36
- * ], module=globals().get("__module__", 'gnssr4water.gnssrlib'))
+ * ], module=globals().get("__module__", 'gnssr4water.gnssir'))
  * 
  * if PY_VERSION_HEX >= 0x030B0000:             # <<<<<<<<<<<<<<
  * 
@@ -25504,7 +27770,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
 */
   }
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":21
+  /* "src/gnssir/gnssir_wrap.pyx":21
  * from cython.operator cimport dereference as deref
  * from libc.stdlib cimport malloc, free
  * from datetime import datetime,timedelta             # <<<<<<<<<<<<<<
@@ -25528,7 +27794,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":22
+  /* "src/gnssir/gnssir_wrap.pyx":22
  * from libc.stdlib cimport malloc, free
  * from datetime import datetime,timedelta
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -25541,70 +27807,70 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_10) < (0)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":110
+  /* "src/gnssir/gnssir_wrap.pyx":132
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
  *         return (gnss_sys,(self.system,))
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8gnss_sys_5__reduce__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys___reduce, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_5__reduce__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys___reduce, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys, __pyx_mstate_global->__pyx_n_u_reduce, __pyx_t_10) < (0)) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_mstate_global->__pyx_n_u_reduce, __pyx_t_10) < (0)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":138
+  /* "src/gnssir/gnssir_wrap.pyx":160
  *         return deref(self.system_ptr).length
  * 
  *     def rinexcode(self,satno):             # <<<<<<<<<<<<<<
  *         satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"
  *         return satcode
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8gnss_sys_9rinexcode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys_rinexcode, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_9rinexcode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys_rinexcode, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_gnss_sys, __pyx_mstate_global->__pyx_n_u_rinexcode, __pyx_t_10) < (0)) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_mstate_global->__pyx_n_u_rinexcode, __pyx_t_10) < (0)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":142
+  /* "src/gnssir/gnssir_wrap.pyx":164
  *         return satcode
  * 
  * GPSL1=gnss_sys.from_(gnss_gpsl1)             # <<<<<<<<<<<<<<
  * GPSL2=gnss_sys.from_(gnss_gpsl2)
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
 */
-  __pyx_t_10 = __pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(gnss_gpsl1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_10 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_gpsl1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL1, __pyx_t_10) < (0)) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL1, __pyx_t_10) < (0)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":143
+  /* "src/gnssir/gnssir_wrap.pyx":165
  * 
  * GPSL1=gnss_sys.from_(gnss_gpsl1)
  * GPSL2=gnss_sys.from_(gnss_gpsl2)             # <<<<<<<<<<<<<<
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
  * 
 */
-  __pyx_t_10 = __pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(gnss_gpsl2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_10 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_gpsl2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL2, __pyx_t_10) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL2, __pyx_t_10) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":144
+  /* "src/gnssir/gnssir_wrap.pyx":166
  * GPSL1=gnss_sys.from_(gnss_gpsl1)
  * GPSL2=gnss_sys.from_(gnss_gpsl2)
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  __pyx_t_10 = __pyx_f_11gnssr4water_8gnssrlib_8gnss_sys_from_(gnss_glonassiil1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_10 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_glonassiil1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, __pyx_t_10) < (0)) __PYX_ERR(0, 144, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, __pyx_t_10) < (0)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
   /* "(tree fragment)":1
@@ -25612,7 +27878,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_10gnss_cycle_5__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
@@ -25626,7 +27892,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_10gnss_cycle_7__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
@@ -25634,124 +27900,151 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":221
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):
+*/
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
+*/
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle___setstate_cyth, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+  /* "src/gnssir/gnssir_wrap.pyx":313
  *         self._eof = 0
  * 
  *     def eof(self):             # <<<<<<<<<<<<<<
  *         return self._eof == 1
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_3eof, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_eof, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_3eof, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_eof, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_eof, __pyx_t_10) < (0)) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_eof, __pyx_t_10) < (0)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":224
+  /* "src/gnssir/gnssir_wrap.pyx":316
  *         return self._eof == 1
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
  *         return self
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_5__enter__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___enter, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_5__enter__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___enter, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_enter, __pyx_t_10) < (0)) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_enter, __pyx_t_10) < (0)) __PYX_ERR(0, 316, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":227
+  /* "src/gnssir/gnssir_wrap.pyx":319
  *         return self
  * 
  *     def __exit__(self, *args):             # <<<<<<<<<<<<<<
  *         self.close()
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_7__exit__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___exit, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_7__exit__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___exit, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 319, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_exit, __pyx_t_10) < (0)) __PYX_ERR(0, 227, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_exit, __pyx_t_10) < (0)) __PYX_ERR(0, 319, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":230
+  /* "src/gnssir/gnssir_wrap.pyx":322
  *         self.close()
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
  *         self._eof = 1
  *         close_stream(&self._sid)
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_9close, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_close, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_9close, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_close, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_close, __pyx_t_10) < (0)) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_close, __pyx_t_10) < (0)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":234
+  /* "src/gnssir/gnssir_wrap.pyx":326
  *         close_stream(&self._sid)
  * 
  *     cpdef readline(self):             # <<<<<<<<<<<<<<
  * 
  *         cdef int err=0
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_11readline, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readline, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_11readline, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readline, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_readline, __pyx_t_10) < (0)) __PYX_ERR(0, 234, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readline, __pyx_t_10) < (0)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":246
+  /* "src/gnssir/gnssir_wrap.pyx":338
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
  *         line = self.readline()
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_13readlines, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_13readlines, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_t_10) < (0)) __PYX_ERR(0, 246, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_t_10) < (0)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":255
+  /* "src/gnssir/gnssir_wrap.pyx":347
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_16readnmeas, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_16readnmeas, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_t_10) < (0)) __PYX_ERR(0, 255, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_t_10) < (0)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":263
+  /* "src/gnssir/gnssir_wrap.pyx":355
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_19readcycles, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_19readcycles, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_8gnssrlib_NMEAFile, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_t_10) < (0)) __PYX_ERR(0, 263, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_t_10) < (0)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
   /* "(tree fragment)":1
@@ -25759,7 +28052,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
  *     raise TypeError, "Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_22__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
@@ -25773,7 +28066,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)"
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_8gnssrlib_8NMEAFile_24__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssrlib, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
@@ -25781,7 +28074,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "src/gnssrlib/gnssrlib_wrap.pyx":1
+  /* "src/gnssir/gnssir_wrap.pyx":1
  * # This file is part of gnssr4water             # <<<<<<<<<<<<<<
  * # gnssr4water is free software; you can redistribute it and/or
  * # modify it under the terms of the GNU Lesser General Public
@@ -25810,7 +28103,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
   __Pyx_XDECREF(__pyx_t_20);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init gnssr4water.gnssrlib", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init gnssr4water.gnssir", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -25824,7 +28117,7 @@ __Pyx_RefNannySetupContext("PyInit_gnssrlib", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init gnssr4water.gnssrlib");
+    PyErr_SetString(PyExc_ImportError, "init gnssr4water.gnssir");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -25901,11 +28194,11 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   /* "EnumType":34
  *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),
  * 
- * ], module=globals().get("__module__", 'gnssr4water.gnssrlib'))             # <<<<<<<<<<<<<<
+ * ], module=globals().get("__module__", 'gnssr4water.gnssir'))             # <<<<<<<<<<<<<<
  * 
  * if PY_VERSION_HEX >= 0x030B0000:
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_module_2, __pyx_mstate_global->__pyx_kp_u_gnssr4water_gnssrlib); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(1, 34, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_module_2, __pyx_mstate_global->__pyx_kp_u_gnssr4water_gnssir); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
   #if CYTHON_IMMORTAL_CONSTANTS
@@ -25943,31 +28236,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 8; } index[] = {{2},{3},{68},{35},{54},{37},{60},{24},{52},{26},{34},{14},{29},{33},{45},{22},{15},{4},{179},{37},{97},{30},{32},{1},{1},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{7},{6},{2},{20},{6},{35},{9},{30},{50},{8},{21},{30},{20},{32},{22},{14},{30},{37},{5},{8},{11},{5},{5},{7},{7},{8},{18},{17},{26},{28},{14},{12},{19},{17},{18},{18},{8},{8},{8},{8},{8},{12},{8},{16},{8},{20},{8},{7},{15},{3},{15},{4},{7},{18},{4},{1},{9},{17},{18},{5},{5},{5},{8},{8},{15},{6},{9},{4},{9},{3},{3},{5},{8},{8},{5},{6},{7},{8},{3},{12},{10},{28},{30},{8},{19},{18},{20},{2},{10},{5},{13},{5},{8},{4},{4},{8},{14},{11},{7},{4},{6},{10},{4},{8},{4},{7},{4},{4},{6},{9},{2},{5},{3},{4},{3},{14},{11},{10},{19},{14},{12},{10},{8},{9},{9},{10},{17},{13},{8},{9},{7},{5},{12},{7},{4},{4},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{6},{6},{8},{5},{9},{6},{6},{5},{6},{1},{2},{1},{0},{1},{1},{2},{32},{9},{20},{60},{11},{7},{13},{9},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1594 bytes) */
-const char* const cstring = "BZh91AY&SY\\0P\325\000\000\234\177\377l\\\356Po\357\365\367\377\357\377\205\277\377\377\372@@@@@@@@@@\000@@\000P\006\032\220'\201\025\025\021\246\201[\r\021\031\006E=5=\251\244\236\247\246\022z\230\324\003F\324a\000\r\0002i\351\017\324OS\322\036\230\241\306\206\206\206\200h\014@\320\031\000\000i\240\001\240\031\000\000\000\303L\211\244\323I\244\3056\246\221\275$mC@=L\021\210\320\000\000\001\223&\207\250\365\006A\306\206\206\206\200h\014@\320\031\000\000i\240\001\240\031\000\000\000\302E\004i\240H\302\032h$\323\020\032z\215\032hz\215\000\001\240\000\000h4\036\373\016^NQ\313\342o\370\261 \025\211\274B\000f\177\312\247J\321\365wG\200}\241\374\017\337<8v\371\240\177\022W\331\304\234F\325\376S\013a\010\221F\014\360\2441z\361 \243\010\304\210b\347S\002\036#<\026g6>\247\361\320\353\352\245\227biH\270K^\233\210\321GO\373\030s\274(\334\232\261\202 \276\235\026\021\244\343\226\365?\233I\344\276Ql\3420)\371\222\324\274\024\356\303\t\302\2212W\n\244b\343;\326\363hM\267\272@\036\236?V\223\340V\215\000J\203vd\243\177\221\361\005>\303s\241$\230\024!A:\207H\177\246\220\025r{\365\213\214\256\360y\330\035dg\352\333\373\344`\222\320\274c\341\202\340'l\301\304D1\375\271\240\251\362\003[c\300\342\320\200H7\240\345\271\025\361\202Z\233\260\270\000!\217\254\247\r\245\303\310D\036\272\345\010\317\210\030\215\361\257\037\342t)\203\207\217\277]\353+\200M\244\303\306\240\010\\\324\277\373\2750\007\334\256\203\302ml\210\326\345\256x\3536|\222\320%\311%\267QuoF\300\230\205\362\3364SuT: \324\233\3265b\263c{\256\351[\006\313\022\365\364\234\3303\276E\014\300\220\004\354BH\260\210\353\037`s(\303\243\"\t\\\035>\2250\334\261E\360\224\250\017I\337\021\212\002\336\237\256\234\023\2252m8\323\030\027\301\342n\330\000\341\223\002X\"\031$\356\231\243BWY\323\021\005i%\023\246\371B\020o\247\033\360.\3166\246\352\354\306\231\227\006\326/X\336\376\177\302\343W\261\374H\305/g\2432\2100\210w$L\034\365o\2751\241-:w\302|\316\246\333i\276:\2505\201\260\260\327+N\301\016\377X\301\335k]N%\215w\033K\225,c\345\t\201 ""\345|7\360_\266\024T\234\257J5\267Wjx\026\331kN\327.\365\347\010\243\307\340\273\250p:\366\315%)(\214\311\240\310cj\023(\366\226\020\025lCG\347A\300\203\211\023A\334\2119\322\222\347\265l-S\2760\262\022\031@\276ph\242\t\213\021\355>\001\236\032\220\314\3628\306>O\213 \347o\023\255\317\303B|\267m\372\305b6U\300m\305j\016\344\232\343)\351AA\026AP\220A\244@\341\014\013\021\030-\010&\360\226\004\312\263\253b\336>\307\304\326\356\260f\311S\247aX\222\362\372\261R(\026\2503\2725\024\363\236\025\321d\264\026\213a'\r\324\221\321\227b,a\255Uj}F\223A\267\2031\236\301\252\3718P`\357\337F\261n\"!\"Y\337s5J\251\251\304p8\327C\226h\364r!\261kD0\013\353;\214z\371F\266`\216jE;\234\013\231\277\036.\370\352x\273k}\353\032\265\2005\006\221\305\222\\'\235\351\360\341;\236\350\242\207m\2666YeWBG\027\014\344_\004pjR\323\022-\243%&7\211\262\251\365-|\343\245\260 \231\250a\304\006 E\304>\354\244^-\343V\334m\225+\r\265Z9\245\243-Z\244\033\366\007\217\304\244\333J\021\330RqNl\252\3017\205\330\031\353\252l\257\325\333\331\300\010j\205\244h\315\305\333\\X\311\224\0277{}\332\322@\263\004\246\204\260.\032\242#~\262Y\247E]\244\034F\022\211\005?5\336\003$\231\023#\263#\207\021\274\\\321q\2330\007\243f\224\200\221\212$d@F\204\022\025\214\212\267x\326A\025\244\236\363lle\325+p1S0X\023\2214\364\014\3312Zp\013\330f\3611\313B\353k\033\031\277b2<i\341y?\022\030\300\010O\256O\334$\022\r\371h|\243\251\t\223 d\225\36136D\033\033\023&\264!\265I5\245=\212\3641K\215Db\332\320\023J\322\245'Vy\344}Q\272F\300,\264\207\2273\272\254\203\006\213\306A\361\007<\026\240\2368\227\336\344\354p\326h\314E\201\223n\205ub*\306\370\342\360\014\245\266\302&\353\202g3Ts\tD\365b\226gB\350l\004JC\016\003*\323\\\245\271\322R\301\n\312\227\210\002\2511}\322.\331\312\345\275\r=\027]\246\004\265\243f\032$\244O@\2706\255\026Rv\022L\036dSkL\024\005]D\315&\rBP\317\034;I\217\010E\256GL*\256\331\272F\263\201\3365\270a+#\240r*\340\006\361\311\r\341\271\333Z\306\263\354I*\331:\333\t1\260.\262\350\227\021jU\354\3123.#\234U\253B5 \225\213""\016<\264\027_7Zc;\300\267\t\344J)uZ\306\264\275\026\306\335n\356\007\007\253O\373\201bN\342\016&\361\325<\014\231\221\235\030suy\360,\312\034\253\223\222\262\016a\364\262\230\034\007\034\036\303\221a\240K\001\361\2122t\254D\334\242H\004|\306\340\020\006\324A9\236\001\307\020\036\341]\r\330PRG\245`\026\253(\321\274Q\365\373\335\237\373\237\367\316\022q\373\276\377\251~\013i\324[t:\257\326s<\262\214\207\361\033Ut\016\304\347\317\036^\217\347\373F\\\331\263\332\321?\004Zi\017\231\004\244\247\377\305\334\221N\024$\027\014\0245@";
-    PyObject *data = __Pyx_DecompressString(cstring, 1594, 2);
+    const struct { const unsigned int length: 8; } index[] = {{2},{3},{68},{35},{54},{37},{60},{24},{52},{26},{34},{14},{29},{33},{45},{22},{15},{4},{179},{37},{97},{30},{32},{1},{1},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{7},{6},{2},{18},{6},{35},{9},{30},{50},{8},{21},{26},{20},{32},{22},{14},{30},{37},{5},{8},{11},{5},{5},{7},{7},{8},{18},{17},{26},{28},{14},{12},{19},{17},{18},{18},{8},{8},{8},{8},{8},{12},{8},{16},{8},{20},{8},{7},{15},{3},{15},{4},{7},{18},{4},{1},{7},{7},{9},{17},{18},{5},{5},{5},{8},{9},{8},{15},{6},{9},{4},{9},{3},{3},{5},{8},{8},{5},{6},{7},{8},{3},{12},{10},{28},{30},{8},{19},{18},{16},{34},{36},{18},{2},{10},{5},{13},{5},{8},{4},{4},{8},{14},{11},{7},{4},{6},{10},{4},{8},{4},{7},{4},{4},{6},{9},{2},{5},{3},{4},{3},{14},{11},{10},{19},{14},{12},{10},{8},{9},{9},{10},{17},{13},{8},{9},{7},{5},{12},{7},{4},{4},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{6},{6},{8},{5},{9},{6},{6},{5},{6},{1},{2},{1},{0},{1},{1},{2},{32},{9},{20},{60},{11},{7},{13},{9},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1643 bytes) */
+const char* const cstring = "BZh91AY&SY\230Ex\226\000\000\235\177\377l\\\356Po\357\365\367\377\357\377\205\277\377\377\372@@@@@@@@@@\000@@\000`\006?x\300\214 \024\241Z4*\301\242&Df\212z\236\247\2654M\036MH\365=OH\321\240\320i\240\001\240\006\2314\323\332\243\3654\203\3235C\215\r\r\r\000\320\030\201\2402\000\000\323@\003@2\000\000\001\2164444\003@b\006\200\310\000\003M\000\r\000\310\000\000\006\022\232\020\231\010\t\221&mE6\243j\003\304\214Cj\032\006 \000\310\365\014\2323Dh\0164444\003@b\006\200\310\000\003M\000\r\000\310\000\000\006\022\232\223#CSD\364M1L\322\006@\r\0324\000\r\0004\000\003@z\206\2326X\315\367\314f\335o\362d\201:\245[\336\340,_\312\0353\235K\374\276\363l\364\023m\315\362O\354z\377\025\251\347\213x\374\361\347Z[\340\213\351q\365\252\022\366 \322\336,;f?\363{\343\321]\007\211\235\231>\305\261\227\223\344\351\353o\245\337\355\326\224\234\307~\033s'ZC\307\370S\013qF\370\367\342Q*6\353rv\254i\272\236\213\325|y\3517\3313\222x\352\253S9O\020\306U\312\223\032]\264\270`u\363\246|\366&w5@=N_N\222\200\323}\000D\203nt\243\301\306\240\364\333\346\326\332$\230)P\260\233\3070V\262@^\t\027\031p\226\017_\231B]Q\243\014\377|\260\006k\nL{\361\320\n^\233\334\004B\276/\313\331\024@lb\356\264\254@$\033\217UE\276\210\307\026Fbu\340\010W\262\266\216\303\266\270\310\203\224\265a\363\340\006\037P\304\377$\210\\\003\351\303\334\270\345\367^\021\351@u\254\002\030/a\345\330\214\003\333\270\203\33462\024t*\270u\351\262L\261J\"\313\r\r\226\227\\~\000\233c\tn\232&\245r\266\330bM\313\263\333\277ww\252\330\230\3668\022\346\024\234{:\024Ej0H\002H\020\222LL\372\313\314uQ\217N\244\244\375\226\365=[\366\345GQ\225\035\350&\361D`\303\205\374~\313\300\226\224\3206\342\230\226\317(\232\346h\256\315 ;\t0\350\007w\230vjj\355\212\333\315,7\2313i\212\264\023\2444\304:W\3273B\373b\314\225\324\364f\274R\031\020\335\222\337\327\364\244\277\333\314\362\3436\316\265\322,\022\230:\017b\000\367C\005\252\374\320\037~\375\241\r5Q\222\210\332*\231\310$a'3\337A\302\035\371\324$\251\2416\372T\350\230\310\265\031\021\224 \003\307#*\305^""\205y0=\361hR\371\344\004\322\204u\341\"\211\350L\250O\332\254\304\023&\026\363r\235\361\240\252\330/\221\213\346\021b`\260BL\364\014\221\351\025\034\014U\204\307\305\220\234u\004\033\217\271\005)\226S\340\263s,\324\316\036\243\310\214\203::b\216;&G\265\031\r\022\324\220\"\247\220\307\320\377\272\020\271\370a\373c\245\022\372P\334\2556\231\343h\031\273S\357\"\022V\242y\223\004\335\307\242BHT\231:\014*\241\312d>\256;\177\304\302V{C\337\r\335\343\030V\314\207\310\r\036\236\255\313MQ\025\215\372\264\266Aft{Bhe\266\232cugqa\271\222\237\275\224\236]\236(B\016Og\337\033\325+C\237f\303g\023~z@\362\245r\317^\005\374(\227t\202#\265\232\311\260u(\023\235\326\362\251\332\307\263\260~m\311\207\3203\305.k\352l\214WF;\371C+\247.\207K\271\350\026\007\324q2U]mr)\244\t\234\230lv6#\235\325\305(R\2345\006\302HH\205.\336Vc\263\256\222a\330\343\305\247\204\020\223\032\264\241-N\026x\334\373\373\026\326\311\tU5\206\027\2040\017\2311\336\322\246s~\345\257\344m)io\003XTf\335\263\253\003\302\331\303\215\215\236$&gM\204|T\314\210\"\240\2565\227m\235\315]Z\370z9\004\265\207\330hk\006m\302n\252\252\343\365\361\345\rv.\305\207\255\022a@\326&yZ\251\232\272\332\032\242\301\225]!<u\304H\316\356\303\245S\356\324\351\203r\205G\362+\260/N\355Wp\251\207H\321\003\252!!\252\210ko9\016\3062\225\275$$\"\3701p\311\234e\265\231\264)%\031n\021\316\003\357\310+Au\\.X\2576\246x\220\213gb\303\213\tVC\206\353\216\030t5J{\244\204\207\t\334\272\013\003\320\240\346\306l\340\332s\200HHm8t/\25711\205%\333\222\300\267_Y\030\241\324\004\314\352V\264\317$\220\251o\266\026</\260\206\332\207\210\253hpL>c\367\024\251\206o\0047PW\216\315\206\272\252+'\344o\320b\241\265\tdg\236\265Lbs\215V\310\364\250A\336\270P\357\246\262\240L\037\206\031\263;\374\034\342\"\256\346]\212\257z\333J\267r\251\337'-W\254L\321$\225\241\306O\322\240\255#*\301\013f\301\255UX\034>#a\225\347\263\310]\031\006\206F\275<g\234xm!\222\033\213\263\215\216\242\207\023D\017/\267^\232\375\246B\325\3457E}slu\366\311\314\354Y\211\273D\023X\336)0\234\016\007G""\340%Kc\021\210\247\212\200bi\213<\241&\013\326\360\\\204\323\217\034\305\013\221\266\032\315\271\216L\304\325\264\357l\334_:,e\2553\002\332\024\330&\230f\360\246\327\031f6QnJ\375\211\327U\375\331\023\200\251\034\2463\214f\342 X]\212\r>\006\366D\366;+iiT\360\323\027\336FZ\035gu\3273\265\262\324\253\007\346(\317\016\367EsN\222\004~\225\230 0\271\tX\261\034\247\270Z,\024\273FQ\031\354t\347\030\241\247\212c8\212\325\332\332\262\216h\220\341\247\223\361\304Y\n\361\324[\222\266\252\364\031\346\210s\037\304vj\347\033R\037\355\374\334\377\317\365\231\263\347\321\257d\233\366\365\022\024d\022\223B\177\342\356H\247\n\022\023\010\257\022\300";
+    PyObject *data = __Pyx_DecompressString(cstring, 1643, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1449 bytes) */
-const char* const cstring = "x\332}V\277o[7\020\206\321\016F\032 )\232\002E'\032m*\007M^\323\300\350\217\300u\253:\262+\324\221\345\310v\227\242\004\305w\222\230\274G\276\220|\226\224\242@F\217\0325f\364\3301c\306\376\t\036\375\247\364\216|\222\254\332\350 \362\336\361H\336}\337\335Q\217\331\303Gi=\313X\252r\320N\031\355XaAB\252t\177\241dwS\226\227\316\263.0\245S\030A\312\204N\2316\236\271L\241\371\317e\257\007\226\235(\030\262\324\200\013K0*\214\003\346\274U)\270m\241\231\321\331\230I\013\302\003\023\254\0337\371\201\360L9&\215\366\252_\232\322\341%,\207\334\330q\202\273\350(\341\234\352k\346\r\303\315\351\203pN\264\240++\243\352\340\241U^t3\250\014\242S=k\362\377\333\033\302bC\345\007\314\217\013`\265J\357\255\320.\204\261\330\022\315p\207B\250\374%\354\236\\\006LE\020\242Q#/\374\230\271\201\300\243}Y\240s=c\231\034\373\201\321\211\260V\214\033\326\242\306\024\240\t\372fp\307\224\236\231\036\353\232R\247\216\255\213\021\236y7\275\327\274zs\244\242,\nc=\244M}\"2\205\234\231\024\356\023\rh\214\224\325d\215\341\0355\274\232\302\252\335g}\33453\216\316!\362\341\232\315\247!\334c\n\027]h\031\r-\203\340\006\262\266\203\337\024a\n\231\352\202E\330\021T\"\032/\n\214j\326n\264\037l|\267\021\022\305\302st\301\241\207]\231!\227\230 \024W\2512\217\027\022\340.a\315\036\033\233\222i@W\221\350\002\355.o\360\003\320\314\201'\201\325\002;\302c\354\034\267#d\265\niu\002\264{Gd\016\222\375%\000\321\345*\345\204\224\340f\210\266\225|\221\021\350h\211!\224\010,r\215Q\321\365r\200\271\207\327f\275\204;\265(\003\004\025\023_y\014\333\302\313\022\034\001\034\362\342'Qz\303\013:\024\326\017m\t\367:\036\n\226\213q \t\367\276\002k\026l\036\351\220\254\3503\026\300\tX\314E\0179}\233.\241\266~\377\307d\253vO\244)\327\304\000\341\311\220\204\207#i\262\214\"F\376\023\321\225\233\227\n\210\214\"\036[\377U\317\362v+U\216n\206p\177_\366\265svc\210T\332$\310\310,[\247\014\351\2074&\340\010%\030y\320>\324\350\242A(\027\217I\311w\247^\001\333\374\201=\274\222\344\332`\306\364D\231y\306\271\205\264\224\3009K\313\020\2766\372""\001f\320\211\022\031\256J\245\225\307\305\010\302V`@\213\034fuE\031\351\254\374j\346\352\\\340C+\212\244\030\2176c\343I\227\300\270\252\243\222\230c\262\264\276\254\325}gJ+a\253\234\023&\262\314\310\320\313(8\226\n/\222kVce\321\211U+L\352\235\355f\263\221e\252p\312\355\356\355\267\352\235N\263\271\367\365n\273\023\207GM\355\033\272\314q\332\311D\277\365\264Q\337Q\031\314\346\204s\344\000,\347\2275#\002\354\222\242\0028\022\260\264\202e\344\260z\256Y\223\031\366\272\371\027\230\336\\\246\346)\3072\003\267\244\302\312\201+\212e\023\235\203\010\032\276\273[\217\363\336^\234[\2358w*}\3478\314\315\326q}\257\371$\310\317\236n\207\371\250\3259j\267\367\237\0356\242\376\370p\227\363\366x\204\277'\330vx\013\023\363\031\364:T\215Z\302Q\353\327\326\376o-j`\311\242\227a\231\314h\341\261\027\010\333w\302\005\002\205\033k\251L\"\215\305\316Kat\205\003\211\271H-\210\363\231\320\007OiN\237h\304\025\266 +$t\205|\021\340\223\330n|\200\n3\002msL\362\224\\\344)\265:\256\034\217Y\215~b\207\236s\tHx\370Q?E\350\301Z\240WaFm\017\001\245\022\350aF8,\255\\\370\252\225\343Z\251\321Q\364,\014\221\\N%\301\203#\013\351j^,\255]\311\214\260\352\306n6/\366\317\227\022,\016\030Q(\327\365\020\225r\256rz\230p\246g\215\342\237C\034\373E\3254\236\033\245\003\244<\027\210*N\241\017s\n\332\315?]\020\350!\246\367\r\177eF;\252\231l\347#6(\034aH\303\310S\036\322\217\3738\"\027\272@\274\2131\322Q {\205)8\307\316\301\345\000\344\013W\346\361\253B\223\304\300_\220J\035[<\2472\215\252\223\360\267\203\362\344e)\262\350\302\242jf\2651\257\221yi,\020\275\302\315\\\201\260\241\330W\370\316\3309\334N\370j\322\006\007G\251H\270P\n\342\203G=\023\373r\032X\255 A\251\352\300\227\270\346\327\360\036\232\026\221\202j\213kP8o\212\370>\"\347(\340\030\252\300\243\t\216\003k\206\224\353\370\227\300\013D\007\361,\013*\000\374{Q\306\301\215\016\377\374\343\361_\257\353\257\353\347\253\267'\357M\276\231\336\231\376~\366\351\337\337\276]{\373\375\273\372\273\243\177\326\316Wo\235\276\244\365\233\247;\223\265(\3742\301\351\316""\244>9\230\244S\324]\254~<9\270\210\013A\367\305\233\2257\237\234}x\366\331\331\301\371\352\007\247\033\247n\262vq\223vt\246+\3477oOV\247+\027\263\203oOnL?\237\n\022+\315\255S\217\256|4\255\277^9\177\377\306\351\227\223\203\375\177\001\234<8\005";
-    PyObject *data = __Pyx_DecompressString(cstring, 1449, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1474 bytes) */
+const char* const cstring = "x\332}V\315o\\5\020W\004\207\250Tj\021EB\234\034A\331T\264\217RE|T!\260\244IX\221n6\335$\\\020\226\327ov\327\355{\366\253\355\227\354\026!\365\230\343\036\367\330c\216\034{\344\310\237\220c\376\024f\354\267_l\340\260\266\337x\306\236\371\375f\306\373\230=|\224\326\263\214\245*\007\355\224\321\216\025\026$\244J\367fBv7ey\351<\353\000S:\205\001\244L\350\224i\343\231\313\024\252\377Xv\273`\331\251\2023\226\032pa\013\006\205q\300\234\267*\005\267-43:\0332iAx`\202u\242\221\357\013\317\224c\322h\257z\245)\035^\302r\310\215\035&hEG\t\347TO3o\030\032\247\017\3029Q\203\256\254\224\252\203\317\254\362\242\223A\245\020\235\352Z\223\377\237m\010\213\235)\337g~X\000\253Uro\205v!\214\231ITC\013\205P\3719\354\236\314\003\246\"\010Qi'/\374\220\271\276\300\243}Y\240s]c\231\034\372\276\321\211\260V\014w\254E\211)@\023\364\215\340\216)=3]\3261\245N\035[\027\003<\363nz\257\261|s\244\242,\nc=\244\r}*2\205\234\231\024\356\023\r\250\214\224\325d\215\341\0355\274\232\302\252\335g=\264\232(G\347\020\371p\315\346\323\020\356\t\205\213.4\215\206\246Ap\003Y\333\301o\2120\205Lu\300\"\354\010*\021\215\027\005F5k\355\264\036l|\263\021\022\305\302st\301\241\207\035\231!\227\230 \024W\2512\217\027\022\340.a\215.\033\232\222i@W\221\350\002\365\346\r|\0374s\340i\301j\201\035\3411v\216\346\010Y\255BZ\235\002Y\357\212\314Ar\260\000 \272\\\245\234\220\022\334\004\321\226\222/2\002\03551\204\022\201E\2561*\272^\3661\367\360\332\254\233p\247fe\200\240b\342+\217a[xY\202#\200C^\374 JoxA\207\302\372\221-\341^\333C\301r1\014$\241\355+\260f\306\346\261\016\311\212>c\001\234\202\305\\\364\220\323\267\351\020j\353\367\277O\266j\367D\232rM\014\020\236\014Ix8\220&\313(b\344?\021\035\2719W@\244\024\361\330\372\267x\222\267[\251rt3\204\373{\262\247\235\263\033gH\245Mh\255,[\247\374\350\205$&\330\010#\030x\320>T\350\254=(\027\017I\311s\247^\001\333\374\216=\\Jqm0_\272\242\314<\343\334BZJ\340\234\245e\010^\033\375\000\363\347T\211\014w\245\322\312\343f\204`+\340\257E\016\223\252\242|tV~\021\035\255&~fE\221\024\303""\301fl9\351\002\014\3132*\206)\032\013\373\213R\335s\246\264\022\266\312)U\"\313\214\014]\214\002c\251\360\"\271f7\326\024\235X5\301\244\336\336n4v\262L\025N\271\275\375\203f\275\335n4\366\277\334k\265\343\360\250\241\375\216.s\234v3\321k>\335\251\357\252\014&s\3029\342\017\226\363y\311\200\300\232\023T\340F\360\027v\260\200\034\326\3155{2\303.7\375\002\323\235\256\251m\312\241\314\300-\210\260f`I\260\250\242s\020A\302\367\366\352q\336\337\217s\263\035\347v%o\237\204\271\321<\251\3577\236\204\365\263\247\333a>n\266\217[\255\203gG;Q~r\264\307yk8\300\337\023l8\274\211I\371\014\272m\252C-\341\270\371s\363\340\227&\265\256d\326\305\260@&\264\360\330\005\204\3559\341\002\201\302\r\265T&\221\306b\317\2450:\302\201\224\034\203\026Vr\323A\3760+\251\025q>Y\364\300S\302\323'\232p\205\255\310\n\t\035!_\0040%\266\035\037\200\303\374@\335\034\260]z\201\034H\316S\362\234\247\324\373\270r<&:\272\217-{J1`\036\204\0375Xd\004\254\005z&&\214w\021g\252\212.&\212\303j\313\205\257z;\356\225\032oA\027\303\0209\347T'<x4[-\247\313\302\336R\302\204]7t\223yf?\335J\260f`@\241\004IxC\347\256\235\373\376\217\313\0275\256ua\261U\251\224s\225\323\353\2073\275\235\204\351\224\315\330\226\252\336\364\334(\035\370\342\271@\312p\n\315\236\023\220n\372\351\302\202^{zD\361WfdQ\315\244;\035\261\017\342\010g4\014<\245<\375\270\217#\362\253\013\344\260\030\"\305\005\246Fa\n\316\261Iq\331\007\371\302\225y\374\252\030\242e\310\211\260*u|G8u\204(:\r\377m(\t_\226\"\213.\314\ntR\206\323r\234V\341\214\245%\310\247\002\204\r\227=\205\217\231\235R\350\204\257&mpp\224\347\204\013\3457\276\252\324\232\261\375\247\201\246\n\022\\U\215~\216<~\r\221\241?\022)(\266\270\007\205\363\246\210\2170\346\021.p\014%\346Q\005\307\2765g\323BBt\020\317\262\240\352\302\3770e\034\334\340\350\367\337\036\377\361\272\376\272~\271z{\364\316\350\253\361\235\361\257\027\037\377\371\365\333\265\267\337\376U\377\353\370\357\265\313\325[\347/i\377\346\371\356h-.~\032\341tgT\037\035\216\3221\312\256V?\034\035^\305\215 \373\354\315\312\233""\217.\336\277\370\344\342\360r\365\275\363\215s7Z\273\272I\026\355\361\312\345\315\333\243\325\361\312\325\344\340\333\243\033\343O\307\202\226\225\344\326\271GW>\030\327_\257\\\276{\343\374\363\321\341\301?oDaZ";
+    PyObject *data = __Pyx_DecompressString(cstring, 1474, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (2842 bytes) */
-const char* const bytes = ": 02dAll dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayError opening Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)Step may not be zero (axis %d)Unable to convert item to object(,?.>')add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegcgnssr4water.gnssrlib (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__ object>self.name is not Nonesrc/gnssrlib/gnssrlib_wrap.pyx<strided and direct><strided and direct or indirect><strided and indirect><stringsource>unable to allocate array data.unable to allocate shape and strides.ASCIIEllipsisGLONASSIIL1GPSL1GPSL2IntEnumIntFlagNMEAFileNMEAFile.__enter__NMEAFile.__exit__NMEAFile.__reduce_cython__NMEAFile.__setstate_cython__NMEAFile.closeNMEAFile.eofNMEAFile.readcyclesNMEAFile.readlineNMEAFile.readlinesNMEAFile.readnmeasNMEA_GGANMEA_GLLNMEA_GNSNMEA_GSANMEA_GSVNMEA_INVALIDNMEA_RMCNMEA_UNSUPPORTEDNMEA_VTG__Pyx_PyDict_NextRefSequenceUNKNOWNView.MemoryViewabcallocate_bufferargsasarrayasyncio.coroutinesbasec__class____class_getitem__cline_in_tracebackclosecountcycledatetime__dict__dtype_is_objectencode__enter__enumenumerateeoferrerror__exit__filenameflagsformatfortran__func__""get__getstate__gnss_cyclegnss_cycle.__reduce_cython__gnss_cycle.__setstate_cython__gnss_sysgnss_sys.__reduce__gnss_sys.rinexcodegnssr4water.gnssrlibid__import__index_is_coroutineitemsitemsizejoinline__main___member_names___members__memviewmodemodule__module__name__name__ndim__new__nextnmeanmea_tnmea_typenpnumpyobjpackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname__readcyclesreadlinereadlinesreadnmeas__reduce____reduce_cython____reduce_ex__registerrinexcodesatcodesatnosats_in_viewsecondsselfsend__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstructsysstrsystem__test__throwtimedeltaunpackupdatevaluevaluesxT{^:}\200A\200A\330\010\020\220\003\2206\230\024\230\\\250\032\2607\270!\2709\300A\300U\310!\330\010\017\210q\200A\330\010\014\210F\220!\200A\330\010\014\210H\220A\330\010\024\220A\220Q\220d\230!\200A\340\010\025\220Q\340\010\014\210H\220A\220Q\220d\230&\240\001\240\030\250\021\250#\250Q\330\010\013\2104\210s\220!\340\014\024\220A\220S\230\001\330\014\020\220\010\230\001\340\010\017\210q\200A\330\010\020\220\n\230$\230a\200A\330\010\017\210q\200A\330\010\017\210t\2206\230\023\230A\200\001\330\004\n\210+\220QO";
+    #else /* compression: none (2943 bytes) */
+const char* const bytes = ": 02dAll dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayError opening Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)Step may not be zero (axis %d)Unable to convert item to object(,?.>')add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenablegcgnssr4water.gnssir (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__ object>self.name is not Nonesrc/gnssir/gnssir_wrap.pyx<strided and direct><strided and direct or indirect><strided and indirect><stringsource>unable to allocate array data.unable to allocate shape and strides.ASCIIEllipsisGLONASSIIL1GPSL1GPSL2IntEnumIntFlagNMEAFileNMEAFile.__enter__NMEAFile.__exit__NMEAFile.__reduce_cython__NMEAFile.__setstate_cython__NMEAFile.closeNMEAFile.eofNMEAFile.readcyclesNMEAFile.readlineNMEAFile.readlinesNMEAFile.readnmeasNMEA_GGANMEA_GLLNMEA_GNSNMEA_GSANMEA_GSVNMEA_INVALIDNMEA_RMCNMEA_UNSUPPORTEDNMEA_VTG__Pyx_PyDict_NextRefSequenceUNKNOWNView.MemoryViewabcallocate_bufferargsasarrayasyncio.coroutinesbasecc_clearc_obstr__class____class_getitem__cline_in_tracebackclosecountcycledatetimedelta_sec__dict__dtype_is_objectencode__enter__enumenumerateeoferrerror__exit__filenameflagsform""atfortran__func__get__getstate__gnss_cyclegnss_cycle.__reduce_cython__gnss_cycle.__setstate_cython__gnss_sysgnss_sys.__reduce__gnss_sys.rinexcodegnss_trans_cyclegnss_trans_cycle.__reduce_cython__gnss_trans_cycle.__setstate_cython__gnssr4water.gnssirid__import__index_is_coroutineitemsitemsizejoinline__main___member_names___members__memviewmodemodule__module__name__name__ndim__new__nextnmeanmea_tnmea_typenpnumpyobjpackpop__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname__readcyclesreadlinereadlinesreadnmeas__reduce____reduce_cython____reduce_ex__registerrinexcodesatcodesatnosats_in_viewsecondsselfsend__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstructsysstrsystem__test__throwtimedeltaunpackupdatevaluevaluesxT{^:}\200A\200A\330\010\020\220\003\2206\230\024\230\\\250\032\2607\270!\2709\300A\300U\310!\330\010\017\210q\200A\330\010\014\210F\220!\200A\330\010\014\210H\220A\330\010\024\220A\220Q\220d\230!\200A\340\010\025\220Q\340\010\014\210H\220A\220Q\220d\230&\240\001\240\030\250\021\250#\250Q\330\010\013\2104\210s\220!\340\014\024\220A\220S\230\001\330\014\020\220\010\230\001\340\010\017\210q\200A\330\010\020\220\n\230$\230a\200A\330\010\017\210q\200A\330\010\017\210t\2206\230\023\230A\200\001\330\004\n\210+\220QO";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 192; i++) {
+    for (int i = 0; i < 198; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 54) PyUnicode_InternInPlace(&string);
@@ -25978,7 +28271,7 @@ const char* const bytes = ": 02dAll dimensions preceding dimension %d must be in
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 192; i < 207; i++) {
+    for (int i = 198; i < 213; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -25989,14 +28282,14 @@ const char* const bytes = ": 02dAll dimensions preceding dimension %d must be in
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 207; i++) {
+    for (Py_ssize_t i = 0; i < 213; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 192;
+      PyObject **table = stringtab + 198;
       for (Py_ssize_t i=0; i<15; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
@@ -26056,29 +28349,29 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 246};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 338};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_line};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_readlines, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readlines, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 255};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 347};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_nmea_t, __pyx_mstate->__pyx_n_u_nmea};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_readnmeas, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readnmeas, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 263};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 355};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_cycle, __pyx_mstate->__pyx_n_u_err};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_readcycles, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readcycles, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 110};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 132};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_reduce, __pyx_mstate->__pyx_kp_b_iso88591_A_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_reduce, __pyx_mstate->__pyx_kp_b_iso88591_A_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 138};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 160};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_satno, __pyx_mstate->__pyx_n_u_satcode};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_rinexcode, __pyx_mstate->__pyx_kp_b_iso88591_A_6_7_9AU_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_rinexcode, __pyx_mstate->__pyx_kp_b_iso88591_A_6_7_9AU_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
@@ -26091,39 +28384,49 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 221};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_eof, __pyx_mstate->__pyx_kp_b_iso88591_A_t6_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 224};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_enter, __pyx_mstate->__pyx_kp_b_iso88591_A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS), 227};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_args};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_exit, __pyx_mstate->__pyx_kp_b_iso88591_A_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 230};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_close, __pyx_mstate->__pyx_kp_b_iso88591_A_HA_AQd, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 234};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssrlib_gnssrlib_wrap_pyx, __pyx_mstate->__pyx_n_u_readline, __pyx_mstate->__pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
-  }
-  {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
-    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 313};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_eof, __pyx_mstate->__pyx_kp_b_iso88591_A_t6_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 316};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_enter, __pyx_mstate->__pyx_kp_b_iso88591_A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS), 319};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_args};
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_exit, __pyx_mstate->__pyx_kp_b_iso88591_A_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 322};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_close, __pyx_mstate->__pyx_kp_b_iso88591_A_HA_AQd, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 326};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readline, __pyx_mstate->__pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
+    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_pyx_state};
+    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -32378,155 +34681,6 @@ raise_neg_overflow:
     return (int) -1;
 }
 
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_enum__nmea_type(enum nmea_type value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const enum nmea_type neg_one = (enum nmea_type) -1, const_zero = (enum nmea_type) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(enum nmea_type) < sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(enum nmea_type) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#if !CYTHON_COMPILING_IN_PYPY
-        } else if (sizeof(enum nmea_type) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(enum nmea_type) <= sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(enum nmea_type) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(enum nmea_type),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL, *kwds = NULL;
-        PyObject *py_bytes = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(enum nmea_type));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        {
-            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-            if (!is_unsigned) {
-                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                if (!kwds) goto limited_bad;
-                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-            }
-            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-        }
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
-/* UpdateUnpickledDict */
-static int __Pyx__UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
-    PyObject *state_dict = __Pyx_PySequence_ITEM(state, index);
-    if (unlikely(!state_dict)) {
-        return -1;
-    }
-    int non_empty = PyObject_IsTrue(state_dict);
-    if (non_empty == 0) {
-        Py_DECREF(state_dict);
-        return 0;
-    } else if (unlikely(non_empty == -1)) {
-        return -1;
-    }
-    PyObject *dict;
-    #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030A0000
-    dict = PyObject_GetAttrString(obj, "__dict__");
-    #else
-    dict = PyObject_GenericGetDict(obj, NULL);
-    #endif
-    if (unlikely(!dict)) {
-        Py_DECREF(state_dict);
-        return -1;
-    }
-    int result;
-    if (likely(PyDict_CheckExact(dict))) {
-        result = PyDict_Update(dict, state_dict);
-    } else {
-        PyObject *obj_result = __Pyx_PyObject_CallMethod1(dict, __pyx_mstate_global->__pyx_n_u_update, state_dict);
-        if (likely(obj_result)) {
-            Py_DECREF(obj_result);
-            result = 0;
-        } else {
-            result = -1;
-        }
-    }
-    Py_DECREF(state_dict);
-    Py_DECREF(dict);
-    return result;
-}
-static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
-    Py_ssize_t state_size = __Pyx_PyTuple_GET_SIZE(state);
-    #if !CYTHON_ASSUME_SAFE_SIZE
-    if (unlikely(state_size == -1)) return -1;
-    #endif
-    if (state_size <= index) {
-        return 0;
-    }
-    return __Pyx__UpdateUnpickledDict(obj, state, index);
-}
-
-/* CheckUnpickleChecksum */
-static void __Pyx_RaiseUnpickleChecksumError(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
-    PyObject *pickle_module = PyImport_ImportModule("pickle");
-    if (unlikely(!pickle_module)) return;
-    PyObject *pickle_error = PyObject_GetAttrString(pickle_module, "PickleError");
-    Py_DECREF(pickle_module);
-    if (unlikely(!pickle_error)) return;
-    if (checksum2 == checksum1) {
-        PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x) = (%s))",
-            checksum, checksum1, members);
-    } else if (checksum3 == checksum2) {
-        PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x) = (%s))",
-            checksum, checksum1, checksum2, members);
-    } else {
-        PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x, 0x%x) = (%s))",
-            checksum, checksum1, checksum2, checksum3, members);
-    }
-    Py_DECREF(pickle_error);
-}
-static int __Pyx_CheckUnpickleChecksum(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
-    int found = 0;
-    found |= checksum1 == checksum;
-    found |= checksum2 == checksum;
-    found |= checksum3 == checksum;
-    if (likely(found))
-        return 0;
-    __Pyx_RaiseUnpickleChecksumError(checksum, checksum1, checksum2, checksum3, members);
-    return -1;
-}
-
 /* CIntFromPy */
 static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *x) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -32775,6 +34929,155 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to long");
     return (long) -1;
+}
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyLong_From_enum__nmea_type(enum nmea_type value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const enum nmea_type neg_one = (enum nmea_type) -1, const_zero = (enum nmea_type) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(enum nmea_type) < sizeof(long)) {
+            return PyLong_FromLong((long) value);
+        } else if (sizeof(enum nmea_type) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#if !CYTHON_COMPILING_IN_PYPY
+        } else if (sizeof(enum nmea_type) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(enum nmea_type) <= sizeof(long)) {
+            return PyLong_FromLong((long) value);
+        } else if (sizeof(enum nmea_type) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(enum nmea_type),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL, *kwds = NULL;
+        PyObject *py_bytes = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(enum nmea_type));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        {
+            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
+            if (!is_unsigned) {
+                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
+                if (!kwds) goto limited_bad;
+                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
+            }
+            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
+        }
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
+/* UpdateUnpickledDict */
+static int __Pyx__UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
+    PyObject *state_dict = __Pyx_PySequence_ITEM(state, index);
+    if (unlikely(!state_dict)) {
+        return -1;
+    }
+    int non_empty = PyObject_IsTrue(state_dict);
+    if (non_empty == 0) {
+        Py_DECREF(state_dict);
+        return 0;
+    } else if (unlikely(non_empty == -1)) {
+        return -1;
+    }
+    PyObject *dict;
+    #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030A0000
+    dict = PyObject_GetAttrString(obj, "__dict__");
+    #else
+    dict = PyObject_GenericGetDict(obj, NULL);
+    #endif
+    if (unlikely(!dict)) {
+        Py_DECREF(state_dict);
+        return -1;
+    }
+    int result;
+    if (likely(PyDict_CheckExact(dict))) {
+        result = PyDict_Update(dict, state_dict);
+    } else {
+        PyObject *obj_result = __Pyx_PyObject_CallMethod1(dict, __pyx_mstate_global->__pyx_n_u_update, state_dict);
+        if (likely(obj_result)) {
+            Py_DECREF(obj_result);
+            result = 0;
+        } else {
+            result = -1;
+        }
+    }
+    Py_DECREF(state_dict);
+    Py_DECREF(dict);
+    return result;
+}
+static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
+    Py_ssize_t state_size = __Pyx_PyTuple_GET_SIZE(state);
+    #if !CYTHON_ASSUME_SAFE_SIZE
+    if (unlikely(state_size == -1)) return -1;
+    #endif
+    if (state_size <= index) {
+        return 0;
+    }
+    return __Pyx__UpdateUnpickledDict(obj, state, index);
+}
+
+/* CheckUnpickleChecksum */
+static void __Pyx_RaiseUnpickleChecksumError(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
+    PyObject *pickle_module = PyImport_ImportModule("pickle");
+    if (unlikely(!pickle_module)) return;
+    PyObject *pickle_error = PyObject_GetAttrString(pickle_module, "PickleError");
+    Py_DECREF(pickle_module);
+    if (unlikely(!pickle_error)) return;
+    if (checksum2 == checksum1) {
+        PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x) = (%s))",
+            checksum, checksum1, members);
+    } else if (checksum3 == checksum2) {
+        PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x) = (%s))",
+            checksum, checksum1, checksum2, members);
+    } else {
+        PyErr_Format(pickle_error, "Incompatible checksums (0x%x vs (0x%x, 0x%x, 0x%x) = (%s))",
+            checksum, checksum1, checksum2, checksum3, members);
+    }
+    Py_DECREF(pickle_error);
+}
+static int __Pyx_CheckUnpickleChecksum(long checksum, long checksum1, long checksum2, long checksum3, const char *members) {
+    int found = 0;
+    found |= checksum1 == checksum;
+    found |= checksum2 == checksum;
+    found |= checksum3 == checksum;
+    if (likely(found))
+        return 0;
+    __Pyx_RaiseUnpickleChecksumError(checksum, checksum1, checksum2, checksum3, members);
+    return -1;
 }
 
 /* CIntToPy */

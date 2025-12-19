@@ -96,4 +96,7 @@ extern const gnss_system gnss_unknown;
 //
 void copy_GNSS_as(gnss_system *sys, const gnss_system * sysfrom);
 
+double mjd(const int yr, const int month,const int day, const int hr, const int min, const int sec);
+
+
 #endif //GNSSRLIB_H

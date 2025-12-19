@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "gnssrlib.h"
+#include "gnssir.h"
 #include "stream.h"
 #ifdef USE_GZIP
 #include <zlib.h>
