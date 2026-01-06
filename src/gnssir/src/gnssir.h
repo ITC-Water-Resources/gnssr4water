@@ -18,8 +18,20 @@
 
 #include <stdio.h>
 
-#ifndef GNSSRLIB_H
-#define GNSSRLIB_H
+#ifndef GNSSIR_H
+#define GNSSIR_H
+
+
+///ERROR and SUCCESS CODES
+#define GNSSIR_SUCCESS 0
+#define GNSSIR_MEMORY_ERROR -100
+
+# include <stdlib.h>   /* malloc, calloc, free */
+# define ALLOC(s)          malloc(s)
+# define ALLOC_AND_ZERO(s) calloc(1,s)
+# define FREEMEM(p)        free(p)
+
+#define F_FILL_VALUE -9999.0
 
 #define SPEED_OF_LIGHT 299792458.0
 
@@ -96,7 +108,5 @@ extern const gnss_system gnss_unknown;
 //
 void copy_GNSS_as(gnss_system *sys, const gnss_system * sysfrom);
 
-double mjd(const int yr, const int month,const int day, const int hr, const int min, const int sec);
 
-
-#endif //GNSSRLIB_H
+#endif //GNSSIR_H

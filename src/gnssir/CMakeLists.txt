@@ -55,12 +55,12 @@ SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 
 #Cfiles 
-LIST(APPEND COBJS src/gnssir.c src/nmea.c src/stream.c )
+LIST(APPEND COBJS src/gnssir.c src/nmea.c src/stream.c src/arcs.c src/timeutil.c src/position.c)
 
 
 add_library(${GNSSRLIB} STATIC ${COBJS} )
 
-set_target_properties( ${GNSSRLIB} PROPERTIES PUBLIC_HEADER "src/nmea.h;src/gnssir.h")
+set_target_properties( ${GNSSRLIB} PROPERTIES PUBLIC_HEADER "src/nmea.h;src/gnssir.h;timeutil.h;position.h")
 
 INSTALL(TARGETS ${GNSSRLIB} LIBRARY DESTINATION lib PUBLIC_HEADER DESTINATION include)
 

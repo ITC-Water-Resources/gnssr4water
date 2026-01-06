@@ -21,6 +21,7 @@
 #include <string.h>
 #include "gnssir.h"
 #include "stream.h"
+#include "position.h"
 
 #ifndef NMEA_H
 #define NMEA_H
@@ -51,17 +52,9 @@ typedef enum nmea_type {
 ///holds the information of all the GSV messages in a cycle
 struct nmea_cycle{
 	//RMC stuff
-	int year;
-	int month;
-	int day;
-	int hr;
-	int min;
-	float sec;
+	double mjd;
 	char status;
-	float lat;
-	float lon;
-	float ortho_height;
-	float geoid_height;
+	enu_position site;
 	//GSV Stuff
 	int sats_in_view;
 	gnss_system system[NMEA_GSV_MAX_SATELLITES];
@@ -74,16 +67,18 @@ struct nmea_cycle{
 ///Cycle structure holding a paired nmea-cycle with a transmissivity cycle 
 struct nmea_trans_cycle{
 	//RMC stuff
-	int year[2];
-	int month[2];
-	int day[2];
-	int hr[2];
-	int min[2];
-	float sec[2];
-	float lat[2];
-	float lon[2];
-	float ortho_height[2];
-	float geoid_height[2];
+	double mjd[2];
+	//int year[2];
+	//int month[2];
+	//int day[2];
+	//int hr[2];
+	//int min[2];
+	//float sec[2];
+	enu_position sites[2];
+	//float lat[2];
+	//float lon[2];
+	//float ortho_height[2];
+	//float geoid_height[2];
 	//GSV Stuff
 	int sats_in_view;
 	gnss_system system[NMEA_GSV_MAX_SATELLITES];
@@ -116,6 +111,5 @@ int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data);
 
 int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr , int delta_sec, nmea_trans_cycle * tc_out);
 
-double mjd_cycle(const nmea_cycle * cyc);
 
 #endif //NMEA_H

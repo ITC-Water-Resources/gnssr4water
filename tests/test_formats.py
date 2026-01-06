@@ -1,4 +1,4 @@
-from gnssr4water.gnssrlib import NMEAFile,nmea_type
+from gnssr4water.gnssir import NMEAFile,nmea_type
 
 import os
 from datetime import datetime,timedelta
@@ -11,8 +11,9 @@ def test_NMEAFile():
     # nmeafile=os.path.join(dir_path,"testdata/eoaf_ica_gnssr02_2024-06-21T000000.lz4")
     with NMEAFile(nmeafile) as nmeaid:
         for nmeacyc in nmeaid.readcycles():
-            if nmeacyc['sats_in_view'] > 0:
-                dtime=datetime(nmeacyc['year'],nmeacyc['month'],nmeacyc['day'],nmeacyc['hr'],nmeacyc['min'])+timedelta(seconds=nmeacyc['sec'])
+            breakpoint()
+            if nmeacyc.sats_in_view > 0:
+                dtime=nmeacyc.time 
                 breakpoint()
             print(nmeacyc)
 

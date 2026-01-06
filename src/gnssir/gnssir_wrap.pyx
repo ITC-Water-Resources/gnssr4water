@@ -44,29 +44,50 @@ cdef extern from "src/gnssir.h" nogil:
     cdef _gnss_system gnss_gpsl2
     cdef _gnss_system gnss_glonassiil1
     cdef _gnss_system gnss_unknown
-    cdef void copy_GNSS_as(_gnss_system *sys, const _gnss_system * sysfrom);
+    cdef void copy_GNSS_as(_gnss_system *sys, const _gnss_system * sysfrom)
 
-# cdef extern from "src/nmea.h" nogil:
-    # cdef const int NMEA_GSV_MAX_SATELLITES 
+cdef extern from "src/position.h" nogil:
+    cdef struct _enu_position "enu_position":
+        float lat,
+        float lon,
+        float ortho_height,
+        float geoid_height,
+        double mjd
+    cdef int init_enu_position(_enu_position *data)
+    cdef int copy_enu_position(const _enu_position *indata, _enu_position * outdata)
+    cdef int set_enu_position(_enu_position * data,float lat,float lon, float ortho_height, float geoid_height,double mjd)
 
-# cdef const int _NMEA_GSV_MAX_SATELLITES=NMEA_GSV_MAX_SATELLITES
+cdef extern from "src/timeutil.h" nogil:
+    cdef double mjd(const int year, const int month, const int day,const int hour, const int minute, const double second)
+    cdef void mjd_to_datetime(double mjd, int *year,int * month, int * day, int * hour,int * minute, double * second) 
+
+
+cpdef datetime_from_mjd(double mjd):
+    cdef int yr,month,day,hr,minute
+    cdef double sec;
+
+    mjd_to_datetime(mjd,&yr,&month,&day,&hr,&minute,&sec)
+    #return yr,month,day,hr,minute,sec
+    return datetime(yr,month,day,hr,minute,int(sec),int((sec-int(sec))*1e3))
+
+cpdef double mjd_from_datetime(dt:datetime):
+        cdef int year=dt.year
+        cdef int month=dt.month
+        cdef int day=dt.day
+        cdef int hour=dt.hour
+        cdef int minute=dt.minute
+        cdef double second=dt.second+dt.microsecond*1e-38
+        return mjd(year,month,day,hour,minute,second) 
+
 
 cdef extern from "src/nmea.h" nogil:
     #import the #define NMEA_GSV_MAX_SATELLITES in a constant for later use in cython.view.array's
     cdef const int NMEA_GSV_MAX_SATELLITES
 
     struct _nmea_cycle "nmea_cycle":
-        int year,
-        int month,
-        int day,
-        int hr,
-        int min,
-        float sec,
+        double mjd,
         char status,
-        float lat,
-        float lon,
-        float ortho_height,
-        float geoid_height,
+        _enu_position site,
         int sats_in_view,
         #note arrays are declared with size 1 but since they are extern,
         #they actually have size NMEA_GSV_MAX_SATELLITES (but cython won't eat the #define from nmea.h)
@@ -77,16 +98,18 @@ cdef extern from "src/nmea.h" nogil:
         float cnr0[1]
     
     struct _nmea_trans_cycle "nmea_trans_cycle":
-        int year[2],
-        int month[2],
-        int day[2],
-        int hr[2],
-        int min[2],
-        float sec[2],
-        float lat[2],
-        float lon[2],
-        float ortho_height[2],
-        float geoid_height[2],
+        double mjd[2],
+        # int year[2],
+        # int month[2],
+        # int day[2],
+        # int hr[2],
+        # int min[2],
+        # float sec[2],
+        _enu_position sites[2],
+        # float lat[2],
+        # float lon[2],
+        # float ortho_height[2],
+        # float geoid_height[2],
         int sats_in_view,
         _gnss_system system[1],
         int prn[1],
@@ -114,6 +137,31 @@ cdef extern from "src/nmea.h" nogil:
 
     int pair_nmea_trans_cycle(const _nmea_cycle * c_clear,const _nmea_cycle * c_obstr , int delta_sec, _nmea_trans_cycle * tc_out)
 
+cdef extern from "src/arcs.h" nogil:
+    struct _arc "arc":
+        size_t len,
+        _gnss_system system,
+        int prn,
+        # int year,
+        # int month,
+        # int day,
+        # int hr,
+        # int min,
+        # float sec,
+        _enu_position site,
+        # float lat,
+        # float lon,
+        # float ortho_height,
+        # float geoid_height,
+        double * mjd,
+        float * elevation,
+        float * azimuth,
+        float * values
+
+    int init_arc(_arc * data)
+    int free_arc(_arc* data)
+    int append_to_arc(_arc *data,double mjd, float elevation,float azimuth,float value)
+    
 cdef class gnss_sys:
     cdef _gnss_system* system_ptr
     def __cinit__(self):
@@ -137,7 +185,8 @@ cdef class gnss_sys:
         cdef gnss_sys system=gnss_sys()
         copy_GNSS_as(system.system_ptr,&sys)
         return system
-
+    
+            
     def __dealloc__(self):
         free(self.system_ptr)
 
@@ -164,7 +213,111 @@ cdef class gnss_sys:
 GPSL1=gnss_sys.from_(gnss_gpsl1)
 GPSL2=gnss_sys.from_(gnss_gpsl2)
 GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
+GNSSUNKNOWN=gnss_sys.from_(gnss_unknown)
 
+
+cdef class Arc:
+    cdef _arc* arc_ptr
+    def __cinit__(self):
+        self.arc_ptr=<_arc*>malloc(sizeof(_arc))
+        init_arc(self.arc_ptr)
+    
+    def __init__(self,prn:int=-1,lon:float=-9999.,lat:float=-9999.,ortho_height:float=-9999,geoid_height:float=-9999.,mjd:double=0,system:gnss_system=None):
+        deref(self.arc_ptr).prn=prn
+
+        set_enu_position(&deref(self.arc_ptr).site,lat,lon,ortho_height,geoid_height,mjd)
+        # deref(self.arc_ptr).lat=lat
+        # deref(self.arc_ptr).lon=lon
+        # deref(self.arc_ptr).ortho_height=ortho_height
+        # deref(self.arc_ptr).geoid_height=geoid_height
+        cdef gnss_sys  sys;
+        if system is None:
+            copy_GNSS_as(&self.arc_ptr.system,&gnss_unknown)
+        else:
+            sys=<gnss_sys?>system
+            copy_GNSS_as(&self.arc_ptr.system,sys.system_ptr)
+
+    def __dealloc__(self):
+        cdef int err
+        if self.arc_ptr is not NULL:
+            # free dynamically allocated members
+            err= free_arc(self.arc_ptr)
+            if err != 0:
+                raise RuntimeError("error freeing arc members")
+            free(self.arc_ptr)
+
+    def append(self,time,elevation:float,azimuth:float,value:float):
+        cdef double mjdv= mjd_from_datetime(time)
+        cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)
+        if err != 0:
+            raise RuntimeError("error appending data to arc")
+    
+    @property
+    def lon(self):
+        return deref(self.arc_ptr).site.lon
+    
+    @property
+    def prn(self):
+        return deref(self.arc_ptr).prn
+    
+    @property
+    def lat(self):
+        return deref(self.arc_ptr).site.lat
+
+    @property
+    def ortho_height(self):
+        return deref(self.arc_ptr).site.ortho_height
+
+    @property
+    def geoid_height(self):
+        return deref(self.arc_ptr).site.geoid_height
+
+    @property
+    def system(self):
+        return gnss_sys.from_(deref(self.arc_ptr).system) 
+
+    @property
+    def elevation(self):
+        cdef size_t dlen=deref(self.arc_ptr).len
+        if dlen == 0:
+            return None
+        cdef cvarray elev = <float[:dlen] > &(deref(self.arc_ptr).elevation[0])
+        return np.assay(elev);
+
+    @property
+    def time(self):
+        cdef size_t dlen=deref(self.arc_ptr).len
+        if dlen == 0:
+            return None
+        tm=np.asarray([ datetime_from_mjd(self.arc_ptr.mjd[i]) for i in range(dlen)])
+        return tm
+    
+    @property
+    def mjd(self):
+        cdef size_t dlen=deref(self.arc_ptr).len
+        if dlen == 0:
+            return None
+        cdef cvarray mjdar = <double[:dlen] > &(deref(self.arc_ptr).mjd[0])
+        return np.asarray(mjdar)
+    
+    @property
+    def azimuth(self):
+        cdef size_t dlen=deref(self.arc_ptr).len
+        if dlen == 0:
+            return None
+        cdef cvarray azim = <float[:dlen] > &(deref(self.arc_ptr).azimuth[0])
+        return np.asarray(azim)
+    
+    @property
+    def values(self):
+        cdef size_t dlen=deref(self.arc_ptr).len
+        if dlen == 0:
+            return None
+        cdef cvarray values = <float[:dlen] > &(deref(self.arc_ptr).values[0])
+        return np.asarray(values)
+
+    def __len__(self):
+        return deref(self.arc_ptr).len
 
 cdef class gnss_cycle:
     cdef _nmea_cycle* cycle_ptr
@@ -178,8 +331,7 @@ cdef class gnss_cycle:
 
     @property
     def time(self):
-        tm=datetime(deref(self.cycle_ptr).year,deref(self.cycle_ptr).month,deref(self.cycle_ptr).day,deref(self.cycle_ptr).hr,deref(self.cycle_ptr).min)+timedelta(seconds=deref(self.cycle_ptr).sec)
-        return tm
+        return datetime_from_mjd(self.cycle_ptr.mjd)
     
     @property
     def sats_in_view(self):
@@ -187,19 +339,19 @@ cdef class gnss_cycle:
     
     @property
     def lon(self):
-        return deref(self.cycle_ptr).lon
+        return deref(self.cycle_ptr).site.lon
     
     @property
     def lat(self):
-        return deref(self.cycle_ptr).lat
+        return deref(self.cycle_ptr).site.lat
     
     @property
     def ortho_height(self):
-        return deref(self.cycle_ptr).ortho_height
+        return deref(self.cycle_ptr).site.ortho_height
 
     @property
     def geoid_height(self):
-        return deref(self.cycle_ptr).ortho_height
+        return deref(self.cycle_ptr).site.geoid_height
 
     @property
     def system(self):
@@ -208,7 +360,6 @@ cdef class gnss_cycle:
     @property
     def prn(self):
         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).prn[0])
-        # cdef int [:] prn=deref(self.cycle_ptr).prn
         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
 
     @property
@@ -247,28 +398,28 @@ cdef class gnss_trans_cycle:
 
     @property
     def time(self):
-        tm=[datetime(deref(self.tcycle_ptr).year[i],deref(self.tcycle_ptr).month[i],deref(self.tcycle_ptr).day[i],deref(self.tcycle_ptr).hr[i],deref(self.tcycle_ptr).min[i])+timedelta(seconds=deref(self.tcycle_ptr).sec[i]) for i in range(2)]
+        tm=[datetime_from_mjd(self.tcycle_ptr.mjd[i]) for i in range(2)]
         return tm
     
     @property
     def sats_in_view(self):
         return deref(self.tcycle_ptr).sats_in_view
     
-    @property
-    def lon(self):
-        return deref(self.tcycle_ptr).lon
+    # @property
+    # def lon(self):
+        # return deref(self.tcycle_ptr).lon
     
-    @property
-    def lat(self):
-        return deref(self.tcycle_ptr).lat
+    # @property
+    # def lat(self):
+        # return deref(self.tcycle_ptr).lat
     
-    @property
-    def ortho_height(self):
-        return deref(self.tcycle_ptr).ortho_height
+    # @property
+    # def ortho_height(self):
+        # return deref(self.tcycle_ptr).ortho_height
 
-    @property
-    def geoid_height(self):
-        return deref(self.tcycle_ptr).ortho_height
+    # @property
+    # def geoid_height(self):
+        # return deref(self.tcycle_ptr).geoid_height
 
     @property
     def system(self):

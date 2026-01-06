@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "nmea.h"
+#include "timeutil.h"
 
 unsigned char calculate_checksum(const char * nmea){
 	size_t slen=strlen(nmea);
@@ -31,9 +32,6 @@ unsigned char calculate_checksum(const char * nmea){
 	return xorval;
 }
 
-double mjd_cycle(const nmea_cycle * cyc){
-    return mjd(cyc->year,cyc->month,cyc->day,cyc->hr,cyc->min,cyc->sec);
-}
 
 int shift_to_komma(const  char ** nmeaPtr,const char ** kommaPtr,int skip){
 	
@@ -56,33 +54,26 @@ float convert_deg(const float deg){
 	return deg/60 + cconv*(int)(deg/100);
 }
 
-void extract_time(const char * nmeaPtr, int * hr, int * min, float * sec){
+void extract_time(const char * nmeaPtr, int * hr, int * min, double * sec){
 	
-	float tstamp=atof(nmeaPtr);
+	double tstamp=atof(nmeaPtr);
 	*hr=(int)(tstamp/10000);
 	*min=(int)((tstamp-*hr*10000)/100);
 	*sec=tstamp-*hr*10000-*min*100;
 	
 }
 
+
 int init_nmea_cycle(nmea_cycle * data){
 	const gnss_system system=GNSS_UNKNOWN;
-	data->year=NMEA_FILL;
-	data->month=NMEA_FILL;
-	data->day=NMEA_FILL;
-	data->hr=NMEA_FILL;
-	data->min=NMEA_FILL;
-	data->sec=NMEA_FILL;
-	data->lon=NMEA_FILL;
-	data->lat=NMEA_FILL;
-	data->ortho_height=NMEA_FILL;
-	data->geoid_height=NMEA_FILL;
+	data->mjd=F_FILL_VALUE;
+	int err=init_enu_position(&data->site);
 	data->sats_in_view=0;
 	for (int i=0;i<NMEA_GSV_MAX_SATELLITES;++i){
 	    data->prn[i]=0;
-	    data->elevation[i]=0;
-	    data->azimuth[i]=0;
-	    data->cnr0[i]=0;
+	    data->elevation[i]=F_FILL_VALUE;
+	    data->azimuth[i]=F_FILL_VALUE;
+	    data->cnr0[i]=F_FILL_VALUE;
 	    memcpy(&data->system[i],&system,sizeof(system));
 	}
 	return GNSSR_SUCCESS;
@@ -92,16 +83,9 @@ int init_nmea_cycle(nmea_cycle * data){
 int init_nmea_trans_cycle(nmea_trans_cycle * data){
 	const gnss_system system=GNSS_UNKNOWN;
 	for (int i=0; i <2;++i){
-	    data->year[i]=NMEA_FILL;
-	    data->month[i]=NMEA_FILL;
-	    data->day[i]=NMEA_FILL;
-	    data->hr[i]=NMEA_FILL;
-	    data->min[i]=NMEA_FILL;
-	    data->sec[i]=NMEA_FILL;
-	    data->lon[i]=NMEA_FILL;
-	    data->lat[i]=NMEA_FILL;
-	    data->ortho_height[i]=NMEA_FILL;
-	    data->geoid_height[i]=NMEA_FILL;
+	    data->mjd[i]=F_FILL_VALUE;
+
+	    init_enu_position(&data->sites[i]);
 	}	
 	data->sats_in_view=0;
 	for (int i=0;i<NMEA_GSV_MAX_SATELLITES;++i){
@@ -201,9 +185,9 @@ int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data){
 }
 
 /// Create a transmissivity cycle from two individual cycles (no checks on matching time will be done!! (this is a user choice)
-int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr, int delta_sec,nmea_trans_cycle * tc_out){
+int pair_nmea_trans_cycle(const nmea_cycle * c_obstr,const nmea_cycle * c_clear, int delta_sec,nmea_trans_cycle * tc_out){
    
-    double delta_t=mjd_cycle(c_clear)-mjd_cycle(c_obstr);
+    double delta_t=c_obstr->mjd-c_clear->mjd;
 
     if (delta_sec < delta_t*86400 ){
 	return GNSSR_NOMATCH;
@@ -217,10 +201,6 @@ int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr,
 	return err;
     }
 
-    //helper array
-    const nmea_cycle * c_ptrs[2];
-    c_ptrs[0]=c_clear;
-    c_ptrs[1]=c_obstr;
 
     //compute the intersecting PRN's
     int ix=0;
@@ -230,15 +210,16 @@ int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr,
 	for(int j=0 ;j < c_obstr->sats_in_view;++j){
 	    if (c_clear->prn[i] == c_obstr->prn[j]){
 			
-		tc_out->prn[ix]=c_clear->prn[i];
-		memcpy(&tc_out->system[ix],&c_clear->system[i],sizeof(c_clear->system[i]));
+		tc_out->prn[ix]=c_obstr->prn[j];
+		memcpy(&tc_out->system[ix],&c_obstr->system[j],sizeof(c_obstr->system[j]));
 		
 		//take the elevation and azimuth from the clear sky cycle 
-		tc_out->elevation[ix]=c_clear->elevation[i];	
-		tc_out->azimuth[ix]=c_clear->azimuth[i];
+		tc_out->elevation[ix]=c_obstr->elevation[j];	
+		tc_out->azimuth[ix]=c_obstr->azimuth[j];
 		
-		tc_out->cnr0[0][ix]=c_clear->cnr0[i];
-		tc_out->cnr0[1][ix]=c_obstr->cnr0[j];
+		tc_out->cnr0[0][ix]=c_obstr->cnr0[j];
+		tc_out->cnr0[1][ix]=c_clear->cnr0[i];
+		
 		tc_out->gamma[ix]=pow(10,(c_obstr->cnr0[j]-c_clear->cnr0[i])/10.0);
 		++ix;
 		//stop searching (i.e. take first match found)
@@ -254,19 +235,17 @@ int pair_nmea_trans_cycle(const nmea_cycle * c_clear,const nmea_cycle * c_obstr,
     }
 
     //copy constant parts
+    //helper array
+    const nmea_cycle * c_ptrs[2];
+    c_ptrs[0]=c_obstr;
+    c_ptrs[1]=c_clear;
     for (int i=0;i<2;++i){
-	tc_out->year[i]=c_ptrs[i]->year;
-	tc_out->month[i]=c_ptrs[i]->month;
-	tc_out->day[i]=c_ptrs[i]->day;
-	tc_out->hr[i]=c_ptrs[i]->hr;
-	tc_out->min[i]=c_ptrs[i]->min;
-	tc_out->sec[i]=c_ptrs[i]->sec;
-    
-	tc_out->lon[i]=c_ptrs[i]->lon;
-	tc_out->lat[i]=c_ptrs[i]->lat;
-	
-	tc_out->ortho_height[i]=c_ptrs[i]->ortho_height;
-	tc_out->geoid_height[i]=c_ptrs[i]->geoid_height;
+	tc_out->mjd[i]=c_ptrs[i]->mjd;
+	 
+	err=copy_enu_position(&c_ptrs[i]->site,&tc_out->sites[i]);
+	if (err != GNSSR_SUCCESS){
+	    return err;
+	}
 
     }
 
@@ -288,7 +267,10 @@ int update_nmea_RMC(const char * nmea, nmea_cycle *data){
 	}
 	
 	//extract UTC time
-	extract_time(nmeaPtr,&data->hr,&data->min,&data->sec);
+	int hour, minute;
+	double second;
+	extract_time(nmeaPtr,&hour,&minute,&second);
+	/**extract_time(nmeaPtr,&data->hr,&data->min,&data->sec);*/
 	/*sscanf(nmeaPtr,"%02d%02d", &data->hr,&data->min);*/
 	/*data->sec=atof(nmeaPtr+5);*/
 	
@@ -313,9 +295,9 @@ int update_nmea_RMC(const char * nmea, nmea_cycle *data){
 	}
 	
 	if (*(nmeaPtr)=='S'){
-		data->lat=-deg;
+		data->site.lat=-deg;
 	}else{
-		data->lat=deg;
+		data->site.lat=deg;
 	}
 
 	if (shift_to_komma(&nmeaPtr,&kommaPtr,1) == GNSSR_IO_ERROR){
@@ -329,9 +311,9 @@ int update_nmea_RMC(const char * nmea, nmea_cycle *data){
 	    return GNSSR_IO_ERROR;
 	}
 	if (*(nmeaPtr)=='W'){
-		data->lon=-deg;
+		data->site.lon=-deg;
 	}else{
-		data->lon=deg;
+		data->site.lon=deg;
 	}
 	
 	/*///skip the speed and course*/
@@ -340,10 +322,15 @@ int update_nmea_RMC(const char * nmea, nmea_cycle *data){
 	}
     
 	//extract date
-	sscanf(nmeaPtr,"%02d%02d%02d", &data->day,&data->month,&data->year);
-	if (data->year < 80){
-		data->year+=2000;
+	int year,month,day;
+	sscanf(nmeaPtr,"%02d%02d%02d", &day,&month,&year);
+	if (year < 80){
+		year+=2000;
 	}
+
+	//convert to mjd
+	data->mjd=mjd(year,month,day,hour,minute,second);
+
 	return GNSSR_SUCCESS;
 }
 
@@ -450,7 +437,7 @@ int update_nmea_GGA(const char * nmea, nmea_cycle *data){
 	    return GNSSR_IO_ERROR;
 	}
     
-	data->ortho_height=atof(nmeaPtr);
+	data->site.ortho_height=atof(nmeaPtr);
 
 
 	if (shift_to_komma(&nmeaPtr,&kommaPtr,2) == GNSSR_IO_ERROR){
@@ -458,7 +445,7 @@ int update_nmea_GGA(const char * nmea, nmea_cycle *data){
 	}
 
 
-	data->geoid_height=atof(nmeaPtr);
+	data->site.geoid_height=atof(nmeaPtr);
 
 	return GNSSR_SUCCESS;
 

@@ -1,6 +1,8 @@
-# GNSSR 4 Water 
+#  GNSSR 4 water: GNSS interferometry and Transmissiometry from Python
 ## What is gnssr4water?
-This repository is a fork of the [gnssr4river](https://github.com/lroineau/gnssr4river), which originated from an internship of [Lubin Roineau](https://github/lroineau) under supervision of Roelof Rietbroek at the Water Resources Department at the University of Twente.
+
+Although the repository has changed quite a lot, the initiative originated from a fork of the [gnssr4river](https://github.com/lroineau/gnssr4river), written during an internship of [Lubin Roineau](https://github/lroineau) under supervision of Roelof Rietbroek at the Water Resources Department at the University of Twente.
+
 
 gnssr4water is a free and open-source Python toolbox that helps to:
 - find suitable locations and antenna heigths for placing a low-cost GNSS receiver to perform GNSS reflectometry over rivers and lakes.
@@ -23,6 +25,8 @@ or (when using ssh):
 git clone git@github.com:ITC-Water-Resources/gnssr4water.git
 ```
 
+## Development notes
+This repository holds a [the gnssir code a a subtree](https://github.com/ITC-Water-Resources/gnssir). gnssir is a C-code library allowing GNSS processing on embbeded platforms
 
 ## How should I setup a low-cost GNSS-reflectometer?
 Please have a look at the following repositories:

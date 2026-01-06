@@ -48,7 +48,7 @@ def listexts():
     exts=[]
     srcd="src/gnssir"
     sources=[f"{srcd}/{nm+ext}"]
-    for csrc in ["nmea.c","stream.c","gnssir.c"]:
+    for csrc in ["nmea.c","stream.c","gnssir.c" ,"arcs.c", "timeutil.c", "position.c"]:
         sources.append(f"{srcd}/src/{csrc}")
     
     if uselz4:
