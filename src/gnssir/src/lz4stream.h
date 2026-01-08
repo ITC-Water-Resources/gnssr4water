@@ -25,6 +25,7 @@
 #define LZ4_ERROR -1
 #define LZ4_EOF -2
 #define LZ4_SUCCESS 0
+#define LZ4_LINEBUF_TOO_SMALL -3
 
 
 

@@ -152,6 +152,8 @@ int read_nmea_cycle(gnssrstream *sid, nmea_cycle * data){
     int cycle_found=0;
     do{
 	err=readline(sid,buffer,NMEA_BUFFER_SIZE);
+	
+
 	if (err != GNSSR_SUCCESS){
 	    return err;
 	}

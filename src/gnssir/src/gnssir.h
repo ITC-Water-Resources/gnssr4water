@@ -88,6 +88,14 @@
 	//UNKNOWN
 //}gnss_system;
 
+#ifndef LOGWARNING
+#define LOGWARNING 0
+#endif
+
+#define warn_print(fmt, ...) \
+            do { if (LOGWARNING) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
+
+
 struct gnss_system{
 	const char system[12];
 	const char rinexcode[1];

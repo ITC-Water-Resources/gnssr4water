@@ -126,6 +126,13 @@ switch (sid->ftype) {
 	if (err == LZ4_EOF) {
 	    buffer[0] = '\0';
 	    return GNSSR_EOF;
+	} else if (err == LZ4_LINEBUF_TOO_SMALL){
+	    // ignore long lines which do not fit in the buffer
+	    // return an emtpy comment line instead
+	    buffer[0] = '#';
+	    buffer[1]='\0';
+	    return GNSSR_SUCCESS;
+	    
 	} else if (err == LZ4_ERROR) {
 	    return GNSSR_IO_ERROR;
 	}else{

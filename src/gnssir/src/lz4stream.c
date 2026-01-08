@@ -97,11 +97,12 @@ int readline_lz4(lz4stream* lzid, char *buffer,size_t slen){
 	if (ln == NULL ){
 	    //copy the remaining bytes to the output buffer
 	    
-	    //remaining buffer does not fit in the buffer
-	    if (lzid->buflen > lzid->chunkPtr + slen) {
-		return LZ4_ERROR;
-	    }
 	    size_t bcopied = lzid->buflen - (lzid->chunkPtr - lzid->chunkbuf);
+	    if (lzid->buflen > lzid->chunkPtr + slen) {
+		//remaining buffer does not fit in the buffer: truncate output
+		bcopied=slen-1;
+	    }
+	    
 	    strncpy(bufPtr, lzid->chunkPtr,bcopied);
 	    bufPtr += bcopied;
 	    //add a null terminator
@@ -119,14 +120,14 @@ int readline_lz4(lz4stream* lzid, char *buffer,size_t slen){
 	}
     
 	//found string does not fit in the buffer
-	if (ln > lzid->chunkPtr + slen) {
-	    return LZ4_ERROR;
-	}
 	///check if data will fit
 	//copy the data up to the newlin into to the buffer
 	size_t bcopied = ln - lzid->chunkPtr+1;
+	if (ln > lzid->chunkPtr + slen) {
+	    //truncate output
+	    bcopied=slen-1;
+	} 
 	strncpy(bufPtr, lzid->chunkPtr, bcopied);
-	
 	bufPtr += bcopied;
 	    //add a null terminator
 	*bufPtr = '\0';
