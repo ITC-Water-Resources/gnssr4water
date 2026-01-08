@@ -29,8 +29,28 @@
 #define SKYMASK_FULL  -555
 #define SKYMASK_INVALID  -556
 
+
+/**
+ * @enum az_center
+ * @brief Defines the azimuthal center point for a skymask polygon.
+ * 
+ * This enumeration specifies different coordinate system conventions for representing
+ * azimuth angles, determining whether angles are centered around 0° or 180°.
+ * 
+ * @var az_center::D0
+ * Center at 0°: Azimuth range is [-180°, 180°)
+ * 
+ * @var az_center::D180
+ * Center at 180°: Azimuth range is [0°, 360°)
+ * 
+ * @var az_center::DUNK
+ * Unknown or unspecified center (value: 1)
+ */
 enum az_center {D0=0,D180=180,DUNK=1};
 typedef enum az_center az_center;
+
+
+
 
 struct skymask{
 	int npoints;

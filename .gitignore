@@ -2,6 +2,7 @@ __pycache__
 .ipynb_checkpoints/
 *egg-info/
 src/gnssr4water/_version.py
+docs/source/references
 build/
 cython_debug/
 *.html

@@ -19,8 +19,24 @@
 #include "skymask.h"
 
 
-/* Fast polygon test adapted from this discussion here:https://stackoverflow.com/questions/36399381/whats-the-fastest-way-of-checking-if-a-point-is-inside-a-polygon-in-python*/
-
+/**
+ * @brief Tests whether a point (azimuth, elevation) lies within a skymask polygon.
+ * 
+ * Uses a fast point-in-polygon test algorithm based on ray casting to determine
+ * if a given sky coordinate falls within the polygon defined by the skymask vertices.
+ * 
+ * @param skymsk Pointer to the skymask structure containing polygon vertices
+ * @param azimuth The azimuth angle in degrees of the point to test
+ * @param elevation The elevation angle in degrees of the point to test
+ * 
+ * @return 1 if the point is inside the polygon, 0 if outside, 2 if on the edge
+ * 
+ * @note The azimuth value is automatically wrapped to match the skymask's coordinate system center
+ * @note Algorithm adapted from: https://stackoverflow.com/questions/36399381/whats-the-fastest-way-of-checking-if-a-point-is-inside-a-polygon-in-python
+ * 
+ * @see skymask
+ * @see az_center
+ */
 int within_mask(const skymask * skymsk,float azimuth,float elevation){
     
     azimuth=wrap_azimuth(azimuth,skymsk->center); 
@@ -89,7 +105,7 @@ int add_polypoint(skymask *skymsk,float azimuth,float elevation){
 
   }
 
-
+  
   if (azimuth < 0){
     switch(skymsk->center){
 
@@ -164,6 +180,22 @@ int setup_simple_skymask(skymask *skymsk,float min_az,float max_az, float min_el
 }
 
 
+/**
+ * Wraps azimuth angle to match the specified azimuth center (0 or 180 degrees).
+ * 
+ * Converts azimuth angles between two coordinate systems:
+ * - D180 center: Range [0, 360) degrees
+ * - D0 center: Range [-180, 180) degrees
+ * 
+ * @param azimuth The azimuth angle in degrees to be wrapped
+ * @param center The target coordinate system center (see @ref az_center enum in skymask.h)
+ * 
+ * @return The wrapped azimuth angle in the target coordinate system
+ * 
+ * @note If azimuth is negative and center is D180, adds 360 to convert to [0,360) range
+ * @note If azimuth is greater than 180 and center is D0, subtracts 360 to convert to [-180,180) range
+ * @note If no conversion is needed, returns the original azimuth value
+ */
 float wrap_azimuth(float azimuth, az_center center){
       if (azimuth < 0 && center == D180){
         return 360+azimuth;
