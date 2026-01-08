@@ -44,6 +44,8 @@ breathe_default_project = "gnssir"
 html_theme='pydata_sphinx_theme'
 html_static_path = ['_static']
 
+html_favicon = '_static/favicon.ico'
+
 html_theme_options = {
     "use_edit_page_button": False,
     "icon_links": [
@@ -60,7 +62,7 @@ html_theme_options = {
    ],
    "logo": {
         "alt_text": "gnssrwater - Home",
-        # "image_light": "_static/shxarraylogo_dark.png",
-        # "image_dark": "_static/shxarraylogo_light.png",
+        "image_light": "_static/gnssr4water_logo_wtxt_lightmode.png",
+        "image_dark": "_static/gnssr4water_logo_wtxt_darkmode.png",
     }
 }
