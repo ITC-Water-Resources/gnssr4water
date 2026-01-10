@@ -20,46 +20,19 @@ from cython.operator cimport dereference as deref
 from libc.stdlib cimport malloc, free
 from datetime import datetime,timedelta
 import numpy as np
+
 from cython.view cimport array as cvarray
 
-cdef extern from "src/stream.h" nogil:
-    cdef const int _GNSSR_SUCCESS "GNSSR_SUCCESS"
-    cdef const int _GNSSR_IO_ERROR "GNSSR_IO_ERROR"
-    cdef const int _GNSSR_EOF "GNSSR_EOF"
-    struct gnssrstream:
-        pass
-    int open_stream(const char * filename, gnssrstream* gz)
-    void close_stream(gnssrstream *gz)
-    int readline(gnssrstream *gz, char * line,size_t slen)
+#gnssir C wrappers
+from arc cimport *
+from position cimport *
+from gnssir cimport *
+from stream cimport *
+from timeutil cimport *
+from nmea cimport *
 
-cdef extern from "src/gnssir.h" nogil:
-    cdef struct _gnss_system "gnss_system":
-        char * system,
-        char * rinexcode,
-        double frequency,
-        double length,
-        double bandwidth
-    # cdef void init_GNSS(_gnss_system * system, const char * sysname)
-    cdef _gnss_system gnss_gpsl1
-    cdef _gnss_system gnss_gpsl2
-    cdef _gnss_system gnss_glonassiil1
-    cdef _gnss_system gnss_unknown
-    cdef void copy_GNSS_as(_gnss_system *sys, const _gnss_system * sysfrom)
 
-cdef extern from "src/position.h" nogil:
-    cdef struct _enu_position "enu_position":
-        float lat,
-        float lon,
-        float ortho_height,
-        float geoid_height,
-        double mjd
-    cdef int init_enu_position(_enu_position *data)
-    cdef int copy_enu_position(const _enu_position *indata, _enu_position * outdata)
-    cdef int set_enu_position(_enu_position * data,float lat,float lon, float ortho_height, float geoid_height,double mjd)
 
-cdef extern from "src/timeutil.h" nogil:
-    cdef double mjd(const int year, const int month, const int day,const int hour, const int minute, const double second)
-    cdef void mjd_to_datetime(double mjd, int *year,int * month, int * day, int * hour,int * minute, double * second) 
 
 
 cpdef datetime_from_mjd(double mjd):
@@ -80,87 +53,6 @@ cpdef double mjd_from_datetime(dt:datetime):
         return mjd(year,month,day,hour,minute,second) 
 
 
-cdef extern from "src/nmea.h" nogil:
-    #import the #define NMEA_GSV_MAX_SATELLITES in a constant for later use in cython.view.array's
-    cdef const int NMEA_GSV_MAX_SATELLITES
-
-    struct _nmea_cycle "nmea_cycle":
-        double mjd,
-        char status,
-        _enu_position site,
-        int sats_in_view,
-        #note arrays are declared with size 1 but since they are extern,
-        #they actually have size NMEA_GSV_MAX_SATELLITES (but cython won't eat the #define from nmea.h)
-        _gnss_system system[1],
-        int prn[1],
-        float elevation[1],
-        float azimuth[1],
-        float cnr0[1]
-    
-    struct _nmea_trans_cycle "nmea_trans_cycle":
-        double mjd[2],
-        # int year[2],
-        # int month[2],
-        # int day[2],
-        # int hr[2],
-        # int min[2],
-        # float sec[2],
-        _enu_position sites[2],
-        # float lat[2],
-        # float lon[2],
-        # float ortho_height[2],
-        # float geoid_height[2],
-        int sats_in_view,
-        _gnss_system system[1],
-        int prn[1],
-        float elevation[1],
-        float azimuth[1],
-        float cnr0[2][1],
-        float gamma[1]	
-
-    cpdef enum nmea_type:
-        NMEA_GGA,
-        NMEA_GSV,
-        NMEA_GLL,
-        NMEA_GSA,
-        NMEA_RMC,
-        NMEA_VTG,
-        NMEA_GNS,
-        NMEA_UNSUPPORTED,
-        NMEA_INVALID
-    
-    unsigned char calculate_checksum(const char * nmea)
-    nmea_type check_nmea(char * nmea) 
-    int read_nmea_cycle(gnssrstream *sid, _nmea_cycle * data);
-    int init_nmea_cycle(_nmea_cycle * data)
-    int init_nmea_trans_cycle(_nmea_trans_cycle * data)
-
-    int pair_nmea_trans_cycle(const _nmea_cycle * c_clear,const _nmea_cycle * c_obstr , int delta_sec, _nmea_trans_cycle * tc_out)
-
-cdef extern from "src/arcs.h" nogil:
-    struct _arc "arc":
-        size_t len,
-        _gnss_system system,
-        int prn,
-        # int year,
-        # int month,
-        # int day,
-        # int hr,
-        # int min,
-        # float sec,
-        _enu_position site,
-        # float lat,
-        # float lon,
-        # float ortho_height,
-        # float geoid_height,
-        double * mjd,
-        float * elevation,
-        float * azimuth,
-        float * values
-
-    int init_arc(_arc * data)
-    int free_arc(_arc* data)
-    int append_to_arc(_arc *data,double mjd, float elevation,float azimuth,float value)
     
 cdef class gnss_sys:
     cdef _gnss_system* system_ptr

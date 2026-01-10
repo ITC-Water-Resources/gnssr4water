@@ -47,7 +47,7 @@ def listexts():
     nm="gnssir_wrap"
     exts=[]
     srcd="src/gnssir"
-    sources=[f"{srcd}/{nm+ext}"]
+    sources=[f"{srcd}/python/{nm+ext}"]
     for csrc in ["nmea.c","stream.c","gnssir.c" ,"arcs.c", "timeutil.c", "position.c"]:
         sources.append(f"{srcd}/src/{csrc}")
     

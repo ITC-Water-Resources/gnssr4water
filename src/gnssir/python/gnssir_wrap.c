@@ -28,14 +28,14 @@
             "-DUSE_LZ4"
         ],
         "include_dirs": [
-            "src/gnssir",
-            "/tmp/pip-build-env-l1kbiaa0/overlay/lib/python3.13/site-packages/numpy/_core/include",
+            "src/gnssir/python",
+            "/tmp/pip-build-env-54d41v8z/overlay/lib/python3.13/site-packages/numpy/_core/include",
             "."
         ],
         "language": "c",
         "name": "gnssr4water.gnssir",
         "sources": [
-            "src/gnssir/gnssir_wrap.pyx",
+            "src/gnssir/python/gnssir_wrap.pyx",
             "src/gnssir/src/nmea.c",
             "src/gnssir/src/stream.c",
             "src/gnssir/src/gnssir.c",
@@ -1173,12 +1173,12 @@ static int __Pyx_init_co_variables(void) {
 /* Early includes */
 #include <string.h>
 #include <stdlib.h>
-#include "src/stream.h"
-#include "src/gnssir.h"
-#include "src/position.h"
-#include "src/timeutil.h"
-#include "src/nmea.h"
-#include "src/arcs.h"
+#include "../src/position.h"
+#include "../src/gnssir.h"
+#include "../src/arcs.h"
+#include "../src/stream.h"
+#include "../src/timeutil.h"
+#include "../src/nmea.h"
 #include "pythread.h"
 #ifdef _OPENMP
 #include <omp.h>
@@ -1396,7 +1396,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "src/gnssir/gnssir_wrap.pyx",
+  "src/gnssir/python/gnssir_wrap.pyx",
   "<stringsource>",
 };
 /* #### Code section: utility_code_proto_before_types ### */
@@ -1665,8 +1665,8 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "src/gnssir/gnssir_wrap.pyx":165
- *     int append_to_arc(_arc *data,double mjd, float elevation,float azimuth,float value)
+/* "src/gnssir/python/gnssir_wrap.pyx":57
+ * 
  * 
  * cdef class gnss_sys:             # <<<<<<<<<<<<<<
  *     cdef _gnss_system* system_ptr
@@ -1679,7 +1679,7 @@ struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":219
+/* "src/gnssir/python/gnssir_wrap.pyx":111
  * 
  * 
  * cdef class Arc:             # <<<<<<<<<<<<<<
@@ -1692,7 +1692,7 @@ struct __pyx_obj_11gnssr4water_6gnssir_Arc {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":322
+/* "src/gnssir/python/gnssir_wrap.pyx":214
  *         return deref(self.arc_ptr).len
  * 
  * cdef class gnss_cycle:             # <<<<<<<<<<<<<<
@@ -1705,7 +1705,7 @@ struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":383
+/* "src/gnssir/python/gnssir_wrap.pyx":275
  *         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])
  * 
  * cdef class gnss_trans_cycle:             # <<<<<<<<<<<<<<
@@ -1718,7 +1718,7 @@ struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":453
+/* "src/gnssir/python/gnssir_wrap.pyx":345
  *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  * cdef class NMEAFile:             # <<<<<<<<<<<<<<
@@ -1734,7 +1734,7 @@ struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":489
+/* "src/gnssir/python/gnssir_wrap.pyx":381
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
@@ -1748,7 +1748,7 @@ struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":498
+/* "src/gnssir/python/gnssir_wrap.pyx":390
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
@@ -1766,7 +1766,7 @@ struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas {
 };
 
 
-/* "src/gnssir/gnssir_wrap.pyx":506
+/* "src/gnssir/python/gnssir_wrap.pyx":398
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
@@ -1872,8 +1872,8 @@ struct __pyx_vtabstruct_array {
 static struct __pyx_vtabstruct_array *__pyx_vtabptr_array;
 
 
-/* "src/gnssir/gnssir_wrap.pyx":165
- *     int append_to_arc(_arc *data,double mjd, float elevation,float azimuth,float value)
+/* "src/gnssir/python/gnssir_wrap.pyx":57
+ * 
  * 
  * cdef class gnss_sys:             # <<<<<<<<<<<<<<
  *     cdef _gnss_system* system_ptr
@@ -1886,7 +1886,7 @@ struct __pyx_vtabstruct_11gnssr4water_6gnssir_gnss_sys {
 static struct __pyx_vtabstruct_11gnssr4water_6gnssir_gnss_sys *__pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys;
 
 
-/* "src/gnssir/gnssir_wrap.pyx":453
+/* "src/gnssir/python/gnssir_wrap.pyx":345
  *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  * cdef class NMEAFile:             # <<<<<<<<<<<<<<
@@ -2067,57 +2067,14 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 #define __Pyx_PyObject_GetAttrStr(o,n) PyObject_GetAttr(o,n)
 #endif
 
-/* PyObjectGetAttrStrNoError.proto (used by GetBuiltinName) */
+/* PyObjectGetAttrStrNoError.proto (used by HasAttr) */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
 
-/* GetBuiltinName.proto (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name);
-
-/* PyDictVersioning.proto (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
-#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
-    (version_var) = __PYX_GET_DICT_VERSION(dict);\
-    (cache_var) = (value);
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
-        (VAR) = __Pyx_XNewRef(__pyx_dict_cached_value);\
-    } else {\
-        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
-        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
-    }\
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+/* HasAttr.proto (used by ImportImpl) */
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+#define __Pyx_HasAttr(o, n)  PyObject_HasAttrWithError(o, n)
 #else
-#define __PYX_GET_DICT_VERSION(dict)  (0)
-#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
-#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
-#endif
-
-/* GetModuleGlobalName.proto */
-#if CYTHON_USE_DICT_VERSIONS
-#define __Pyx_GetModuleGlobalName(var, name)  do {\
-    static PY_UINT64_T __pyx_dict_version = 0;\
-    static PyObject *__pyx_dict_cached_value = NULL;\
-    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_mstate_global->__pyx_d))) ?\
-        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
-        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
-    PY_UINT64_T __pyx_dict_version;\
-    PyObject *__pyx_dict_cached_value;\
-    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
-} while(0)
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
-#else
-#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
 #endif
 
 /* PyObjectCall.proto (used by PyObjectFastCall) */
@@ -2132,11 +2089,14 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
 #endif
 
-/* PyObjectFastCall.proto */
+/* PyObjectFastCall.proto (used by PyObjectCallOneArg) */
 #define __Pyx_PyObject_FastCall(func, args, nargs)  __Pyx_PyObject_FastCallDict(func, args, (size_t)(nargs), NULL)
 static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObject * const*args, size_t nargs, PyObject *kwargs);
 
-/* TupleAndListFromArray.proto (used by fastcall) */
+/* PyObjectCallOneArg.proto (used by ImportImpl) */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
+
+/* TupleAndListFromArray.proto (used by ImportImpl) */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyList_FromArray(PyObject *const *src, Py_ssize_t n);
 #endif
@@ -2144,8 +2104,51 @@ static CYTHON_INLINE PyObject* __Pyx_PyList_FromArray(PyObject *const *src, Py_s
 static CYTHON_INLINE PyObject* __Pyx_PyTuple_FromArray(PyObject *const *src, Py_ssize_t n);
 #endif
 
-/* IncludeStringH.proto (used by BytesEquals) */
+/* IncludeStringH.proto (used by ImportImpl) */
 #include <string.h>
+
+/* ImportImpl.export */
+static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level);
+
+/* Import.proto */
+static CYTHON_INLINE PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level);
+
+/* ImportFrom.proto */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
+
+/* GetTopmostException.proto (used by SaveResetException) */
+#if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
+static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
+#endif
+
+/* SaveResetException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
+#else
+#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
+#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
+#endif
+
+/* PyImportError_Check.proto */
+#define __Pyx_PyExc_ImportError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_ImportError)
+
+/* GetException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
+static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#else
+static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
+#endif
+
+/* PyObjectFastCallMethod.proto */
+#if CYTHON_VECTORCALL && PY_VERSION_HEX >= 0x03090000
+#define __Pyx_PyObject_FastCallMethod(name, args, nargsf) PyObject_VectorcallMethod(name, args, nargsf, NULL)
+#else
+static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf);
+#endif
 
 /* BytesEquals.proto (used by UnicodeEquals) */
 static CYTHON_INLINE int __Pyx_PyBytes_Equals(PyObject* s1, PyObject* s2, int equals);
@@ -2201,9 +2204,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyDict_Items(PyObject* d);
     ((__Pyx_PyCFunctionFast)(void(*)(void))(PyCFunction)(cfunc)->func)(self, args, nargs)
 #define __Pyx_CallCFunctionFastWithKeywords(cfunc, self, args, nargs, kwnames)\
     ((__Pyx_PyCFunctionFastWithKeywords)(void(*)(void))(PyCFunction)(cfunc)->func)(self, args, nargs, kwnames)
-
-/* PyObjectCallOneArg.proto (used by CallUnboundCMethod0) */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
 /* UnpackUnboundCMethod.proto (used by CallUnboundCMethod0) */
 typedef struct {
@@ -2321,18 +2321,14 @@ static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *nam
     ((likely(__Pyx_IS_TYPE(obj, type) | (none_allowed && (obj == Py_None)))) ? 1 :\
         __Pyx__ArgTypeTest(obj, type, name, exact))
 
+/* GetBuiltinName.proto */
+static PyObject *__Pyx_GetBuiltinName(PyObject *name);
+
 /* PyValueError_Check.proto */
 #define __Pyx_PyExc_ValueError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_ValueError)
 
 /* RaiseException.export */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
-
-/* PyObjectFastCallMethod.proto */
-#if CYTHON_VECTORCALL && PY_VERSION_HEX >= 0x03090000
-#define __Pyx_PyObject_FastCallMethod(name, args, nargsf) PyObject_VectorcallMethod(name, args, nargsf, NULL)
-#else
-static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf);
-#endif
 
 /* RaiseUnexpectedTypeError.proto */
 static int __Pyx_RaiseUnexpectedTypeError(const char *expected, PyObject *obj);
@@ -2445,6 +2441,53 @@ static CYTHON_INLINE Py_ssize_t __Pyx_div_Py_ssize_t(Py_ssize_t, Py_ssize_t, int
 /* GetAttr3.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *, PyObject *, PyObject *);
 
+/* PyDictVersioning.proto (used by GetModuleGlobalName) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+#define __PYX_DICT_VERSION_INIT  ((PY_UINT64_T) -1)
+#define __PYX_GET_DICT_VERSION(dict)  (((PyDictObject*)(dict))->ma_version_tag)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)\
+    (version_var) = __PYX_GET_DICT_VERSION(dict);\
+    (cache_var) = (value);
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP) {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    if (likely(__PYX_GET_DICT_VERSION(DICT) == __pyx_dict_version)) {\
+        (VAR) = __Pyx_XNewRef(__pyx_dict_cached_value);\
+    } else {\
+        (VAR) = __pyx_dict_cached_value = (LOOKUP);\
+        __pyx_dict_version = __PYX_GET_DICT_VERSION(DICT);\
+    }\
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj);
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj);
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version);
+#else
+#define __PYX_GET_DICT_VERSION(dict)  (0)
+#define __PYX_UPDATE_DICT_CACHE(dict, value, cache_var, version_var)
+#define __PYX_PY_DICT_LOOKUP_IF_MODIFIED(VAR, DICT, LOOKUP)  (VAR) = (LOOKUP);
+#endif
+
+/* GetModuleGlobalName.proto */
+#if CYTHON_USE_DICT_VERSIONS
+#define __Pyx_GetModuleGlobalName(var, name)  do {\
+    static PY_UINT64_T __pyx_dict_version = 0;\
+    static PyObject *__pyx_dict_cached_value = NULL;\
+    (var) = (likely(__pyx_dict_version == __PYX_GET_DICT_VERSION(__pyx_mstate_global->__pyx_d))) ?\
+        (likely(__pyx_dict_cached_value) ? __Pyx_NewRef(__pyx_dict_cached_value) : __Pyx_GetBuiltinName(name)) :\
+        __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+} while(0)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  do {\
+    PY_UINT64_T __pyx_dict_version;\
+    PyObject *__pyx_dict_cached_value;\
+    (var) = __Pyx__GetModuleGlobalName(name, &__pyx_dict_version, &__pyx_dict_cached_value);\
+} while(0)
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value);
+#else
+#define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+#define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
+#endif
+
 /* AssertionsEnabled.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API  ||  PY_VERSION_HEX >= 0x030C0000
   static int __pyx_assertions_enabled_flag;
@@ -2491,30 +2534,6 @@ static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void);
 /* ExtTypeTest.proto */
 static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
 
-/* GetTopmostException.proto (used by SaveResetException) */
-#if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
-static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
-#endif
-
-/* SaveResetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
-#else
-#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
-#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
-#endif
-
-/* GetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
-#endif
-
 /* SwapException.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
@@ -2522,19 +2541,6 @@ static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject *
 #else
 static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
 #endif
-
-/* HasAttr.proto (used by ImportImpl) */
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-#define __Pyx_HasAttr(o, n)  PyObject_HasAttrWithError(o, n)
-#else
-static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
-#endif
-
-/* ImportImpl.export */
-static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level);
-
-/* Import.proto */
-static CYTHON_INLINE PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level);
 
 /* FastTypeChecks.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -2776,49 +2782,6 @@ static int __Pyx__DelItemOnTypeDict(PyTypeObject *tp, PyObject *k);
 /* SetupReduce.proto */
 static int __Pyx_setup_reduce(PyObject* type_obj);
 
-/* ImportFrom.proto */
-static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
-
-/* ListPack.proto */
-static PyObject *__Pyx_PyList_Pack(Py_ssize_t n, ...);
-
-/* Globals.proto */
-static PyObject* __Pyx_Globals(void);
-
-/* PyObjectVectorCallKwBuilder.proto */
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n);
-#if CYTHON_VECTORCALL
-#if PY_VERSION_HEX >= 0x03090000
-#define __Pyx_Object_Vectorcall_CallFromBuilder PyObject_Vectorcall
-#else
-#define __Pyx_Object_Vectorcall_CallFromBuilder _PyObject_Vectorcall
-#endif
-#define __Pyx_MakeVectorcallBuilderKwds(n) PyTuple_New(n)
-static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n);
-static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n);
-#else
-#define __Pyx_Object_Vectorcall_CallFromBuilder __Pyx_PyObject_FastCallDict
-#define __Pyx_MakeVectorcallBuilderKwds(n) __Pyx_PyDict_NewPresized(n)
-#define __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n) PyDict_SetItem(builder, key, value)
-#define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
-#endif
-
-/* PyObjectDelAttr.proto (used by PyObjectSetAttrStr) */
-#if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
-#define __Pyx_PyObject_DelAttr(o, n) PyObject_SetAttr(o, n, NULL)
-#else
-#define __Pyx_PyObject_DelAttr(o, n) PyObject_DelAttr(o, n)
-#endif
-
-/* PyObjectSetAttrStr.proto */
-#if CYTHON_USE_TYPE_SLOTS
-#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
-#else
-#define __Pyx_PyObject_DelAttrStr(o,n)   __Pyx_PyObject_DelAttr(o,n)
-#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
-#endif
-
 /* dict_setdefault.proto (used by FetchCommonType) */
 static CYTHON_INLINE PyObject *__Pyx_PyDict_SetDefault(PyObject *d, PyObject *key, PyObject *default_value);
 
@@ -3037,6 +3000,24 @@ __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
                                  size_t sizeof_dtype, int contig_flag,
                                  int dtype_is_object);
 
+/* PyObjectVectorCallKwBuilder.proto (used by CIntToPy) */
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n);
+#if CYTHON_VECTORCALL
+#if PY_VERSION_HEX >= 0x03090000
+#define __Pyx_Object_Vectorcall_CallFromBuilder PyObject_Vectorcall
+#else
+#define __Pyx_Object_Vectorcall_CallFromBuilder _PyObject_Vectorcall
+#endif
+#define __Pyx_MakeVectorcallBuilderKwds(n) PyTuple_New(n)
+static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n);
+static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n);
+#else
+#define __Pyx_Object_Vectorcall_CallFromBuilder __Pyx_PyObject_FastCallDict
+#define __Pyx_MakeVectorcallBuilderKwds(n) __Pyx_PyDict_NewPresized(n)
+#define __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n) PyDict_SetItem(builder, key, value)
+#define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
+#endif
+
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
 
@@ -3054,9 +3035,6 @@ static CYTHON_INLINE size_t __Pyx_PyLong_As_size_t(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyLong_As_long(PyObject *);
-
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_enum__nmea_type(enum nmea_type value);
 
 /* UpdateUnpickledDict.proto */
 static int __Pyx_UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index);
@@ -3267,9 +3245,20 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
 /* Module declarations from "cython.view" */
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 
+/* Module declarations from "position" */
+
+/* Module declarations from "gnssir" */
+
+/* Module declarations from "arc" */
+
+/* Module declarations from "stream" */
+
+/* Module declarations from "timeutil" */
+
+/* Module declarations from "nmea" */
+
 /* Module declarations from "gnssr4water.gnssir" */
-static PyObject *__Pyx_EnumBase = 0;
-static PyObject *__Pyx_FlagBase = 0;
+static PyObject *__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = 0;
 static PyObject *__pyx_collections_abc_Sequence = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
@@ -3280,7 +3269,7 @@ static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
 static PyObject *__pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(double, int __pyx_skip_dispatch); /*proto*/
 static double __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(PyObject *, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(enum nmea_type); /*proto*/
+static PyObject *__Pyx_Enum_4nmea_enum__space_nmea_type_to_py(enum nmea_type); /*proto*/
 static int __pyx_array_allocate_buffer(struct __pyx_array_obj *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char const *, char *); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo const *); /*proto*/
@@ -3510,9 +3499,9 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_slice[1];
-  PyObject *__pyx_tuple[2];
+  PyObject *__pyx_tuple[1];
   PyObject *__pyx_codeobj_tab[21];
-  PyObject *__pyx_string_tab[244];
+  PyObject *__pyx_string_tab[239];
   PyObject *__pyx_number_tab[6];
 /* #### Code section: module_state_contents ### */
 
@@ -3615,17 +3604,17 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_contiguous_and_indirect __pyx_string_tab[35]
 #define __pyx_kp_u_disable __pyx_string_tab[36]
 #define __pyx_kp_u_enable __pyx_string_tab[37]
-#define __pyx_kp_u_error_appending_data_to_arc __pyx_string_tab[38]
-#define __pyx_kp_u_error_freeing_arc_members __pyx_string_tab[39]
-#define __pyx_kp_u_gc __pyx_string_tab[40]
-#define __pyx_kp_u_gnssr4water_gnssir __pyx_string_tab[41]
+#define __pyx_kp_u_enum_class_nmea_type_not_importa __pyx_string_tab[38]
+#define __pyx_kp_u_error_appending_data_to_arc __pyx_string_tab[39]
+#define __pyx_kp_u_error_freeing_arc_members __pyx_string_tab[40]
+#define __pyx_kp_u_gc __pyx_string_tab[41]
 #define __pyx_kp_u_got __pyx_string_tab[42]
 #define __pyx_kp_u_got_differing_extents_in_dimensi __pyx_string_tab[43]
 #define __pyx_kp_u_isenabled __pyx_string_tab[44]
 #define __pyx_kp_u_itemsize_0_for_cython_array __pyx_string_tab[45]
 #define __pyx_kp_u_no_default___reduce___due_to_non __pyx_string_tab[46]
 #define __pyx_kp_u_object __pyx_string_tab[47]
-#define __pyx_kp_u_src_gnssir_gnssir_wrap_pyx __pyx_string_tab[48]
+#define __pyx_kp_u_src_gnssir_python_gnssir_wrap_py __pyx_string_tab[48]
 #define __pyx_kp_u_strided_and_direct __pyx_string_tab[49]
 #define __pyx_kp_u_strided_and_direct_or_indirect __pyx_string_tab[50]
 #define __pyx_kp_u_strided_and_indirect __pyx_string_tab[51]
@@ -3642,185 +3631,180 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_GNSSUNKNOWN __pyx_string_tab[62]
 #define __pyx_n_u_GPSL1 __pyx_string_tab[63]
 #define __pyx_n_u_GPSL2 __pyx_string_tab[64]
-#define __pyx_n_u_IntEnum __pyx_string_tab[65]
-#define __pyx_n_u_IntFlag __pyx_string_tab[66]
-#define __pyx_n_u_NMEAFile __pyx_string_tab[67]
-#define __pyx_n_u_NMEAFile___enter __pyx_string_tab[68]
-#define __pyx_n_u_NMEAFile___exit __pyx_string_tab[69]
-#define __pyx_n_u_NMEAFile___reduce_cython __pyx_string_tab[70]
-#define __pyx_n_u_NMEAFile___setstate_cython __pyx_string_tab[71]
-#define __pyx_n_u_NMEAFile_close __pyx_string_tab[72]
-#define __pyx_n_u_NMEAFile_eof __pyx_string_tab[73]
-#define __pyx_n_u_NMEAFile_readcycles __pyx_string_tab[74]
-#define __pyx_n_u_NMEAFile_readline __pyx_string_tab[75]
-#define __pyx_n_u_NMEAFile_readlines __pyx_string_tab[76]
-#define __pyx_n_u_NMEAFile_readnmeas __pyx_string_tab[77]
-#define __pyx_n_u_NMEA_GGA __pyx_string_tab[78]
-#define __pyx_n_u_NMEA_GLL __pyx_string_tab[79]
-#define __pyx_n_u_NMEA_GNS __pyx_string_tab[80]
-#define __pyx_n_u_NMEA_GSA __pyx_string_tab[81]
-#define __pyx_n_u_NMEA_GSV __pyx_string_tab[82]
-#define __pyx_n_u_NMEA_INVALID __pyx_string_tab[83]
-#define __pyx_n_u_NMEA_RMC __pyx_string_tab[84]
-#define __pyx_n_u_NMEA_UNSUPPORTED __pyx_string_tab[85]
-#define __pyx_n_u_NMEA_VTG __pyx_string_tab[86]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[87]
-#define __pyx_n_u_Sequence __pyx_string_tab[88]
-#define __pyx_n_u_UNKNOWN __pyx_string_tab[89]
-#define __pyx_n_u_View_MemoryView __pyx_string_tab[90]
-#define __pyx_n_u_abc __pyx_string_tab[91]
-#define __pyx_n_u_allocate_buffer __pyx_string_tab[92]
-#define __pyx_n_u_append __pyx_string_tab[93]
-#define __pyx_n_u_args __pyx_string_tab[94]
-#define __pyx_n_u_asarray __pyx_string_tab[95]
-#define __pyx_n_u_assay __pyx_string_tab[96]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[97]
-#define __pyx_n_u_azimuth __pyx_string_tab[98]
-#define __pyx_n_u_base __pyx_string_tab[99]
-#define __pyx_n_u_c __pyx_string_tab[100]
-#define __pyx_n_u_c_clear __pyx_string_tab[101]
-#define __pyx_n_u_c_obstr __pyx_string_tab[102]
-#define __pyx_n_u_class __pyx_string_tab[103]
-#define __pyx_n_u_class_getitem __pyx_string_tab[104]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[105]
-#define __pyx_n_u_close __pyx_string_tab[106]
-#define __pyx_n_u_count __pyx_string_tab[107]
-#define __pyx_n_u_cycle __pyx_string_tab[108]
-#define __pyx_n_u_datetime __pyx_string_tab[109]
-#define __pyx_n_u_datetime_from_mjd __pyx_string_tab[110]
-#define __pyx_n_u_day __pyx_string_tab[111]
-#define __pyx_n_u_delta_sec __pyx_string_tab[112]
-#define __pyx_n_u_dict __pyx_string_tab[113]
-#define __pyx_n_u_dt __pyx_string_tab[114]
-#define __pyx_n_u_dtype_is_object __pyx_string_tab[115]
-#define __pyx_n_u_elevation __pyx_string_tab[116]
-#define __pyx_n_u_encode __pyx_string_tab[117]
-#define __pyx_n_u_enter __pyx_string_tab[118]
-#define __pyx_n_u_enum __pyx_string_tab[119]
-#define __pyx_n_u_enumerate __pyx_string_tab[120]
-#define __pyx_n_u_eof __pyx_string_tab[121]
-#define __pyx_n_u_err __pyx_string_tab[122]
-#define __pyx_n_u_error __pyx_string_tab[123]
-#define __pyx_n_u_exit __pyx_string_tab[124]
-#define __pyx_n_u_filename __pyx_string_tab[125]
-#define __pyx_n_u_flags __pyx_string_tab[126]
-#define __pyx_n_u_float __pyx_string_tab[127]
-#define __pyx_n_u_format __pyx_string_tab[128]
-#define __pyx_n_u_fortran __pyx_string_tab[129]
-#define __pyx_n_u_func __pyx_string_tab[130]
-#define __pyx_n_u_geoid_height __pyx_string_tab[131]
-#define __pyx_n_u_get __pyx_string_tab[132]
-#define __pyx_n_u_getstate __pyx_string_tab[133]
-#define __pyx_n_u_gnss_cycle __pyx_string_tab[134]
-#define __pyx_n_u_gnss_cycle___reduce_cython __pyx_string_tab[135]
-#define __pyx_n_u_gnss_cycle___setstate_cython __pyx_string_tab[136]
-#define __pyx_n_u_gnss_sys __pyx_string_tab[137]
-#define __pyx_n_u_gnss_sys___reduce __pyx_string_tab[138]
-#define __pyx_n_u_gnss_sys_rinexcode __pyx_string_tab[139]
-#define __pyx_n_u_gnss_trans_cycle __pyx_string_tab[140]
-#define __pyx_n_u_gnss_trans_cycle___reduce_cython __pyx_string_tab[141]
-#define __pyx_n_u_gnss_trans_cycle___setstate_cyth __pyx_string_tab[142]
-#define __pyx_n_u_gnssr4water_gnssir __pyx_string_tab[143]
-#define __pyx_n_u_hour __pyx_string_tab[144]
-#define __pyx_n_u_id __pyx_string_tab[145]
-#define __pyx_n_u_import __pyx_string_tab[146]
-#define __pyx_n_u_index __pyx_string_tab[147]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[148]
-#define __pyx_n_u_items __pyx_string_tab[149]
-#define __pyx_n_u_itemsize __pyx_string_tab[150]
-#define __pyx_n_u_join __pyx_string_tab[151]
-#define __pyx_n_u_lat __pyx_string_tab[152]
-#define __pyx_n_u_line __pyx_string_tab[153]
-#define __pyx_n_u_lon __pyx_string_tab[154]
-#define __pyx_n_u_main __pyx_string_tab[155]
-#define __pyx_n_u_member_names __pyx_string_tab[156]
-#define __pyx_n_u_members __pyx_string_tab[157]
-#define __pyx_n_u_memview __pyx_string_tab[158]
-#define __pyx_n_u_microsecond __pyx_string_tab[159]
-#define __pyx_n_u_minute __pyx_string_tab[160]
-#define __pyx_n_u_mjd __pyx_string_tab[161]
-#define __pyx_n_u_mjd_from_datetime __pyx_string_tab[162]
-#define __pyx_n_u_mjdv __pyx_string_tab[163]
-#define __pyx_n_u_mode __pyx_string_tab[164]
-#define __pyx_n_u_module __pyx_string_tab[165]
-#define __pyx_n_u_module_2 __pyx_string_tab[166]
-#define __pyx_n_u_month __pyx_string_tab[167]
-#define __pyx_n_u_name __pyx_string_tab[168]
-#define __pyx_n_u_name_2 __pyx_string_tab[169]
-#define __pyx_n_u_ndim __pyx_string_tab[170]
-#define __pyx_n_u_new __pyx_string_tab[171]
-#define __pyx_n_u_next __pyx_string_tab[172]
-#define __pyx_n_u_nmea __pyx_string_tab[173]
-#define __pyx_n_u_nmea_t __pyx_string_tab[174]
-#define __pyx_n_u_nmea_type __pyx_string_tab[175]
-#define __pyx_n_u_np __pyx_string_tab[176]
-#define __pyx_n_u_numpy __pyx_string_tab[177]
-#define __pyx_n_u_obj __pyx_string_tab[178]
-#define __pyx_n_u_ortho_height __pyx_string_tab[179]
-#define __pyx_n_u_pack __pyx_string_tab[180]
-#define __pyx_n_u_pop __pyx_string_tab[181]
-#define __pyx_n_u_prn __pyx_string_tab[182]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[183]
-#define __pyx_n_u_pyx_state __pyx_string_tab[184]
-#define __pyx_n_u_pyx_type __pyx_string_tab[185]
-#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[186]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[187]
-#define __pyx_n_u_qualname __pyx_string_tab[188]
-#define __pyx_n_u_readcycles __pyx_string_tab[189]
-#define __pyx_n_u_readline __pyx_string_tab[190]
-#define __pyx_n_u_readlines __pyx_string_tab[191]
-#define __pyx_n_u_readnmeas __pyx_string_tab[192]
-#define __pyx_n_u_reduce __pyx_string_tab[193]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[194]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[195]
-#define __pyx_n_u_register __pyx_string_tab[196]
-#define __pyx_n_u_rinexcode __pyx_string_tab[197]
-#define __pyx_n_u_satcode __pyx_string_tab[198]
-#define __pyx_n_u_satno __pyx_string_tab[199]
-#define __pyx_n_u_sats_in_view __pyx_string_tab[200]
-#define __pyx_n_u_second __pyx_string_tab[201]
-#define __pyx_n_u_self __pyx_string_tab[202]
-#define __pyx_n_u_send __pyx_string_tab[203]
-#define __pyx_n_u_set_name __pyx_string_tab[204]
-#define __pyx_n_u_setdefault __pyx_string_tab[205]
-#define __pyx_n_u_setstate __pyx_string_tab[206]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[207]
-#define __pyx_n_u_shape __pyx_string_tab[208]
-#define __pyx_n_u_size __pyx_string_tab[209]
-#define __pyx_n_u_start __pyx_string_tab[210]
-#define __pyx_n_u_step __pyx_string_tab[211]
-#define __pyx_n_u_stop __pyx_string_tab[212]
-#define __pyx_n_u_struct __pyx_string_tab[213]
-#define __pyx_n_u_sysstr __pyx_string_tab[214]
-#define __pyx_n_u_system __pyx_string_tab[215]
-#define __pyx_n_u_test __pyx_string_tab[216]
-#define __pyx_n_u_throw __pyx_string_tab[217]
-#define __pyx_n_u_time __pyx_string_tab[218]
-#define __pyx_n_u_timedelta __pyx_string_tab[219]
-#define __pyx_n_u_unpack __pyx_string_tab[220]
-#define __pyx_n_u_update __pyx_string_tab[221]
-#define __pyx_n_u_value __pyx_string_tab[222]
-#define __pyx_n_u_values __pyx_string_tab[223]
-#define __pyx_n_u_x __pyx_string_tab[224]
-#define __pyx_n_u_year __pyx_string_tab[225]
-#define __pyx_kp_b_T __pyx_string_tab[226]
-#define __pyx_kp_b__6 __pyx_string_tab[227]
-#define __pyx_kp_b__7 __pyx_string_tab[228]
-#define __pyx_kp_b__8 __pyx_string_tab[229]
-#define __pyx_kp_b__9 __pyx_string_tab[230]
-#define __pyx_kp_b_iso88591_1D_AV1D_AWAQ_81CvT_G3auCr_AS_aq __pyx_string_tab[231]
-#define __pyx_kp_b_iso88591_A __pyx_string_tab[232]
-#define __pyx_kp_b_iso88591_A_6_7_9AU_q __pyx_string_tab[233]
-#define __pyx_kp_b_iso88591_A_F __pyx_string_tab[234]
-#define __pyx_kp_b_iso88591_A_HA_AQd __pyx_string_tab[235]
-#define __pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q __pyx_string_tab[236]
-#define __pyx_kp_b_iso88591_A_a __pyx_string_tab[237]
-#define __pyx_kp_b_iso88591_A_q __pyx_string_tab[238]
-#define __pyx_kp_b_iso88591_A_t6_A __pyx_string_tab[239]
-#define __pyx_kp_b_iso88591_Q __pyx_string_tab[240]
-#define __pyx_kp_b_iso88591_Q_1A_AT_z_4s_aq __pyx_string_tab[241]
-#define __pyx_kp_b_iso88591_d_b_r_Rq_b_2WAR_1A_s_5_d_wa __pyx_string_tab[242]
-#define __pyx_n_b_O __pyx_string_tab[243]
+#define __pyx_n_u_NMEAFile __pyx_string_tab[65]
+#define __pyx_n_u_NMEAFile___enter __pyx_string_tab[66]
+#define __pyx_n_u_NMEAFile___exit __pyx_string_tab[67]
+#define __pyx_n_u_NMEAFile___reduce_cython __pyx_string_tab[68]
+#define __pyx_n_u_NMEAFile___setstate_cython __pyx_string_tab[69]
+#define __pyx_n_u_NMEAFile_close __pyx_string_tab[70]
+#define __pyx_n_u_NMEAFile_eof __pyx_string_tab[71]
+#define __pyx_n_u_NMEAFile_readcycles __pyx_string_tab[72]
+#define __pyx_n_u_NMEAFile_readline __pyx_string_tab[73]
+#define __pyx_n_u_NMEAFile_readlines __pyx_string_tab[74]
+#define __pyx_n_u_NMEAFile_readnmeas __pyx_string_tab[75]
+#define __pyx_n_u_NMEA_GGA __pyx_string_tab[76]
+#define __pyx_n_u_NMEA_GLL __pyx_string_tab[77]
+#define __pyx_n_u_NMEA_GNS __pyx_string_tab[78]
+#define __pyx_n_u_NMEA_GSA __pyx_string_tab[79]
+#define __pyx_n_u_NMEA_GSV __pyx_string_tab[80]
+#define __pyx_n_u_NMEA_INVALID __pyx_string_tab[81]
+#define __pyx_n_u_NMEA_RMC __pyx_string_tab[82]
+#define __pyx_n_u_NMEA_UNSUPPORTED __pyx_string_tab[83]
+#define __pyx_n_u_NMEA_VTG __pyx_string_tab[84]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[85]
+#define __pyx_n_u_Sequence __pyx_string_tab[86]
+#define __pyx_n_u_UNKNOWN __pyx_string_tab[87]
+#define __pyx_n_u_View_MemoryView __pyx_string_tab[88]
+#define __pyx_n_u_abc __pyx_string_tab[89]
+#define __pyx_n_u_allocate_buffer __pyx_string_tab[90]
+#define __pyx_n_u_append __pyx_string_tab[91]
+#define __pyx_n_u_args __pyx_string_tab[92]
+#define __pyx_n_u_asarray __pyx_string_tab[93]
+#define __pyx_n_u_assay __pyx_string_tab[94]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[95]
+#define __pyx_n_u_azimuth __pyx_string_tab[96]
+#define __pyx_n_u_base __pyx_string_tab[97]
+#define __pyx_n_u_c __pyx_string_tab[98]
+#define __pyx_n_u_c_clear __pyx_string_tab[99]
+#define __pyx_n_u_c_obstr __pyx_string_tab[100]
+#define __pyx_n_u_class __pyx_string_tab[101]
+#define __pyx_n_u_class_getitem __pyx_string_tab[102]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[103]
+#define __pyx_n_u_close __pyx_string_tab[104]
+#define __pyx_n_u_count __pyx_string_tab[105]
+#define __pyx_n_u_cycle __pyx_string_tab[106]
+#define __pyx_n_u_datetime __pyx_string_tab[107]
+#define __pyx_n_u_datetime_from_mjd __pyx_string_tab[108]
+#define __pyx_n_u_day __pyx_string_tab[109]
+#define __pyx_n_u_delta_sec __pyx_string_tab[110]
+#define __pyx_n_u_dict __pyx_string_tab[111]
+#define __pyx_n_u_dt __pyx_string_tab[112]
+#define __pyx_n_u_dtype_is_object __pyx_string_tab[113]
+#define __pyx_n_u_elevation __pyx_string_tab[114]
+#define __pyx_n_u_encode __pyx_string_tab[115]
+#define __pyx_n_u_enter __pyx_string_tab[116]
+#define __pyx_n_u_enumerate __pyx_string_tab[117]
+#define __pyx_n_u_eof __pyx_string_tab[118]
+#define __pyx_n_u_err __pyx_string_tab[119]
+#define __pyx_n_u_error __pyx_string_tab[120]
+#define __pyx_n_u_exit __pyx_string_tab[121]
+#define __pyx_n_u_filename __pyx_string_tab[122]
+#define __pyx_n_u_flags __pyx_string_tab[123]
+#define __pyx_n_u_float __pyx_string_tab[124]
+#define __pyx_n_u_format __pyx_string_tab[125]
+#define __pyx_n_u_fortran __pyx_string_tab[126]
+#define __pyx_n_u_func __pyx_string_tab[127]
+#define __pyx_n_u_geoid_height __pyx_string_tab[128]
+#define __pyx_n_u_getstate __pyx_string_tab[129]
+#define __pyx_n_u_gnss_cycle __pyx_string_tab[130]
+#define __pyx_n_u_gnss_cycle___reduce_cython __pyx_string_tab[131]
+#define __pyx_n_u_gnss_cycle___setstate_cython __pyx_string_tab[132]
+#define __pyx_n_u_gnss_sys __pyx_string_tab[133]
+#define __pyx_n_u_gnss_sys___reduce __pyx_string_tab[134]
+#define __pyx_n_u_gnss_sys_rinexcode __pyx_string_tab[135]
+#define __pyx_n_u_gnss_trans_cycle __pyx_string_tab[136]
+#define __pyx_n_u_gnss_trans_cycle___reduce_cython __pyx_string_tab[137]
+#define __pyx_n_u_gnss_trans_cycle___setstate_cyth __pyx_string_tab[138]
+#define __pyx_n_u_gnssr4water_gnssir __pyx_string_tab[139]
+#define __pyx_n_u_hour __pyx_string_tab[140]
+#define __pyx_n_u_id __pyx_string_tab[141]
+#define __pyx_n_u_import __pyx_string_tab[142]
+#define __pyx_n_u_index __pyx_string_tab[143]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[144]
+#define __pyx_n_u_items __pyx_string_tab[145]
+#define __pyx_n_u_itemsize __pyx_string_tab[146]
+#define __pyx_n_u_join __pyx_string_tab[147]
+#define __pyx_n_u_lat __pyx_string_tab[148]
+#define __pyx_n_u_line __pyx_string_tab[149]
+#define __pyx_n_u_lon __pyx_string_tab[150]
+#define __pyx_n_u_main __pyx_string_tab[151]
+#define __pyx_n_u_memview __pyx_string_tab[152]
+#define __pyx_n_u_microsecond __pyx_string_tab[153]
+#define __pyx_n_u_minute __pyx_string_tab[154]
+#define __pyx_n_u_mjd __pyx_string_tab[155]
+#define __pyx_n_u_mjd_from_datetime __pyx_string_tab[156]
+#define __pyx_n_u_mjdv __pyx_string_tab[157]
+#define __pyx_n_u_mode __pyx_string_tab[158]
+#define __pyx_n_u_module __pyx_string_tab[159]
+#define __pyx_n_u_month __pyx_string_tab[160]
+#define __pyx_n_u_name __pyx_string_tab[161]
+#define __pyx_n_u_name_2 __pyx_string_tab[162]
+#define __pyx_n_u_ndim __pyx_string_tab[163]
+#define __pyx_n_u_new __pyx_string_tab[164]
+#define __pyx_n_u_next __pyx_string_tab[165]
+#define __pyx_n_u_nmea __pyx_string_tab[166]
+#define __pyx_n_u_nmea_t __pyx_string_tab[167]
+#define __pyx_n_u_nmea_type __pyx_string_tab[168]
+#define __pyx_n_u_np __pyx_string_tab[169]
+#define __pyx_n_u_numpy __pyx_string_tab[170]
+#define __pyx_n_u_obj __pyx_string_tab[171]
+#define __pyx_n_u_ortho_height __pyx_string_tab[172]
+#define __pyx_n_u_pack __pyx_string_tab[173]
+#define __pyx_n_u_pop __pyx_string_tab[174]
+#define __pyx_n_u_prn __pyx_string_tab[175]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[176]
+#define __pyx_n_u_pyx_state __pyx_string_tab[177]
+#define __pyx_n_u_pyx_type __pyx_string_tab[178]
+#define __pyx_n_u_pyx_unpickle_Enum __pyx_string_tab[179]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[180]
+#define __pyx_n_u_qualname __pyx_string_tab[181]
+#define __pyx_n_u_readcycles __pyx_string_tab[182]
+#define __pyx_n_u_readline __pyx_string_tab[183]
+#define __pyx_n_u_readlines __pyx_string_tab[184]
+#define __pyx_n_u_readnmeas __pyx_string_tab[185]
+#define __pyx_n_u_reduce __pyx_string_tab[186]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[187]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[188]
+#define __pyx_n_u_register __pyx_string_tab[189]
+#define __pyx_n_u_rinexcode __pyx_string_tab[190]
+#define __pyx_n_u_satcode __pyx_string_tab[191]
+#define __pyx_n_u_satno __pyx_string_tab[192]
+#define __pyx_n_u_sats_in_view __pyx_string_tab[193]
+#define __pyx_n_u_second __pyx_string_tab[194]
+#define __pyx_n_u_self __pyx_string_tab[195]
+#define __pyx_n_u_send __pyx_string_tab[196]
+#define __pyx_n_u_set_name __pyx_string_tab[197]
+#define __pyx_n_u_setdefault __pyx_string_tab[198]
+#define __pyx_n_u_setstate __pyx_string_tab[199]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[200]
+#define __pyx_n_u_shape __pyx_string_tab[201]
+#define __pyx_n_u_size __pyx_string_tab[202]
+#define __pyx_n_u_start __pyx_string_tab[203]
+#define __pyx_n_u_step __pyx_string_tab[204]
+#define __pyx_n_u_stop __pyx_string_tab[205]
+#define __pyx_n_u_struct __pyx_string_tab[206]
+#define __pyx_n_u_sysstr __pyx_string_tab[207]
+#define __pyx_n_u_system __pyx_string_tab[208]
+#define __pyx_n_u_test __pyx_string_tab[209]
+#define __pyx_n_u_throw __pyx_string_tab[210]
+#define __pyx_n_u_time __pyx_string_tab[211]
+#define __pyx_n_u_timedelta __pyx_string_tab[212]
+#define __pyx_n_u_unpack __pyx_string_tab[213]
+#define __pyx_n_u_update __pyx_string_tab[214]
+#define __pyx_n_u_value __pyx_string_tab[215]
+#define __pyx_n_u_values __pyx_string_tab[216]
+#define __pyx_n_u_warn __pyx_string_tab[217]
+#define __pyx_n_u_warnings __pyx_string_tab[218]
+#define __pyx_n_u_x __pyx_string_tab[219]
+#define __pyx_n_u_year __pyx_string_tab[220]
+#define __pyx_kp_b_T __pyx_string_tab[221]
+#define __pyx_kp_b__6 __pyx_string_tab[222]
+#define __pyx_kp_b__7 __pyx_string_tab[223]
+#define __pyx_kp_b__8 __pyx_string_tab[224]
+#define __pyx_kp_b__9 __pyx_string_tab[225]
+#define __pyx_kp_b_iso88591_1D_AV1D_AWAQ_81CvT_G3auCr_AS_aq __pyx_string_tab[226]
+#define __pyx_kp_b_iso88591_A __pyx_string_tab[227]
+#define __pyx_kp_b_iso88591_A_6_7_9AU_q __pyx_string_tab[228]
+#define __pyx_kp_b_iso88591_A_F __pyx_string_tab[229]
+#define __pyx_kp_b_iso88591_A_HA_AQd __pyx_string_tab[230]
+#define __pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q __pyx_string_tab[231]
+#define __pyx_kp_b_iso88591_A_a __pyx_string_tab[232]
+#define __pyx_kp_b_iso88591_A_q __pyx_string_tab[233]
+#define __pyx_kp_b_iso88591_A_t6_A __pyx_string_tab[234]
+#define __pyx_kp_b_iso88591_Q __pyx_string_tab[235]
+#define __pyx_kp_b_iso88591_Q_1A_AT_z_4s_aq __pyx_string_tab[236]
+#define __pyx_kp_b_iso88591_d_b_r_Rq_b_2WAR_1A_s_5_d_wa __pyx_string_tab[237]
+#define __pyx_n_b_O __pyx_string_tab[238]
 #define __pyx_float_1e3 __pyx_number_tab[0]
 #define __pyx_float_1eneg_38 __pyx_number_tab[1]
 #define __pyx_int_0 __pyx_number_tab[2]
@@ -3866,9 +3850,9 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_memoryviewslice_type);
   Py_CLEAR(clear_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
-  for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
+  for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<21; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<244; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<239; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<6; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -3920,9 +3904,9 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_memoryviewslice_type);
   Py_VISIT(traverse_module_state->__pyx_type___pyx_memoryviewslice);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
-  for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
+  for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<21; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<244; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<239; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<6; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -3940,52 +3924,261 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "EnumTypeToPy":2
+/* "EnumTypeToPy":3
+ * cdef object __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = None
  * 
- * @cname("__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
- * cdef __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(nmea_type c_val):
+ * @cname("__Pyx_Enum_4nmea_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
+ * cdef __Pyx_Enum_4nmea_enum__space_nmea_type_to_py(nmea_type c_val):
  *     cdef object __pyx_enum
 */
 
-static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(enum nmea_type __pyx_v_c_val) {
+static PyObject *__Pyx_Enum_4nmea_enum__space_nmea_type_to_py(enum nmea_type __pyx_v_c_val) {
   PyObject *__pyx_v___pyx_enum = 0;
+  PyObject *__pyx_v_warnings = NULL;
   int __pyx_v_underlying_c_val;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_t_2;
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  size_t __pyx_t_6;
+  PyObject *__pyx_t_6 = NULL;
+  Py_ssize_t __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  int __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  size_t __pyx_t_13;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py", 0);
+  __Pyx_RefNannySetupContext("__Pyx_Enum_4nmea_enum__space_nmea_type_to_py", 0);
 
-  /* "EnumTypeToPy":5
- * cdef __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(nmea_type c_val):
- *     cdef object __pyx_enum
- *     __pyx_enum = nmea_type             # <<<<<<<<<<<<<<
+  /* "EnumTypeToPy":11
+ * 
+ * 
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is None:             # <<<<<<<<<<<<<<
+ *         try:
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+*/
+  __pyx_t_1 = (__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py == Py_None);
+  if (__pyx_t_1) {
+
+    /* "EnumTypeToPy":12
+ * 
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is None:
+ *         try:             # <<<<<<<<<<<<<<
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+ *         except ImportError:
+*/
+    {
+      __Pyx_PyThreadState_declare
+      __Pyx_PyThreadState_assign
+      __Pyx_ExceptionSave(&__pyx_t_2, &__pyx_t_3, &__pyx_t_4);
+      __Pyx_XGOTREF(__pyx_t_2);
+      __Pyx_XGOTREF(__pyx_t_3);
+      __Pyx_XGOTREF(__pyx_t_4);
+      /*try:*/ {
+
+        /* "EnumTypeToPy":13
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is None:
+ *         try:
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py             # <<<<<<<<<<<<<<
+ *         except ImportError:
+ *             __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = False  # False indicates "don't try again"
+*/
+        {
+          PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_nmea_type};
+          __pyx_t_6 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_nmea, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 13, __pyx_L4_error)
+        }
+        __pyx_t_5 = __pyx_t_6;
+        __Pyx_GOTREF(__pyx_t_5);
+        {
+          PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_nmea_type};
+          __pyx_t_7 = 0; {
+            __pyx_t_8 = __Pyx_ImportFrom(__pyx_t_5, __pyx_imported_names[__pyx_t_7]); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 13, __pyx_L4_error)
+            __Pyx_GOTREF(__pyx_t_8);
+            switch (__pyx_t_7) {
+              case 0:
+              __Pyx_INCREF(__pyx_t_8);
+              __Pyx_XGOTREF(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py);
+              __Pyx_DECREF_SET(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py, __pyx_t_8);
+              __Pyx_GIVEREF(__pyx_t_8);
+              break;
+              default:;
+            }
+            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+          }
+        }
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+        /* "EnumTypeToPy":12
+ * 
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is None:
+ *         try:             # <<<<<<<<<<<<<<
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+ *         except ImportError:
+*/
+      }
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      goto __pyx_L9_try_end;
+      __pyx_L4_error:;
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+
+      /* "EnumTypeToPy":14
+ *         try:
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+ *         except ImportError:             # <<<<<<<<<<<<<<
+ *             __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = False  # False indicates "don't try again"
+ *             import warnings
+*/
+      __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_ImportError))));
+      if (__pyx_t_9) {
+        __Pyx_AddTraceback("EnumTypeToPy.__Pyx_Enum_4nmea_enum__space_nmea_type_to_py", __pyx_clineno, __pyx_lineno, __pyx_filename);
+        if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_8, &__pyx_t_10) < 0) __PYX_ERR(1, 14, __pyx_L6_except_error)
+        __Pyx_XGOTREF(__pyx_t_5);
+        __Pyx_XGOTREF(__pyx_t_8);
+        __Pyx_XGOTREF(__pyx_t_10);
+
+        /* "EnumTypeToPy":15
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+ *         except ImportError:
+ *             __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = False  # False indicates "don't try again"             # <<<<<<<<<<<<<<
+ *             import warnings
+ *             warnings.warn(
+*/
+        __Pyx_INCREF(Py_False);
+        __Pyx_XGOTREF(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py);
+        __Pyx_DECREF_SET(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py, Py_False);
+        __Pyx_GIVEREF(Py_False);
+
+        /* "EnumTypeToPy":16
+ *         except ImportError:
+ *             __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = False  # False indicates "don't try again"
+ *             import warnings             # <<<<<<<<<<<<<<
+ *             warnings.warn(
+ *                 f"enum class nmea_type not importable from nmea. "
+*/
+        __pyx_t_6 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_warnings, 0, 0, NULL, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 16, __pyx_L6_except_error)
+        __pyx_t_11 = __pyx_t_6;
+        __Pyx_GOTREF(__pyx_t_11);
+        __pyx_v_warnings = __pyx_t_11;
+        __pyx_t_11 = 0;
+
+        /* "EnumTypeToPy":17
+ *             __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = False  # False indicates "don't try again"
+ *             import warnings
+ *             warnings.warn(             # <<<<<<<<<<<<<<
+ *                 f"enum class nmea_type not importable from nmea. "
+ *                 "You are probably using a cpdef enum declared in a .pxd file that "
+*/
+        __pyx_t_12 = __pyx_v_warnings;
+        __Pyx_INCREF(__pyx_t_12);
+        __pyx_t_13 = 0;
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_12, __pyx_mstate_global->__pyx_kp_u_enum_class_nmea_type_not_importa};
+          __pyx_t_11 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_warn, __pyx_callargs+__pyx_t_13, (2-__pyx_t_13) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 17, __pyx_L6_except_error)
+          __Pyx_GOTREF(__pyx_t_11);
+        }
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+        goto __pyx_L5_exception_handled;
+      }
+      goto __pyx_L6_except_error;
+
+      /* "EnumTypeToPy":12
+ * 
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is None:
+ *         try:             # <<<<<<<<<<<<<<
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+ *         except ImportError:
+*/
+      __pyx_L6_except_error:;
+      __Pyx_XGIVEREF(__pyx_t_2);
+      __Pyx_XGIVEREF(__pyx_t_3);
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_ExceptionReset(__pyx_t_2, __pyx_t_3, __pyx_t_4);
+      goto __pyx_L1_error;
+      __pyx_L5_exception_handled:;
+      __Pyx_XGIVEREF(__pyx_t_2);
+      __Pyx_XGIVEREF(__pyx_t_3);
+      __Pyx_XGIVEREF(__pyx_t_4);
+      __Pyx_ExceptionReset(__pyx_t_2, __pyx_t_3, __pyx_t_4);
+      __pyx_L9_try_end:;
+    }
+
+    /* "EnumTypeToPy":11
+ * 
+ * 
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is None:             # <<<<<<<<<<<<<<
+ *         try:
+ *             from nmea import nmea_type as __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+*/
+  }
+
+  /* "EnumTypeToPy":21
+ *                 "You are probably using a cpdef enum declared in a .pxd file that "
+ *                 "does not have a .py  or .pyx file.")
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is False:             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  __pyx_t_1 = (__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py == Py_False);
+  if (__pyx_t_1) {
+
+    /* "EnumTypeToPy":24
+ * 
+ * 
+ *         return <int>c_val             # <<<<<<<<<<<<<<
+ *     __pyx_enum = __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py
+ * 
+*/
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_10 = __Pyx_PyLong_From_int(((int)__pyx_v_c_val)); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 24, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
+    goto __pyx_L0;
+
+    /* "EnumTypeToPy":21
+ *                 "You are probably using a cpdef enum declared in a .pxd file that "
+ *                 "does not have a .py  or .pyx file.")
+ *     if __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py is False:             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  }
+
+  /* "EnumTypeToPy":25
+ * 
+ *         return <int>c_val
+ *     __pyx_enum = __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py             # <<<<<<<<<<<<<<
  * 
  *     if 0:
 */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_nmea_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v___pyx_enum = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __Pyx_INCREF(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py);
+  __pyx_v___pyx_enum = __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py;
 
-  /* "EnumTypeToPy":9
+  /* "EnumTypeToPy":29
  *     if 0:
  *         pass
  *     elif c_val == nmea_type.NMEA_GGA:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_GGA
  *     elif c_val == nmea_type.NMEA_GSV:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_GGA);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_GGA);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":10
+    /* "EnumTypeToPy":30
  *         pass
  *     elif c_val == nmea_type.NMEA_GGA:
  *         return __pyx_enum.NMEA_GGA             # <<<<<<<<<<<<<<
@@ -3993,13 +4186,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_GSV
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GGA); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GGA); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 30, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":9
+    /* "EnumTypeToPy":29
  *     if 0:
  *         pass
  *     elif c_val == nmea_type.NMEA_GGA:             # <<<<<<<<<<<<<<
@@ -4008,17 +4201,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":11
+  /* "EnumTypeToPy":31
  *     elif c_val == nmea_type.NMEA_GGA:
  *         return __pyx_enum.NMEA_GGA
  *     elif c_val == nmea_type.NMEA_GSV:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_GSV
  *     elif c_val == nmea_type.NMEA_GLL:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_GSV);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_GSV);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":12
+    /* "EnumTypeToPy":32
  *         return __pyx_enum.NMEA_GGA
  *     elif c_val == nmea_type.NMEA_GSV:
  *         return __pyx_enum.NMEA_GSV             # <<<<<<<<<<<<<<
@@ -4026,13 +4219,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_GLL
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GSV); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GSV); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 32, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":11
+    /* "EnumTypeToPy":31
  *     elif c_val == nmea_type.NMEA_GGA:
  *         return __pyx_enum.NMEA_GGA
  *     elif c_val == nmea_type.NMEA_GSV:             # <<<<<<<<<<<<<<
@@ -4041,17 +4234,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":13
+  /* "EnumTypeToPy":33
  *     elif c_val == nmea_type.NMEA_GSV:
  *         return __pyx_enum.NMEA_GSV
  *     elif c_val == nmea_type.NMEA_GLL:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_GLL
  *     elif c_val == nmea_type.NMEA_GSA:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_GLL);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_GLL);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":14
+    /* "EnumTypeToPy":34
  *         return __pyx_enum.NMEA_GSV
  *     elif c_val == nmea_type.NMEA_GLL:
  *         return __pyx_enum.NMEA_GLL             # <<<<<<<<<<<<<<
@@ -4059,13 +4252,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_GSA
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GLL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GLL); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 34, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":13
+    /* "EnumTypeToPy":33
  *     elif c_val == nmea_type.NMEA_GSV:
  *         return __pyx_enum.NMEA_GSV
  *     elif c_val == nmea_type.NMEA_GLL:             # <<<<<<<<<<<<<<
@@ -4074,17 +4267,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":15
+  /* "EnumTypeToPy":35
  *     elif c_val == nmea_type.NMEA_GLL:
  *         return __pyx_enum.NMEA_GLL
  *     elif c_val == nmea_type.NMEA_GSA:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_GSA
  *     elif c_val == nmea_type.NMEA_RMC:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_GSA);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_GSA);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":16
+    /* "EnumTypeToPy":36
  *         return __pyx_enum.NMEA_GLL
  *     elif c_val == nmea_type.NMEA_GSA:
  *         return __pyx_enum.NMEA_GSA             # <<<<<<<<<<<<<<
@@ -4092,13 +4285,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_RMC
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GSA); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 16, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GSA); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 36, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":15
+    /* "EnumTypeToPy":35
  *     elif c_val == nmea_type.NMEA_GLL:
  *         return __pyx_enum.NMEA_GLL
  *     elif c_val == nmea_type.NMEA_GSA:             # <<<<<<<<<<<<<<
@@ -4107,17 +4300,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":17
+  /* "EnumTypeToPy":37
  *     elif c_val == nmea_type.NMEA_GSA:
  *         return __pyx_enum.NMEA_GSA
  *     elif c_val == nmea_type.NMEA_RMC:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_RMC
  *     elif c_val == nmea_type.NMEA_VTG:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_RMC);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_RMC);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":18
+    /* "EnumTypeToPy":38
  *         return __pyx_enum.NMEA_GSA
  *     elif c_val == nmea_type.NMEA_RMC:
  *         return __pyx_enum.NMEA_RMC             # <<<<<<<<<<<<<<
@@ -4125,13 +4318,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_VTG
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_RMC); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 18, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_RMC); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 38, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":17
+    /* "EnumTypeToPy":37
  *     elif c_val == nmea_type.NMEA_GSA:
  *         return __pyx_enum.NMEA_GSA
  *     elif c_val == nmea_type.NMEA_RMC:             # <<<<<<<<<<<<<<
@@ -4140,17 +4333,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":19
+  /* "EnumTypeToPy":39
  *     elif c_val == nmea_type.NMEA_RMC:
  *         return __pyx_enum.NMEA_RMC
  *     elif c_val == nmea_type.NMEA_VTG:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_VTG
  *     elif c_val == nmea_type.NMEA_GNS:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_VTG);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_VTG);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":20
+    /* "EnumTypeToPy":40
  *         return __pyx_enum.NMEA_RMC
  *     elif c_val == nmea_type.NMEA_VTG:
  *         return __pyx_enum.NMEA_VTG             # <<<<<<<<<<<<<<
@@ -4158,13 +4351,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_GNS
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_VTG); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 20, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_VTG); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 40, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":19
+    /* "EnumTypeToPy":39
  *     elif c_val == nmea_type.NMEA_RMC:
  *         return __pyx_enum.NMEA_RMC
  *     elif c_val == nmea_type.NMEA_VTG:             # <<<<<<<<<<<<<<
@@ -4173,17 +4366,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":21
+  /* "EnumTypeToPy":41
  *     elif c_val == nmea_type.NMEA_VTG:
  *         return __pyx_enum.NMEA_VTG
  *     elif c_val == nmea_type.NMEA_GNS:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_GNS
  *     elif c_val == nmea_type.NMEA_UNSUPPORTED:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_GNS);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_GNS);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":22
+    /* "EnumTypeToPy":42
  *         return __pyx_enum.NMEA_VTG
  *     elif c_val == nmea_type.NMEA_GNS:
  *         return __pyx_enum.NMEA_GNS             # <<<<<<<<<<<<<<
@@ -4191,13 +4384,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_UNSUPPORTED
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GNS); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 22, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_GNS); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 42, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":21
+    /* "EnumTypeToPy":41
  *     elif c_val == nmea_type.NMEA_VTG:
  *         return __pyx_enum.NMEA_VTG
  *     elif c_val == nmea_type.NMEA_GNS:             # <<<<<<<<<<<<<<
@@ -4206,17 +4399,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":23
+  /* "EnumTypeToPy":43
  *     elif c_val == nmea_type.NMEA_GNS:
  *         return __pyx_enum.NMEA_GNS
  *     elif c_val == nmea_type.NMEA_UNSUPPORTED:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_UNSUPPORTED
  *     elif c_val == nmea_type.NMEA_INVALID:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_UNSUPPORTED);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_UNSUPPORTED);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":24
+    /* "EnumTypeToPy":44
  *         return __pyx_enum.NMEA_GNS
  *     elif c_val == nmea_type.NMEA_UNSUPPORTED:
  *         return __pyx_enum.NMEA_UNSUPPORTED             # <<<<<<<<<<<<<<
@@ -4224,13 +4417,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         return __pyx_enum.NMEA_INVALID
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_UNSUPPORTED); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 24, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_UNSUPPORTED); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 44, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":23
+    /* "EnumTypeToPy":43
  *     elif c_val == nmea_type.NMEA_GNS:
  *         return __pyx_enum.NMEA_GNS
  *     elif c_val == nmea_type.NMEA_UNSUPPORTED:             # <<<<<<<<<<<<<<
@@ -4239,17 +4432,17 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":25
+  /* "EnumTypeToPy":45
  *     elif c_val == nmea_type.NMEA_UNSUPPORTED:
  *         return __pyx_enum.NMEA_UNSUPPORTED
  *     elif c_val == nmea_type.NMEA_INVALID:             # <<<<<<<<<<<<<<
  *         return __pyx_enum.NMEA_INVALID
  *     else:
 */
-  __pyx_t_2 = (__pyx_v_c_val == NMEA_INVALID);
-  if (__pyx_t_2) {
+  __pyx_t_1 = (__pyx_v_c_val == NMEA_INVALID);
+  if (__pyx_t_1) {
 
-    /* "EnumTypeToPy":26
+    /* "EnumTypeToPy":46
  *         return __pyx_enum.NMEA_UNSUPPORTED
  *     elif c_val == nmea_type.NMEA_INVALID:
  *         return __pyx_enum.NMEA_INVALID             # <<<<<<<<<<<<<<
@@ -4257,13 +4450,13 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
  *         underlying_c_val = <int>c_val
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_INVALID); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v___pyx_enum, __pyx_mstate_global->__pyx_n_u_NMEA_INVALID); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 46, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
 
-    /* "EnumTypeToPy":25
+    /* "EnumTypeToPy":45
  *     elif c_val == nmea_type.NMEA_UNSUPPORTED:
  *         return __pyx_enum.NMEA_UNSUPPORTED
  *     elif c_val == nmea_type.NMEA_INVALID:             # <<<<<<<<<<<<<<
@@ -4272,7 +4465,7 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
 */
   }
 
-  /* "EnumTypeToPy":28
+  /* "EnumTypeToPy":48
  *         return __pyx_enum.NMEA_INVALID
  *     else:
  *         underlying_c_val = <int>c_val             # <<<<<<<<<<<<<<
@@ -4281,60 +4474,63 @@ static PyObject *__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(en
   /*else*/ {
     __pyx_v_underlying_c_val = ((int)__pyx_v_c_val);
 
-    /* "EnumTypeToPy":29
+    /* "EnumTypeToPy":49
  *     else:
  *         underlying_c_val = <int>c_val
  *         return __pyx_enum(underlying_c_val)             # <<<<<<<<<<<<<<
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = NULL;
+    __pyx_t_8 = NULL;
     __Pyx_INCREF(__pyx_v___pyx_enum);
-    __pyx_t_4 = __pyx_v___pyx_enum; 
-    __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_underlying_c_val); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 29, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = 1;
+    __pyx_t_5 = __pyx_v___pyx_enum; 
+    __pyx_t_11 = __Pyx_PyLong_From_int(__pyx_v_underlying_c_val); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_13 = 1;
     #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-      assert(__pyx_t_3);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_3);
+    if (unlikely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_5);
+      assert(__pyx_t_8);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
-      __pyx_t_6 = 0;
+      __Pyx_DECREF_SET(__pyx_t_5, __pyx__function);
+      __pyx_t_13 = 0;
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+      PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_t_11};
+      __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_5, __pyx_callargs+__pyx_t_13, (2-__pyx_t_13) | (__pyx_t_13*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 29, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 49, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
     }
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
   }
 
-  /* "EnumTypeToPy":2
+  /* "EnumTypeToPy":3
+ * cdef object __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = None
  * 
- * @cname("__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
- * cdef __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(nmea_type c_val):
+ * @cname("__Pyx_Enum_4nmea_enum__space_nmea_type_to_py")             # <<<<<<<<<<<<<<
+ * cdef __Pyx_Enum_4nmea_enum__space_nmea_type_to_py(nmea_type c_val):
  *     cdef object __pyx_enum
 */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("EnumTypeToPy.__Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_AddTraceback("EnumTypeToPy.__Pyx_Enum_4nmea_enum__space_nmea_type_to_py", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v___pyx_enum);
+  __Pyx_XDECREF(__pyx_v_warnings);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -4767,9 +4963,9 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_11[0] = __pyx_mstate_global->__pyx_kp_u_Invalid_shape_in_axis;
       __pyx_t_11[1] = __pyx_t_5;
-      __pyx_t_11[2] = __pyx_mstate_global->__pyx_kp_u_;
+      __pyx_t_11[2] = __pyx_mstate_global->__pyx_kp_u__2;
       __pyx_t_11[3] = __pyx_t_10;
-      __pyx_t_11[4] = __pyx_mstate_global->__pyx_kp_u__2;
+      __pyx_t_11[4] = __pyx_mstate_global->__pyx_kp_u_;
       __pyx_t_12 = __Pyx_PyUnicode_Join(__pyx_t_11, 5, 22 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5) + 2 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_10) + 1, 127);
       if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 159, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
@@ -17963,7 +18159,7 @@ static PyObject *__pyx_format_from_typeinfo(__Pyx_TypeInfo const *__pyx_v_type) 
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":65
+/* "src/gnssir/python/gnssir_wrap.pyx":38
  * 
  * 
  * cpdef datetime_from_mjd(double mjd):             # <<<<<<<<<<<<<<
@@ -18005,7 +18201,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(double __pyx_v_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("datetime_from_mjd", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":69
+  /* "src/gnssir/python/gnssir_wrap.pyx":42
  *     cdef double sec;
  * 
  *     mjd_to_datetime(mjd,&yr,&month,&day,&hr,&minute,&sec)             # <<<<<<<<<<<<<<
@@ -18014,7 +18210,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(double __pyx_v_
 */
   mjd_to_datetime(__pyx_v_mjd, (&__pyx_v_yr), (&__pyx_v_month), (&__pyx_v_day), (&__pyx_v_hr), (&__pyx_v_minute), (&__pyx_v_sec));
 
-  /* "src/gnssir/gnssir_wrap.pyx":71
+  /* "src/gnssir/python/gnssir_wrap.pyx":44
  *     mjd_to_datetime(mjd,&yr,&month,&day,&hr,&minute,&sec)
  *     #return yr,month,day,hr,minute,sec
  *     return datetime(yr,month,day,hr,minute,int(sec),int((sec-int(sec))*1e3))             # <<<<<<<<<<<<<<
@@ -18023,32 +18219,32 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(double __pyx_v_
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_datetime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_datetime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_yr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_yr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_month); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_month); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyLong_From_int(__pyx_v_day); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From_int(__pyx_v_day); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyLong_From_int(__pyx_v_hr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_From_int(__pyx_v_hr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyLong_From_int(__pyx_v_minute); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyLong_From_int(__pyx_v_minute); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyLong_FromDouble(__pyx_v_sec); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_9 = PyLong_FromDouble(__pyx_v_sec); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_sec); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_sec); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_11 = PyLong_FromDouble(__pyx_v_sec); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_11 = PyLong_FromDouble(__pyx_v_sec); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = PyNumber_Subtract(__pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_12 = PyNumber_Subtract(__pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  __pyx_t_11 = PyNumber_Multiply(__pyx_t_12, __pyx_mstate_global->__pyx_float_1e3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_11 = PyNumber_Multiply(__pyx_t_12, __pyx_mstate_global->__pyx_float_1e3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = __Pyx_PyNumber_Int(__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyNumber_Int(__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __pyx_t_13 = 1;
@@ -18075,14 +18271,14 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(double __pyx_v_
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":65
+  /* "src/gnssir/python/gnssir_wrap.pyx":38
  * 
  * 
  * cpdef datetime_from_mjd(double mjd):             # <<<<<<<<<<<<<<
@@ -18151,32 +18347,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_mjd,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 65, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 38, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 65, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 38, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "datetime_from_mjd", 0) < (0)) __PYX_ERR(0, 65, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "datetime_from_mjd", 0) < (0)) __PYX_ERR(0, 38, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("datetime_from_mjd", 1, 1, 1, i); __PYX_ERR(0, 65, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("datetime_from_mjd", 1, 1, 1, i); __PYX_ERR(0, 38, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 65, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 38, __pyx_L3_error)
     }
-    __pyx_v_mjd = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_mjd == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L3_error)
+    __pyx_v_mjd = __Pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_mjd == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("datetime_from_mjd", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 65, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("datetime_from_mjd", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 38, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18206,7 +18402,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_datetime_from_mjd(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("datetime_from_mjd", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(__pyx_v_mjd, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(__pyx_v_mjd, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -18223,7 +18419,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_datetime_from_mjd(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":73
+/* "src/gnssir/python/gnssir_wrap.pyx":46
  *     return datetime(yr,month,day,hr,minute,int(sec),int((sec-int(sec))*1e3))
  * 
  * cpdef double mjd_from_datetime(dt:datetime):             # <<<<<<<<<<<<<<
@@ -18257,94 +18453,94 @@ static double __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(PyObject *__pyx_v_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mjd_from_datetime", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":74
+  /* "src/gnssir/python/gnssir_wrap.pyx":47
  * 
  * cpdef double mjd_from_datetime(dt:datetime):
  *         cdef int year=dt.year             # <<<<<<<<<<<<<<
  *         cdef int month=dt.month
  *         cdef int day=dt.day
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_year); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_year); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_year = __pyx_t_2;
 
-  /* "src/gnssir/gnssir_wrap.pyx":75
+  /* "src/gnssir/python/gnssir_wrap.pyx":48
  * cpdef double mjd_from_datetime(dt:datetime):
  *         cdef int year=dt.year
  *         cdef int month=dt.month             # <<<<<<<<<<<<<<
  *         cdef int day=dt.day
  *         cdef int hour=dt.hour
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_month); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_month); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_month = __pyx_t_2;
 
-  /* "src/gnssir/gnssir_wrap.pyx":76
+  /* "src/gnssir/python/gnssir_wrap.pyx":49
  *         cdef int year=dt.year
  *         cdef int month=dt.month
  *         cdef int day=dt.day             # <<<<<<<<<<<<<<
  *         cdef int hour=dt.hour
  *         cdef int minute=dt.minute
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_day); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_day); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_day = __pyx_t_2;
 
-  /* "src/gnssir/gnssir_wrap.pyx":77
+  /* "src/gnssir/python/gnssir_wrap.pyx":50
  *         cdef int month=dt.month
  *         cdef int day=dt.day
  *         cdef int hour=dt.hour             # <<<<<<<<<<<<<<
  *         cdef int minute=dt.minute
  *         cdef double second=dt.second+dt.microsecond*1e-38
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_hour); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_hour); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_hour = __pyx_t_2;
 
-  /* "src/gnssir/gnssir_wrap.pyx":78
+  /* "src/gnssir/python/gnssir_wrap.pyx":51
  *         cdef int day=dt.day
  *         cdef int hour=dt.hour
  *         cdef int minute=dt.minute             # <<<<<<<<<<<<<<
  *         cdef double second=dt.second+dt.microsecond*1e-38
  *         return mjd(year,month,day,hour,minute,second)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_minute); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_minute); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_minute = __pyx_t_2;
 
-  /* "src/gnssir/gnssir_wrap.pyx":79
+  /* "src/gnssir/python/gnssir_wrap.pyx":52
  *         cdef int hour=dt.hour
  *         cdef int minute=dt.minute
  *         cdef double second=dt.second+dt.microsecond*1e-38             # <<<<<<<<<<<<<<
  *         return mjd(year,month,day,hour,minute,second)
  * 
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_second); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_second); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_microsecond); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_dt, __pyx_mstate_global->__pyx_n_u_microsecond); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_mstate_global->__pyx_float_1eneg_38); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_mstate_global->__pyx_float_1eneg_38); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_5 = __Pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_second = __pyx_t_5;
 
-  /* "src/gnssir/gnssir_wrap.pyx":80
+  /* "src/gnssir/python/gnssir_wrap.pyx":53
  *         cdef int minute=dt.minute
  *         cdef double second=dt.second+dt.microsecond*1e-38
  *         return mjd(year,month,day,hour,minute,second)             # <<<<<<<<<<<<<<
@@ -18354,7 +18550,7 @@ static double __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(PyObject *__pyx_v_
   __pyx_r = mjd(__pyx_v_year, __pyx_v_month, __pyx_v_day, __pyx_v_hour, __pyx_v_minute, __pyx_v_second);
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":73
+  /* "src/gnssir/python/gnssir_wrap.pyx":46
  *     return datetime(yr,month,day,hr,minute,int(sec),int((sec-int(sec))*1e3))
  * 
  * cpdef double mjd_from_datetime(dt:datetime):             # <<<<<<<<<<<<<<
@@ -18413,32 +18609,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_dt,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 73, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 46, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 73, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 46, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "mjd_from_datetime", 0) < (0)) __PYX_ERR(0, 73, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "mjd_from_datetime", 0) < (0)) __PYX_ERR(0, 46, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("mjd_from_datetime", 1, 1, 1, i); __PYX_ERR(0, 73, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("mjd_from_datetime", 1, 1, 1, i); __PYX_ERR(0, 46, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 73, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 46, __pyx_L3_error)
     }
     __pyx_v_dt = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("mjd_from_datetime", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 73, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("mjd_from_datetime", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 46, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18469,8 +18665,8 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_2mjd_from_datetime(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mjd_from_datetime", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(__pyx_v_dt, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(__pyx_v_dt, 1); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -18487,7 +18683,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_2mjd_from_datetime(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":167
+/* "src/gnssir/python/gnssir_wrap.pyx":59
  * cdef class gnss_sys:
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -18523,7 +18719,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_1__cinit__(PyObject *__pyx_v
 static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
   int __pyx_r;
 
-  /* "src/gnssir/gnssir_wrap.pyx":168
+  /* "src/gnssir/python/gnssir_wrap.pyx":60
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):
  *         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))             # <<<<<<<<<<<<<<
@@ -18532,7 +18728,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys___cinit__(struct __pyx_obj_1
 */
   __pyx_v_self->system_ptr = ((struct gnss_system *)malloc((sizeof(struct gnss_system))));
 
-  /* "src/gnssir/gnssir_wrap.pyx":167
+  /* "src/gnssir/python/gnssir_wrap.pyx":59
  * cdef class gnss_sys:
  *     cdef _gnss_system* system_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -18545,7 +18741,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys___cinit__(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":170
+/* "src/gnssir/python/gnssir_wrap.pyx":62
  *         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))
  * 
  *     def __init__(self,sysstr='UNKNOWN'):             # <<<<<<<<<<<<<<
@@ -18575,24 +18771,24 @@ static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_3__init__(PyObject *__pyx_v_
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_sysstr,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 170, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 62, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 170, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 62, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 170, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 62, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_n_u_UNKNOWN));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 170, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 62, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -18603,7 +18799,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_3__init__(PyObject *__pyx_v_
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 170, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 62, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -18631,17 +18827,17 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":171
+  /* "src/gnssir/python/gnssir_wrap.pyx":63
  * 
  *     def __init__(self,sysstr='UNKNOWN'):
  *         if sysstr == 'GPSL1':             # <<<<<<<<<<<<<<
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':
 */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 63, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":172
+    /* "src/gnssir/python/gnssir_wrap.pyx":64
  *     def __init__(self,sysstr='UNKNOWN'):
  *         if sysstr == 'GPSL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)             # <<<<<<<<<<<<<<
@@ -18650,7 +18846,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
 */
     copy_GNSS_as(__pyx_v_self->system_ptr, (&gnss_gpsl1));
 
-    /* "src/gnssir/gnssir_wrap.pyx":171
+    /* "src/gnssir/python/gnssir_wrap.pyx":63
  * 
  *     def __init__(self,sysstr='UNKNOWN'):
  *         if sysstr == 'GPSL1':             # <<<<<<<<<<<<<<
@@ -18660,17 +18856,17 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
     goto __pyx_L3;
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":173
+  /* "src/gnssir/python/gnssir_wrap.pyx":65
  *         if sysstr == 'GPSL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':             # <<<<<<<<<<<<<<
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':
 */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL2, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GPSL2, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 65, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":174
+    /* "src/gnssir/python/gnssir_wrap.pyx":66
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)             # <<<<<<<<<<<<<<
@@ -18679,7 +18875,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
 */
     copy_GNSS_as(__pyx_v_self->system_ptr, (&gnss_gpsl2));
 
-    /* "src/gnssir/gnssir_wrap.pyx":173
+    /* "src/gnssir/python/gnssir_wrap.pyx":65
  *         if sysstr == 'GPSL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl1)
  *         elif sysstr == 'GPSL2':             # <<<<<<<<<<<<<<
@@ -18689,17 +18885,17 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
     goto __pyx_L3;
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":175
+  /* "src/gnssir/python/gnssir_wrap.pyx":67
  *         elif sysstr == 'GPSL2':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':             # <<<<<<<<<<<<<<
  *            copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)
  *         else:
 */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_sysstr, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, Py_EQ)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":176
+    /* "src/gnssir/python/gnssir_wrap.pyx":68
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':
  *            copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)             # <<<<<<<<<<<<<<
@@ -18708,7 +18904,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
 */
     copy_GNSS_as(__pyx_v_self->system_ptr, (&gnss_glonassiil1));
 
-    /* "src/gnssir/gnssir_wrap.pyx":175
+    /* "src/gnssir/python/gnssir_wrap.pyx":67
  *         elif sysstr == 'GPSL2':
  *            copy_GNSS_as(self.system_ptr,&gnss_gpsl2)
  *         elif sysstr == 'GLONASSIIL1':             # <<<<<<<<<<<<<<
@@ -18718,7 +18914,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
     goto __pyx_L3;
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":178
+  /* "src/gnssir/python/gnssir_wrap.pyx":70
  *            copy_GNSS_as(self.system_ptr,&gnss_glonassiil1)
  *         else:
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)             # <<<<<<<<<<<<<<
@@ -18730,7 +18926,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
   }
   __pyx_L3:;
 
-  /* "src/gnssir/gnssir_wrap.pyx":170
+  /* "src/gnssir/python/gnssir_wrap.pyx":62
  *         self.system_ptr = <_gnss_system*>malloc(sizeof(_gnss_system))
  * 
  *     def __init__(self,sysstr='UNKNOWN'):             # <<<<<<<<<<<<<<
@@ -18748,7 +18944,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_2__init__(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":180
+/* "src/gnssir/python/gnssir_wrap.pyx":72
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -18808,7 +19004,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_4__reduce__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__reduce__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":181
+  /* "src/gnssir/python/gnssir_wrap.pyx":73
  * 
  *     def __reduce__(self):
  *         return (gnss_sys,(self.system,))             # <<<<<<<<<<<<<<
@@ -18816,26 +19012,26 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_4__reduce__(struct __p
  *     @staticmethod
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_system); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_system); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 181, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 73, __pyx_L1_error);
   __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
   __Pyx_GIVEREF((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)) != (0)) __PYX_ERR(0, 181, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)) != (0)) __PYX_ERR(0, 73, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 181, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 73, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":180
+  /* "src/gnssir/python/gnssir_wrap.pyx":72
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -18855,7 +19051,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_4__reduce__(struct __p
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":183
+/* "src/gnssir/python/gnssir_wrap.pyx":75
  *         return (gnss_sys,(self.system,))
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -18875,7 +19071,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_syste
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":185
+  /* "src/gnssir/python/gnssir_wrap.pyx":77
  *     @staticmethod
  *     cdef from_(_gnss_system sys):
  *         cdef gnss_sys system=gnss_sys()             # <<<<<<<<<<<<<<
@@ -18888,13 +19084,13 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_syste
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __pyx_v_system = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":186
+  /* "src/gnssir/python/gnssir_wrap.pyx":78
  *     cdef from_(_gnss_system sys):
  *         cdef gnss_sys system=gnss_sys()
  *         copy_GNSS_as(system.system_ptr,&sys)             # <<<<<<<<<<<<<<
@@ -18903,7 +19099,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_syste
 */
   copy_GNSS_as(__pyx_v_system->system_ptr, (&__pyx_v_sys));
 
-  /* "src/gnssir/gnssir_wrap.pyx":187
+  /* "src/gnssir/python/gnssir_wrap.pyx":79
  *         cdef gnss_sys system=gnss_sys()
  *         copy_GNSS_as(system.system_ptr,&sys)
  *         return system             # <<<<<<<<<<<<<<
@@ -18915,7 +19111,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_syste
   __pyx_r = ((PyObject *)__pyx_v_system);
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":183
+  /* "src/gnssir/python/gnssir_wrap.pyx":75
  *         return (gnss_sys,(self.system,))
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -18936,7 +19132,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(struct gnss_syste
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":190
+/* "src/gnssir/python/gnssir_wrap.pyx":82
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18959,7 +19155,7 @@ static void __pyx_pw_11gnssr4water_6gnssir_8gnss_sys_7__dealloc__(PyObject *__py
 
 static void __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *__pyx_v_self) {
 
-  /* "src/gnssir/gnssir_wrap.pyx":191
+  /* "src/gnssir/python/gnssir_wrap.pyx":83
  * 
  *     def __dealloc__(self):
  *         free(self.system_ptr)             # <<<<<<<<<<<<<<
@@ -18968,7 +19164,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6__dealloc__(struct __pyx_o
 */
   free(__pyx_v_self->system_ptr);
 
-  /* "src/gnssir/gnssir_wrap.pyx":190
+  /* "src/gnssir/python/gnssir_wrap.pyx":82
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18979,7 +19175,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6__dealloc__(struct __pyx_o
   /* function exit code */
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":193
+/* "src/gnssir/python/gnssir_wrap.pyx":85
  *         free(self.system_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19013,7 +19209,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6system___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":195
+  /* "src/gnssir/python/gnssir_wrap.pyx":87
  *     @property
  *     def system(self):
  *         return deref(self.system_ptr).system.decode('utf-8')             # <<<<<<<<<<<<<<
@@ -19022,15 +19218,15 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6system___get__(struct
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = (*__pyx_v_self->system_ptr).system;
-  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 195, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":193
+  /* "src/gnssir/python/gnssir_wrap.pyx":85
  *         free(self.system_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19049,7 +19245,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6system___get__(struct
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":197
+/* "src/gnssir/python/gnssir_wrap.pyx":89
  *         return deref(self.system_ptr).system.decode('utf-8')
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19081,7 +19277,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9frequency___get__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":199
+  /* "src/gnssir/python/gnssir_wrap.pyx":91
  *     @property
  *     def frequency(self):
  *         return deref(self.system_ptr).frequency             # <<<<<<<<<<<<<<
@@ -19089,13 +19285,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9frequency___get__(str
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).frequency); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).frequency); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":197
+  /* "src/gnssir/python/gnssir_wrap.pyx":89
  *         return deref(self.system_ptr).system.decode('utf-8')
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19114,7 +19310,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9frequency___get__(str
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":201
+/* "src/gnssir/python/gnssir_wrap.pyx":93
  *         return deref(self.system_ptr).frequency
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19146,7 +19342,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9bandwidth___get__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":203
+  /* "src/gnssir/python/gnssir_wrap.pyx":95
  *     @property
  *     def bandwidth(self):
  *         return deref(self.system_ptr).bandwidth             # <<<<<<<<<<<<<<
@@ -19154,13 +19350,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9bandwidth___get__(str
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).bandwidth); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).bandwidth); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":201
+  /* "src/gnssir/python/gnssir_wrap.pyx":93
  *         return deref(self.system_ptr).frequency
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19179,7 +19375,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_9bandwidth___get__(str
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":205
+/* "src/gnssir/python/gnssir_wrap.pyx":97
  *         return deref(self.system_ptr).bandwidth
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19211,7 +19407,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6length___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":207
+  /* "src/gnssir/python/gnssir_wrap.pyx":99
  *     @property
  *     def length(self):
  *         return deref(self.system_ptr).length             # <<<<<<<<<<<<<<
@@ -19219,13 +19415,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6length___get__(struct
  *     def rinexcode(self,satno):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->system_ptr).length); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":205
+  /* "src/gnssir/python/gnssir_wrap.pyx":97
  *         return deref(self.system_ptr).bandwidth
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -19244,7 +19440,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_6length___get__(struct
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":209
+/* "src/gnssir/python/gnssir_wrap.pyx":101
  *         return deref(self.system_ptr).length
  * 
  *     def rinexcode(self,satno):             # <<<<<<<<<<<<<<
@@ -19291,32 +19487,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_satno,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 209, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 101, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 209, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 101, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "rinexcode", 0) < (0)) __PYX_ERR(0, 209, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "rinexcode", 0) < (0)) __PYX_ERR(0, 101, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, i); __PYX_ERR(0, 209, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, i); __PYX_ERR(0, 101, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 209, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 101, __pyx_L3_error)
     }
     __pyx_v_satno = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 209, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("rinexcode", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 101, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19351,7 +19547,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("rinexcode", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":210
+  /* "src/gnssir/python/gnssir_wrap.pyx":102
  * 
  *     def rinexcode(self,satno):
  *         satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"             # <<<<<<<<<<<<<<
@@ -19359,19 +19555,19 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(struct __py
  * 
 */
   __pyx_t_1 = (*__pyx_v_self->system_ptr).rinexcode;
-  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 210, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ssize_strlen(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_decode_c_string(__pyx_t_1, 0, __pyx_t_2, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Format(__pyx_v_satno, __pyx_mstate_global->__pyx_kp_u_02d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Format(__pyx_v_satno, __pyx_mstate_global->__pyx_kp_u_02d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_satcode = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":211
+  /* "src/gnssir/python/gnssir_wrap.pyx":103
  *     def rinexcode(self,satno):
  *         satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"
  *         return satcode             # <<<<<<<<<<<<<<
@@ -19383,7 +19579,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(struct __py
   __pyx_r = __pyx_v_satcode;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":209
+  /* "src/gnssir/python/gnssir_wrap.pyx":101
  *         return deref(self.system_ptr).length
  * 
  *     def rinexcode(self,satno):             # <<<<<<<<<<<<<<
@@ -19405,7 +19601,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8gnss_sys_8rinexcode(struct __py
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":221
+/* "src/gnssir/python/gnssir_wrap.pyx":113
  * cdef class Arc:
  *     cdef _arc* arc_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -19441,7 +19637,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_3Arc_1__cinit__(PyObject *__pyx_v_self
 static int __pyx_pf_11gnssr4water_6gnssir_3Arc___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_Arc *__pyx_v_self) {
   int __pyx_r;
 
-  /* "src/gnssir/gnssir_wrap.pyx":222
+  /* "src/gnssir/python/gnssir_wrap.pyx":114
  *     cdef _arc* arc_ptr
  *     def __cinit__(self):
  *         self.arc_ptr=<_arc*>malloc(sizeof(_arc))             # <<<<<<<<<<<<<<
@@ -19450,7 +19646,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc___cinit__(struct __pyx_obj_11gnss
 */
   __pyx_v_self->arc_ptr = ((struct arc *)malloc((sizeof(struct arc))));
 
-  /* "src/gnssir/gnssir_wrap.pyx":223
+  /* "src/gnssir/python/gnssir_wrap.pyx":115
  *     def __cinit__(self):
  *         self.arc_ptr=<_arc*>malloc(sizeof(_arc))
  *         init_arc(self.arc_ptr)             # <<<<<<<<<<<<<<
@@ -19459,7 +19655,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc___cinit__(struct __pyx_obj_11gnss
 */
   (void)(init_arc(__pyx_v_self->arc_ptr));
 
-  /* "src/gnssir/gnssir_wrap.pyx":221
+  /* "src/gnssir/python/gnssir_wrap.pyx":113
  * cdef class Arc:
  *     cdef _arc* arc_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -19472,7 +19668,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc___cinit__(struct __pyx_obj_11gnss
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":225
+/* "src/gnssir/python/gnssir_wrap.pyx":117
  *         init_arc(self.arc_ptr)
  * 
  *     def __init__(self,prn:int=-1,lon:float=-9999.,lat:float=-9999.,ortho_height:float=-9999,geoid_height:float=-9999.,mjd:double=0,system:gnss_system=None):             # <<<<<<<<<<<<<<
@@ -19508,42 +19704,42 @@ static int __pyx_pw_11gnssr4water_6gnssir_3Arc_3__init__(PyObject *__pyx_v_self,
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_prn,&__pyx_mstate_global->__pyx_n_u_lon,&__pyx_mstate_global->__pyx_n_u_lat,&__pyx_mstate_global->__pyx_n_u_ortho_height,&__pyx_mstate_global->__pyx_n_u_geoid_height,&__pyx_mstate_global->__pyx_n_u_mjd,&__pyx_mstate_global->__pyx_n_u_system,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 225, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 117, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  7:
         values[6] = __Pyx_ArgRef_VARARGS(__pyx_args, 6);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[6])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[6])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  6:
         values[5] = __Pyx_ArgRef_VARARGS(__pyx_args, 5);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  5:
         values[4] = __Pyx_ArgRef_VARARGS(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_VARARGS(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 225, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 117, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject*)__pyx_mstate_global->__pyx_int_neg_1));
       if (!values[5]) values[5] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
       if (!values[6]) values[6] = __Pyx_NewRef(((PyObject *)Py_None));
@@ -19551,31 +19747,31 @@ static int __pyx_pw_11gnssr4water_6gnssir_3Arc_3__init__(PyObject *__pyx_v_self,
       switch (__pyx_nargs) {
         case  7:
         values[6] = __Pyx_ArgRef_VARARGS(__pyx_args, 6);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[6])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[6])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  6:
         values[5] = __Pyx_ArgRef_VARARGS(__pyx_args, 5);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  5:
         values[4] = __Pyx_ArgRef_VARARGS(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_VARARGS(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 225, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 117, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -19584,25 +19780,25 @@ static int __pyx_pw_11gnssr4water_6gnssir_3Arc_3__init__(PyObject *__pyx_v_self,
       if (!values[5]) values[5] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_0));
       if (!values[6]) values[6] = __Pyx_NewRef(((PyObject *)Py_None));
     }
-    if (__Pyx_PyInt_FromNumber(&values[0], "prn", 0) < (0)) __PYX_ERR(0, 225, __pyx_L3_error)
+    if (__Pyx_PyInt_FromNumber(&values[0], "prn", 0) < (0)) __PYX_ERR(0, 117, __pyx_L3_error)
     __pyx_v_prn = ((PyObject*)values[0]);
     if (values[1]) {
-      __pyx_v_lon = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_lon == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+      __pyx_v_lon = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_lon == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
     } else {
       __pyx_v_lon = ((double)-9999.);
     }
     if (values[2]) {
-      __pyx_v_lat = __Pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_lat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+      __pyx_v_lat = __Pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_lat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
     } else {
       __pyx_v_lat = ((double)-9999.);
     }
     if (values[3]) {
-      __pyx_v_ortho_height = __Pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_ortho_height == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+      __pyx_v_ortho_height = __Pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_ortho_height == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
     } else {
       __pyx_v_ortho_height = ((double)-9999.0);
     }
     if (values[4]) {
-      __pyx_v_geoid_height = __Pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_geoid_height == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L3_error)
+      __pyx_v_geoid_height = __Pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_geoid_height == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
     } else {
       __pyx_v_geoid_height = ((double)-9999.);
     }
@@ -19611,7 +19807,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_3Arc_3__init__(PyObject *__pyx_v_self,
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 7, __pyx_nargs); __PYX_ERR(0, 225, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 7, __pyx_nargs); __PYX_ERR(0, 117, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -19622,7 +19818,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_3Arc_3__init__(PyObject *__pyx_v_self,
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_prn), (&PyLong_Type), 0, "prn", 2))) __PYX_ERR(0, 225, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_prn), (&PyLong_Type), 0, "prn", 2))) __PYX_ERR(0, 117, __pyx_L1_error)
   __pyx_r = __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(((struct __pyx_obj_11gnssr4water_6gnssir_Arc *)__pyx_v_self), __pyx_v_prn, __pyx_v_lon, __pyx_v_lat, __pyx_v_ortho_height, __pyx_v_geoid_height, __pyx_v_mjd, __pyx_v_system);
 
   /* function exit code */
@@ -19655,27 +19851,27 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":226
+  /* "src/gnssir/python/gnssir_wrap.pyx":118
  * 
  *     def __init__(self,prn:int=-1,lon:float=-9999.,lat:float=-9999.,ortho_height:float=-9999,geoid_height:float=-9999.,mjd:double=0,system:gnss_system=None):
  *         deref(self.arc_ptr).prn=prn             # <<<<<<<<<<<<<<
  * 
  *         set_enu_position(&deref(self.arc_ptr).site,lat,lon,ortho_height,geoid_height,mjd)
 */
-  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_prn); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_prn); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
   (*__pyx_v_self->arc_ptr).prn = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":228
+  /* "src/gnssir/python/gnssir_wrap.pyx":120
  *         deref(self.arc_ptr).prn=prn
  * 
  *         set_enu_position(&deref(self.arc_ptr).site,lat,lon,ortho_height,geoid_height,mjd)             # <<<<<<<<<<<<<<
  *         # deref(self.arc_ptr).lat=lat
  *         # deref(self.arc_ptr).lon=lon
 */
-  __pyx_t_2 = __Pyx_PyFloat_AsDouble(__pyx_v_mjd); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyFloat_AsDouble(__pyx_v_mjd); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
   (void)(set_enu_position((&(*__pyx_v_self->arc_ptr).site), __pyx_v_lat, __pyx_v_lon, __pyx_v_ortho_height, __pyx_v_geoid_height, __pyx_t_2));
 
-  /* "src/gnssir/gnssir_wrap.pyx":234
+  /* "src/gnssir/python/gnssir_wrap.pyx":126
  *         # deref(self.arc_ptr).geoid_height=geoid_height
  *         cdef gnss_sys  sys;
  *         if system is None:             # <<<<<<<<<<<<<<
@@ -19685,7 +19881,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
   __pyx_t_3 = (__pyx_v_system == Py_None);
   if (__pyx_t_3) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":235
+    /* "src/gnssir/python/gnssir_wrap.pyx":127
  *         cdef gnss_sys  sys;
  *         if system is None:
  *             copy_GNSS_as(&self.arc_ptr.system,&gnss_unknown)             # <<<<<<<<<<<<<<
@@ -19694,7 +19890,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
 */
     copy_GNSS_as((&__pyx_v_self->arc_ptr->system), (&gnss_unknown));
 
-    /* "src/gnssir/gnssir_wrap.pyx":234
+    /* "src/gnssir/python/gnssir_wrap.pyx":126
  *         # deref(self.arc_ptr).geoid_height=geoid_height
  *         cdef gnss_sys  sys;
  *         if system is None:             # <<<<<<<<<<<<<<
@@ -19704,7 +19900,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
     goto __pyx_L3;
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":237
+  /* "src/gnssir/python/gnssir_wrap.pyx":129
  *             copy_GNSS_as(&self.arc_ptr.system,&gnss_unknown)
  *         else:
  *             sys=<gnss_sys?>system             # <<<<<<<<<<<<<<
@@ -19712,13 +19908,13 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
  * 
 */
   /*else*/ {
-    if (!(likely(__Pyx_TypeTest(__pyx_v_system, __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)))) __PYX_ERR(0, 237, __pyx_L1_error)
+    if (!(likely(__Pyx_TypeTest(__pyx_v_system, __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)))) __PYX_ERR(0, 129, __pyx_L1_error)
     __pyx_t_4 = __pyx_v_system;
     __Pyx_INCREF(__pyx_t_4);
     __pyx_v_sys = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_sys *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":238
+    /* "src/gnssir/python/gnssir_wrap.pyx":130
  *         else:
  *             sys=<gnss_sys?>system
  *             copy_GNSS_as(&self.arc_ptr.system,sys.system_ptr)             # <<<<<<<<<<<<<<
@@ -19729,7 +19925,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
   }
   __pyx_L3:;
 
-  /* "src/gnssir/gnssir_wrap.pyx":225
+  /* "src/gnssir/python/gnssir_wrap.pyx":117
  *         init_arc(self.arc_ptr)
  * 
  *     def __init__(self,prn:int=-1,lon:float=-9999.,lat:float=-9999.,ortho_height:float=-9999,geoid_height:float=-9999.,mjd:double=0,system:gnss_system=None):             # <<<<<<<<<<<<<<
@@ -19750,7 +19946,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_3Arc_2__init__(struct __pyx_obj_11gnss
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":240
+/* "src/gnssir/python/gnssir_wrap.pyx":132
  *             copy_GNSS_as(&self.arc_ptr.system,sys.system_ptr)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -19783,7 +19979,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":242
+  /* "src/gnssir/python/gnssir_wrap.pyx":134
  *     def __dealloc__(self):
  *         cdef int err
  *         if self.arc_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -19793,7 +19989,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
   __pyx_t_1 = (__pyx_v_self->arc_ptr != NULL);
   if (__pyx_t_1) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":244
+    /* "src/gnssir/python/gnssir_wrap.pyx":136
  *         if self.arc_ptr is not NULL:
  *             # free dynamically allocated members
  *             err= free_arc(self.arc_ptr)             # <<<<<<<<<<<<<<
@@ -19802,7 +19998,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
 */
     __pyx_v_err = free_arc(__pyx_v_self->arc_ptr);
 
-    /* "src/gnssir/gnssir_wrap.pyx":245
+    /* "src/gnssir/python/gnssir_wrap.pyx":137
  *             # free dynamically allocated members
  *             err= free_arc(self.arc_ptr)
  *             if err != 0:             # <<<<<<<<<<<<<<
@@ -19812,7 +20008,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
     __pyx_t_1 = (__pyx_v_err != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "src/gnssir/gnssir_wrap.pyx":246
+      /* "src/gnssir/python/gnssir_wrap.pyx":138
  *             err= free_arc(self.arc_ptr)
  *             if err != 0:
  *                 raise RuntimeError("error freeing arc members")             # <<<<<<<<<<<<<<
@@ -19825,14 +20021,14 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
         PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_error_freeing_arc_members};
         __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_RuntimeError)), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
       }
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 246, __pyx_L1_error)
+      __PYX_ERR(0, 138, __pyx_L1_error)
 
-      /* "src/gnssir/gnssir_wrap.pyx":245
+      /* "src/gnssir/python/gnssir_wrap.pyx":137
  *             # free dynamically allocated members
  *             err= free_arc(self.arc_ptr)
  *             if err != 0:             # <<<<<<<<<<<<<<
@@ -19841,7 +20037,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
 */
     }
 
-    /* "src/gnssir/gnssir_wrap.pyx":247
+    /* "src/gnssir/python/gnssir_wrap.pyx":139
  *             if err != 0:
  *                 raise RuntimeError("error freeing arc members")
  *             free(self.arc_ptr)             # <<<<<<<<<<<<<<
@@ -19850,7 +20046,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
 */
     free(__pyx_v_self->arc_ptr);
 
-    /* "src/gnssir/gnssir_wrap.pyx":242
+    /* "src/gnssir/python/gnssir_wrap.pyx":134
  *     def __dealloc__(self):
  *         cdef int err
  *         if self.arc_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -19859,7 +20055,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":240
+  /* "src/gnssir/python/gnssir_wrap.pyx":132
  *             copy_GNSS_as(&self.arc_ptr.system,sys.system_ptr)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -19877,7 +20073,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_3Arc_4__dealloc__(struct __pyx_obj_11
   __Pyx_RefNannyFinishContext();
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":249
+/* "src/gnssir/python/gnssir_wrap.pyx":141
  *             free(self.arc_ptr)
  * 
  *     def append(self,time,elevation:float,azimuth:float,value:float):             # <<<<<<<<<<<<<<
@@ -19927,53 +20123,53 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_time,&__pyx_mstate_global->__pyx_n_u_elevation,&__pyx_mstate_global->__pyx_n_u_azimuth,&__pyx_mstate_global->__pyx_n_u_value,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 249, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 141, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 249, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 141, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 249, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 141, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 249, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 141, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 249, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 141, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "append", 0) < (0)) __PYX_ERR(0, 249, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "append", 0) < (0)) __PYX_ERR(0, 141, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("append", 1, 4, 4, i); __PYX_ERR(0, 249, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("append", 1, 4, 4, i); __PYX_ERR(0, 141, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 249, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 141, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 249, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 141, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 249, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 141, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 249, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 141, __pyx_L3_error)
     }
     __pyx_v_time = values[0];
-    __pyx_v_elevation = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_elevation == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
-    __pyx_v_azimuth = __Pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_azimuth == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
-    __pyx_v_value = __Pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
+    __pyx_v_elevation = __Pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_elevation == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
+    __pyx_v_azimuth = __Pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_azimuth == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("append", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 249, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("append", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 141, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20009,17 +20205,17 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6append(struct __pyx_obj_11
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("append", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":250
+  /* "src/gnssir/python/gnssir_wrap.pyx":142
  * 
  *     def append(self,time,elevation:float,azimuth:float,value:float):
  *         cdef double mjdv= mjd_from_datetime(time)             # <<<<<<<<<<<<<<
  *         cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)
  *         if err != 0:
 */
-  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(__pyx_v_time, 0); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_mjd_from_datetime(__pyx_v_time, 0); if (unlikely(__pyx_t_1 == ((double)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
   __pyx_v_mjdv = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":251
+  /* "src/gnssir/python/gnssir_wrap.pyx":143
  *     def append(self,time,elevation:float,azimuth:float,value:float):
  *         cdef double mjdv= mjd_from_datetime(time)
  *         cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)             # <<<<<<<<<<<<<<
@@ -20028,7 +20224,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6append(struct __pyx_obj_11
 */
   __pyx_v_err = append_to_arc(__pyx_v_self->arc_ptr, __pyx_v_mjdv, __pyx_v_elevation, __pyx_v_azimuth, __pyx_v_value);
 
-  /* "src/gnssir/gnssir_wrap.pyx":252
+  /* "src/gnssir/python/gnssir_wrap.pyx":144
  *         cdef double mjdv= mjd_from_datetime(time)
  *         cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)
  *         if err != 0:             # <<<<<<<<<<<<<<
@@ -20038,7 +20234,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6append(struct __pyx_obj_11
   __pyx_t_2 = (__pyx_v_err != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":253
+    /* "src/gnssir/python/gnssir_wrap.pyx":145
  *         cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)
  *         if err != 0:
  *             raise RuntimeError("error appending data to arc")             # <<<<<<<<<<<<<<
@@ -20051,14 +20247,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6append(struct __pyx_obj_11
       PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_error_appending_data_to_arc};
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_RuntimeError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 253, __pyx_L1_error)
+    __PYX_ERR(0, 145, __pyx_L1_error)
 
-    /* "src/gnssir/gnssir_wrap.pyx":252
+    /* "src/gnssir/python/gnssir_wrap.pyx":144
  *         cdef double mjdv= mjd_from_datetime(time)
  *         cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)
  *         if err != 0:             # <<<<<<<<<<<<<<
@@ -20067,7 +20263,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6append(struct __pyx_obj_11
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":249
+  /* "src/gnssir/python/gnssir_wrap.pyx":141
  *             free(self.arc_ptr)
  * 
  *     def append(self,time,elevation:float,azimuth:float,value:float):             # <<<<<<<<<<<<<<
@@ -20089,7 +20285,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6append(struct __pyx_obj_11
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":255
+/* "src/gnssir/python/gnssir_wrap.pyx":147
  *             raise RuntimeError("error appending data to arc")
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20121,7 +20317,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3lon___get__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":257
+  /* "src/gnssir/python/gnssir_wrap.pyx":149
  *     @property
  *     def lon(self):
  *         return deref(self.arc_ptr).site.lon             # <<<<<<<<<<<<<<
@@ -20129,13 +20325,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3lon___get__(struct __pyx_o
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.lon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.lon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":255
+  /* "src/gnssir/python/gnssir_wrap.pyx":147
  *             raise RuntimeError("error appending data to arc")
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20154,7 +20350,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3lon___get__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":259
+/* "src/gnssir/python/gnssir_wrap.pyx":151
  *         return deref(self.arc_ptr).site.lon
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20186,7 +20382,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3prn___get__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":261
+  /* "src/gnssir/python/gnssir_wrap.pyx":153
  *     @property
  *     def prn(self):
  *         return deref(self.arc_ptr).prn             # <<<<<<<<<<<<<<
@@ -20194,13 +20390,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3prn___get__(struct __pyx_o
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->arc_ptr).prn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->arc_ptr).prn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":259
+  /* "src/gnssir/python/gnssir_wrap.pyx":151
  *         return deref(self.arc_ptr).site.lon
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20219,7 +20415,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3prn___get__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":263
+/* "src/gnssir/python/gnssir_wrap.pyx":155
  *         return deref(self.arc_ptr).prn
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20251,7 +20447,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3lat___get__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":265
+  /* "src/gnssir/python/gnssir_wrap.pyx":157
  *     @property
  *     def lat(self):
  *         return deref(self.arc_ptr).site.lat             # <<<<<<<<<<<<<<
@@ -20259,13 +20455,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3lat___get__(struct __pyx_o
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.lat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.lat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":263
+  /* "src/gnssir/python/gnssir_wrap.pyx":155
  *         return deref(self.arc_ptr).prn
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20284,7 +20480,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3lat___get__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":267
+/* "src/gnssir/python/gnssir_wrap.pyx":159
  *         return deref(self.arc_ptr).site.lat
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20316,7 +20512,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12ortho_height___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":269
+  /* "src/gnssir/python/gnssir_wrap.pyx":161
  *     @property
  *     def ortho_height(self):
  *         return deref(self.arc_ptr).site.ortho_height             # <<<<<<<<<<<<<<
@@ -20324,13 +20520,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12ortho_height___get__(stru
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":267
+  /* "src/gnssir/python/gnssir_wrap.pyx":159
  *         return deref(self.arc_ptr).site.lat
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20349,7 +20545,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12ortho_height___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":271
+/* "src/gnssir/python/gnssir_wrap.pyx":163
  *         return deref(self.arc_ptr).site.ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20381,7 +20577,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12geoid_height___get__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":273
+  /* "src/gnssir/python/gnssir_wrap.pyx":165
  *     @property
  *     def geoid_height(self):
  *         return deref(self.arc_ptr).site.geoid_height             # <<<<<<<<<<<<<<
@@ -20389,13 +20585,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12geoid_height___get__(stru
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.geoid_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->arc_ptr).site.geoid_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":271
+  /* "src/gnssir/python/gnssir_wrap.pyx":163
  *         return deref(self.arc_ptr).site.ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20414,7 +20610,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12geoid_height___get__(stru
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":275
+/* "src/gnssir/python/gnssir_wrap.pyx":167
  *         return deref(self.arc_ptr).site.geoid_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20446,7 +20642,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6system___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":277
+  /* "src/gnssir/python/gnssir_wrap.pyx":169
  *     @property
  *     def system(self):
  *         return gnss_sys.from_(deref(self.arc_ptr).system)             # <<<<<<<<<<<<<<
@@ -20454,13 +20650,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6system___get__(struct __py
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_((*__pyx_v_self->arc_ptr).system); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_((*__pyx_v_self->arc_ptr).system); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":275
+  /* "src/gnssir/python/gnssir_wrap.pyx":167
  *         return deref(self.arc_ptr).site.geoid_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20479,7 +20675,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6system___get__(struct __py
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":279
+/* "src/gnssir/python/gnssir_wrap.pyx":171
  *         return gnss_sys.from_(deref(self.arc_ptr).system)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20521,7 +20717,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":281
+  /* "src/gnssir/python/gnssir_wrap.pyx":173
  *     @property
  *     def elevation(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len             # <<<<<<<<<<<<<<
@@ -20531,7 +20727,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
   __pyx_t_1 = (*__pyx_v_self->arc_ptr).len;
   __pyx_v_dlen = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":282
+  /* "src/gnssir/python/gnssir_wrap.pyx":174
  *     def elevation(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -20541,7 +20737,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
   __pyx_t_2 = (__pyx_v_dlen == 0);
   if (__pyx_t_2) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":283
+    /* "src/gnssir/python/gnssir_wrap.pyx":175
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:
  *             return None             # <<<<<<<<<<<<<<
@@ -20552,7 +20748,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":282
+    /* "src/gnssir/python/gnssir_wrap.pyx":174
  *     def elevation(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -20561,7 +20757,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":284
+  /* "src/gnssir/python/gnssir_wrap.pyx":176
  *         if dlen == 0:
  *             return None
  *         cdef cvarray elev = <float[:dlen] > &(deref(self.arc_ptr).elevation[0])             # <<<<<<<<<<<<<<
@@ -20571,25 +20767,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
   __pyx_t_3 = (&((*__pyx_v_self->arc_ptr).elevation[0]));
   if (!__pyx_t_3) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 284, __pyx_L1_error)
+    __PYX_ERR(0, 176, __pyx_L1_error)
   }
-  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 176, __pyx_L1_error)
   #else
   __pyx_t_7 = PyBytes_AS_STRING(__pyx_t_6);
   #endif
-  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(float), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(float), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_elev = ((struct __pyx_array_obj *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":285
+  /* "src/gnssir/python/gnssir_wrap.pyx":177
  *             return None
  *         cdef cvarray elev = <float[:dlen] > &(deref(self.arc_ptr).elevation[0])
  *         return np.assay(elev);             # <<<<<<<<<<<<<<
@@ -20598,9 +20794,9 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_assay); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_assay); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_1 = 1;
@@ -20620,14 +20816,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
     __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_1, (2-__pyx_t_1) | (__pyx_t_1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":279
+  /* "src/gnssir/python/gnssir_wrap.pyx":171
  *         return gnss_sys.from_(deref(self.arc_ptr).system)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20651,7 +20847,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_9elevation___get__(struct _
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":287
+/* "src/gnssir/python/gnssir_wrap.pyx":179
  *         return np.assay(elev);
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20694,7 +20890,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":289
+  /* "src/gnssir/python/gnssir_wrap.pyx":181
  *     @property
  *     def time(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len             # <<<<<<<<<<<<<<
@@ -20704,7 +20900,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
   __pyx_t_1 = (*__pyx_v_self->arc_ptr).len;
   __pyx_v_dlen = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":290
+  /* "src/gnssir/python/gnssir_wrap.pyx":182
  *     def time(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -20714,7 +20910,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
   __pyx_t_2 = (__pyx_v_dlen == 0);
   if (__pyx_t_2) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":291
+    /* "src/gnssir/python/gnssir_wrap.pyx":183
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:
  *             return None             # <<<<<<<<<<<<<<
@@ -20725,7 +20921,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":290
+    /* "src/gnssir/python/gnssir_wrap.pyx":182
  *     def time(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -20734,7 +20930,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":292
+  /* "src/gnssir/python/gnssir_wrap.pyx":184
  *         if dlen == 0:
  *             return None
  *         tm=np.asarray([ datetime_from_mjd(self.arc_ptr.mjd[i]) for i in range(dlen)])             # <<<<<<<<<<<<<<
@@ -20742,21 +20938,21 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
  * 
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   { /* enter inner scope */
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_1 = __pyx_v_dlen;
     __pyx_t_7 = __pyx_t_1;
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_7genexpr__pyx_v_i = __pyx_t_8;
-      __pyx_t_9 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd((__pyx_v_self->arc_ptr->mjd[__pyx_7genexpr__pyx_v_i]), 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 292, __pyx_L1_error)
+      __pyx_t_9 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd((__pyx_v_self->arc_ptr->mjd[__pyx_7genexpr__pyx_v_i]), 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 184, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_5, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 292, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_5, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 184, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
   } /* exit inner scope */
@@ -20778,13 +20974,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
   __pyx_v_tm = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":293
+  /* "src/gnssir/python/gnssir_wrap.pyx":185
  *             return None
  *         tm=np.asarray([ datetime_from_mjd(self.arc_ptr.mjd[i]) for i in range(dlen)])
  *         return tm             # <<<<<<<<<<<<<<
@@ -20796,7 +20992,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
   __pyx_r = __pyx_v_tm;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":287
+  /* "src/gnssir/python/gnssir_wrap.pyx":179
  *         return np.assay(elev);
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20820,7 +21016,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_4time___get__(struct __pyx_
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":295
+/* "src/gnssir/python/gnssir_wrap.pyx":187
  *         return tm
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20862,7 +21058,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":297
+  /* "src/gnssir/python/gnssir_wrap.pyx":189
  *     @property
  *     def mjd(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len             # <<<<<<<<<<<<<<
@@ -20872,7 +21068,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
   __pyx_t_1 = (*__pyx_v_self->arc_ptr).len;
   __pyx_v_dlen = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":298
+  /* "src/gnssir/python/gnssir_wrap.pyx":190
  *     def mjd(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -20882,7 +21078,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
   __pyx_t_2 = (__pyx_v_dlen == 0);
   if (__pyx_t_2) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":299
+    /* "src/gnssir/python/gnssir_wrap.pyx":191
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:
  *             return None             # <<<<<<<<<<<<<<
@@ -20893,7 +21089,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":298
+    /* "src/gnssir/python/gnssir_wrap.pyx":190
  *     def mjd(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -20902,7 +21098,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":300
+  /* "src/gnssir/python/gnssir_wrap.pyx":192
  *         if dlen == 0:
  *             return None
  *         cdef cvarray mjdar = <double[:dlen] > &(deref(self.arc_ptr).mjd[0])             # <<<<<<<<<<<<<<
@@ -20912,25 +21108,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
   __pyx_t_3 = (&((*__pyx_v_self->arc_ptr).mjd[0]));
   if (!__pyx_t_3) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 300, __pyx_L1_error)
+    __PYX_ERR(0, 192, __pyx_L1_error)
   }
-  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_double); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_double); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 192, __pyx_L1_error)
   #else
   __pyx_t_7 = PyBytes_AS_STRING(__pyx_t_6);
   #endif
-  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(double), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(double), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_mjdar = ((struct __pyx_array_obj *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":301
+  /* "src/gnssir/python/gnssir_wrap.pyx":193
  *             return None
  *         cdef cvarray mjdar = <double[:dlen] > &(deref(self.arc_ptr).mjd[0])
  *         return np.asarray(mjdar)             # <<<<<<<<<<<<<<
@@ -20939,9 +21135,9 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_1 = 1;
@@ -20961,14 +21157,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
     __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_1, (2-__pyx_t_1) | (__pyx_t_1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 301, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 193, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":295
+  /* "src/gnssir/python/gnssir_wrap.pyx":187
  *         return tm
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -20992,7 +21188,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_3mjd___get__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":303
+/* "src/gnssir/python/gnssir_wrap.pyx":195
  *         return np.asarray(mjdar)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21034,7 +21230,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":305
+  /* "src/gnssir/python/gnssir_wrap.pyx":197
  *     @property
  *     def azimuth(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len             # <<<<<<<<<<<<<<
@@ -21044,7 +21240,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
   __pyx_t_1 = (*__pyx_v_self->arc_ptr).len;
   __pyx_v_dlen = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":306
+  /* "src/gnssir/python/gnssir_wrap.pyx":198
  *     def azimuth(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -21054,7 +21250,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
   __pyx_t_2 = (__pyx_v_dlen == 0);
   if (__pyx_t_2) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":307
+    /* "src/gnssir/python/gnssir_wrap.pyx":199
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:
  *             return None             # <<<<<<<<<<<<<<
@@ -21065,7 +21261,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":306
+    /* "src/gnssir/python/gnssir_wrap.pyx":198
  *     def azimuth(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -21074,7 +21270,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":308
+  /* "src/gnssir/python/gnssir_wrap.pyx":200
  *         if dlen == 0:
  *             return None
  *         cdef cvarray azim = <float[:dlen] > &(deref(self.arc_ptr).azimuth[0])             # <<<<<<<<<<<<<<
@@ -21084,25 +21280,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
   __pyx_t_3 = (&((*__pyx_v_self->arc_ptr).azimuth[0]));
   if (!__pyx_t_3) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 308, __pyx_L1_error)
+    __PYX_ERR(0, 200, __pyx_L1_error)
   }
-  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 200, __pyx_L1_error)
   #else
   __pyx_t_7 = PyBytes_AS_STRING(__pyx_t_6);
   #endif
-  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(float), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(float), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_azim = ((struct __pyx_array_obj *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":309
+  /* "src/gnssir/python/gnssir_wrap.pyx":201
  *             return None
  *         cdef cvarray azim = <float[:dlen] > &(deref(self.arc_ptr).azimuth[0])
  *         return np.asarray(azim)             # <<<<<<<<<<<<<<
@@ -21111,9 +21307,9 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_1 = 1;
@@ -21133,14 +21329,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
     __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_1, (2-__pyx_t_1) | (__pyx_t_1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 309, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":303
+  /* "src/gnssir/python/gnssir_wrap.pyx":195
  *         return np.asarray(mjdar)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21164,7 +21360,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_7azimuth___get__(struct __p
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":311
+/* "src/gnssir/python/gnssir_wrap.pyx":203
  *         return np.asarray(azim)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21206,7 +21402,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":313
+  /* "src/gnssir/python/gnssir_wrap.pyx":205
  *     @property
  *     def values(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len             # <<<<<<<<<<<<<<
@@ -21216,7 +21412,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
   __pyx_t_1 = (*__pyx_v_self->arc_ptr).len;
   __pyx_v_dlen = __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":314
+  /* "src/gnssir/python/gnssir_wrap.pyx":206
  *     def values(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -21226,7 +21422,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
   __pyx_t_2 = (__pyx_v_dlen == 0);
   if (__pyx_t_2) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":315
+    /* "src/gnssir/python/gnssir_wrap.pyx":207
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:
  *             return None             # <<<<<<<<<<<<<<
@@ -21237,7 +21433,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":314
+    /* "src/gnssir/python/gnssir_wrap.pyx":206
  *     def values(self):
  *         cdef size_t dlen=deref(self.arc_ptr).len
  *         if dlen == 0:             # <<<<<<<<<<<<<<
@@ -21246,7 +21442,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":316
+  /* "src/gnssir/python/gnssir_wrap.pyx":208
  *         if dlen == 0:
  *             return None
  *         cdef cvarray values = <float[:dlen] > &(deref(self.arc_ptr).values[0])             # <<<<<<<<<<<<<<
@@ -21256,25 +21452,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
   __pyx_t_3 = (&((*__pyx_v_self->arc_ptr).values[0]));
   if (!__pyx_t_3) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 316, __pyx_L1_error)
+    __PYX_ERR(0, 208, __pyx_L1_error)
   }
-  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 316, __pyx_L1_error)
+  __pyx_t_6 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 316, __pyx_L1_error)
+  __pyx_t_5 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)__pyx_v_dlen)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 316, __pyx_L1_error)
+  __pyx_t_7 = PyBytes_AsString(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 208, __pyx_L1_error)
   #else
   __pyx_t_7 = PyBytes_AS_STRING(__pyx_t_6);
   #endif
-  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(float), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 316, __pyx_L1_error)
+  __pyx_t_4 = __pyx_array_new(__pyx_t_5, sizeof(float), __pyx_t_7, "c", (char *) __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_values = ((struct __pyx_array_obj *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":317
+  /* "src/gnssir/python/gnssir_wrap.pyx":209
  *             return None
  *         cdef cvarray values = <float[:dlen] > &(deref(self.arc_ptr).values[0])
  *         return np.asarray(values)             # <<<<<<<<<<<<<<
@@ -21283,9 +21479,9 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 317, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_1 = 1;
@@ -21305,14 +21501,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
     __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_1, (2-__pyx_t_1) | (__pyx_t_1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 317, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
   __pyx_r = __pyx_t_6;
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":311
+  /* "src/gnssir/python/gnssir_wrap.pyx":203
  *         return np.asarray(azim)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21336,7 +21532,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_6values___get__(struct __py
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":319
+/* "src/gnssir/python/gnssir_wrap.pyx":211
  *         return np.asarray(values)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -21362,7 +21558,7 @@ static Py_ssize_t __pyx_pw_11gnssr4water_6gnssir_3Arc_9__len__(PyObject *__pyx_v
 static Py_ssize_t __pyx_pf_11gnssr4water_6gnssir_3Arc_8__len__(struct __pyx_obj_11gnssr4water_6gnssir_Arc *__pyx_v_self) {
   Py_ssize_t __pyx_r;
 
-  /* "src/gnssir/gnssir_wrap.pyx":320
+  /* "src/gnssir/python/gnssir_wrap.pyx":212
  * 
  *     def __len__(self):
  *         return deref(self.arc_ptr).len             # <<<<<<<<<<<<<<
@@ -21372,7 +21568,7 @@ static Py_ssize_t __pyx_pf_11gnssr4water_6gnssir_3Arc_8__len__(struct __pyx_obj_
   __pyx_r = (*__pyx_v_self->arc_ptr).len;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":319
+  /* "src/gnssir/python/gnssir_wrap.pyx":211
  *         return np.asarray(values)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -21589,7 +21785,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_3Arc_12__setstate_cython__(CYTHO
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":324
+/* "src/gnssir/python/gnssir_wrap.pyx":216
  * cdef class gnss_cycle:
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -21625,7 +21821,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_1__cinit__(PyObject *__py
 static int __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   int __pyx_r;
 
-  /* "src/gnssir/gnssir_wrap.pyx":325
+  /* "src/gnssir/python/gnssir_wrap.pyx":217
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):
  *         self.cycle_ptr=<_nmea_cycle*>malloc(sizeof(_nmea_cycle))             # <<<<<<<<<<<<<<
@@ -21634,7 +21830,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(struct __pyx_ob
 */
   __pyx_v_self->cycle_ptr = ((struct nmea_cycle *)malloc((sizeof(struct nmea_cycle))));
 
-  /* "src/gnssir/gnssir_wrap.pyx":326
+  /* "src/gnssir/python/gnssir_wrap.pyx":218
  *     def __cinit__(self):
  *         self.cycle_ptr=<_nmea_cycle*>malloc(sizeof(_nmea_cycle))
  *         init_nmea_cycle(self.cycle_ptr)             # <<<<<<<<<<<<<<
@@ -21643,7 +21839,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(struct __pyx_ob
 */
   (void)(init_nmea_cycle(__pyx_v_self->cycle_ptr));
 
-  /* "src/gnssir/gnssir_wrap.pyx":324
+  /* "src/gnssir/python/gnssir_wrap.pyx":216
  * cdef class gnss_cycle:
  *     cdef _nmea_cycle* cycle_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -21656,7 +21852,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle___cinit__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":328
+/* "src/gnssir/python/gnssir_wrap.pyx":220
  *         init_nmea_cycle(self.cycle_ptr)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -21680,7 +21876,7 @@ static void __pyx_pw_11gnssr4water_6gnssir_10gnss_cycle_3__dealloc__(PyObject *_
 static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":329
+  /* "src/gnssir/python/gnssir_wrap.pyx":221
  * 
  *     def __dealloc__(self):
  *         if self.cycle_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -21690,7 +21886,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __py
   __pyx_t_1 = (__pyx_v_self->cycle_ptr != NULL);
   if (__pyx_t_1) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":330
+    /* "src/gnssir/python/gnssir_wrap.pyx":222
  *     def __dealloc__(self):
  *         if self.cycle_ptr is not NULL:
  *             free(self.cycle_ptr)             # <<<<<<<<<<<<<<
@@ -21699,7 +21895,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __py
 */
     free(__pyx_v_self->cycle_ptr);
 
-    /* "src/gnssir/gnssir_wrap.pyx":329
+    /* "src/gnssir/python/gnssir_wrap.pyx":221
  * 
  *     def __dealloc__(self):
  *         if self.cycle_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -21708,7 +21904,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __py
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":328
+  /* "src/gnssir/python/gnssir_wrap.pyx":220
  *         init_nmea_cycle(self.cycle_ptr)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -21719,7 +21915,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_2__dealloc__(struct __py
   /* function exit code */
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":332
+/* "src/gnssir/python/gnssir_wrap.pyx":224
  *             free(self.cycle_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21751,7 +21947,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4time___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":334
+  /* "src/gnssir/python/gnssir_wrap.pyx":226
  *     @property
  *     def time(self):
  *         return datetime_from_mjd(self.cycle_ptr.mjd)             # <<<<<<<<<<<<<<
@@ -21759,13 +21955,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4time___get__(struc
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(__pyx_v_self->cycle_ptr->mjd, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd(__pyx_v_self->cycle_ptr->mjd, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":332
+  /* "src/gnssir/python/gnssir_wrap.pyx":224
  *             free(self.cycle_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21784,7 +21980,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4time___get__(struc
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":336
+/* "src/gnssir/python/gnssir_wrap.pyx":228
  *         return datetime_from_mjd(self.cycle_ptr.mjd)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21816,7 +22012,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view___ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":338
+  /* "src/gnssir/python/gnssir_wrap.pyx":230
  *     @property
  *     def sats_in_view(self):
  *         return deref(self.cycle_ptr).sats_in_view             # <<<<<<<<<<<<<<
@@ -21824,13 +22020,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view___ge
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->cycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":336
+  /* "src/gnssir/python/gnssir_wrap.pyx":228
  *         return datetime_from_mjd(self.cycle_ptr.mjd)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21849,7 +22045,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12sats_in_view___ge
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":340
+/* "src/gnssir/python/gnssir_wrap.pyx":232
  *         return deref(self.cycle_ptr).sats_in_view
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21881,7 +22077,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lon___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":342
+  /* "src/gnssir/python/gnssir_wrap.pyx":234
  *     @property
  *     def lon(self):
  *         return deref(self.cycle_ptr).site.lon             # <<<<<<<<<<<<<<
@@ -21889,13 +22085,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lon___get__(struct
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.lon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.lon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":340
+  /* "src/gnssir/python/gnssir_wrap.pyx":232
  *         return deref(self.cycle_ptr).sats_in_view
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21914,7 +22110,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lon___get__(struct
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":344
+/* "src/gnssir/python/gnssir_wrap.pyx":236
  *         return deref(self.cycle_ptr).site.lon
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21946,7 +22142,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lat___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":346
+  /* "src/gnssir/python/gnssir_wrap.pyx":238
  *     @property
  *     def lat(self):
  *         return deref(self.cycle_ptr).site.lat             # <<<<<<<<<<<<<<
@@ -21954,13 +22150,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lat___get__(struct
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.lat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.lat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":344
+  /* "src/gnssir/python/gnssir_wrap.pyx":236
  *         return deref(self.cycle_ptr).site.lon
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -21979,7 +22175,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3lat___get__(struct
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":348
+/* "src/gnssir/python/gnssir_wrap.pyx":240
  *         return deref(self.cycle_ptr).site.lat
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22011,7 +22207,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height___ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":350
+  /* "src/gnssir/python/gnssir_wrap.pyx":242
  *     @property
  *     def ortho_height(self):
  *         return deref(self.cycle_ptr).site.ortho_height             # <<<<<<<<<<<<<<
@@ -22019,13 +22215,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height___ge
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.ortho_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":348
+  /* "src/gnssir/python/gnssir_wrap.pyx":240
  *         return deref(self.cycle_ptr).site.lat
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22044,7 +22240,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12ortho_height___ge
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":352
+/* "src/gnssir/python/gnssir_wrap.pyx":244
  *         return deref(self.cycle_ptr).site.ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22076,7 +22272,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height___ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":354
+  /* "src/gnssir/python/gnssir_wrap.pyx":246
  *     @property
  *     def geoid_height(self):
  *         return deref(self.cycle_ptr).site.geoid_height             # <<<<<<<<<<<<<<
@@ -22084,13 +22280,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height___ge
  *     @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.geoid_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((*__pyx_v_self->cycle_ptr).site.geoid_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":352
+  /* "src/gnssir/python/gnssir_wrap.pyx":244
  *         return deref(self.cycle_ptr).site.ortho_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22109,7 +22305,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_12geoid_height___ge
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":356
+/* "src/gnssir/python/gnssir_wrap.pyx":248
  *         return deref(self.cycle_ptr).site.geoid_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22150,7 +22346,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":358
+  /* "src/gnssir/python/gnssir_wrap.pyx":250
  *     @property
  *     def system(self):
  *         return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)])             # <<<<<<<<<<<<<<
@@ -22159,21 +22355,21 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(str
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   { /* enter inner scope */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = (*__pyx_v_self->cycle_ptr).sats_in_view;
     __pyx_t_6 = __pyx_t_5;
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_8genexpr1__pyx_v_i = __pyx_t_7;
-      __pyx_t_8 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(((*__pyx_v_self->cycle_ptr).system[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 358, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(((*__pyx_v_self->cycle_ptr).system[__pyx_8genexpr1__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 358, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 250, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   } /* exit inner scope */
@@ -22195,14 +22391,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(str
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 358, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":356
+  /* "src/gnssir/python/gnssir_wrap.pyx":248
  *         return deref(self.cycle_ptr).site.geoid_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22225,7 +22421,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6system___get__(str
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":360
+/* "src/gnssir/python/gnssir_wrap.pyx":252
  *         return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22265,7 +22461,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":362
+  /* "src/gnssir/python/gnssir_wrap.pyx":254
  *     @property
  *     def prn(self):
  *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).prn[0])             # <<<<<<<<<<<<<<
@@ -22275,25 +22471,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).prn[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 362, __pyx_L1_error)
+    __PYX_ERR(0, 254, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_prn = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":363
+  /* "src/gnssir/python/gnssir_wrap.pyx":255
  *     def prn(self):
  *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).prn[0])
  *         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -22302,12 +22498,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 363, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -22327,14 +22523,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 363, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":360
+  /* "src/gnssir/python/gnssir_wrap.pyx":252
  *         return np.asarray([gnss_sys.from_(deref(self.cycle_ptr).system[i]) for i in range(deref(self.cycle_ptr).sats_in_view)])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22358,7 +22554,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_3prn___get__(struct
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":365
+/* "src/gnssir/python/gnssir_wrap.pyx":257
  *         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22398,7 +22594,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":367
+  /* "src/gnssir/python/gnssir_wrap.pyx":259
  *     @property
  *     def azimuth(self):
  *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).azimuth[0])             # <<<<<<<<<<<<<<
@@ -22408,25 +22604,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(st
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).azimuth[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 367, __pyx_L1_error)
+    __PYX_ERR(0, 259, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_azimuth = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":369
+  /* "src/gnssir/python/gnssir_wrap.pyx":261
  *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).azimuth[0])
  *         # cdef float [:] az=deref(self.cycle_ptr).azimuth
  *         return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -22435,12 +22631,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(st
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -22460,14 +22656,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(st
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":365
+  /* "src/gnssir/python/gnssir_wrap.pyx":257
  *         return np.asarray(prn[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22491,7 +22687,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_7azimuth___get__(st
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":371
+/* "src/gnssir/python/gnssir_wrap.pyx":263
  *         return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22531,7 +22727,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":373
+  /* "src/gnssir/python/gnssir_wrap.pyx":265
  *     @property
  *     def elevation(self):
  *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).elevation[0])             # <<<<<<<<<<<<<<
@@ -22541,25 +22737,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).elevation[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 373, __pyx_L1_error)
+    __PYX_ERR(0, 265, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 373, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_elev = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":375
+  /* "src/gnssir/python/gnssir_wrap.pyx":267
  *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).elevation[0])
  *         # cdef float [:] elev=deref(self.cycle_ptr).elevation
  *         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -22568,12 +22764,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -22593,14 +22789,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 375, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":371
+  /* "src/gnssir/python/gnssir_wrap.pyx":263
  *         return np.asarray(azimuth[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22624,7 +22820,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_9elevation___get__(
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":377
+/* "src/gnssir/python/gnssir_wrap.pyx":269
  *         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22664,7 +22860,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":379
+  /* "src/gnssir/python/gnssir_wrap.pyx":271
  *     @property
  *     def cnr0(self):
  *         cdef cvarray cnr0 = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).cnr0[0])             # <<<<<<<<<<<<<<
@@ -22674,25 +22870,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(struc
   __pyx_t_1 = (&((*__pyx_v_self->cycle_ptr).cnr0[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 379, __pyx_L1_error)
+    __PYX_ERR(0, 271, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 379, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cnr0 = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":381
+  /* "src/gnssir/python/gnssir_wrap.pyx":273
  *         cdef cvarray cnr0 = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.cycle_ptr).cnr0[0])
  *         # cdef float [:] cnr0=deref(self.cycle_ptr).cnr0
  *         return np.asarray(cnr0[0:deref(self.cycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -22701,12 +22897,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(struc
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 381, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 381, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_cnr0), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 381, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_cnr0), 0, (*__pyx_v_self->cycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -22726,14 +22922,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_4cnr0___get__(struc
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":377
+  /* "src/gnssir/python/gnssir_wrap.pyx":269
  *         return np.asarray(elev[0:deref(self.cycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -22961,7 +23157,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_10gnss_cycle_6__setstate_cython_
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":385
+/* "src/gnssir/python/gnssir_wrap.pyx":277
  * cdef class gnss_trans_cycle:
  *     cdef _nmea_trans_cycle* tcycle_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -22997,7 +23193,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_1__cinit__(PyObject
 static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
   int __pyx_r;
 
-  /* "src/gnssir/gnssir_wrap.pyx":386
+  /* "src/gnssir/python/gnssir_wrap.pyx":278
  *     cdef _nmea_trans_cycle* tcycle_ptr
  *     def __cinit__(self):
  *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))             # <<<<<<<<<<<<<<
@@ -23006,7 +23202,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(struct __
 */
   __pyx_v_self->tcycle_ptr = ((struct nmea_trans_cycle *)malloc((sizeof(struct nmea_trans_cycle))));
 
-  /* "src/gnssir/gnssir_wrap.pyx":387
+  /* "src/gnssir/python/gnssir_wrap.pyx":279
  *     def __cinit__(self):
  *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
  *         init_nmea_trans_cycle(self.tcycle_ptr)             # <<<<<<<<<<<<<<
@@ -23015,7 +23211,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(struct __
 */
   (void)(init_nmea_trans_cycle(__pyx_v_self->tcycle_ptr));
 
-  /* "src/gnssir/gnssir_wrap.pyx":385
+  /* "src/gnssir/python/gnssir_wrap.pyx":277
  * cdef class gnss_trans_cycle:
  *     cdef _nmea_trans_cycle* tcycle_ptr
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -23028,7 +23224,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle___cinit__(struct __
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":388
+/* "src/gnssir/python/gnssir_wrap.pyx":280
  *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
  *         init_nmea_trans_cycle(self.tcycle_ptr)
  *     def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):             # <<<<<<<<<<<<<<
@@ -23060,41 +23256,41 @@ static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__(PyObject 
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_c_clear,&__pyx_mstate_global->__pyx_n_u_c_obstr,&__pyx_mstate_global->__pyx_n_u_delta_sec,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 388, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 280, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 388, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 280, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 388, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 280, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 388, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 280, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 388, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 280, __pyx_L3_error)
       if (!values[2]) values[2] = __Pyx_NewRef(((PyObject *)__pyx_mstate_global->__pyx_int_1));
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, i); __PYX_ERR(0, 388, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, i); __PYX_ERR(0, 280, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 388, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 280, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 388, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 280, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 388, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 280, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -23106,7 +23302,7 @@ static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__(PyObject 
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 388, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, __pyx_nargs); __PYX_ERR(0, 280, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -23117,8 +23313,8 @@ static int __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_3__init__(PyObject 
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_c_clear), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, 0, "c_clear", 0))) __PYX_ERR(0, 388, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_c_obstr), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, 0, "c_obstr", 0))) __PYX_ERR(0, 388, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_c_clear), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, 0, "c_clear", 0))) __PYX_ERR(0, 280, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_c_obstr), __pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, 0, "c_obstr", 0))) __PYX_ERR(0, 280, __pyx_L1_error)
   __pyx_r = __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_2__init__(((struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *)__pyx_v_self), __pyx_v_c_clear, __pyx_v_c_obstr, __pyx_v_delta_sec);
 
   /* function exit code */
@@ -23146,17 +23342,17 @@ static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_2__init__(struct __
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":391
+  /* "src/gnssir/python/gnssir_wrap.pyx":283
  *         # self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
  *         # init_nmea_trans_cycle(self.tcycle_ptr)
  *         cdef int err=pair_nmea_trans_cycle(c_clear.cycle_ptr,c_obstr.cycle_ptr , delta_sec, self.tcycle_ptr)             # <<<<<<<<<<<<<<
  *         # if err != 0:
  *             # raise RuntimeError("No transmissivity pairs found")
 */
-  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_delta_sec); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_delta_sec); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 283, __pyx_L1_error)
   __pyx_v_err = pair_nmea_trans_cycle(__pyx_v_c_clear->cycle_ptr, __pyx_v_c_obstr->cycle_ptr, __pyx_t_1, __pyx_v_self->tcycle_ptr);
 
-  /* "src/gnssir/gnssir_wrap.pyx":388
+  /* "src/gnssir/python/gnssir_wrap.pyx":280
  *         self.tcycle_ptr=<_nmea_trans_cycle*>malloc(sizeof(_nmea_trans_cycle))
  *         init_nmea_trans_cycle(self.tcycle_ptr)
  *     def __init__(self,c_clear:gnss_cycle,c_obstr:gnss_cycle,delta_sec=1):             # <<<<<<<<<<<<<<
@@ -23174,7 +23370,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_2__init__(struct __
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":395
+/* "src/gnssir/python/gnssir_wrap.pyx":287
  *             # raise RuntimeError("No transmissivity pairs found")
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -23198,7 +23394,7 @@ static void __pyx_pw_11gnssr4water_6gnssir_16gnss_trans_cycle_5__dealloc__(PyObj
 static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struct __pyx_obj_11gnssr4water_6gnssir_gnss_trans_cycle *__pyx_v_self) {
   int __pyx_t_1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":396
+  /* "src/gnssir/python/gnssir_wrap.pyx":288
  * 
  *     def __dealloc__(self):
  *         if self.tcycle_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -23208,7 +23404,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struc
   __pyx_t_1 = (__pyx_v_self->tcycle_ptr != NULL);
   if (__pyx_t_1) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":397
+    /* "src/gnssir/python/gnssir_wrap.pyx":289
  *     def __dealloc__(self):
  *         if self.tcycle_ptr is not NULL:
  *             free(self.tcycle_ptr)             # <<<<<<<<<<<<<<
@@ -23217,7 +23413,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struc
 */
     free(__pyx_v_self->tcycle_ptr);
 
-    /* "src/gnssir/gnssir_wrap.pyx":396
+    /* "src/gnssir/python/gnssir_wrap.pyx":288
  * 
  *     def __dealloc__(self):
  *         if self.tcycle_ptr is not NULL:             # <<<<<<<<<<<<<<
@@ -23226,7 +23422,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struc
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":395
+  /* "src/gnssir/python/gnssir_wrap.pyx":287
  *             # raise RuntimeError("No transmissivity pairs found")
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -23237,7 +23433,7 @@ static void __pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4__dealloc__(struc
   /* function exit code */
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":399
+/* "src/gnssir/python/gnssir_wrap.pyx":291
  *             free(self.tcycle_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23273,7 +23469,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":401
+  /* "src/gnssir/python/gnssir_wrap.pyx":293
  *     @property
  *     def time(self):
  *         tm=[datetime_from_mjd(self.tcycle_ptr.mjd[i]) for i in range(2)]             # <<<<<<<<<<<<<<
@@ -23281,20 +23477,20 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__
  * 
 */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 401, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     for (__pyx_t_2 = 0; __pyx_t_2 < 2; __pyx_t_2+=1) {
       __pyx_8genexpr2__pyx_v_i = __pyx_t_2;
-      __pyx_t_3 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd((__pyx_v_self->tcycle_ptr->mjd[__pyx_8genexpr2__pyx_v_i]), 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
+      __pyx_t_3 = __pyx_f_11gnssr4water_6gnssir_datetime_from_mjd((__pyx_v_self->tcycle_ptr->mjd[__pyx_8genexpr2__pyx_v_i]), 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 401, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 293, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   } /* exit inner scope */
   __pyx_v_tm = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":402
+  /* "src/gnssir/python/gnssir_wrap.pyx":294
  *     def time(self):
  *         tm=[datetime_from_mjd(self.tcycle_ptr.mjd[i]) for i in range(2)]
  *         return tm             # <<<<<<<<<<<<<<
@@ -23306,7 +23502,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__
   __pyx_r = __pyx_v_tm;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":399
+  /* "src/gnssir/python/gnssir_wrap.pyx":291
  *             free(self.tcycle_ptr)
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23327,7 +23523,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4time___get__
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":404
+/* "src/gnssir/python/gnssir_wrap.pyx":296
  *         return tm
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23359,7 +23555,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_vie
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":406
+  /* "src/gnssir/python/gnssir_wrap.pyx":298
  *     @property
  *     def sats_in_view(self):
  *         return deref(self.tcycle_ptr).sats_in_view             # <<<<<<<<<<<<<<
@@ -23367,13 +23563,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_vie
  *     # @property
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->tcycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 406, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int((*__pyx_v_self->tcycle_ptr).sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":404
+  /* "src/gnssir/python/gnssir_wrap.pyx":296
  *         return tm
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23392,7 +23588,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_12sats_in_vie
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":424
+/* "src/gnssir/python/gnssir_wrap.pyx":316
  *         # return deref(self.tcycle_ptr).geoid_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23433,7 +23629,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":426
+  /* "src/gnssir/python/gnssir_wrap.pyx":318
  *     @property
  *     def system(self):
  *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])             # <<<<<<<<<<<<<<
@@ -23442,21 +23638,21 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   { /* enter inner scope */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = (*__pyx_v_self->tcycle_ptr).sats_in_view;
     __pyx_t_6 = __pyx_t_5;
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_8genexpr3__pyx_v_i = __pyx_t_7;
-      __pyx_t_8 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(((*__pyx_v_self->tcycle_ptr).system[__pyx_8genexpr3__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 426, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(((*__pyx_v_self->tcycle_ptr).system[__pyx_8genexpr3__pyx_v_i])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 318, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 426, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 318, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
   } /* exit inner scope */
@@ -23478,14 +23674,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":424
+  /* "src/gnssir/python/gnssir_wrap.pyx":316
  *         # return deref(self.tcycle_ptr).geoid_height
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23508,7 +23704,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_6system___get
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":428
+/* "src/gnssir/python/gnssir_wrap.pyx":320
  *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23548,7 +23744,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":430
+  /* "src/gnssir/python/gnssir_wrap.pyx":322
  *     @property
  *     def prn(self):
  *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])             # <<<<<<<<<<<<<<
@@ -23558,25 +23754,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(
   __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).prn[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 430, __pyx_L1_error)
+    __PYX_ERR(0, 322, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_int); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(int), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_prn = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":431
+  /* "src/gnssir/python/gnssir_wrap.pyx":323
  *     def prn(self):
  *         cdef cvarray prn = <int[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).prn[0])
  *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -23585,12 +23781,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 431, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_prn), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -23610,14 +23806,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 431, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":428
+  /* "src/gnssir/python/gnssir_wrap.pyx":320
  *         return np.asarray([gnss_sys.from_(deref(self.tcycle_ptr).system[i]) for i in range(deref(self.tcycle_ptr).sats_in_view)])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23641,7 +23837,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_3prn___get__(
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":433
+/* "src/gnssir/python/gnssir_wrap.pyx":325
  *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23681,7 +23877,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":435
+  /* "src/gnssir/python/gnssir_wrap.pyx":327
  *     @property
  *     def azimuth(self):
  *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])             # <<<<<<<<<<<<<<
@@ -23691,25 +23887,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___ge
   __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).azimuth[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 435, __pyx_L1_error)
+    __PYX_ERR(0, 327, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_azimuth = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":436
+  /* "src/gnssir/python/gnssir_wrap.pyx":328
  *     def azimuth(self):
  *         cdef cvarray azimuth = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).azimuth[0])
  *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -23718,12 +23914,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___ge
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_azimuth), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -23743,14 +23939,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___ge
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 436, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":433
+  /* "src/gnssir/python/gnssir_wrap.pyx":325
  *         return np.asarray(prn[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23774,7 +23970,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_7azimuth___ge
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":438
+/* "src/gnssir/python/gnssir_wrap.pyx":330
  *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23814,7 +24010,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":440
+  /* "src/gnssir/python/gnssir_wrap.pyx":332
  *     @property
  *     def elevation(self):
  *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])             # <<<<<<<<<<<<<<
@@ -23824,25 +24020,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___
   __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).elevation[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 440, __pyx_L1_error)
+    __PYX_ERR(0, 332, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_elev = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":441
+  /* "src/gnssir/python/gnssir_wrap.pyx":333
  *     def elevation(self):
  *         cdef cvarray elev = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).elevation[0])
  *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -23851,12 +24047,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_elev), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -23876,14 +24072,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 441, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":438
+  /* "src/gnssir/python/gnssir_wrap.pyx":330
  *         return np.asarray(azimuth[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23907,7 +24103,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_9elevation___
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":443
+/* "src/gnssir/python/gnssir_wrap.pyx":335
  *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -23948,7 +24144,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":445
+  /* "src/gnssir/python/gnssir_wrap.pyx":337
  *     @property
  *     def cnr0(self):
  *         cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])             # <<<<<<<<<<<<<<
@@ -23958,25 +24154,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__
   __pyx_t_1 = (&(((*__pyx_v_self->tcycle_ptr).cnr0[0])[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 445, __pyx_L1_error)
+    __PYX_ERR(0, 337, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)2), ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)2), ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 337, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 337, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cnr0 = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":446
+  /* "src/gnssir/python/gnssir_wrap.pyx":338
  *     def cnr0(self):
  *         cdef cvarray cnr0 = <float[:2,:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).cnr0[0][0])
  *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -23985,25 +24181,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyLong_From_int((*__pyx_v_self->tcycle_ptr).sats_in_view); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_From_int((*__pyx_v_self->tcycle_ptr).sats_in_view); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_8 = PySlice_New(__pyx_mstate_global->__pyx_int_0, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_8 = PySlice_New(__pyx_mstate_global->__pyx_int_0, __pyx_t_6, Py_None); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_mstate_global->__pyx_slice[0]) != (0)) __PYX_ERR(0, 446, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_mstate_global->__pyx_slice[0]) != (0)) __PYX_ERR(0, 338, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 446, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 338, __pyx_L1_error);
   __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_cnr0), __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_cnr0), __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_9 = 1;
@@ -24024,14 +24220,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 446, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":443
+  /* "src/gnssir/python/gnssir_wrap.pyx":335
  *         return np.asarray(elev[0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -24056,7 +24252,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_4cnr0___get__
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":448
+/* "src/gnssir/python/gnssir_wrap.pyx":340
  *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -24096,7 +24292,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":450
+  /* "src/gnssir/python/gnssir_wrap.pyx":342
  *     @property
  *     def gamma(self):
  *         cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])             # <<<<<<<<<<<<<<
@@ -24106,25 +24302,25 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get_
   __pyx_t_1 = (&((*__pyx_v_self->tcycle_ptr).gamma[0]));
   if (!__pyx_t_1) {
     PyErr_SetString(PyExc_ValueError,"Cannot create cython.array from NULL pointer");
-    __PYX_ERR(0, 450, __pyx_L1_error)
+    __PYX_ERR(0, 342, __pyx_L1_error)
   }
-  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 450, __pyx_L1_error)
+  __pyx_t_4 = __pyx_format_from_typeinfo(&__Pyx_TypeInfo_float); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 342, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 450, __pyx_L1_error)
+  __pyx_t_3 = Py_BuildValue("("  __PYX_BUILD_PY_SSIZE_T  ")", ((Py_ssize_t)NMEA_GSV_MAX_SATELLITES)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 342, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 450, __pyx_L1_error)
+  __pyx_t_5 = PyBytes_AsString(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 342, __pyx_L1_error)
   #else
   __pyx_t_5 = PyBytes_AS_STRING(__pyx_t_4);
   #endif
-  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 450, __pyx_L1_error)
+  __pyx_t_2 = __pyx_array_new(__pyx_t_3, sizeof(float), __pyx_t_5, "c", (char *) __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 342, __pyx_L1_error)
   __Pyx_GOTREF((PyObject *)__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_gamma = ((struct __pyx_array_obj *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":451
+  /* "src/gnssir/python/gnssir_wrap.pyx":343
  *     def gamma(self):
  *         cdef cvarray gamma = <float[:NMEA_GSV_MAX_SATELLITES] > &(deref(self.tcycle_ptr).gamma[0])
  *         return np.asarray(gamma[0:deref(self.tcycle_ptr).sats_in_view])             # <<<<<<<<<<<<<<
@@ -24133,12 +24329,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get_
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_gamma), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_gamma), 0, (*__pyx_v_self->tcycle_ptr).sats_in_view, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_8 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -24158,14 +24354,14 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_5gamma___get_
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 451, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 343, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":448
+  /* "src/gnssir/python/gnssir_wrap.pyx":340
  *         return np.asarray(cnr0[:,0:deref(self.tcycle_ptr).sats_in_view])
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -24393,7 +24589,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_16gnss_trans_cycle_8__setstate_c
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":457
+/* "src/gnssir/python/gnssir_wrap.pyx":349
  *     cdef gnssrstream _sid
  *     cdef public str name
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -24423,32 +24619,32 @@ static int __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_1__init__(PyObject *__pyx_v_
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filename,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 457, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 349, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 457, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 349, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 457, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 349, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, i); __PYX_ERR(0, 457, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, i); __PYX_ERR(0, 349, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 457, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 349, __pyx_L3_error)
     }
     __pyx_v_filename = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 457, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 349, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -24485,7 +24681,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":458
+  /* "src/gnssir/python/gnssir_wrap.pyx":350
  *     cdef public str name
  *     def __init__(self, filename):
  *         self.name = filename             # <<<<<<<<<<<<<<
@@ -24494,14 +24690,14 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
 */
   __pyx_t_1 = __pyx_v_filename;
   __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 458, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->name);
   __Pyx_DECREF(__pyx_v_self->name);
   __pyx_v_self->name = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":459
+  /* "src/gnssir/python/gnssir_wrap.pyx":351
  *     def __init__(self, filename):
  *         self.name = filename
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)             # <<<<<<<<<<<<<<
@@ -24510,15 +24706,15 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
 */
   if (unlikely(__pyx_v_self->name == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
-    __PYX_ERR(0, 459, __pyx_L1_error)
+    __PYX_ERR(0, 351, __pyx_L1_error)
   }
-  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_self->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_self->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_t_1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_t_1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 351, __pyx_L1_error)
   __pyx_v_err = open_stream(__pyx_t_2, (&__pyx_v_self->_sid));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":460
+  /* "src/gnssir/python/gnssir_wrap.pyx":352
  *         self.name = filename
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)
  *         if err is not 0:             # <<<<<<<<<<<<<<
@@ -24528,7 +24724,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
   __pyx_t_3 = (__pyx_v_err != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":461
+    /* "src/gnssir/python/gnssir_wrap.pyx":353
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)
  *         if err is not 0:
  *             raise ValueError(f"Error opening {self.name}")             # <<<<<<<<<<<<<<
@@ -24536,9 +24732,9 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
  * 
 */
     __pyx_t_4 = NULL;
-    __pyx_t_5 = __Pyx_PyUnicode_Unicode(__pyx_v_self->name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 461, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_Unicode(__pyx_v_self->name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Error_opening, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 461, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Error_opening, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_7 = 1;
@@ -24547,14 +24743,14 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
       __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 461, __pyx_L1_error)
+    __PYX_ERR(0, 353, __pyx_L1_error)
 
-    /* "src/gnssir/gnssir_wrap.pyx":460
+    /* "src/gnssir/python/gnssir_wrap.pyx":352
  *         self.name = filename
  *         err = open_stream(self.name.encode('utf-8'),&self._sid)
  *         if err is not 0:             # <<<<<<<<<<<<<<
@@ -24563,7 +24759,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":462
+  /* "src/gnssir/python/gnssir_wrap.pyx":354
  *         if err is not 0:
  *             raise ValueError(f"Error opening {self.name}")
  *         self._eof = 0             # <<<<<<<<<<<<<<
@@ -24572,7 +24768,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
 */
   __pyx_v_self->_eof = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":457
+  /* "src/gnssir/python/gnssir_wrap.pyx":349
  *     cdef gnssrstream _sid
  *     cdef public str name
  *     def __init__(self, filename):             # <<<<<<<<<<<<<<
@@ -24595,7 +24791,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile___init__(struct __pyx_obj_11
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":464
+/* "src/gnssir/python/gnssir_wrap.pyx":356
  *         self._eof = 0
  * 
  *     def eof(self):             # <<<<<<<<<<<<<<
@@ -24654,7 +24850,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_2eof(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("eof", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":465
+  /* "src/gnssir/python/gnssir_wrap.pyx":357
  * 
  *     def eof(self):
  *         return self._eof == 1             # <<<<<<<<<<<<<<
@@ -24662,13 +24858,13 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_2eof(struct __pyx_obj_
  *     def __enter__(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_v_self->_eof == 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong((__pyx_v_self->_eof == 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":464
+  /* "src/gnssir/python/gnssir_wrap.pyx":356
  *         self._eof = 0
  * 
  *     def eof(self):             # <<<<<<<<<<<<<<
@@ -24687,7 +24883,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_2eof(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":467
+/* "src/gnssir/python/gnssir_wrap.pyx":359
  *         return self._eof == 1
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
@@ -24742,7 +24938,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4__enter__(struct __py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__enter__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":468
+  /* "src/gnssir/python/gnssir_wrap.pyx":360
  * 
  *     def __enter__(self):
  *         return self             # <<<<<<<<<<<<<<
@@ -24754,7 +24950,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4__enter__(struct __py
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":467
+  /* "src/gnssir/python/gnssir_wrap.pyx":359
  *         return self._eof == 1
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
@@ -24769,7 +24965,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4__enter__(struct __py
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":470
+/* "src/gnssir/python/gnssir_wrap.pyx":362
  *         return self
  * 
  *     def __exit__(self, *args):             # <<<<<<<<<<<<<<
@@ -24817,7 +25013,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_6__exit__(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__exit__", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":471
+  /* "src/gnssir/python/gnssir_wrap.pyx":363
  * 
  *     def __exit__(self, *args):
  *         self.close()             # <<<<<<<<<<<<<<
@@ -24831,12 +25027,12 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_6__exit__(struct __pyx
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_close, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":470
+  /* "src/gnssir/python/gnssir_wrap.pyx":362
  *         return self
  * 
  *     def __exit__(self, *args):             # <<<<<<<<<<<<<<
@@ -24858,7 +25054,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_6__exit__(struct __pyx
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":473
+/* "src/gnssir/python/gnssir_wrap.pyx":365
  *         self.close()
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
@@ -24913,7 +25109,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("close", 0);
 
-  /* "src/gnssir/gnssir_wrap.pyx":474
+  /* "src/gnssir/python/gnssir_wrap.pyx":366
  * 
  *     def close(self):
  *         self._eof = 1             # <<<<<<<<<<<<<<
@@ -24922,7 +25118,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(struct __pyx_ob
 */
   __pyx_v_self->_eof = 1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":475
+  /* "src/gnssir/python/gnssir_wrap.pyx":367
  *     def close(self):
  *         self._eof = 1
  *         close_stream(&self._sid)             # <<<<<<<<<<<<<<
@@ -24931,7 +25127,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(struct __pyx_ob
 */
   close_stream((&__pyx_v_self->_sid));
 
-  /* "src/gnssir/gnssir_wrap.pyx":473
+  /* "src/gnssir/python/gnssir_wrap.pyx":365
  *         self.close()
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
@@ -24946,7 +25142,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_8close(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":477
+/* "src/gnssir/python/gnssir_wrap.pyx":369
  *         close_stream(&self._sid)
  * 
  *     cpdef readline(self):             # <<<<<<<<<<<<<<
@@ -24992,7 +25188,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_readline); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_readline); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_11gnssr4water_6gnssir_8NMEAFile_11readline)) {
         __Pyx_XDECREF(__pyx_r);
@@ -25016,7 +25212,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
           __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __pyx_r = __pyx_t_2;
@@ -25037,7 +25233,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
     #endif
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":479
+  /* "src/gnssir/python/gnssir_wrap.pyx":371
  *     cpdef readline(self):
  * 
  *         cdef int err=0             # <<<<<<<<<<<<<<
@@ -25046,7 +25242,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
 */
   __pyx_v_err = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":481
+  /* "src/gnssir/python/gnssir_wrap.pyx":373
  *         cdef int err=0
  *         cdef char nmealine[82]
  *         err=readline(&self._sid,&nmealine[0],82)             # <<<<<<<<<<<<<<
@@ -25055,7 +25251,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
 */
   __pyx_v_err = readline((&__pyx_v_self->_sid), (&(__pyx_v_nmealine[0])), 82);
 
-  /* "src/gnssir/gnssir_wrap.pyx":482
+  /* "src/gnssir/python/gnssir_wrap.pyx":374
  *         cdef char nmealine[82]
  *         err=readline(&self._sid,&nmealine[0],82)
  *         if err == _GNSSR_EOF :             # <<<<<<<<<<<<<<
@@ -25065,7 +25261,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
   __pyx_t_6 = (__pyx_v_err == GNSSR_EOF);
   if (__pyx_t_6) {
 
-    /* "src/gnssir/gnssir_wrap.pyx":484
+    /* "src/gnssir/python/gnssir_wrap.pyx":376
  *         if err == _GNSSR_EOF :
  *         #eof encountered
  *             nmealine[0]=0             # <<<<<<<<<<<<<<
@@ -25074,7 +25270,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
 */
     (__pyx_v_nmealine[0]) = 0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":485
+    /* "src/gnssir/python/gnssir_wrap.pyx":377
  *         #eof encountered
  *             nmealine[0]=0
  *             self._eof = 1             # <<<<<<<<<<<<<<
@@ -25083,7 +25279,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
 */
     __pyx_v_self->_eof = 1;
 
-    /* "src/gnssir/gnssir_wrap.pyx":482
+    /* "src/gnssir/python/gnssir_wrap.pyx":374
  *         cdef char nmealine[82]
  *         err=readline(&self._sid,&nmealine[0],82)
  *         if err == _GNSSR_EOF :             # <<<<<<<<<<<<<<
@@ -25092,7 +25288,7 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
 */
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":487
+  /* "src/gnssir/python/gnssir_wrap.pyx":379
  *             self._eof = 1
  * 
  *         return nmealine             # <<<<<<<<<<<<<<
@@ -25100,13 +25296,13 @@ static PyObject *__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(struct __pyx_o
  *     def readlines(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_nmealine); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 487, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_nmealine); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":477
+  /* "src/gnssir/python/gnssir_wrap.pyx":369
  *         close_stream(&self._sid)
  * 
  *     cpdef readline(self):             # <<<<<<<<<<<<<<
@@ -25179,7 +25375,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_10readline(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("readline", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25197,7 +25393,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_10readline(struct __py
 }
 static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "src/gnssir/gnssir_wrap.pyx":489
+/* "src/gnssir/python/gnssir_wrap.pyx":381
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
@@ -25259,7 +25455,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_12readlines(struct __p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct__readlines *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 489, __pyx_L1_error)
+    __PYX_ERR(0, 381, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -25267,7 +25463,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_12readlines(struct __p
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 489, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 381, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -25305,23 +25501,23 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 489, __pyx_L1_error)
+    __PYX_ERR(0, 381, __pyx_L1_error)
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":490
+  /* "src/gnssir/python/gnssir_wrap.pyx":382
  * 
  *     def readlines(self):
  *         line = self.readline()             # <<<<<<<<<<<<<<
  * 
  *         while len(line) != 0:
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_line = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":492
+  /* "src/gnssir/python/gnssir_wrap.pyx":384
  *         line = self.readline()
  * 
  *         while len(line) != 0:             # <<<<<<<<<<<<<<
@@ -25329,11 +25525,11 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
  *             line = self.readline()
 */
   while (1) {
-    __pyx_t_2 = PyObject_Length(__pyx_cur_scope->__pyx_v_line); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_2 = PyObject_Length(__pyx_cur_scope->__pyx_v_line); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 384, __pyx_L1_error)
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (!__pyx_t_3) break;
 
-    /* "src/gnssir/gnssir_wrap.pyx":493
+    /* "src/gnssir/python/gnssir_wrap.pyx":385
  * 
  *         while len(line) != 0:
  *             yield line             # <<<<<<<<<<<<<<
@@ -25349,16 +25545,16 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
     __pyx_generator->resume_label = 1;
     return __pyx_r;
     __pyx_L6_resume_from_yield:;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 493, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 385, __pyx_L1_error)
 
-    /* "src/gnssir/gnssir_wrap.pyx":494
+    /* "src/gnssir/python/gnssir_wrap.pyx":386
  *         while len(line) != 0:
  *             yield line
  *             line = self.readline()             # <<<<<<<<<<<<<<
  *         self._eof = 1
  *         return StopIteration
 */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
+    __pyx_t_1 = ((struct __pyx_vtabstruct_11gnssr4water_6gnssir_NMEAFile *)__pyx_cur_scope->__pyx_v_self->__pyx_vtab)->readline(__pyx_cur_scope->__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_line);
     __Pyx_DECREF_SET(__pyx_cur_scope->__pyx_v_line, __pyx_t_1);
@@ -25366,7 +25562,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
     __pyx_t_1 = 0;
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":495
+  /* "src/gnssir/python/gnssir_wrap.pyx":387
  *             yield line
  *             line = self.readline()
  *         self._eof = 1             # <<<<<<<<<<<<<<
@@ -25375,7 +25571,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
 */
   __pyx_cur_scope->__pyx_v_self->_eof = 1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":496
+  /* "src/gnssir/python/gnssir_wrap.pyx":388
  *             line = self.readline()
  *         self._eof = 1
  *         return StopIteration             # <<<<<<<<<<<<<<
@@ -25388,7 +25584,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "src/gnssir/gnssir_wrap.pyx":489
+  /* "src/gnssir/python/gnssir_wrap.pyx":381
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
@@ -25415,7 +25611,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_14generator(__pyx_Coro
 }
 static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "src/gnssir/gnssir_wrap.pyx":498
+/* "src/gnssir/python/gnssir_wrap.pyx":390
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
@@ -25477,7 +25673,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_15readnmeas(struct __p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 498, __pyx_L1_error)
+    __PYX_ERR(0, 390, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -25485,7 +25681,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_15readnmeas(struct __p
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 498, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -25527,10 +25723,10 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 498, __pyx_L1_error)
+    __PYX_ERR(0, 390, __pyx_L1_error)
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":500
+  /* "src/gnssir/python/gnssir_wrap.pyx":392
  *     def readnmeas(self):
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():             # <<<<<<<<<<<<<<
@@ -25544,7 +25740,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_readlines, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 392, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -25552,9 +25748,9 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
     __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 392, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 500, __pyx_L1_error)
+    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 392, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -25563,7 +25759,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 500, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -25573,7 +25769,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 500, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -25584,13 +25780,13 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
         #endif
         ++__pyx_t_4;
       }
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 392, __pyx_L1_error)
     } else {
       __pyx_t_1 = __pyx_t_5(__pyx_t_2);
       if (unlikely(!__pyx_t_1)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 500, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 392, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -25602,32 +25798,32 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src/gnssir/gnssir_wrap.pyx":501
+    /* "src/gnssir/python/gnssir_wrap.pyx":393
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():
  *             nmea_t = check_nmea(nmea)             # <<<<<<<<<<<<<<
  *             yield nmea_t,nmea
  *         self._eof = 1
 */
-    __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_cur_scope->__pyx_v_nmea); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 501, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_AsWritableString(__pyx_cur_scope->__pyx_v_nmea); if (unlikely((!__pyx_t_6) && PyErr_Occurred())) __PYX_ERR(0, 393, __pyx_L1_error)
     __pyx_cur_scope->__pyx_v_nmea_t = check_nmea(__pyx_t_6);
 
-    /* "src/gnssir/gnssir_wrap.pyx":502
+    /* "src/gnssir/python/gnssir_wrap.pyx":394
  *         for nmea in self.readlines():
  *             nmea_t = check_nmea(nmea)
  *             yield nmea_t,nmea             # <<<<<<<<<<<<<<
  *         self._eof = 1
  *         return StopIteration
 */
-    __pyx_t_1 = __Pyx_Enum_11gnssr4water_6gnssir_enum__space_nmea_type_to_py(__pyx_cur_scope->__pyx_v_nmea_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Enum_4nmea_enum__space_nmea_type_to_py(__pyx_cur_scope->__pyx_v_nmea_t); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 502, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 394, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_1);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 502, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 394, __pyx_L1_error);
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_nmea);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_nmea);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_cur_scope->__pyx_v_nmea) != (0)) __PYX_ERR(0, 502, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_cur_scope->__pyx_v_nmea) != (0)) __PYX_ERR(0, 394, __pyx_L1_error);
     __pyx_t_1 = 0;
     __pyx_r = __pyx_t_7;
     __pyx_t_7 = 0;
@@ -25647,9 +25843,9 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_4 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 502, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 394, __pyx_L1_error)
 
-    /* "src/gnssir/gnssir_wrap.pyx":500
+    /* "src/gnssir/python/gnssir_wrap.pyx":392
  *     def readnmeas(self):
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():             # <<<<<<<<<<<<<<
@@ -25659,7 +25855,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":503
+  /* "src/gnssir/python/gnssir_wrap.pyx":395
  *             nmea_t = check_nmea(nmea)
  *             yield nmea_t,nmea
  *         self._eof = 1             # <<<<<<<<<<<<<<
@@ -25668,7 +25864,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
 */
   __pyx_cur_scope->__pyx_v_self->_eof = 1;
 
-  /* "src/gnssir/gnssir_wrap.pyx":504
+  /* "src/gnssir/python/gnssir_wrap.pyx":396
  *             yield nmea_t,nmea
  *         self._eof = 1
  *         return StopIteration             # <<<<<<<<<<<<<<
@@ -25681,7 +25877,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "src/gnssir/gnssir_wrap.pyx":498
+  /* "src/gnssir/python/gnssir_wrap.pyx":390
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
@@ -25710,7 +25906,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_17generator1(__pyx_Cor
 }
 static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "src/gnssir/gnssir_wrap.pyx":506
+/* "src/gnssir/python/gnssir_wrap.pyx":398
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
@@ -25772,7 +25968,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_18readcycles(struct __
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 506, __pyx_L1_error)
+    __PYX_ERR(0, 398, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -25780,7 +25976,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_18readcycles(struct __
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 506, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir); if (unlikely(!gen)) __PYX_ERR(0, 398, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -25819,10 +26015,10 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 506, __pyx_L1_error)
+    __PYX_ERR(0, 398, __pyx_L1_error)
   }
 
-  /* "src/gnssir/gnssir_wrap.pyx":507
+  /* "src/gnssir/python/gnssir_wrap.pyx":399
  * 
  *     def readcycles(self):
  *         cdef gnss_cycle cycle=gnss_cycle()             # <<<<<<<<<<<<<<
@@ -25835,14 +26031,14 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 507, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
     __Pyx_GOTREF((PyObject *)__pyx_t_1);
   }
   __Pyx_GIVEREF((PyObject *)__pyx_t_1);
   __pyx_cur_scope->__pyx_v_cycle = ((struct __pyx_obj_11gnssr4water_6gnssir_gnss_cycle *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":508
+  /* "src/gnssir/python/gnssir_wrap.pyx":400
  *     def readcycles(self):
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS             # <<<<<<<<<<<<<<
@@ -25851,7 +26047,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
 */
   __pyx_cur_scope->__pyx_v_err = GNSSR_SUCCESS;
 
-  /* "src/gnssir/gnssir_wrap.pyx":509
+  /* "src/gnssir/python/gnssir_wrap.pyx":401
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS
  *         while err == _GNSSR_SUCCESS:             # <<<<<<<<<<<<<<
@@ -25862,7 +26058,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
     __pyx_t_4 = (__pyx_cur_scope->__pyx_v_err == GNSSR_SUCCESS);
     if (!__pyx_t_4) break;
 
-    /* "src/gnssir/gnssir_wrap.pyx":510
+    /* "src/gnssir/python/gnssir_wrap.pyx":402
  *         cdef int err=_GNSSR_SUCCESS
  *         while err == _GNSSR_SUCCESS:
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)             # <<<<<<<<<<<<<<
@@ -25871,7 +26067,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
 */
     __pyx_cur_scope->__pyx_v_err = read_nmea_cycle((&__pyx_cur_scope->__pyx_v_self->_sid), __pyx_cur_scope->__pyx_v_cycle->cycle_ptr);
 
-    /* "src/gnssir/gnssir_wrap.pyx":511
+    /* "src/gnssir/python/gnssir_wrap.pyx":403
  *         while err == _GNSSR_SUCCESS:
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:             # <<<<<<<<<<<<<<
@@ -25881,22 +26077,22 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
     __pyx_t_4 = (__pyx_cur_scope->__pyx_v_err == GNSSR_SUCCESS);
     if (__pyx_t_4) {
 
-      /* "src/gnssir/gnssir_wrap.pyx":512
+      /* "src/gnssir/python/gnssir_wrap.pyx":404
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:
  *                 if cycle.sats_in_view > 0:             # <<<<<<<<<<<<<<
  *                     yield cycle
  *             elif err == _GNSSR_EOF:
 */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_cycle), __pyx_mstate_global->__pyx_n_u_sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 512, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_cycle), __pyx_mstate_global->__pyx_n_u_sats_in_view); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_mstate_global->__pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 512, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_mstate_global->__pyx_int_0, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 404, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 512, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 404, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_4) {
 
-        /* "src/gnssir/gnssir_wrap.pyx":513
+        /* "src/gnssir/python/gnssir_wrap.pyx":405
  *             if err == _GNSSR_SUCCESS:
  *                 if cycle.sats_in_view > 0:
  *                     yield cycle             # <<<<<<<<<<<<<<
@@ -25912,9 +26108,9 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
         __pyx_generator->resume_label = 1;
         return __pyx_r;
         __pyx_L8_resume_from_yield:;
-        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 513, __pyx_L1_error)
+        if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 405, __pyx_L1_error)
 
-        /* "src/gnssir/gnssir_wrap.pyx":512
+        /* "src/gnssir/python/gnssir_wrap.pyx":404
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:
  *                 if cycle.sats_in_view > 0:             # <<<<<<<<<<<<<<
@@ -25923,7 +26119,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
 */
       }
 
-      /* "src/gnssir/gnssir_wrap.pyx":511
+      /* "src/gnssir/python/gnssir_wrap.pyx":403
  *         while err == _GNSSR_SUCCESS:
  *             err = read_nmea_cycle(&self._sid,cycle.cycle_ptr)
  *             if err == _GNSSR_SUCCESS:             # <<<<<<<<<<<<<<
@@ -25933,7 +26129,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
       goto __pyx_L6;
     }
 
-    /* "src/gnssir/gnssir_wrap.pyx":514
+    /* "src/gnssir/python/gnssir_wrap.pyx":406
  *                 if cycle.sats_in_view > 0:
  *                     yield cycle
  *             elif err == _GNSSR_EOF:             # <<<<<<<<<<<<<<
@@ -25943,7 +26139,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
     __pyx_t_4 = (__pyx_cur_scope->__pyx_v_err == GNSSR_EOF);
     if (__pyx_t_4) {
 
-      /* "src/gnssir/gnssir_wrap.pyx":515
+      /* "src/gnssir/python/gnssir_wrap.pyx":407
  *                     yield cycle
  *             elif err == _GNSSR_EOF:
  *                 self._eof = 1             # <<<<<<<<<<<<<<
@@ -25952,7 +26148,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
 */
       __pyx_cur_scope->__pyx_v_self->_eof = 1;
 
-      /* "src/gnssir/gnssir_wrap.pyx":516
+      /* "src/gnssir/python/gnssir_wrap.pyx":408
  *             elif err == _GNSSR_EOF:
  *                 self._eof = 1
  *                 break             # <<<<<<<<<<<<<<
@@ -25961,7 +26157,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
 */
       goto __pyx_L5_break;
 
-      /* "src/gnssir/gnssir_wrap.pyx":514
+      /* "src/gnssir/python/gnssir_wrap.pyx":406
  *                 if cycle.sats_in_view > 0:
  *                     yield cycle
  *             elif err == _GNSSR_EOF:             # <<<<<<<<<<<<<<
@@ -25973,7 +26169,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
   }
   __pyx_L5_break:;
 
-  /* "src/gnssir/gnssir_wrap.pyx":517
+  /* "src/gnssir/python/gnssir_wrap.pyx":409
  *                 self._eof = 1
  *                 break
  *         return StopIteration             # <<<<<<<<<<<<<<
@@ -25985,7 +26181,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "src/gnssir/gnssir_wrap.pyx":506
+  /* "src/gnssir/python/gnssir_wrap.pyx":398
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
@@ -26012,7 +26208,7 @@ static PyObject *__pyx_gb_11gnssr4water_6gnssir_8NMEAFile_20generator2(__pyx_Cor
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":454
+/* "src/gnssir/python/gnssir_wrap.pyx":346
  * 
  * cdef class NMEAFile:
  *     cdef public int _eof             # <<<<<<<<<<<<<<
@@ -26044,7 +26240,7 @@ static PyObject *__pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof___get__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_self->_eof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_self->_eof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -26082,7 +26278,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof_2__set__(struct __pyx_
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 454, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 346, __pyx_L1_error)
   __pyx_v_self->_eof = __pyx_t_1;
 
   /* function exit code */
@@ -26095,7 +26291,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4_eof_2__set__(struct __pyx_
   return __pyx_r;
 }
 
-/* "src/gnssir/gnssir_wrap.pyx":456
+/* "src/gnssir/python/gnssir_wrap.pyx":348
  *     cdef public int _eof
  *     cdef gnssrstream _sid
  *     cdef public str name             # <<<<<<<<<<<<<<
@@ -26159,7 +26355,7 @@ static int __pyx_pf_11gnssr4water_6gnssir_8NMEAFile_4name_2__set__(struct __pyx_
   __Pyx_RefNannySetupContext("__set__", 0);
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 456, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->name);
   __Pyx_DECREF(__pyx_v_self->name);
@@ -28708,8 +28904,7 @@ static int __Pyx_modinit_global_init_code(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_modinit_global_init_code", 0);
   /*--- Global init code ---*/
-  __Pyx_EnumBase = Py_None; Py_INCREF(Py_None);
-  __Pyx_FlagBase = Py_None; Py_INCREF(Py_None);
+  __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = Py_None; Py_INCREF(Py_None);
   __pyx_collections_abc_Sequence = Py_None; Py_INCREF(Py_None);
   generic = Py_None; Py_INCREF(Py_None);
   strided = Py_None; Py_INCREF(Py_None);
@@ -28750,15 +28945,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys = &__pyx_vtable_11gnssr4water_6gnssir_gnss_sys;
   __pyx_vtable_11gnssr4water_6gnssir_gnss_sys.from_ = (PyObject *(*)(struct gnss_system))__pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_sys_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)) __PYX_ERR(0, 165, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_sys_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_sys_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys)) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_sys_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 57, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys = &__pyx_type_11gnssr4water_6gnssir_gnss_sys;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 57, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys);
@@ -28768,19 +28963,19 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_sys, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_vtabptr_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_sys, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys) < (0)) __PYX_ERR(0, 57, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_Arc_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc)) __PYX_ERR(0, 219, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_Arc_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_Arc_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc)) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_Arc_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc = &__pyx_type_11gnssr4water_6gnssir_Arc;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc);
@@ -28790,18 +28985,18 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_Arc, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 219, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_Arc, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_Arc) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle)) __PYX_ERR(0, 322, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle)) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 214, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle = &__pyx_type_11gnssr4water_6gnssir_gnss_cycle;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 322, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 214, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle);
@@ -28811,18 +29006,18 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 322, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 322, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_cycle) < (0)) __PYX_ERR(0, 214, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle)) __PYX_ERR(0, 383, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 383, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle)) __PYX_ERR(0, 275, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 275, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle = &__pyx_type_11gnssr4water_6gnssir_gnss_trans_cycle;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 383, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 275, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle);
@@ -28832,20 +29027,20 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 383, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 383, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 275, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_gnss_trans_cycle) < (0)) __PYX_ERR(0, 275, __pyx_L1_error)
   __pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile = &__pyx_vtable_11gnssr4water_6gnssir_NMEAFile;
   __pyx_vtable_11gnssr4water_6gnssir_NMEAFile.readline = (PyObject *(*)(struct __pyx_obj_11gnssr4water_6gnssir_NMEAFile *, int __pyx_skip_dispatch))__pyx_f_11gnssr4water_6gnssir_8NMEAFile_readline;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_NMEAFile_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile)) __PYX_ERR(0, 453, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_NMEAFile_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir_NMEAFile_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile)) __PYX_ERR(0, 345, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir_NMEAFile_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile = &__pyx_type_11gnssr4water_6gnssir_NMEAFile;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 453, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile);
@@ -28855,20 +29050,20 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 453, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 453, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_NMEAFile, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 453, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 453, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_vtabptr_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_NMEAFile, (PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile) < (0)) __PYX_ERR(0, 345, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines)) __PYX_ERR(0, 489, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 489, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines)) __PYX_ERR(0, 381, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 381, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines = &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct__readlines;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 489, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines) < (0)) __PYX_ERR(0, 381, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct__readlines);
@@ -28879,15 +29074,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas)) __PYX_ERR(0, 498, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 498, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas)) __PYX_ERR(0, 390, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 390, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas = &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 498, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas) < (0)) __PYX_ERR(0, 390, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_1_readnmeas);
@@ -28898,15 +29093,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles)) __PYX_ERR(0, 506, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 506, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles)) __PYX_ERR(0, 398, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles_spec, __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 398, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles = &__pyx_type_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 506, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles) < (0)) __PYX_ERR(0, 398, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_11gnssr4water_6gnssir___pyx_scope_struct_2_readcycles);
@@ -29257,24 +29452,13 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_gnssir(PyObject *__pyx_pyinit_modu
   __pyx_mstatetype *__pyx_mstate = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
+  PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  size_t __pyx_t_7;
-  static PyThread_type_lock __pyx_t_8[8];
-  int __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
-  PyObject *__pyx_t_11 = NULL;
-  PyObject *__pyx_t_12 = NULL;
-  PyObject *__pyx_t_13 = NULL;
-  PyObject *__pyx_t_14 = NULL;
-  PyObject *__pyx_t_15 = NULL;
-  PyObject *__pyx_t_16 = NULL;
-  PyObject *__pyx_t_17 = NULL;
-  PyObject *__pyx_t_18 = NULL;
-  PyObject *__pyx_t_19 = NULL;
-  PyObject *__pyx_t_20 = NULL;
+  size_t __pyx_t_6;
+  static PyThread_type_lock __pyx_t_7[8];
+  int __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -29361,67 +29545,15 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "EnumBase":10
+  /* "EnumTypeToPy":1
+ * cdef object __pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py = None             # <<<<<<<<<<<<<<
  * 
- * cdef object __Pyx_EnumBase
- * from enum import IntEnum as __Pyx_EnumBase             # <<<<<<<<<<<<<<
- * 
- * cdef object __Pyx_FlagBase
+ * @cname("__Pyx_Enum_4nmea_enum__space_nmea_type_to_py")
 */
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_IntEnum};
-    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_enum, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
-  }
-  __pyx_t_2 = __pyx_t_1;
-  __Pyx_GOTREF(__pyx_t_2);
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_IntEnum};
-    __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 10, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      switch (__pyx_t_3) {
-        case 0:
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_XGOTREF(__Pyx_EnumBase);
-        __Pyx_DECREF_SET(__Pyx_EnumBase, __pyx_t_4);
-        __Pyx_GIVEREF(__pyx_t_4);
-        break;
-        default:;
-      }
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "EnumBase":13
- * 
- * cdef object __Pyx_FlagBase
- * from enum import IntFlag as __Pyx_FlagBase             # <<<<<<<<<<<<<<
-*/
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_IntFlag};
-    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_enum, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 13, __pyx_L1_error)
-  }
-  __pyx_t_2 = __pyx_t_1;
-  __Pyx_GOTREF(__pyx_t_2);
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_IntFlag};
-    __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 13, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      switch (__pyx_t_3) {
-        case 0:
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_XGOTREF(__Pyx_FlagBase);
-        __Pyx_DECREF_SET(__Pyx_FlagBase, __pyx_t_4);
-        __Pyx_GIVEREF(__pyx_t_4);
-        break;
-        default:;
-      }
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_INCREF(Py_None);
+  __Pyx_XGOTREF(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py);
+  __Pyx_DECREF_SET(__pyx_imported_enum___Pyx_Enum_4nmea_enum__space_nmea_type_to_py, Py_None);
+  __Pyx_GIVEREF(Py_None);
 
   /* "View.MemoryView":100
  * 
@@ -29433,10 +29565,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_5, &__pyx_t_6);
+    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3);
     __Pyx_XGOTREF(__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_5);
-    __Pyx_XGOTREF(__pyx_t_6);
+    __Pyx_XGOTREF(__pyx_t_2);
+    __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
       /* "View.MemoryView":101
@@ -29446,25 +29578,25 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * except:
  * 
 */
-      __pyx_t_4 = NULL;
-      __pyx_t_7 = 1;
+      __pyx_t_5 = NULL;
+      __pyx_t_6 = 1;
       {
-        PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_collections_abc};
-        __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin___import__, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 101, __pyx_L2_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_collections_abc};
+        __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin___import__, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 101, __pyx_L2_error)
+        __Pyx_GOTREF(__pyx_t_4);
       }
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_abc); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 101, __pyx_L2_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_Sequence); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 101, __pyx_L2_error)
-      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_abc); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 101, __pyx_L2_error)
+      __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_Sequence); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 101, __pyx_L2_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XGOTREF(__pyx_collections_abc_Sequence);
-      __Pyx_DECREF_SET(__pyx_collections_abc_Sequence, __pyx_t_2);
-      __Pyx_GIVEREF(__pyx_t_2);
-      __pyx_t_2 = 0;
+      __Pyx_DECREF_SET(__pyx_collections_abc_Sequence, __pyx_t_4);
+      __Pyx_GIVEREF(__pyx_t_4);
+      __pyx_t_4 = 0;
 
       /* "View.MemoryView":100
  * 
@@ -29475,12 +29607,12 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
 */
     }
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L7_try_end;
     __pyx_L2_error:;
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
     /* "View.MemoryView":102
  * try:
@@ -29507,9 +29639,9 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
     }
     __pyx_L3_exception_handled:;
     __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_5);
-    __Pyx_XGIVEREF(__pyx_t_6);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_5, __pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_2);
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
     __pyx_L7_try_end:;
   }
 
@@ -29523,9 +29655,9 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_6, &__pyx_t_5, &__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_6);
-    __Pyx_XGOTREF(__pyx_t_5);
+    __Pyx_ExceptionSave(&__pyx_t_3, &__pyx_t_2, &__pyx_t_1);
+    __Pyx_XGOTREF(__pyx_t_3);
+    __Pyx_XGOTREF(__pyx_t_2);
     __Pyx_XGOTREF(__pyx_t_1);
     /*try:*/ {
 
@@ -29536,10 +29668,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *         index = __pyx_collections_abc_Sequence.index
  *     except:
 */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 240, __pyx_L10_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_array_type, __pyx_mstate_global->__pyx_n_u_count, __pyx_t_2) < (0)) __PYX_ERR(1, 240, __pyx_L10_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 240, __pyx_L10_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_array_type, __pyx_mstate_global->__pyx_n_u_count, __pyx_t_4) < (0)) __PYX_ERR(1, 240, __pyx_L10_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "View.MemoryView":241
  *     try:
@@ -29548,10 +29680,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *     except:
  *         pass
 */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 241, __pyx_L10_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_array_type, __pyx_mstate_global->__pyx_n_u_index, __pyx_t_2) < (0)) __PYX_ERR(1, 241, __pyx_L10_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 241, __pyx_L10_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_array_type, __pyx_mstate_global->__pyx_n_u_index, __pyx_t_4) < (0)) __PYX_ERR(1, 241, __pyx_L10_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "View.MemoryView":239
  * 
@@ -29561,13 +29693,13 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *         index = __pyx_collections_abc_Sequence.index
 */
     }
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     goto __pyx_L15_try_end;
     __pyx_L10_error:;
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
     /* "View.MemoryView":242
  *         count = __pyx_collections_abc_Sequence.count
@@ -29581,10 +29713,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
       goto __pyx_L11_exception_handled;
     }
     __pyx_L11_exception_handled:;
-    __Pyx_XGIVEREF(__pyx_t_6);
-    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __Pyx_XGIVEREF(__pyx_t_2);
     __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_ExceptionReset(__pyx_t_6, __pyx_t_5, __pyx_t_1);
+    __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_2, __pyx_t_1);
     __pyx_L15_try_end:;
   }
 
@@ -29595,19 +29727,19 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
 */
-  __pyx_t_4 = NULL;
-  __pyx_t_7 = 1;
+  __pyx_t_5 = NULL;
+  __pyx_t_6 = 1;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_strided_and_direct_or_indirect};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 307, __pyx_L1_error)
-    __Pyx_GOTREF((PyObject *)__pyx_t_2);
+    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_strided_and_direct_or_indirect};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 307, __pyx_L1_error)
+    __Pyx_GOTREF((PyObject *)__pyx_t_4);
   }
   __Pyx_XGOTREF(generic);
-  __Pyx_DECREF_SET(generic, ((PyObject *)__pyx_t_2));
-  __Pyx_GIVEREF((PyObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(generic, ((PyObject *)__pyx_t_4));
+  __Pyx_GIVEREF((PyObject *)__pyx_t_4);
+  __pyx_t_4 = 0;
 
   /* "View.MemoryView":308
  * 
@@ -29616,19 +29748,19 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * cdef indirect = Enum("<strided and indirect>")
  * 
 */
-  __pyx_t_4 = NULL;
-  __pyx_t_7 = 1;
+  __pyx_t_5 = NULL;
+  __pyx_t_6 = 1;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_strided_and_direct};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 308, __pyx_L1_error)
-    __Pyx_GOTREF((PyObject *)__pyx_t_2);
+    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_strided_and_direct};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 308, __pyx_L1_error)
+    __Pyx_GOTREF((PyObject *)__pyx_t_4);
   }
   __Pyx_XGOTREF(strided);
-  __Pyx_DECREF_SET(strided, ((PyObject *)__pyx_t_2));
-  __Pyx_GIVEREF((PyObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(strided, ((PyObject *)__pyx_t_4));
+  __Pyx_GIVEREF((PyObject *)__pyx_t_4);
+  __pyx_t_4 = 0;
 
   /* "View.MemoryView":309
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -29637,19 +29769,19 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * 
  * 
 */
-  __pyx_t_4 = NULL;
-  __pyx_t_7 = 1;
+  __pyx_t_5 = NULL;
+  __pyx_t_6 = 1;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_strided_and_indirect};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 309, __pyx_L1_error)
-    __Pyx_GOTREF((PyObject *)__pyx_t_2);
+    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_strided_and_indirect};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 309, __pyx_L1_error)
+    __Pyx_GOTREF((PyObject *)__pyx_t_4);
   }
   __Pyx_XGOTREF(indirect);
-  __Pyx_DECREF_SET(indirect, ((PyObject *)__pyx_t_2));
-  __Pyx_GIVEREF((PyObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(indirect, ((PyObject *)__pyx_t_4));
+  __Pyx_GIVEREF((PyObject *)__pyx_t_4);
+  __pyx_t_4 = 0;
 
   /* "View.MemoryView":312
  * 
@@ -29658,19 +29790,19 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
 */
-  __pyx_t_4 = NULL;
-  __pyx_t_7 = 1;
+  __pyx_t_5 = NULL;
+  __pyx_t_6 = 1;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_contiguous_and_direct};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 312, __pyx_L1_error)
-    __Pyx_GOTREF((PyObject *)__pyx_t_2);
+    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_contiguous_and_direct};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 312, __pyx_L1_error)
+    __Pyx_GOTREF((PyObject *)__pyx_t_4);
   }
   __Pyx_XGOTREF(contiguous);
-  __Pyx_DECREF_SET(contiguous, ((PyObject *)__pyx_t_2));
-  __Pyx_GIVEREF((PyObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(contiguous, ((PyObject *)__pyx_t_4));
+  __Pyx_GIVEREF((PyObject *)__pyx_t_4);
+  __pyx_t_4 = 0;
 
   /* "View.MemoryView":313
  * 
@@ -29679,19 +29811,19 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * 
  * 
 */
-  __pyx_t_4 = NULL;
-  __pyx_t_7 = 1;
+  __pyx_t_5 = NULL;
+  __pyx_t_6 = 1;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_contiguous_and_indirect};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 313, __pyx_L1_error)
-    __Pyx_GOTREF((PyObject *)__pyx_t_2);
+    PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_contiguous_and_indirect};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_MemviewEnum_type, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 313, __pyx_L1_error)
+    __Pyx_GOTREF((PyObject *)__pyx_t_4);
   }
   __Pyx_XGOTREF(indirect_contiguous);
-  __Pyx_DECREF_SET(indirect_contiguous, ((PyObject *)__pyx_t_2));
-  __Pyx_GIVEREF((PyObject *)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(indirect_contiguous, ((PyObject *)__pyx_t_4));
+  __Pyx_GIVEREF((PyObject *)__pyx_t_4);
+  __pyx_t_4 = 0;
 
   /* "View.MemoryView":321
  * 
@@ -29709,15 +29841,15 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *     PyThread_allocate_lock(),
  *     PyThread_allocate_lock(),
 */
-  __pyx_t_8[0] = PyThread_allocate_lock();
-  __pyx_t_8[1] = PyThread_allocate_lock();
-  __pyx_t_8[2] = PyThread_allocate_lock();
-  __pyx_t_8[3] = PyThread_allocate_lock();
-  __pyx_t_8[4] = PyThread_allocate_lock();
-  __pyx_t_8[5] = PyThread_allocate_lock();
-  __pyx_t_8[6] = PyThread_allocate_lock();
-  __pyx_t_8[7] = PyThread_allocate_lock();
-  memcpy(&(__pyx_memoryview_thread_locks[0]), __pyx_t_8, sizeof(__pyx_memoryview_thread_locks[0]) * (8));
+  __pyx_t_7[0] = PyThread_allocate_lock();
+  __pyx_t_7[1] = PyThread_allocate_lock();
+  __pyx_t_7[2] = PyThread_allocate_lock();
+  __pyx_t_7[3] = PyThread_allocate_lock();
+  __pyx_t_7[4] = PyThread_allocate_lock();
+  __pyx_t_7[5] = PyThread_allocate_lock();
+  __pyx_t_7[6] = PyThread_allocate_lock();
+  __pyx_t_7[7] = PyThread_allocate_lock();
+  memcpy(&(__pyx_memoryview_thread_locks[0]), __pyx_t_7, sizeof(__pyx_memoryview_thread_locks[0]) * (8));
 
   /* "View.MemoryView":983
  * 
@@ -29729,10 +29861,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_5, &__pyx_t_6);
+    __Pyx_ExceptionSave(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3);
     __Pyx_XGOTREF(__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_5);
-    __Pyx_XGOTREF(__pyx_t_6);
+    __Pyx_XGOTREF(__pyx_t_2);
+    __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
       /* "View.MemoryView":984
@@ -29742,10 +29874,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *         index = __pyx_collections_abc_Sequence.index
  *     except:
 */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 984, __pyx_L18_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_memoryviewslice_type, __pyx_mstate_global->__pyx_n_u_count, __pyx_t_2) < (0)) __PYX_ERR(1, 984, __pyx_L18_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 984, __pyx_L18_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_memoryviewslice_type, __pyx_mstate_global->__pyx_n_u_count, __pyx_t_4) < (0)) __PYX_ERR(1, 984, __pyx_L18_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "View.MemoryView":985
  *     try:
@@ -29754,10 +29886,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *     except:
  *         pass
 */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 985, __pyx_L18_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_memoryviewslice_type, __pyx_mstate_global->__pyx_n_u_index, __pyx_t_2) < (0)) __PYX_ERR(1, 985, __pyx_L18_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_collections_abc_Sequence, __pyx_mstate_global->__pyx_n_u_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 985, __pyx_L18_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_memoryviewslice_type, __pyx_mstate_global->__pyx_n_u_index, __pyx_t_4) < (0)) __PYX_ERR(1, 985, __pyx_L18_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
       /* "View.MemoryView":983
  * 
@@ -29768,12 +29900,12 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
 */
     }
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L23_try_end;
     __pyx_L18_error:;
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
     /* "View.MemoryView":986
  *         count = __pyx_collections_abc_Sequence.count
@@ -29788,9 +29920,9 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
     }
     __pyx_L19_exception_handled:;
     __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_XGIVEREF(__pyx_t_5);
-    __Pyx_XGIVEREF(__pyx_t_6);
-    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_5, __pyx_t_6);
+    __Pyx_XGIVEREF(__pyx_t_2);
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
     __pyx_L23_try_end:;
   }
 
@@ -29804,9 +29936,9 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
   {
     __Pyx_PyThreadState_declare
     __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_6, &__pyx_t_5, &__pyx_t_1);
-    __Pyx_XGOTREF(__pyx_t_6);
-    __Pyx_XGOTREF(__pyx_t_5);
+    __Pyx_ExceptionSave(&__pyx_t_3, &__pyx_t_2, &__pyx_t_1);
+    __Pyx_XGOTREF(__pyx_t_3);
+    __Pyx_XGOTREF(__pyx_t_2);
     __Pyx_XGOTREF(__pyx_t_1);
     /*try:*/ {
 
@@ -29817,8 +29949,8 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * 
  * 
 */
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_collections_abc_Sequence); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(1, 990, __pyx_L26_error)
-      if (__pyx_t_9) {
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_collections_abc_Sequence); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(1, 990, __pyx_L26_error)
+      if (__pyx_t_8) {
 
         /* "View.MemoryView":994
  * 
@@ -29827,17 +29959,17 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *         __pyx_collections_abc_Sequence.register(array)
  * except:
 */
-        __pyx_t_4 = __pyx_collections_abc_Sequence;
-        __Pyx_INCREF(__pyx_t_4);
-        __pyx_t_7 = 0;
+        __pyx_t_5 = __pyx_collections_abc_Sequence;
+        __Pyx_INCREF(__pyx_t_5);
+        __pyx_t_6 = 0;
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_mstate_global->__pyx_memoryviewslice_type)};
-          __pyx_t_2 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_register, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 994, __pyx_L26_error)
-          __Pyx_GOTREF(__pyx_t_2);
+          PyObject *__pyx_callargs[2] = {__pyx_t_5, ((PyObject *)__pyx_mstate_global->__pyx_memoryviewslice_type)};
+          __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_register, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 994, __pyx_L26_error)
+          __Pyx_GOTREF(__pyx_t_4);
         }
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
         /* "View.MemoryView":995
  * 
@@ -29846,17 +29978,17 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * except:
  *     pass  # ignore failure, it's a minor issue
 */
-        __pyx_t_4 = __pyx_collections_abc_Sequence;
-        __Pyx_INCREF(__pyx_t_4);
-        __pyx_t_7 = 0;
+        __pyx_t_5 = __pyx_collections_abc_Sequence;
+        __Pyx_INCREF(__pyx_t_5);
+        __pyx_t_6 = 0;
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_4, ((PyObject *)__pyx_mstate_global->__pyx_array_type)};
-          __pyx_t_2 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_register, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 995, __pyx_L26_error)
-          __Pyx_GOTREF(__pyx_t_2);
+          PyObject *__pyx_callargs[2] = {__pyx_t_5, ((PyObject *)__pyx_mstate_global->__pyx_array_type)};
+          __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_register, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 995, __pyx_L26_error)
+          __Pyx_GOTREF(__pyx_t_4);
         }
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
         /* "View.MemoryView":990
  * 
@@ -29875,13 +30007,13 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * 
 */
     }
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     goto __pyx_L31_try_end;
     __pyx_L26_error:;
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
     /* "View.MemoryView":996
  *         __pyx_collections_abc_Sequence.register(_memoryviewslice)
@@ -29895,10 +30027,10 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
       goto __pyx_L27_exception_handled;
     }
     __pyx_L27_exception_handled:;
-    __Pyx_XGIVEREF(__pyx_t_6);
-    __Pyx_XGIVEREF(__pyx_t_5);
+    __Pyx_XGIVEREF(__pyx_t_3);
+    __Pyx_XGIVEREF(__pyx_t_2);
     __Pyx_XGIVEREF(__pyx_t_1);
-    __Pyx_ExceptionReset(__pyx_t_6, __pyx_t_5, __pyx_t_1);
+    __Pyx_ExceptionReset(__pyx_t_3, __pyx_t_2, __pyx_t_1);
     __pyx_L31_try_end:;
   }
 
@@ -29909,413 +30041,195 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  *     cdef object __pyx_result
  *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x82a3537, 0x6ae9995, 0xb068931, b'name')
 */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_15View_dot_MemoryView_1__pyx_unpickle_Enum, NULL, __pyx_mstate_global->__pyx_n_u_View_MemoryView); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_Enum, __pyx_t_2) < (0)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = PyCFunction_NewEx(&__pyx_mdef_15View_dot_MemoryView_1__pyx_unpickle_Enum, NULL, __pyx_mstate_global->__pyx_n_u_View_MemoryView); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_Enum, __pyx_t_4) < (0)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "EnumType":23
- * 
- * 
- * nmea_type = __Pyx_FlagBase('nmea_type', [             # <<<<<<<<<<<<<<
- *     ('NMEA_GGA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GGA)),
- *     ('NMEA_GSV', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV)),
-*/
-  __pyx_t_4 = NULL;
-  __Pyx_INCREF(__Pyx_FlagBase);
-  __pyx_t_10 = __Pyx_FlagBase; 
-
-  /* "EnumType":24
- * 
- * nmea_type = __Pyx_FlagBase('nmea_type', [
- *     ('NMEA_GGA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GGA)),             # <<<<<<<<<<<<<<
- *     ('NMEA_GSV', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV)),
- *     ('NMEA_GLL', __Pyx_PyLong_From_enum__nmea_type(NMEA_GLL)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_GGA); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_GGA, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 24, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":25
- * nmea_type = __Pyx_FlagBase('nmea_type', [
- *     ('NMEA_GGA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GGA)),
- *     ('NMEA_GSV', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV)),             # <<<<<<<<<<<<<<
- *     ('NMEA_GLL', __Pyx_PyLong_From_enum__nmea_type(NMEA_GLL)),
- *     ('NMEA_GSA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSA)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_13 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_GSV, __pyx_t_11); if (unlikely(!__pyx_t_13)) __PYX_ERR(1, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_13);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":26
- *     ('NMEA_GGA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GGA)),
- *     ('NMEA_GSV', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV)),
- *     ('NMEA_GLL', __Pyx_PyLong_From_enum__nmea_type(NMEA_GLL)),             # <<<<<<<<<<<<<<
- *     ('NMEA_GSA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSA)),
- *     ('NMEA_RMC', __Pyx_PyLong_From_enum__nmea_type(NMEA_RMC)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_GLL); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_14 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_GLL, __pyx_t_11); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":27
- *     ('NMEA_GSV', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV)),
- *     ('NMEA_GLL', __Pyx_PyLong_From_enum__nmea_type(NMEA_GLL)),
- *     ('NMEA_GSA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSA)),             # <<<<<<<<<<<<<<
- *     ('NMEA_RMC', __Pyx_PyLong_From_enum__nmea_type(NMEA_RMC)),
- *     ('NMEA_VTG', __Pyx_PyLong_From_enum__nmea_type(NMEA_VTG)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_GSA); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_15 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_GSA, __pyx_t_11); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_15);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":28
- *     ('NMEA_GLL', __Pyx_PyLong_From_enum__nmea_type(NMEA_GLL)),
- *     ('NMEA_GSA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSA)),
- *     ('NMEA_RMC', __Pyx_PyLong_From_enum__nmea_type(NMEA_RMC)),             # <<<<<<<<<<<<<<
- *     ('NMEA_VTG', __Pyx_PyLong_From_enum__nmea_type(NMEA_VTG)),
- *     ('NMEA_GNS', __Pyx_PyLong_From_enum__nmea_type(NMEA_GNS)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_RMC); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 28, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_16 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_RMC, __pyx_t_11); if (unlikely(!__pyx_t_16)) __PYX_ERR(1, 28, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_16);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":29
- *     ('NMEA_GSA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSA)),
- *     ('NMEA_RMC', __Pyx_PyLong_From_enum__nmea_type(NMEA_RMC)),
- *     ('NMEA_VTG', __Pyx_PyLong_From_enum__nmea_type(NMEA_VTG)),             # <<<<<<<<<<<<<<
- *     ('NMEA_GNS', __Pyx_PyLong_From_enum__nmea_type(NMEA_GNS)),
- *     ('NMEA_UNSUPPORTED', __Pyx_PyLong_From_enum__nmea_type(NMEA_UNSUPPORTED)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_VTG); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_17 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_VTG, __pyx_t_11); if (unlikely(!__pyx_t_17)) __PYX_ERR(1, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_17);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":30
- *     ('NMEA_RMC', __Pyx_PyLong_From_enum__nmea_type(NMEA_RMC)),
- *     ('NMEA_VTG', __Pyx_PyLong_From_enum__nmea_type(NMEA_VTG)),
- *     ('NMEA_GNS', __Pyx_PyLong_From_enum__nmea_type(NMEA_GNS)),             # <<<<<<<<<<<<<<
- *     ('NMEA_UNSUPPORTED', __Pyx_PyLong_From_enum__nmea_type(NMEA_UNSUPPORTED)),
- *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_GNS); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 30, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_18 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_GNS, __pyx_t_11); if (unlikely(!__pyx_t_18)) __PYX_ERR(1, 30, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_18);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":31
- *     ('NMEA_VTG', __Pyx_PyLong_From_enum__nmea_type(NMEA_VTG)),
- *     ('NMEA_GNS', __Pyx_PyLong_From_enum__nmea_type(NMEA_GNS)),
- *     ('NMEA_UNSUPPORTED', __Pyx_PyLong_From_enum__nmea_type(NMEA_UNSUPPORTED)),             # <<<<<<<<<<<<<<
- *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),
- * 
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_UNSUPPORTED); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 31, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_19 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_UNSUPPORTED, __pyx_t_11); if (unlikely(!__pyx_t_19)) __PYX_ERR(1, 31, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_19);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":32
- *     ('NMEA_GNS', __Pyx_PyLong_From_enum__nmea_type(NMEA_GNS)),
- *     ('NMEA_UNSUPPORTED', __Pyx_PyLong_From_enum__nmea_type(NMEA_UNSUPPORTED)),
- *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),             # <<<<<<<<<<<<<<
- * 
- * ], module=globals().get("__module__", 'gnssr4water.gnssir'))
-*/
-  __pyx_t_11 = __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 32, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_20 = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_NMEA_INVALID, __pyx_t_11); if (unlikely(!__pyx_t_20)) __PYX_ERR(1, 32, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_20);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-  /* "EnumType":23
- * 
- * 
- * nmea_type = __Pyx_FlagBase('nmea_type', [             # <<<<<<<<<<<<<<
- *     ('NMEA_GGA', __Pyx_PyLong_From_enum__nmea_type(NMEA_GGA)),
- *     ('NMEA_GSV', __Pyx_PyLong_From_enum__nmea_type(NMEA_GSV)),
-*/
-  __pyx_t_11 = __Pyx_PyList_Pack(9, __pyx_t_12, __pyx_t_13, __pyx_t_14, __pyx_t_15, __pyx_t_16, __pyx_t_17, __pyx_t_18, __pyx_t_19, __pyx_t_20); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-  __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-  __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-  __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-
-  /* "EnumType":34
- *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),
- * 
- * ], module=globals().get("__module__", 'gnssr4water.gnssir'))             # <<<<<<<<<<<<<<
- * 
- * if PY_VERSION_HEX >= 0x030B0000:
-*/
-  __pyx_t_20 = __Pyx_Globals(); if (unlikely(!__pyx_t_20)) __PYX_ERR(1, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_20);
-  __pyx_t_19 = __Pyx_PyObject_GetAttrStr(__pyx_t_20, __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_19)) __PYX_ERR(1, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_19);
-  __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-  __pyx_t_20 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_20)) __PYX_ERR(1, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_20);
-  __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-  __pyx_t_7 = 1;
-  {
-    PyObject *__pyx_callargs[3 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_4, __pyx_mstate_global->__pyx_n_u_nmea_type, __pyx_t_11};
-    __pyx_t_19 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_19)) __PYX_ERR(1, 23, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_19);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_module, __pyx_t_20, __pyx_t_19, __pyx_callargs+3, 0) < (0)) __PYX_ERR(1, 23, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_10, __pyx_callargs+__pyx_t_7, (3-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_19);
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-    __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 23, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-  }
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_nmea_type, __pyx_t_2) < (0)) __PYX_ERR(1, 23, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "EnumType":36
- * ], module=globals().get("__module__", 'gnssr4water.gnssir'))
- * 
- * if PY_VERSION_HEX >= 0x030B0000:             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  __pyx_t_9 = (PY_VERSION_HEX >= 0x030B0000);
-  if (__pyx_t_9) {
-
-    /* "EnumType":41
- * 
- * 
- *     nmea_type._member_names_ = list(nmea_type.__members__)             # <<<<<<<<<<<<<<
-*/
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_nmea_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 41, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_members); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 41, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PySequence_ListKeepNew(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 41, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_nmea_type); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 41, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_member_names, __pyx_t_2) < (0)) __PYX_ERR(1, 41, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-
-    /* "EnumType":36
- * ], module=globals().get("__module__", 'gnssr4water.gnssir'))
- * 
- * if PY_VERSION_HEX >= 0x030B0000:             # <<<<<<<<<<<<<<
- * 
- * 
-*/
-  }
-
-  /* "src/gnssir/gnssir_wrap.pyx":21
+  /* "src/gnssir/python/gnssir_wrap.pyx":21
  * from cython.operator cimport dereference as deref
  * from libc.stdlib cimport malloc, free
  * from datetime import datetime,timedelta             # <<<<<<<<<<<<<<
  * import numpy as np
- * from cython.view cimport array as cvarray
+ * 
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_datetime,__pyx_mstate_global->__pyx_n_u_timedelta};
     __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_datetime, __pyx_imported_names, 2, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
   }
-  __pyx_t_10 = __pyx_t_1;
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __pyx_t_1;
+  __Pyx_GOTREF(__pyx_t_4);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_datetime,__pyx_mstate_global->__pyx_n_u_timedelta};
-    for (__pyx_t_3=0; __pyx_t_3 < 2; __pyx_t_3++) {
-      __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_10, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_imported_names[__pyx_t_3], __pyx_t_2) < (0)) __PYX_ERR(0, 21, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    for (__pyx_t_9=0; __pyx_t_9 < 2; __pyx_t_9++) {
+      __pyx_t_5 = __Pyx_ImportFrom(__pyx_t_4, __pyx_imported_names[__pyx_t_9]); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_imported_names[__pyx_t_9], __pyx_t_5) < (0)) __PYX_ERR(0, 21, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":22
+  /* "src/gnssir/python/gnssir_wrap.pyx":22
  * from libc.stdlib cimport malloc, free
  * from datetime import datetime,timedelta
  * import numpy as np             # <<<<<<<<<<<<<<
- * from cython.view cimport array as cvarray
  * 
+ * from cython.view cimport array as cvarray
 */
   __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_numpy, 0, 0, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __pyx_t_10 = __pyx_t_1;
-  __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_10) < (0)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __pyx_t_4 = __pyx_t_1;
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_np, __pyx_t_4) < (0)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":65
+  /* "src/gnssir/python/gnssir_wrap.pyx":38
  * 
  * 
  * cpdef datetime_from_mjd(double mjd):             # <<<<<<<<<<<<<<
  *     cdef int yr,month,day,hr,minute
  *     cdef double sec;
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_1datetime_from_mjd, 0, __pyx_mstate_global->__pyx_n_u_datetime_from_mjd, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_1datetime_from_mjd, 0, __pyx_mstate_global->__pyx_n_u_datetime_from_mjd, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_datetime_from_mjd, __pyx_t_10) < (0)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_datetime_from_mjd, __pyx_t_4) < (0)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":73
+  /* "src/gnssir/python/gnssir_wrap.pyx":46
  *     return datetime(yr,month,day,hr,minute,int(sec),int((sec-int(sec))*1e3))
  * 
  * cpdef double mjd_from_datetime(dt:datetime):             # <<<<<<<<<<<<<<
  *         cdef int year=dt.year
  *         cdef int month=dt.month
 */
-  __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_dt, __pyx_mstate_global->__pyx_n_u_datetime) < (0)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3mjd_from_datetime, 0, __pyx_mstate_global->__pyx_n_u_mjd_from_datetime, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_dt, __pyx_mstate_global->__pyx_n_u_datetime) < (0)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3mjd_from_datetime, 0, __pyx_mstate_global->__pyx_n_u_mjd_from_datetime, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
   #endif
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_10);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_mjd_from_datetime, __pyx_t_2) < (0)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_4);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_mjd_from_datetime, __pyx_t_5) < (0)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":180
+  /* "src/gnssir/python/gnssir_wrap.pyx":72
  *            copy_GNSS_as(self.system_ptr,&gnss_unknown)
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
  *         return (gnss_sys,(self.system,))
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_5__reduce__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys___reduce, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_5__reduce__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys___reduce, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_mstate_global->__pyx_n_u_reduce, __pyx_t_2) < (0)) __PYX_ERR(0, 180, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_mstate_global->__pyx_n_u_reduce, __pyx_t_5) < (0)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":209
+  /* "src/gnssir/python/gnssir_wrap.pyx":101
  *         return deref(self.system_ptr).length
  * 
  *     def rinexcode(self,satno):             # <<<<<<<<<<<<<<
  *         satcode=f"{deref(self.system_ptr).rinexcode.decode('utf-8')}{satno:02d}"
  *         return satcode
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_9rinexcode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys_rinexcode, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8gnss_sys_9rinexcode, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_sys_rinexcode, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_mstate_global->__pyx_n_u_rinexcode, __pyx_t_2) < (0)) __PYX_ERR(0, 209, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_gnss_sys, __pyx_mstate_global->__pyx_n_u_rinexcode, __pyx_t_5) < (0)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":213
+  /* "src/gnssir/python/gnssir_wrap.pyx":105
  *         return satcode
  * 
  * GPSL1=gnss_sys.from_(gnss_gpsl1)             # <<<<<<<<<<<<<<
  * GPSL2=gnss_sys.from_(gnss_gpsl2)
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
 */
-  __pyx_t_2 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_gpsl1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL1, __pyx_t_2) < (0)) __PYX_ERR(0, 213, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_gpsl1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL1, __pyx_t_5) < (0)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":214
+  /* "src/gnssir/python/gnssir_wrap.pyx":106
  * 
  * GPSL1=gnss_sys.from_(gnss_gpsl1)
  * GPSL2=gnss_sys.from_(gnss_gpsl2)             # <<<<<<<<<<<<<<
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
  * GNSSUNKNOWN=gnss_sys.from_(gnss_unknown)
 */
-  __pyx_t_2 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_gpsl2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL2, __pyx_t_2) < (0)) __PYX_ERR(0, 214, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_gpsl2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GPSL2, __pyx_t_5) < (0)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":215
+  /* "src/gnssir/python/gnssir_wrap.pyx":107
  * GPSL1=gnss_sys.from_(gnss_gpsl1)
  * GPSL2=gnss_sys.from_(gnss_gpsl2)
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)             # <<<<<<<<<<<<<<
  * GNSSUNKNOWN=gnss_sys.from_(gnss_unknown)
  * 
 */
-  __pyx_t_2 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_glonassiil1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, __pyx_t_2) < (0)) __PYX_ERR(0, 215, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_glonassiil1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GLONASSIIL1, __pyx_t_5) < (0)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":216
+  /* "src/gnssir/python/gnssir_wrap.pyx":108
  * GPSL2=gnss_sys.from_(gnss_gpsl2)
  * GLONASSIIL1=gnss_sys.from_(gnss_glonassiil1)
  * GNSSUNKNOWN=gnss_sys.from_(gnss_unknown)             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  __pyx_t_2 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_unknown); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GNSSUNKNOWN, __pyx_t_2) < (0)) __PYX_ERR(0, 216, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __pyx_f_11gnssr4water_6gnssir_8gnss_sys_from_(gnss_unknown); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GNSSUNKNOWN, __pyx_t_5) < (0)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":249
+  /* "src/gnssir/python/gnssir_wrap.pyx":141
  *             free(self.arc_ptr)
  * 
  *     def append(self,time,elevation:float,azimuth:float,value:float):             # <<<<<<<<<<<<<<
  *         cdef double mjdv= mjd_from_datetime(time)
  *         cdef int err = append_to_arc(self.arc_ptr,mjdv,elevation,azimuth,value)
 */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_elevation, __pyx_mstate_global->__pyx_n_u_float) < (0)) __PYX_ERR(0, 249, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_azimuth, __pyx_mstate_global->__pyx_n_u_float) < (0)) __PYX_ERR(0, 249, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_value, __pyx_mstate_global->__pyx_n_u_float) < (0)) __PYX_ERR(0, 249, __pyx_L1_error)
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3Arc_7append, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Arc_append, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 249, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_elevation, __pyx_mstate_global->__pyx_n_u_float) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_azimuth, __pyx_mstate_global->__pyx_n_u_float) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_value, __pyx_mstate_global->__pyx_n_u_float) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3Arc_7append, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Arc_append, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_10, __pyx_t_2);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_Arc, __pyx_mstate_global->__pyx_n_u_append, __pyx_t_10) < (0)) __PYX_ERR(0, 249, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_5);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_Arc, __pyx_mstate_global->__pyx_n_u_append, __pyx_t_4) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3Arc_11__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Arc___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3Arc_11__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Arc___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30323,26 +30237,26 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3Arc_13__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Arc___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_3Arc_13__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Arc___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_5__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30350,26 +30264,26 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_10gnss_cycle_7__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_cycle___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_7__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30377,146 +30291,146 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle___setstate_cyth, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_16gnss_trans_cycle_9__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_gnss_trans_cycle___setstate_cyth, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":464
+  /* "src/gnssir/python/gnssir_wrap.pyx":356
  *         self._eof = 0
  * 
  *     def eof(self):             # <<<<<<<<<<<<<<
  *         return self._eof == 1
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_3eof, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_eof, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 464, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_3eof, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_eof, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_eof, __pyx_t_10) < (0)) __PYX_ERR(0, 464, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_eof, __pyx_t_4) < (0)) __PYX_ERR(0, 356, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":467
+  /* "src/gnssir/python/gnssir_wrap.pyx":359
  *         return self._eof == 1
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
  *         return self
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_5__enter__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___enter, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 467, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_5__enter__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___enter, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 359, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_enter, __pyx_t_10) < (0)) __PYX_ERR(0, 467, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_enter, __pyx_t_4) < (0)) __PYX_ERR(0, 359, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":470
+  /* "src/gnssir/python/gnssir_wrap.pyx":362
  *         return self
  * 
  *     def __exit__(self, *args):             # <<<<<<<<<<<<<<
  *         self.close()
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_7__exit__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___exit, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[16])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 470, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_7__exit__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___exit, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[16])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_exit, __pyx_t_10) < (0)) __PYX_ERR(0, 470, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_exit, __pyx_t_4) < (0)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":473
+  /* "src/gnssir/python/gnssir_wrap.pyx":365
  *         self.close()
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
  *         self._eof = 1
  *         close_stream(&self._sid)
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_9close, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_close, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[17])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_9close, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_close, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[17])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 365, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_close, __pyx_t_10) < (0)) __PYX_ERR(0, 473, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_close, __pyx_t_4) < (0)) __PYX_ERR(0, 365, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":477
+  /* "src/gnssir/python/gnssir_wrap.pyx":369
  *         close_stream(&self._sid)
  * 
  *     cpdef readline(self):             # <<<<<<<<<<<<<<
  * 
  *         cdef int err=0
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_11readline, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readline, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[18])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 477, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_11readline, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readline, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[18])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readline, __pyx_t_10) < (0)) __PYX_ERR(0, 477, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readline, __pyx_t_4) < (0)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":489
+  /* "src/gnssir/python/gnssir_wrap.pyx":381
  *         return nmealine
  * 
  *     def readlines(self):             # <<<<<<<<<<<<<<
  *         line = self.readline()
  * 
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_13readlines, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 489, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_13readlines, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readlines, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_t_10) < (0)) __PYX_ERR(0, 489, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readlines, __pyx_t_4) < (0)) __PYX_ERR(0, 381, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":498
+  /* "src/gnssir/python/gnssir_wrap.pyx":390
  *         return StopIteration
  * 
  *     def readnmeas(self):             # <<<<<<<<<<<<<<
  *         cdef nmea_type nmea_t
  *         for nmea in self.readlines():
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_16readnmeas, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 498, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_16readnmeas, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readnmeas, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 390, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_t_10) < (0)) __PYX_ERR(0, 498, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readnmeas, __pyx_t_4) < (0)) __PYX_ERR(0, 390, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":506
+  /* "src/gnssir/python/gnssir_wrap.pyx":398
  *         return StopIteration
  * 
  *     def readcycles(self):             # <<<<<<<<<<<<<<
  *         cdef gnss_cycle cycle=gnss_cycle()
  *         cdef int err=_GNSSR_SUCCESS
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_19readcycles, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 506, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_19readcycles, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile_readcycles, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_t_10) < (0)) __PYX_ERR(0, 506, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_11gnssr4water_6gnssir_NMEAFile, __pyx_mstate_global->__pyx_n_u_readcycles, __pyx_t_4) < (0)) __PYX_ERR(0, 398, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)"
  * def __setstate_cython__(self, __pyx_state):
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[19])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_22__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___reduce_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[19])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_reduce_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30524,41 +30438,30 @@ __Pyx_RefNannySetupContext("PyInit_gnssir", 0);
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)"
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[20])); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11gnssr4water_6gnssir_8NMEAFile_24__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_NMEAFile___setstate_cython, NULL, __pyx_mstate_global->__pyx_n_u_gnssr4water_gnssir, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[20])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_10);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_10) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_4) < (0)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "src/gnssir/gnssir_wrap.pyx":1
+  /* "src/gnssir/python/gnssir_wrap.pyx":1
  * # This file is part of gnssr4water             # <<<<<<<<<<<<<<
  * # gnssr4water is free software; you can redistribute it and/or
  * # modify it under the terms of the GNU Lesser General Public
 */
-  __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_10) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_4) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /*--- Wrapped vars code ---*/
 
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_XDECREF(__pyx_t_17);
-  __Pyx_XDECREF(__pyx_t_18);
-  __Pyx_XDECREF(__pyx_t_19);
-  __Pyx_XDECREF(__pyx_t_20);
+  __Pyx_XDECREF(__pyx_t_5);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
       __Pyx_AddTraceback("init gnssr4water.gnssir", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -30637,21 +30540,10 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __pyx_mstate_global->__pyx_slice[0] = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_slice[0])) __PYX_ERR(1, 680, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
-
-  /* "EnumType":34
- *     ('NMEA_INVALID', __Pyx_PyLong_From_enum__nmea_type(NMEA_INVALID)),
- * 
- * ], module=globals().get("__module__", 'gnssr4water.gnssir'))             # <<<<<<<<<<<<<<
- * 
- * if PY_VERSION_HEX >= 0x030B0000:
-*/
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_module_2, __pyx_mstate_global->__pyx_kp_u_gnssr4water_gnssir); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(1, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
   #if CYTHON_IMMORTAL_CONSTANTS
   {
     PyObject **table = __pyx_mstate->__pyx_tuple;
-    for (Py_ssize_t i=0; i<2; ++i) {
+    for (Py_ssize_t i=0; i<1; ++i) {
       #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
       #if PY_VERSION_HEX < 0x030E0000
       if (_Py_IsOwnedByCurrentThread(table[i]) && Py_REFCNT(table[i]) == 1)
@@ -30697,31 +30589,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 8; } index[] = {{2},{3},{68},{35},{54},{37},{60},{24},{52},{26},{34},{14},{29},{33},{45},{22},{15},{4},{179},{37},{97},{30},{32},{1},{1},{1},{1},{1},{1},{1},{8},{5},{6},{15},{23},{25},{7},{6},{27},{25},{2},{18},{6},{35},{9},{30},{50},{8},{26},{20},{32},{22},{14},{30},{37},{5},{3},{21},{23},{10},{8},{11},{11},{5},{5},{7},{7},{8},{18},{17},{26},{28},{14},{12},{19},{17},{18},{18},{8},{8},{8},{8},{8},{12},{8},{16},{8},{20},{8},{7},{15},{3},{15},{6},{4},{7},{5},{18},{7},{4},{1},{7},{7},{9},{17},{18},{5},{5},{5},{8},{17},{3},{9},{8},{2},{15},{9},{6},{9},{4},{9},{3},{3},{5},{8},{8},{5},{5},{6},{7},{8},{12},{3},{12},{10},{28},{30},{8},{19},{18},{16},{34},{36},{18},{4},{2},{10},{5},{13},{5},{8},{4},{3},{4},{3},{8},{14},{11},{7},{11},{6},{3},{17},{4},{4},{6},{10},{5},{4},{8},{4},{7},{4},{4},{6},{9},{2},{5},{3},{12},{4},{3},{3},{14},{11},{10},{19},{14},{12},{10},{8},{9},{9},{10},{17},{13},{8},{9},{7},{5},{12},{6},{4},{4},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{6},{6},{8},{5},{4},{9},{6},{6},{5},{6},{1},{4},{2},{1},{0},{1},{1},{76},{2},{32},{9},{20},{60},{11},{7},{13},{9},{56},{78},{1}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1931 bytes) */
-const char* const cstring = "BZh91AY&SY\207}\322\016\000\000\302\377\377\377\\\377\375o\357\377\367\377\357\377\205\277\377\377\376@@@@@@@@@@@@@\000@\000`\007?X\2647\213\206\0136\266\254\226\255\255K\\a\251\241G\252\237\223\032\232\rS\300Q\351?B\236\023P\323\020\365\006\2004\320\003C fS\305=\0314\364\241\264Oj\203M\020\2310\204\3122S\036\224\331@\006\207\250\310\036\240\003@\000\000\000\006\206\206\236\246\021\216\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000d\tL\220\2014\246\024\366\232\232O@\217\322\206\200y@d\r\000\000\000\000\000\000\000\003\200\000\000\000\000\000\000\000\000\000\000\000\000\000\000\031\002SP&)\223\020\232\247\260\214\251\264M\031\000\007\2504\365\000\0004\000\000\000\000\320\320,\376\372\254~\375o\343\257\326\200%\374\377\237\3552G\376\213E2L$\004\260W\016y\007\260p\023P\260\222\016&\031J\213\024\3429\030(\352Y$C\036\3561\000\276\021\0022\221\366|\331\225\023\205\n\362\372M\322\245\3357J\222\013X\020OE\237|\032\221\361f\251@\277\252\322=XLM\234\367\272+cd>g\373\334z9>K\321\265\320\203\350\025uBa\325R\275C\323\271\307!\004\344\324\323\016-\215\257\016\304\337\\\237\325\224\017$\350\351Y\316\211V\334\202>n*\314\233\244J\351A\331\264o\212\266\324\321Y|\253t\352\245\"\315DR\002#\350\231?\345%@Kp\340H9N\207\300\224m;\211A\236/yk\327V~\016d\233S\337a\r\313i\316pK}\221\316\337Q\201\257f\310t6\303\335\352\324\330\0313\025\321\245\2132\304zb\241\017\266\233\340\323\036\264\305\343\030q\340\342c\034C\001U}Q\301Gbq\216\261J|\333\2122\010\312\210x\313\306\373\265\305\267\231\215\036M\226\";\030\003\014\266\327@<\303xL`\236\224\370\241\262\336\240G\r8\240\355\214S\020\247\007\342\355\311)p+\234$:\321e\212\001\205Z6 \200W\220\001k\3159\\'\034Y\354d\230\\bHnR\327-z\356SxK}I\214\320C!\363W\263Y\t\235Q\270e\263z\243\026,]\313\340\215w\371~O\211\316\265;MK>v\014\356\361\214t\007t\366 \200_\240F\032\271\034\302\202\224\352\033M\233\365\203e\212$\371\227v\\xs\357\253S}[\250\243\245/\023\032\206\035\315\\\211e\\\240\323\215q\240_|\322\330\231,\"(Ai\201\250\301\262\212\"z\216""\224wK\013(\2777\027\335\206\024\"6 4eh\222\232&\034\314\244\312\263\031\233\013\360h\2417\233\243\376q\211\001\312!=\001\237'\\Hi\351u\034*\033\314\356\357&\301k\303\302\203\021\r\016\224\222Z\3243\255\017\211\r\0323\233\321',\205K'\230Ug&-4\222\r\232c\236\352\235\"\037\267D\275[DY\221\316\347\033{,sn6\226\266N$\331\302 @r7\256\231\227j\r\212\336=o\205\0325\204\256`}\321\214\373\351\\N\311\246SP\3642\034@\364\302\335\327\247<\332\252r\232\t\316\017.q\22501\tC\250^\216aa\220ch\024\037m\342cRI\264t\346\212\257\372xN\005L6W\010\277|\302/\321/s\031\250\214\203+5\002\252\034(G\2138\2051ef-\215\240)yw\001\3164\360\377\230\022\265\354\226\3724K\212c~\324\265)\275t\221\034\324\367\t\224\225\325NN\20181\321$\204\220\235\250\316y\002\327s$\266\003\322\341\306\332\201+\335\322\361\3128w\247\025\225\352]\360\031\247U\311\201d`>\342\223\216je,\212\036\024\004\234\217\034L\366T\225+\2150\212\013\006\330$Wl\270\0368\261\356\330\202\006\265\212\321\265\027\313H\334\2339X\214w\006u\263\005s\226\372[1,\210p\274\263\022\201\315\035\364I\024\230\320\260*9\211\304]\202\0168\256\211\271\003\320\031c\\\3613\354\023*b\264Dt.\233#\003\004\231D4\271\177\220\267\251\221\323\327\222\334\215l\323Z\010\035A\300\026.\003U\355\250\345\325\315\256\222\265;\260LP\345I\t\026\324]\234q\304\034\034\026\240hp=\276\035q;\364%(6\212(K\224k\264\203;E\335\317E\324\227\202\t\270\244B\003\302\005\021j\034\332\355\001GJ\327K\302Kcd\032\340\336\323\024\231\261\277N\230\005\371\354\016\333cDHL\316\177\t\n'\262\036D\300\254h2~*\223\277\237\257\216 b\364\245\341\330\006\026a\212U\327\230\030(V8ti\200P,\243\010t\242\223\323\016p\323 \3558\221\231f\307<L\322\302\223\026(\364\030\313HNys4\001\267\006jR\270\360.8\262\334R\252\372K\030\005\0330\213L\310cp\232Y\241\240\262\022\002\310\230\273t\333\034\030\316\031\334\220\220\212T\255\002l\341\226\014\315i\030\021\005\210\216\034\262#\232\346-A\034]\215\345\370'\266\335\"B3\311\213\333\245\033\232\3226\272\3473\025O\221\321v\362\206\032*\024\334\332yp\t\241\324\251\234""\227DgC;\226\252BBDg\253h\236\334\266&\023L\367\265Q\360\233\320\216\327\024\330\301\333\"\327\\\333\372K\007\311.\276p\327gH\342\323\007\035NN\254v\375\306\030\331\220\240{G*z\305UY\210\353\3465\005\266E\351\356\255\321\226F\006%w\206\225\010 \2032\016\325\220\254\341\205J\n>\255\201\306\256\242@\013D\327hH9\020QE\210<\362\036\315\243\233\003\237\300\3430\211\271\325\342RvIY|\243\233d\335\354\272\316\323JU$\225\322\310T\350\\gV\316\212\327g\251k\323\216\254HM\233U\267\341\026\211,\006A\303\306\330\312\222\221\336E\261 \311\014\201\r]\004\r\005\n\005r\343^\n\364\020\203UqN\023*\315/\313\232\216\033\273\014\301M\240\200\3506\"\201T\3403\034\216\314%\033+W\324|{H\260V\021\255\232\337\024$1[/f7\207QR\234N\204\004\303b\3019\261MIy\027OZ\004\213&\000s2\210\230\253\312\31685\020\013\255c\013\002\217dN\350\245\247*\"E\256\326e\231S\271\247b\202\010\n\203\223\314\306\263\372DL\245\363A\267\241\330\332K+\2677\037\035`\306\361sZ\367\224\351\320\327\034-o\234\350\277N\342\331|\007\230]\016\215\350\352\263\001$\201\036r\322\010\0145=\tf[\016\376\016\021\271\201rX\355\371h4\030\346\260\032m*&8\t\223\026,\273\355z\3345\006V\016\222F\366\371\267\rt\n@\257\033\2710\327\366\360\306\241\371G1\026\330t\1778\001\370G\370z\362T-\256\310\330\275\305\236\307.2\326\311\244|\320\r\231[\223\271/\377sZ\317\250\353\203w>\035G\344:7\351\364(4\336\216J\330#4\266\376<\322\375\334\260\300\363;\254\332\347\326\321\252\356\205i\315\301\nueQ\303\341\326\226\315$0\026\210\227j\321V\2151\314\277\374]\311\024\341BB\035\367H8";
-    PyObject *data = __Pyx_DecompressString(cstring, 1931, 2);
+    const struct { const unsigned int length: 8; } index[] = {{1},{3},{68},{35},{54},{37},{60},{24},{52},{26},{34},{14},{29},{33},{45},{22},{15},{4},{179},{37},{97},{30},{32},{1},{1},{1},{2},{1},{1},{1},{8},{5},{6},{15},{23},{25},{7},{6},{146},{27},{25},{2},{6},{35},{9},{30},{50},{8},{33},{20},{32},{22},{14},{30},{37},{5},{3},{21},{23},{10},{8},{11},{11},{5},{5},{8},{18},{17},{26},{28},{14},{12},{19},{17},{18},{18},{8},{8},{8},{8},{8},{12},{8},{16},{8},{20},{8},{7},{15},{3},{15},{6},{4},{7},{5},{18},{7},{4},{1},{7},{7},{9},{17},{18},{5},{5},{5},{8},{17},{3},{9},{8},{2},{15},{9},{6},{9},{9},{3},{3},{5},{8},{8},{5},{5},{6},{7},{8},{12},{12},{10},{28},{30},{8},{19},{18},{16},{34},{36},{18},{4},{2},{10},{5},{13},{5},{8},{4},{3},{4},{3},{8},{7},{11},{6},{3},{17},{4},{4},{10},{5},{4},{8},{4},{7},{4},{4},{6},{9},{2},{5},{3},{12},{4},{3},{3},{14},{11},{10},{19},{14},{12},{10},{8},{9},{9},{10},{17},{13},{8},{9},{7},{5},{12},{6},{4},{4},{12},{10},{12},{19},{5},{4},{5},{4},{4},{6},{6},{6},{8},{5},{4},{9},{6},{6},{5},{6},{4},{8},{1},{4},{2},{1},{0},{1},{1},{76},{2},{32},{9},{20},{60},{11},{7},{13},{9},{56},{78},{1}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1982 bytes) */
+const char* const cstring = "BZh91AY&SY\037\246\263\204\000\000\262\177\377\377\\\377\375o\357\377\367\377\357\377\245\277\377\377\376@@@@@@@@@@@@@\000@\000`\007]cc,\014\200\001B\224IF\372\r\020\223\320&M)\355#aMM\352aL\236\240bh\000\000\000\365\000\323@\310\330\223OSM\352\206\324=\252\r\010\321\030\021\t\246\243\3115\r\243&\223\003\024`\231\032\014d\020d\304d\030\001\242z\230&\200p\000\000\000\000\000\000\0004\000\000\000\000\000\000\000\000%4Bb\020\002dL)<\321&\324\017$\036\223j\032d\000\000\000\000\000\001\351\036\232\232\034\000\000\000\000\000\000\000\r\000\000\000\000\000\000\000\000\021MQ\223F\023\0014\300\000L\023\023\000\000\000\00110\0040\004`\000\215\207\271\366\230\377~oo\317\346\220%\377=\037\372\330\317\335\233M2L$\0055,\307\202P\301\274\335\241\245\030yTV]*H\025\014\202\320\267\315B\212\233Y1\211\306\000\251\323\370<XB\274\037\226imm\266\337\243m\233t\261w\025\260\017\225\241\225\264\301\236\313\025\316\3666p\345\305\n\201/OU \334O\230\233\036\347\271mK\216\342>\177\2718\024\350`l,\376\233\265zB\313\t\355\240bbz\206\325\r=\247\225\355<A\305\237\235\034\345Bs\221\270k\020\334\007\032b\317v(>II\321b\346\266\303H\337F\236R\023\30472-\205\251-\321{*j\317\014\227\207\274\274\036\237~R<=\261\274'\336\214\330\375\\%\201\013\310\002\252\016*:\312O~\014K\r\313.$G\033\204\230\020Fe\022R\310U\223\022\325)\222\002\335e\225\256\351\340\020\010\344\221W%W\262\373\222\006\311\255$\350lN\370\2530\270c\334\253@\254Cy[DC{o\034{\254\020\027\037\344\215\311z\221\022\037\031\321\330\347\254\222d\266\020\343\373\266\340\321\034<p\215\330x6\255\361\000\207\247\207\\\330\355\237\210\210or\250\231\376\271\215\004\250\361~\257\223#\0371\372^\222\n\341Z\300\375.\000\206\226]m\315\301\247p\007\261\236\207\340:R\251\251\267\214\377\201\204O\025k\013\372\317Y\256!\231jq\320\226\304\305wF\332U\025\244\347\265\233b\230\250\223I\252N\0334\354\311\316\324\274\363\274\373\037\037}\246%\351\302\256\341p\346\177F\014\030\357\031\303\233\304\360\311\211K\310kw8\315\216\332\022X\341\354x\255\331I\272\214&\35717\251""\016@a\360\241\340J\327\273\032-;H+X\22521Vf\220\305!\207MgrI\232=w\224\237\010r\211\252\233\nV\262\031\273P\030\336\215\004\261\206y(t\264f\030\346\266\247k\351\202\254\225\327\232\266\177)`\350C{[}\277p\261\273\346\377\251\031\261\363\274zJ\260e\001\353I\211\206\347\245\022F\216}\344Sr\337\030\022\337]\350\354E\035d\330\230Wh\256\316\230\314\316\201\321\215p\316\003T7\371\236\230\251\316\006,\222'\3043o\353\202:#0\231hL<\005\004\032\020\307\300|\021\365\327@\300\314s\321\312\306\300\226-u\010\006QV\305\230{\236do3\232\354\304t\204&\027_\236\375\343\270\256z\306%k(l\334\320\230\034BL\363\n\243\240\240\343\027\243\t\256\356\177+\t\307PA\250\370\361%7\363\275\342\344\313\366\316\315^\r\205\232\217\234\237e\350H\3041\243\246\024\320\354\231\036\314b\022\305\311\220\324\275\030%\\9\316\263>\237G~\344\227.\371\016\375\330\352\234)Q7*K\tK\206\020\314\335I\366\221\t,&\235\343\322%g\036i$$\204\364\223\206#\013\216\016AK\017\242\360\320\332\323\tY\353\017\215\033\242[\345u\215T<\3303NN\276\2520\234\310\314\265g\262\332\014&\210\013\t7\313\023;+R\327\327mSA\200\334KW\214uGvg\217_\275\204&V\343\234mS\276\372\340r\356\032\315|\r\331\270\242\036\330\347\270\253A\245k\204\230\224W\255\232\311\2617(\023\233\333\306\245\2448/-\236\033\203\017\220cR\364\316\014\374\t\332e\326@Q\332\245Rr\020\351\177s\214T\360\362\356\334\273e\314\233 MTE\207`*\267\234\264\267#\311\313\345s\332\231\247\346LX\362$\204\212p0\315\271x\306I\205\317I\006N\303\353\333\322\2029\244BLj$\231-'6z.J{\236\2346\356{5\304%TXawC&|\311G642\225\264ao\023e<$\331\207cTTf\327\247|\r\243e\016t\336\375\332bB\001\343\232UP\306\024\304\000\225\221\027-P\243\r\214|\313\000\271JP\r\250`\243\005\3056\334\341\020\301\204\017\0076\335\362.\030]\231\017!\323\024q\252\267\354%R\235\020C5\ru\206\241'\310\274\016\220\2368\304I\201&\0377t\260<\270\035\374v\250\232\365\025\330\023v\331\251\021\001|\004\351f\207AD$1L\234\223N\253q\254\2061\224\266\272@\220\213\342c`\2538\313S\r($\t\265\256Y\351'\244\231\t\030\013z^\265\025\270\332Ys""\314\310\360\207\020\251j\255\240H,\222h\001@\331C\300\364\372\003\206S\tl\324\346=\002t<\311\266p`\315\234\214\360\\$\311\t\001\237\237op\313\257g&\325\223n\347\333\234\351lh$\216\315m\312\tr\264W\010\354\336[T\355'\302N<\225m\272`\365\020T\206\263\206\277<\270\274h\0050F\004o\271\230\315U\204[\366\267\020\247\201\252\237r6\232\365\252*\247\344o\314b\2701\265\013\261\356g:i\3151\224\363\215+Vv&\371\006\001\242\207F\001\200v\246\262\230\322\203\332\206m\336\306\243\277\275\315\202*\361\027:\225\037\034)\246\215\327D\357W0\242\207\222I,!\306R\356\320\232\242\r#\310\344\306y)\014p\r\260\213u+\256RP\353\357\004\205\223D\260>\016v\272\226\002i\031\2020\014\010\3004b\0222\010\324\272{\331\374\244`\346\2152\322;kI\024o\370ZG\016+!7P\244\230T\215\202\221\212p;\313`\227^\027\275nD\251\341\243\005\347N\025\350\211\241!\214p\274B\271,\335\263\365eJbF\270\033\006\332\026E!\220\021=\205@4.\260@IM#e\031\"\001\363\300n\2402V\021j\231R6\310\232\261\207\025cju\277q\350\310\243\002\260\352\r\207A\377Q=\006\222\251\272{},\212h~\226\352\352\274\230\331\330?\261\234A\177^G\026\216\230U:\332\2726.\3330W?\247f\225\035\363\366q\201\t$\010\372\275/\244\020\027\216y!-\250\356\036I8\216\266\005\240\312\031y\242%\020\352\2540`\203$\200\321\220\256\0316\264\270\260_\314\343\321lo4\205\032~[%`o\260\004@+\343A\363\033\017\3062H0v\363\020\252\201p\335\230;3\207@\241\372\244S\\\204\013\3728\255\345\370-ls\"}\361\335\255\257\027\006\337\356{\3314\340xld\303\247j\254\003g>\314\216\323\313\301w\003\216\277O\323\375\206\377\362\215\372\355\353\267{2\356]X2\257\215c\r\n\325\255..\277.\026\363\222\320|\301%\024\230Q\260\244\032\002\022\224\177\305\334\221N\024$\007\351\254\341\000";
+    PyObject *data = __Pyx_DecompressString(cstring, 1982, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1784 bytes) */
-const char* const cstring = "x\332}V\317o\033\271\025^\267ia\354\006\330l\223l\323\264(\030lS'\330D\215\323\264\335.R\267\252\355x\205:\362\017\331\316eQ\202\232\241$&3\344\230\344\310R\332\005r\364q\216s\324QG\035}\364q\2179\372\350?\241\177B?\222\372\271N\013H$\347\361\221\357\275\357}\357\315|M\236<\215\253IBb\221ri\204\222\206d\232G<\026\262=\023\222\3731IscI\223\023!c\336\3431a2&RYb\022\001\365\277\347\255\026\327\244+\370\t\211\0257~\213\3672e81V\213\230\233u&\211\222I\237D\2323\313\t#\315p\310v\230%\302\220HI+\332\271\312\r\214\220\224\247J\367+8\345\256b\306\210\266$V\021\034\216\037\373{\202\20639V\032_|\242\205e\315\204\217\025\202S-\255\322\377w\326\207EN\204\355\020\333\3178Y\031\313\255f\322\3700fG\202\032N\010@e\347\260\333\230\007L\004\020\202\322f\232\331>1\035\206\253m\236\301\271\226\322$\352\333\216\222\025\2465\353oj\r\211\312\270t\320\327\274;*\267D\265HS\34526\344\001\353\341\316\373\361\303\332U\313!\025y\226)my\\\223]\226\010\344L\305\374\221K\003\224\221\262\225h\205\300\306\nL\273\260V\036\2216NM\224\203s@\336\233y\376\322\207{\344\302\205\013u%y]\001\\\237\254u\357\267\2130\346\211hr\r\330\001\252K4\014\371\214J\262\273\271\373\370\331W\317<Q4\177\r\027\014<lF\tr\t\202\270\270r\221X\030t\200\233\n\251\265H_\345Dr\270\212Dg\320\233?`;\\\022\303\255[\220\025\237\035f\021;\305q@\2662FZt\271;\375\202%\206Wv\026\000\204\313c\312\261(\342f\202\350\256\210\336$\016th\"\204\034\300\"\327\210\312\231\217:\340\036\314&\255\n5bV\006\000\025\304\027\026ak~\234s\343\000\366\274\370\033\313\255\242\231\273\224?8\3209\177\330\260<#)\353\373$\341\354[\256\325,\233\207\322\223\025>\243\000\272\\\203\213\226\247\356Y5\035j\017\036\375\265\262\266\362\220\3051\225.\003\016O\202$<\351E*I\\\304\310\177\2055\243\347s\005\344\224\002\036k?\024Ox\273\026\013\343,so\237{\372\261\014\374\013\265\317,s>0\035\205\255\226\346\334m@0\201\247\035\265\2451\372\331\t\322\257+n-4y\3408\325\366\304wP\273#\274g\271\264\276\252g-E\230`8v\321\032\361\226\223\347\177!O\256\224\205T\340X\213\345\211%\224j""\036\347\021\247\224\304\271\007L*\371\030\234\353\n\226`7\022RXl\006\330\326\214\216~\027|\032O\364D\263\254\222\365{\317CG\212\027P\272*s\2652\005ka\177Q*\333F\345\200i-\237f\222%\211\212|\223s1x0+\037\330\r%\347n\034\367\310J\265\261^\253Uu\204_e\032o\300\203\322 D\t\0300\177Q\034\022\267\231$\"3\302lm\357\324\253\215F\255\266\275\272Uo4\016\353\377\250\357\274\252o\3556\360\214\341iM\332M\231\247\230^$\254]\177\271Y}!\022>\231a\003\351\342\232\322yI\317a;'\370\201os;W\034\234\356E\t\032\351\364\211\253\326t\355:s\324\217\022n\026D(K~E\260\250\"S\316\274\204nmU\303\274\275\035\346z#\314\215\261\274q\344\347Z\375\250\272]\333\360\353\375\227\353~>\2547\016www\366\0176\203\374\350`\213\322\335~\017\377\r\3644Z\007\207\367y\253\341J]F|\214\250\353\216\225Y\243D\rNRKC\243\tia\272m\230\361T@+sC_FBU\"\245\321\341]D\354\255Hs\333i2\303\243\210\002\006T\031UM\260\002\264v\375\217\322\311\242\315\255\253\030\367\210\223T\240\377i\026\361&\213\336xx#\364:\353\241\004\353\240\233Ng\352\336\2014}\035\307\254\217\276m\0312\025Q\032\273\370hlc\327\206\25104\324\017Ox\327\367W\304\213\327\310\224\023\034\304\361\177\327\364\221Bt\007\337 &\024i!1\222\245\274\005f\231V\242\230EI\247~t/\035(\344\022V\333\\\211\230v\270hw,Br\2021k\250\253V\352#\230\255\256\022na\357\n\345\374\256\351\233\311<;?\335\252\240ry\317\305\346%\376E?gv\356\371\177\030_\324\370\240\013\213\275\261\2036\201\240\251H\335k\032\263{\311;\304\247D\010\275p\334\020_+!\023f]\232\023wa\312\220lL\276\371R\207\261\231>\032\277p\037'\251\210\264\247\201\214S!s\334\365:\306/$\177B\005\010\272\356\343\000\377<\001&\263Y\332\216\273\231\322\361\210\206\215\221\237\270\241g]\261\271?\265a\004cd\0062d}\220\0061u\3248\245\031\350\230\251,\323\360\030\035\227F\035\036\2751y\032\236\306\211vKO:\277\312exgR\327\232\202\250\353\277\343\034\367\217s\226\004\217f\235b\322\017\246}a\332\016f\311\276\222\271\251\000\310c\331\026xq\353)\023\014\263\343I*\014\306\225\227\0035\340\351\276\002\360\326\212}\262\307\000a5~?\315Q\200~""\200\016\276\327\273\264B\254\261\3073cU\026\2767\300F,0\372\302\266P\301\330\321\352\304\345\312\227\260+W\000\004T\363\314%\021\237ly\030L\257\217nq\360\257\177~\375\335\273\245\377,\177\364\223[\305j\261Q.\2257\313jy4X\035l\014\227\2067\207\325\341\253Qu\264wy\355\223\323\257\240\260^t\313\203\301\315\301\326\360\367C6\314G\353#}v\363\254z\3268_:\277}\316\316\217\337U\337U/\226o\024?.\376X\336*\277\035\336\035\375\351\354\336\331\237\317\253\347\207\337\337\273X\376\364\364\330\355_?}Q\334\013\213o\nL\267\212j\261W\304%d\227\313\267\213\275\313\260\341e\277\035,\r\356\014?\033~1\334\273X\376\344\364\331\251)\356]^w'\032\345\322\305\365\033\305r\271t9\271\370F\361q\371\233\222\271\345X\362\351\251\205+\010\352\335\322\305\265\217O\277,\366\336_\373b\2606\372\325\031\256\273\373\376\356\227\303\325!\324~^|7\250\016\016\206\277\030\335\037\275=\277\363\375gS[\027\327\177V<*Yy\374\376\243_\227\361\000A|^4a\031Gt\t\265\333\305~q<\025\336)\177TB\345\227\345\323\362\025.\334\037\374{\264:\362n\340\252\342\017\345Oq\305\375\301\311\220\355\374\027\270\354\030s";
-    PyObject *data = __Pyx_DecompressString(cstring, 1784, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1838 bytes) */
+const char* const cstring = "x\332}V\315o\033\271\025_\267ia\354\006\330l\223\264iZ\024\014\266\251\023l\242\215\323\264\335.R\267\252\355x\205:\362\207l\007\005\212\022\024\207\222\230\314\220c\222#Ki\027\310\321\3079\316QG\035u\364\321\307=\346\350\243\377\204\376\t}\217\034\215\244uZ@\342\307\343#\371\336\357\367\336\343\324\236<\215\352qL\"\231\010e\245V\226\244Fp\021I\325\235\t\311\375\210$\231u\244-\210T\221\030\210\2100\025\021\245\035\261\261\004\365\277f\235\2160\244/\305\t\211\264\260~I\014Rm\005\261\316\310H\330u\246\210V\361\220p#\230\023\204\221v\330\344z\314\021i\t\327\312\311n\2463\013\227\220D$\332\014k\260\013\217b\326\312\256\"N\023\330\034=\366\347\004\r\274\262T*\017>1\322\261v,J\205`T\307\350\344\377\355\365n\221\023\351z\304\rSAVJ\2713LY\357\306lKP\203\035\022\240rs\330m\314\003&\003\010Ai3I\335\220\330\036\203\243]\226\202q\035m\010\037\272\236V5f\014\033n\032\003\022\235\n\205\3207\2749:sDwH[g*\262\344\001\033\300\231\367\243\207\215\2537\007*\2624\325\306\211\250\241\372,\226\300\231\216\304#\244\001\224\201\262\025\276B\340\216\025\270\032\335ZyD\272\260k\252\034\214\003\344\3755\317_zw\217\320]0\241\251\225hj\000\327\223\265\356\355F\017#\021\313\2660\000;\200\212D\303E\236QEv7w\037?\373\352\231\017\024#^\203\t\026,l\363\030\270\204\000A\2772\031;\270\020\001\2675\322\350\220\241\316\210\022`*\020\235\202\336\374\006\327\023\212X\341p@V<;\314\201\357\024\266\003d+%\322\262/p\367\013\026[Q\333Y\000\020L.C\216q.\354\024\321]\311\337\304\010:h\202\013\031\000\013\\\203Wx=\357A\354\301\265q\247F\255\234\245\001\200\n\201/\035\270m\304q&,\002\354\343\342/,s\232\246x\250xp`2\361\260\345DJ\0226\364$\301\336\267\302\350\031\233\207\312\007+\330\014\t\320\027\006b\321\211\004\347\272\215\250=x\364\347\257\311\332\312C\026ET!\005\010(\001\026\236\014\270\216ct\031\002\240\306\332\374\371\\\006\241R\000d\355\373\342i\340\256E\322\342\325B\2056K\210\307\232\250D0\352\263\300gF\202A\345m\364I\204\2535\362w`\212\031\001\325B\267amH2\213\0202\302\323Ht\210?-\022p\236\021\221\017*RK""\007\021\351\310\270\214\241\252J\364X_\370\345!\301\350\204~\340\325j\302g\004K!%B9b\216!,\314\360\260\3241B\370K\r\2372\326\345\344\001\006u\327g\036r\215\nb\340\204r\276\254\314j\232\264\301\361\010\341\266\362\255 \317\377D\236\\\311K\245\301\217\016\313bG(\005g2.(%Q\346\031SZ=\206\240\357K\026\303*\227J:X\014\274\255Y\303\277\354*(\\\346\313\324\037X\316\350\211a)\272\371<T\306h\201\254\2532D\245\342la}Q\252\272Vg\200\315ZVE\024\213c\315}\261EW<\202\265\017\254\206\324\307\023\313Z]\253\267\326\033\215\272\341\360\253Un\007X(\rBHE\013\031\270(\016lm\306\261L\255\264[\333;\315z\253\325hl\257n5[\255\303\346\337\232;\257\232[\273-\230C\363\264\371r\263\376\002\250\236\366p*\360$\014\245\363\222\001\202:'\370\2365s+WL\252\326x\014%\274\232\t\335\251\306\370&\360!\217\205]\020AA\020W\004\213*\230\010^B\267\266\352\241\337\336\016}\263\025\372V)o\035\371\276\321<\252o76\374x\377\345\272\357\017\233\255\303\335\335\235\375\203\315 ?:\330\242tw8\200\377\006TS\332\204\340\335\027\235\026\026\031\305E\211!\326\345\332\254DC\362O\311\244\241\304\005\"\230\351Zf=\371\220\330\330\014\025\227\272\306\265\201\267\005=boe\222\271^\233Y\3019\005\030 \231\250nC\034@<c5\240t:\350\n\207\251\202S\330I%T^\303\270h3\376\306\303\313\241\312:\017%\304\031\350&UO\261p\320\344u\024\261!\274\030\216\001S\234\322\010\375\243\221\213\260\326PiiH\034\021\213\276\257\354\340/<`UL`M\361O\r\320\007\005\300\327\200ix`\301P,\021\235\230um'\326\314A\036'\276\305\247\016\0242\0057v\205\226\021\355\t\331\3559\234\225\341B11\2517}6\272\032i\013kWb\315\257\332\241\235\366\263\375\325R\r\222T\014\320)/\361\337\026s\327\316\315\377\307\345\213\032\0374\301<;\001\221\251\205Z\323\203\212\000\036\323P\304\241\307\357\n\204\272\212\200P\375\312\022\370ZK\0253\207\374\306x`\302$\266\"\301\317\236Dr\343iVQ\"U\006[^G\360\013\344N\251\006A?\361\254A\233\305\276W\256\207\334PZ\266P\203\241\025'\330\014\034\246Qxq\252wG\245@u:\204p\000\243{\272$,\205@Ku\232\0320\t\252'\345=\301\337\330,\t\263\222I\034\372p\362""\243L\205w\230n\252\251^\337?e\030\325\307\031\213\203E\263\0320\315\364*\343\253D\237\261y\205\232J\000\320\302\260+\341c\300TT[\346\312Nih,&\016\302\031\220\304/\013x\210\"\317f\t\020\214\312'g\216c\372\001\276}\335F\336@l`M\244\326\3514|\303@\270\301\000Z\237\262\016T\240\355\031}\202,\371\344\304D\004\200\000\325,E\372\34030\013\215=aF\341\037\337\224\301\020j\302\301\277\376\371\365\267\357\226\376\263\374\321\217n\345\253\371F\261T\334,\352\305\321hu\2641^\032\337\034\327\307\257&\365\311\336\345\265ON\277\002\205\365\274_\034\214n\216\266\306\277\035\263q6Y\237\230\263\233g\365\263\326\371\322\371\355sv~\374\256\376\256~\261|#\377a\376\373\342V\361\217\361\335\311\037\316\356\235\375\361\274~~\370\335\275\213\345OO\217q\375\372\351\213\374^\030|\223Cw+\257\347{yT\200\354r\371v\276w\031\026\274\3547\243\245\321\235\361g\343\317\307{\027\313\237\234>;\265\371\275\313\353\270\243U,]\\\277\221/\027K\227\323\203o\344\037\027\277.\030\016K\311\247\247\016L\001\247\336-]\\\373\370\364\213|\357\375\265\317Gk\223_\236\301qw\337\337\375b\274:\006\265\237\345\337\216\352\243\203\361\317'\367'o\317\357|\367Yu\327\305\365\237\344\217\nV\034\277\377\350WE4\002'~\232\267\341f\330b\nP\273\235\357\347\307\225\360N\361\203\002T~Q<-^\301\201\373\243\177OV'\336\0148*\377]\361c8\342\376\350d\314v\376\013{>7\330";
+    PyObject *data = __Pyx_DecompressString(cstring, 1838, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (3396 bytes) */
-const char* const bytes = ": 02dAll dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayError opening Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)Step may not be zero (axis %d)Unable to convert item to object(,?.>')add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenableerror appending data to arcerror freeing arc membersgcgnssr4water.gnssir (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__ object>src/gnssir/gnssir_wrap.pyx<strided and direct><strided and direct or indirect><strided and indirect><stringsource>unable to allocate array data.unable to allocate shape and strides.ASCIIArcArc.__reduce_cython__Arc.__setstate_cython__Arc.appendEllipsisGLONASSIIL1GNSSUNKNOWNGPSL1GPSL2IntEnumIntFlagNMEAFileNMEAFile.__enter__NMEAFile.__exit__NMEAFile.__reduce_cython__NMEAFile.__setstate_cython__NMEAFile.closeNMEAFile.eofNMEAFile.readcyclesNMEAFile.readlineNMEAFile.readlinesNMEAFile.readnmeasNMEA_GGANMEA_GLLNMEA_GNSNMEA_GSANMEA_GSVNMEA_INVALIDNMEA_RMCNMEA_UNSUPPORTEDNMEA_VTG__Pyx_PyDict_NextRefSequenceUNKNOWNView.MemoryViewabcallocate_bufferappendargsasarrayassayasyncio.coroutinesazimuthbasecc_clearc_obstr__class____class_getitem__cline_in_tracebackcl""osecountcycledatetimedatetime_from_mjddaydelta_sec__dict__dtdtype_is_objectelevationencode__enter__enumenumerateeoferrerror__exit__filenameflagsfloatformatfortran__func__geoid_heightget__getstate__gnss_cyclegnss_cycle.__reduce_cython__gnss_cycle.__setstate_cython__gnss_sysgnss_sys.__reduce__gnss_sys.rinexcodegnss_trans_cyclegnss_trans_cycle.__reduce_cython__gnss_trans_cycle.__setstate_cython__gnssr4water.gnssirhourid__import__index_is_coroutineitemsitemsizejoinlatlinelon__main___member_names___members__memviewmicrosecondminutemjdmjd_from_datetimemjdvmodemodule__module__monthname__name__ndim__new__nextnmeanmea_tnmea_typenpnumpyobjortho_heightpackpopprn__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname__readcyclesreadlinereadlinesreadnmeas__reduce____reduce_cython____reduce_ex__registerrinexcodesatcodesatnosats_in_viewsecondselfsend__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstructsysstrsystem__test__throwtimetimedeltaunpackupdatevaluevaluesxyearT{^:}\200\001\360\010\000\005\024\2201\220D\230\001\230\023\230A\230V\2401\240D\250\001\250\023\250A\250W\260A\260Q\340\004\013\2108\2201\220C\220v\230T\240\023\240G\2503\250a\250u\260C\260r\270\023\270A\270S\300\001\300\025\300a\300q\200A\200A\330\010\020\220\003\2206\230\024\230\\\250\032\2607\270!\2709\300A\300U\310!\330\010\017\210q\200A\330\010\014\210F\220!\200A\330\010\014\210H\220A\330\010\024\220A\220Q\220d\230!\200A\340\010\025\220Q\340\010\014\210H\220A\220Q\220d\230&\240\001\240\030\250\021\250#\250Q\330\010\013\2104\210s\220!\340\014\024\220A\220S\230\001\330\014\020\220\010\230\001\340\010\017\210q\200A\330\010\020\220\n\230$\230a\200A\330\010\017\210q\200A\330\010\017\210t\2206\230\023\230A\200\001\330\004\n\210+\220Q\320\004#\240>\260\034\270Q\330\010\032\320\032+\2501\250A\330\010\027\220}\240A\240T\250\031\260%\260z\300\030\310\021\330\010\013\2104\210s\220!\330\014\022\220,\230a\230q\320\000\036\230d\240!\330\010\026\220b\230\001\330\010\027\220r""\230\021\330\010\025\220R\220q\330\010\026\220b\230\001\330\010\030\230\002\230!\330\010\033\2302\230W\240A\240R\240|\2601\260A\330\010\017\210s\220!\2205\230\006\230d\240%\240w\250aO";
+    #else /* compression: none (3491 bytes) */
+const char* const bytes = ".02dAll dimensions preceding dimension %d must be indexed and not slicedBuffer view does not expose stridesCan only create a buffer that is contiguous in memory.Cannot assign to read-only memoryviewCannot create writable memory view from read-only memoryviewCannot index with type 'Cannot transpose memoryview with indirect dimensionsDimension %d is not directEmpty shape tuple for cython.arrayError opening Index out of bounds (axis %d)Indirect dimensions not supportedInvalid mode, expected 'c' or 'fortran', got Invalid shape in axis <MemoryView of NoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Out of bounds on buffer access (axis Pickling of struct members such as self._sid must be explicitly requested with @auto_pickle(True)Step may not be zero (axis %d)Unable to convert item to object(,?: >')add_note and  at 0xcollections.abc<contiguous and direct><contiguous and indirect>disableenableenum class nmea_type not importable from nmea. You are probably using a cpdef enum declared in a .pxd file that does not have a .py  or .pyx file.error appending data to arcerror freeing arc membersgc (got got differing extents in dimension isenableditemsize <= 0 for cython.arrayno default __reduce__ due to non-trivial __cinit__ object>src/gnssir/python/gnssir_wrap.pyx<strided and direct><strided and direct or indirect><strided and indirect><stringsource>unable to allocate array data.unable to allocate shape and strides.ASCIIArcArc.__reduce_cython__Arc.__setstate_cython__Arc.appendEllipsisGLONASSIIL1GNSSUNKNOWNGPSL1GPSL2NMEAFileNMEAFile.__enter__NMEAFile.__exit__NMEAFile.__reduce_cython__NMEAFile.__setstate_cython__NMEAFile.closeNMEAFile.eofNMEAFile.readcyclesNMEAFile.readlineNMEAFile.readlinesNMEAFile.readnmeasNMEA_GGANMEA_GLLNMEA_GNSNMEA_GSANMEA_GSVNMEA_INVALIDNMEA_RMCNMEA_UNSUPPORTEDNMEA_VTG__Pyx_PyDict_NextRefSequenceUNKNOWNView.MemoryViewabcalloca""te_bufferappendargsasarrayassayasyncio.coroutinesazimuthbasecc_clearc_obstr__class____class_getitem__cline_in_tracebackclosecountcycledatetimedatetime_from_mjddaydelta_sec__dict__dtdtype_is_objectelevationencode__enter__enumerateeoferrerror__exit__filenameflagsfloatformatfortran__func__geoid_height__getstate__gnss_cyclegnss_cycle.__reduce_cython__gnss_cycle.__setstate_cython__gnss_sysgnss_sys.__reduce__gnss_sys.rinexcodegnss_trans_cyclegnss_trans_cycle.__reduce_cython__gnss_trans_cycle.__setstate_cython__gnssr4water.gnssirhourid__import__index_is_coroutineitemsitemsizejoinlatlinelon__main__memviewmicrosecondminutemjdmjd_from_datetimemjdvmode__module__monthname__name__ndim__new__nextnmeanmea_tnmea_typenpnumpyobjortho_heightpackpopprn__pyx_checksum__pyx_state__pyx_type__pyx_unpickle_Enum__pyx_vtable____qualname__readcyclesreadlinereadlinesreadnmeas__reduce____reduce_cython____reduce_ex__registerrinexcodesatcodesatnosats_in_viewsecondselfsend__set_name__setdefault__setstate____setstate_cython__shapesizestartstepstopstructsysstrsystem__test__throwtimetimedeltaunpackupdatevaluevalueswarnwarningsxyearT{^:}\200\001\360\010\000\005\024\2201\220D\230\001\230\023\230A\230V\2401\240D\250\001\250\023\250A\250W\260A\260Q\340\004\013\2108\2201\220C\220v\230T\240\023\240G\2503\250a\250u\260C\260r\270\023\270A\270S\300\001\300\025\300a\300q\200A\200A\330\010\020\220\003\2206\230\024\230\\\250\032\2607\270!\2709\300A\300U\310!\330\010\017\210q\200A\330\010\014\210F\220!\200A\330\010\014\210H\220A\330\010\024\220A\220Q\220d\230!\200A\340\010\025\220Q\340\010\014\210H\220A\220Q\220d\230&\240\001\240\030\250\021\250#\250Q\330\010\013\2104\210s\220!\340\014\024\220A\220S\230\001\330\014\020\220\010\230\001\340\010\017\210q\200A\330\010\020\220\n\230$\230a\200A\330\010\017\210q\200A\330\010\017\210t\2206\230\023\230A\200\001\330\004\n\210+\220Q\320\004#\240>\260\034\270Q\330\010\032\320\032+\2501\250A\330\010\027\220}\240A\240T\250\031\260%\260z\300\030\310\021\330\010\013\2104\210s\220!""\330\014\022\220,\230a\230q\320\000\036\230d\240!\330\010\026\220b\230\001\330\010\027\220r\230\021\330\010\025\220R\220q\330\010\026\220b\230\001\330\010\030\230\002\230!\330\010\033\2302\230W\240A\240R\240|\2601\260A\330\010\017\210s\220!\2205\230\006\230d\240%\240w\250aO";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 226; i++) {
+    for (int i = 0; i < 221; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 55) PyUnicode_InternInPlace(&string);
@@ -30732,7 +30624,7 @@ const char* const bytes = ": 02dAll dimensions preceding dimension %d must be in
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 226; i < 244; i++) {
+    for (int i = 221; i < 239; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -30743,14 +30635,14 @@ const char* const bytes = ": 02dAll dimensions preceding dimension %d must be in
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 244; i++) {
+    for (Py_ssize_t i = 0; i < 239; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 226;
+      PyObject **table = stringtab + 221;
       for (Py_ssize_t i=0; i<18; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         #if PY_VERSION_HEX < 0x030E0000
@@ -30832,44 +30724,44 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 489};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 381};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_line};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readlines, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_readlines, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 498};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 390};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_nmea_t, __pyx_mstate->__pyx_n_u_nmea};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readnmeas, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_readnmeas, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 506};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 398};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_cycle, __pyx_mstate->__pyx_n_u_err};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readcycles, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_readcycles, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 65};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 38};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_mjd};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_datetime_from_mjd, __pyx_mstate->__pyx_kp_b_iso88591_1D_AV1D_AWAQ_81CvT_G3auCr_AS_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_datetime_from_mjd, __pyx_mstate->__pyx_kp_b_iso88591_1D_AV1D_AWAQ_81CvT_G3auCr_AS_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 73};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 46};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_dt};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_mjd_from_datetime, __pyx_mstate->__pyx_kp_b_iso88591_d_b_r_Rq_b_2WAR_1A_s_5_d_wa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_mjd_from_datetime, __pyx_mstate->__pyx_kp_b_iso88591_d_b_r_Rq_b_2WAR_1A_s_5_d_wa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 180};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 72};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_reduce, __pyx_mstate->__pyx_kp_b_iso88591_A_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_reduce, __pyx_mstate->__pyx_kp_b_iso88591_A_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 209};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 101};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_satno, __pyx_mstate->__pyx_n_u_satcode};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_rinexcode, __pyx_mstate->__pyx_kp_b_iso88591_A_6_7_9AU_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_rinexcode, __pyx_mstate->__pyx_kp_b_iso88591_A_6_7_9AU_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 249};
+    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 141};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_time, __pyx_mstate->__pyx_n_u_elevation, __pyx_mstate->__pyx_n_u_azimuth, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_mjdv, __pyx_mstate->__pyx_n_u_err};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_append, __pyx_mstate->__pyx_kp_b_iso88591_Q_1A_AT_z_4s_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_append, __pyx_mstate->__pyx_kp_b_iso88591_Q_1A_AT_z_4s_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
@@ -30902,29 +30794,29 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 464};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 356};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_eof, __pyx_mstate->__pyx_kp_b_iso88591_A_t6_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_eof, __pyx_mstate->__pyx_kp_b_iso88591_A_t6_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 467};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 359};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_enter, __pyx_mstate->__pyx_kp_b_iso88591_A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_enter, __pyx_mstate->__pyx_kp_b_iso88591_A_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS), 470};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS), 362};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_args};
-    __pyx_mstate_global->__pyx_codeobj_tab[16] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_exit, __pyx_mstate->__pyx_kp_b_iso88591_A_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[16])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[16] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_exit, __pyx_mstate->__pyx_kp_b_iso88591_A_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[16])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 473};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 365};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[17] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_close, __pyx_mstate->__pyx_kp_b_iso88591_A_HA_AQd, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[17])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[17] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_close, __pyx_mstate->__pyx_kp_b_iso88591_A_HA_AQd, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[17])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 477};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 369};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[18] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_gnssir_wrap_pyx, __pyx_mstate->__pyx_n_u_readline, __pyx_mstate->__pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[18])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[18] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_gnssir_python_gnssir_wrap_py, __pyx_mstate->__pyx_n_u_readline, __pyx_mstate->__pyx_kp_b_iso88591_A_Q_HAQd_Q_4s_AS_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[18])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
@@ -31133,7 +31025,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 }
 #endif
 
-/* PyObjectGetAttrStrNoError (used by GetBuiltinName) */
+/* PyObjectGetAttrStrNoError (used by HasAttr) */
 #if __PYX_LIMITED_VERSION_HEX < 0x030d0000
 static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
     __Pyx_PyThreadState_declare
@@ -31162,77 +31054,24 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, P
 #endif
 }
 
-/* GetBuiltinName (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStrNoError(__pyx_mstate_global->__pyx_b, name);
-    if (unlikely(!result) && !PyErr_Occurred()) {
-        PyErr_Format(PyExc_NameError,
-            "name '%U' is not defined", name);
+/* HasAttr (used by ImportImpl) */
+#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
+static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
+    PyObject *r;
+    if (unlikely(!PyUnicode_Check(n))) {
+        PyErr_SetString(PyExc_TypeError,
+                        "hasattr(): attribute name must be string");
+        return -1;
     }
-    return result;
-}
-
-/* PyDictVersioning (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
-#endif
+    r = __Pyx_PyObject_GetAttrStrNoError(o, n);
+    if (!r) {
+        return (unlikely(PyErr_Occurred())) ? -1 : 0;
+    } else {
+        Py_DECREF(r);
+        return 1;
     }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
-        return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
 }
 #endif
-
-/* GetModuleGlobalName */
-#if CYTHON_USE_DICT_VERSIONS
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
-#else
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
-#endif
-{
-    PyObject *result;
-#if CYTHON_COMPILING_IN_LIMITED_API
-    if (unlikely(!__pyx_m)) {
-        if (!PyErr_Occurred())
-            PyErr_SetNone(PyExc_NameError);
-        return NULL;
-    }
-    result = PyObject_GetAttr(__pyx_m, name);
-    if (likely(result)) {
-        return result;
-    }
-    PyErr_Clear();
-#elif CYTHON_AVOID_BORROWED_REFS || CYTHON_AVOID_THREAD_UNSAFE_BORROWED_REFS
-    if (unlikely(__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, name, &result) == -1)) PyErr_Clear();
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return result;
-    }
-#else
-    result = _PyDict_GetItem_KnownHash(__pyx_mstate_global->__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    }
-    PyErr_Clear();
-#endif
-    return __Pyx_GetBuiltinName(name);
-}
 
 /* PyObjectCall (used by PyObjectFastCall) */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -31274,7 +31113,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 }
 #endif
 
-/* PyObjectFastCall */
+/* PyObjectFastCall (used by PyObjectCallOneArg) */
 #if PY_VERSION_HEX < 0x03090000 || CYTHON_COMPILING_IN_LIMITED_API
 static PyObject* __Pyx_PyObject_FastCall_fallback(PyObject *func, PyObject * const*args, size_t nargs, PyObject *kwargs) {
     PyObject *argstuple;
@@ -31351,7 +31190,13 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObj
     #endif
 }
 
-/* TupleAndListFromArray (used by fastcall) */
+/* PyObjectCallOneArg (used by ImportImpl) */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *args[2] = {NULL, arg};
+    return __Pyx_PyObject_FastCall(func, args+1, 1 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
+}
+
+/* TupleAndListFromArray (used by ImportImpl) */
 #if !CYTHON_COMPILING_IN_CPYTHON && CYTHON_METH_FASTCALL
 static CYTHON_INLINE PyObject *
 __Pyx_PyTuple_FromArray(PyObject *const *src, Py_ssize_t n)
@@ -31404,6 +31249,362 @@ __Pyx_PyList_FromArray(PyObject *const *src, Py_ssize_t n)
     if (unlikely(res == NULL)) return NULL;
     __Pyx_copy_object_array(src, ((PyListObject*)res)->ob_item, n);
     return res;
+}
+#endif
+
+/* ImportImpl (used by Import) */
+static int __Pyx__Import_GetModule(PyObject *qualname, PyObject **module) {
+    PyObject *imported_module = PyImport_GetModule(qualname);
+    if (unlikely(!imported_module)) {
+        *module = NULL;
+        if (PyErr_Occurred()) {
+            return -1;
+        }
+        return 0;
+    }
+    *module = imported_module;
+    return 1;
+}
+static int __Pyx__Import_Lookup(PyObject *qualname, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject **module) {
+    PyObject *imported_module;
+    PyObject *top_level_package_name;
+    Py_ssize_t i;
+    int status, module_found;
+    Py_ssize_t dot_index;
+    module_found = __Pyx__Import_GetModule(qualname, &imported_module);
+    if (unlikely(!module_found || module_found == -1)) {
+        *module = NULL;
+        return module_found;
+    }
+    if (imported_names) {
+        for (i = 0; i < len_imported_names; i++) {
+            PyObject *imported_name = imported_names[i];
+#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
+            int has_imported_attribute = PyObject_HasAttr(imported_module, imported_name);
+#else
+            int has_imported_attribute = PyObject_HasAttrWithError(imported_module, imported_name);
+            if (unlikely(has_imported_attribute == -1)) goto error;
+#endif
+            if (!has_imported_attribute) {
+                goto not_found;
+            }
+        }
+        *module = imported_module;
+        return 1;
+    }
+    dot_index = PyUnicode_FindChar(qualname, '.', 0, PY_SSIZE_T_MAX, 1);
+    if (dot_index == -1) {
+        *module = imported_module;
+        return 1;
+    }
+    if (unlikely(dot_index == -2)) goto error;
+    top_level_package_name = PyUnicode_Substring(qualname, 0, dot_index);
+    if (unlikely(!top_level_package_name)) goto error;
+    Py_DECREF(imported_module);
+    status = __Pyx__Import_GetModule(top_level_package_name, module);
+    Py_DECREF(top_level_package_name);
+    return status;
+error:
+    Py_DECREF(imported_module);
+    *module = NULL;
+    return -1;
+not_found:
+    Py_DECREF(imported_module);
+    *module = NULL;
+    return 0;
+}
+static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level) {
+    PyObject *module = 0;
+    PyObject *empty_dict = 0;
+    PyObject *from_list = 0;
+    int module_found;
+    if (!qualname) {
+        qualname = name;
+    }
+    module_found = __Pyx__Import_Lookup(qualname, imported_names, len_imported_names, &module);
+    if (likely(module_found == 1)) {
+        return module;
+    } else if (unlikely(module_found == -1)) {
+        return NULL;
+    }
+    empty_dict = PyDict_New();
+    if (unlikely(!empty_dict))
+        goto bad;
+    if (imported_names) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        from_list = __Pyx_PyList_FromArray(imported_names, len_imported_names);
+        if (unlikely(!from_list))
+            goto bad;
+#else
+        from_list = PyList_New(len_imported_names);
+        if (unlikely(!from_list)) goto bad;
+        for (Py_ssize_t i=0; i<len_imported_names; ++i) {
+            if (PyList_SetItem(from_list, i, __Pyx_NewRef(imported_names[i])) < 0) goto bad;
+        }
+#endif
+    }
+    if (level == -1) {
+        const char* package_sep = strchr(__Pyx_MODULE_NAME, '.');
+        if (package_sep != (0)) {
+            module = PyImport_ImportModuleLevelObject(
+                name, moddict, empty_dict, from_list, 1);
+            if (unlikely(!module)) {
+                if (unlikely(!PyErr_ExceptionMatches(PyExc_ImportError)))
+                    goto bad;
+                PyErr_Clear();
+            }
+        }
+        level = 0;
+    }
+    if (!module) {
+        module = PyImport_ImportModuleLevelObject(
+            name, moddict, empty_dict, from_list, level);
+    }
+bad:
+    Py_XDECREF(from_list);
+    Py_XDECREF(empty_dict);
+    return module;
+}
+
+/* Import */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level) {
+    return __Pyx__Import(name, imported_names, len_imported_names, qualname, __pyx_mstate_global->__pyx_d, level);
+}
+
+/* ImportFrom */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
+    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
+    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
+        const char* module_name_str = 0;
+        PyObject* module_name = 0;
+        PyObject* module_dot = 0;
+        PyObject* full_name = 0;
+        PyErr_Clear();
+        module_name_str = PyModule_GetName(module);
+        if (unlikely(!module_name_str)) { goto modbad; }
+        module_name = PyUnicode_FromString(module_name_str);
+        if (unlikely(!module_name)) { goto modbad; }
+        module_dot = PyUnicode_Concat(module_name, __pyx_mstate_global->__pyx_kp_u_);
+        if (unlikely(!module_dot)) { goto modbad; }
+        full_name = PyUnicode_Concat(module_dot, name);
+        if (unlikely(!full_name)) { goto modbad; }
+        #if (CYTHON_COMPILING_IN_PYPY && PYPY_VERSION_NUM  < 0x07030400) ||\
+                CYTHON_COMPILING_IN_GRAAL
+        {
+            PyObject *modules = PyImport_GetModuleDict();
+            if (unlikely(!modules))
+                goto modbad;
+            value = PyObject_GetItem(modules, full_name);
+        }
+        #else
+        value = PyImport_GetModule(full_name);
+        #endif
+      modbad:
+        Py_XDECREF(full_name);
+        Py_XDECREF(module_dot);
+        Py_XDECREF(module_name);
+    }
+    if (unlikely(!value)) {
+        PyErr_Format(PyExc_ImportError, "cannot import name %S", name);
+    }
+    return value;
+}
+
+/* GetTopmostException (used by SaveResetException) */
+#if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
+static _PyErr_StackItem *
+__Pyx_PyErr_GetTopmostException(PyThreadState *tstate)
+{
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    while ((exc_info->exc_value == NULL || exc_info->exc_value == Py_None) &&
+           exc_info->previous_item != NULL)
+    {
+        exc_info = exc_info->previous_item;
+    }
+    return exc_info;
+}
+#endif
+
+/* SaveResetException */
+#if CYTHON_FAST_THREAD_STATE
+static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
+  #if CYTHON_USE_EXC_INFO_STACK && PY_VERSION_HEX >= 0x030B00a4
+    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
+    PyObject *exc_value = exc_info->exc_value;
+    if (exc_value == NULL || exc_value == Py_None) {
+        *value = NULL;
+        *type = NULL;
+        *tb = NULL;
+    } else {
+        *value = exc_value;
+        Py_INCREF(*value);
+        *type = (PyObject*) Py_TYPE(exc_value);
+        Py_INCREF(*type);
+        *tb = PyException_GetTraceback(exc_value);
+    }
+  #elif CYTHON_USE_EXC_INFO_STACK
+    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
+    *type = exc_info->exc_type;
+    *value = exc_info->exc_value;
+    *tb = exc_info->exc_traceback;
+    Py_XINCREF(*type);
+    Py_XINCREF(*value);
+    Py_XINCREF(*tb);
+  #else
+    *type = tstate->exc_type;
+    *value = tstate->exc_value;
+    *tb = tstate->exc_traceback;
+    Py_XINCREF(*type);
+    Py_XINCREF(*value);
+    Py_XINCREF(*tb);
+  #endif
+}
+static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
+  #if CYTHON_USE_EXC_INFO_STACK && PY_VERSION_HEX >= 0x030B00a4
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    PyObject *tmp_value = exc_info->exc_value;
+    exc_info->exc_value = value;
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(type);
+    Py_XDECREF(tb);
+  #else
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    #if CYTHON_USE_EXC_INFO_STACK
+    _PyErr_StackItem *exc_info = tstate->exc_info;
+    tmp_type = exc_info->exc_type;
+    tmp_value = exc_info->exc_value;
+    tmp_tb = exc_info->exc_traceback;
+    exc_info->exc_type = type;
+    exc_info->exc_value = value;
+    exc_info->exc_traceback = tb;
+    #else
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = type;
+    tstate->exc_value = value;
+    tstate->exc_traceback = tb;
+    #endif
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+  #endif
+}
+#endif
+
+/* GetException */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
+#else
+static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
+#endif
+{
+    PyObject *local_type = NULL, *local_value, *local_tb = NULL;
+#if CYTHON_FAST_THREAD_STATE
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+  #if PY_VERSION_HEX >= 0x030C0000
+    local_value = tstate->current_exception;
+    tstate->current_exception = 0;
+  #else
+    local_type = tstate->curexc_type;
+    local_value = tstate->curexc_value;
+    local_tb = tstate->curexc_traceback;
+    tstate->curexc_type = 0;
+    tstate->curexc_value = 0;
+    tstate->curexc_traceback = 0;
+  #endif
+#elif __PYX_LIMITED_VERSION_HEX > 0x030C0000
+    local_value = PyErr_GetRaisedException();
+#else
+    PyErr_Fetch(&local_type, &local_value, &local_tb);
+#endif
+#if __PYX_LIMITED_VERSION_HEX > 0x030C0000
+    if (likely(local_value)) {
+        local_type = (PyObject*) Py_TYPE(local_value);
+        Py_INCREF(local_type);
+        local_tb = PyException_GetTraceback(local_value);
+    }
+#else
+    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
+#if CYTHON_FAST_THREAD_STATE
+    if (unlikely(tstate->curexc_type))
+#else
+    if (unlikely(PyErr_Occurred()))
+#endif
+        goto bad;
+    if (local_tb) {
+        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
+            goto bad;
+    }
+#endif // __PYX_LIMITED_VERSION_HEX > 0x030C0000
+    Py_XINCREF(local_tb);
+    Py_XINCREF(local_type);
+    Py_XINCREF(local_value);
+    *type = local_type;
+    *value = local_value;
+    *tb = local_tb;
+#if CYTHON_FAST_THREAD_STATE
+    #if CYTHON_USE_EXC_INFO_STACK
+    {
+        _PyErr_StackItem *exc_info = tstate->exc_info;
+      #if PY_VERSION_HEX >= 0x030B00a4
+        tmp_value = exc_info->exc_value;
+        exc_info->exc_value = local_value;
+        tmp_type = NULL;
+        tmp_tb = NULL;
+        Py_XDECREF(local_type);
+        Py_XDECREF(local_tb);
+      #else
+        tmp_type = exc_info->exc_type;
+        tmp_value = exc_info->exc_value;
+        tmp_tb = exc_info->exc_traceback;
+        exc_info->exc_type = local_type;
+        exc_info->exc_value = local_value;
+        exc_info->exc_traceback = local_tb;
+      #endif
+    }
+    #else
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = local_type;
+    tstate->exc_value = local_value;
+    tstate->exc_traceback = local_tb;
+    #endif
+    Py_XDECREF(tmp_type);
+    Py_XDECREF(tmp_value);
+    Py_XDECREF(tmp_tb);
+#elif __PYX_LIMITED_VERSION_HEX >= 0x030b0000
+    PyErr_SetHandledException(local_value);
+    Py_XDECREF(local_value);
+    Py_XDECREF(local_type);
+    Py_XDECREF(local_tb);
+#else
+    PyErr_SetExcInfo(local_type, local_value, local_tb);
+#endif
+    return 0;
+#if __PYX_LIMITED_VERSION_HEX <= 0x030C0000
+bad:
+    *type = 0;
+    *value = 0;
+    *tb = 0;
+    Py_XDECREF(local_type);
+    Py_XDECREF(local_value);
+    Py_XDECREF(local_tb);
+    return -1;
+#endif
+}
+
+/* PyObjectFastCallMethod */
+#if !CYTHON_VECTORCALL || PY_VERSION_HEX < 0x03090000
+static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf) {
+    PyObject *result;
+    PyObject *attr = PyObject_GetAttr(args[0], name);
+    if (unlikely(!attr))
+        return NULL;
+    result = __Pyx_PyObject_FastCall(attr, args+1, nargsf - 1);
+    Py_DECREF(attr);
+    return result;
 }
 #endif
 
@@ -31589,12 +31790,6 @@ bad:
 }
 #endif
 #endif
-
-/* PyObjectCallOneArg (used by CallUnboundCMethod0) */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *args[2] = {NULL, arg};
-    return __Pyx_PyObject_FastCall(func, args+1, 1 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
-}
 
 /* UnpackUnboundCMethod (used by CallUnboundCMethod0) */
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030C0000
@@ -32311,6 +32506,16 @@ static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *nam
     return 0;
 }
 
+/* GetBuiltinName */
+static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
+    PyObject* result = __Pyx_PyObject_GetAttrStrNoError(__pyx_mstate_global->__pyx_b, name);
+    if (unlikely(!result) && !PyErr_Occurred()) {
+        PyErr_Format(PyExc_NameError,
+            "name '%U' is not defined", name);
+    }
+    return result;
+}
+
 /* RaiseException */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
     PyObject* owned_instance = NULL;
@@ -32418,19 +32623,6 @@ bad:
     Py_XDECREF(owned_instance);
     return;
 }
-
-/* PyObjectFastCallMethod */
-#if !CYTHON_VECTORCALL || PY_VERSION_HEX < 0x03090000
-static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf) {
-    PyObject *result;
-    PyObject *attr = PyObject_GetAttr(args[0], name);
-    if (unlikely(!attr))
-        return NULL;
-    result = __Pyx_PyObject_FastCall(attr, args+1, nargsf - 1);
-    Py_DECREF(attr);
-    return result;
-}
-#endif
 
 /* RaiseUnexpectedTypeError */
 static int
@@ -33090,6 +33282,68 @@ static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject
 #endif
 }
 
+/* PyDictVersioning (used by GetModuleGlobalName) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
+#endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* GetModuleGlobalName */
+#if CYTHON_USE_DICT_VERSIONS
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+#else
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+#endif
+{
+    PyObject *result;
+#if CYTHON_COMPILING_IN_LIMITED_API
+    if (unlikely(!__pyx_m)) {
+        if (!PyErr_Occurred())
+            PyErr_SetNone(PyExc_NameError);
+        return NULL;
+    }
+    result = PyObject_GetAttr(__pyx_m, name);
+    if (likely(result)) {
+        return result;
+    }
+    PyErr_Clear();
+#elif CYTHON_AVOID_BORROWED_REFS || CYTHON_AVOID_THREAD_UNSAFE_BORROWED_REFS
+    if (unlikely(__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, name, &result) == -1)) PyErr_Clear();
+    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return result;
+    }
+#else
+    result = _PyDict_GetItem_KnownHash(__pyx_mstate_global->__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+    PyErr_Clear();
+#endif
+    return __Pyx_GetBuiltinName(name);
+}
+
 /* RaiseTooManyValuesToUnpack */
 static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
     PyErr_Format(PyExc_ValueError,
@@ -33126,191 +33380,6 @@ static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
     __Pyx_DECREF_TypeName(obj_type_name);
     __Pyx_DECREF_TypeName(type_name);
     return 0;
-}
-
-/* GetTopmostException (used by SaveResetException) */
-#if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
-static _PyErr_StackItem *
-__Pyx_PyErr_GetTopmostException(PyThreadState *tstate)
-{
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    while ((exc_info->exc_value == NULL || exc_info->exc_value == Py_None) &&
-           exc_info->previous_item != NULL)
-    {
-        exc_info = exc_info->previous_item;
-    }
-    return exc_info;
-}
-#endif
-
-/* SaveResetException */
-#if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-  #if CYTHON_USE_EXC_INFO_STACK && PY_VERSION_HEX >= 0x030B00a4
-    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
-    PyObject *exc_value = exc_info->exc_value;
-    if (exc_value == NULL || exc_value == Py_None) {
-        *value = NULL;
-        *type = NULL;
-        *tb = NULL;
-    } else {
-        *value = exc_value;
-        Py_INCREF(*value);
-        *type = (PyObject*) Py_TYPE(exc_value);
-        Py_INCREF(*type);
-        *tb = PyException_GetTraceback(exc_value);
-    }
-  #elif CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
-    *type = exc_info->exc_type;
-    *value = exc_info->exc_value;
-    *tb = exc_info->exc_traceback;
-    Py_XINCREF(*type);
-    Py_XINCREF(*value);
-    Py_XINCREF(*tb);
-  #else
-    *type = tstate->exc_type;
-    *value = tstate->exc_value;
-    *tb = tstate->exc_traceback;
-    Py_XINCREF(*type);
-    Py_XINCREF(*value);
-    Py_XINCREF(*tb);
-  #endif
-}
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
-  #if CYTHON_USE_EXC_INFO_STACK && PY_VERSION_HEX >= 0x030B00a4
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    PyObject *tmp_value = exc_info->exc_value;
-    exc_info->exc_value = value;
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(type);
-    Py_XDECREF(tb);
-  #else
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    #if CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    tmp_type = exc_info->exc_type;
-    tmp_value = exc_info->exc_value;
-    tmp_tb = exc_info->exc_traceback;
-    exc_info->exc_type = type;
-    exc_info->exc_value = value;
-    exc_info->exc_traceback = tb;
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = type;
-    tstate->exc_value = value;
-    tstate->exc_traceback = tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-  #endif
-}
-#endif
-
-/* GetException */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
-#endif
-{
-    PyObject *local_type = NULL, *local_value, *local_tb = NULL;
-#if CYTHON_FAST_THREAD_STATE
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-  #if PY_VERSION_HEX >= 0x030C0000
-    local_value = tstate->current_exception;
-    tstate->current_exception = 0;
-  #else
-    local_type = tstate->curexc_type;
-    local_value = tstate->curexc_value;
-    local_tb = tstate->curexc_traceback;
-    tstate->curexc_type = 0;
-    tstate->curexc_value = 0;
-    tstate->curexc_traceback = 0;
-  #endif
-#elif __PYX_LIMITED_VERSION_HEX > 0x030C0000
-    local_value = PyErr_GetRaisedException();
-#else
-    PyErr_Fetch(&local_type, &local_value, &local_tb);
-#endif
-#if __PYX_LIMITED_VERSION_HEX > 0x030C0000
-    if (likely(local_value)) {
-        local_type = (PyObject*) Py_TYPE(local_value);
-        Py_INCREF(local_type);
-        local_tb = PyException_GetTraceback(local_value);
-    }
-#else
-    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
-#if CYTHON_FAST_THREAD_STATE
-    if (unlikely(tstate->curexc_type))
-#else
-    if (unlikely(PyErr_Occurred()))
-#endif
-        goto bad;
-    if (local_tb) {
-        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
-            goto bad;
-    }
-#endif // __PYX_LIMITED_VERSION_HEX > 0x030C0000
-    Py_XINCREF(local_tb);
-    Py_XINCREF(local_type);
-    Py_XINCREF(local_value);
-    *type = local_type;
-    *value = local_value;
-    *tb = local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    #if CYTHON_USE_EXC_INFO_STACK
-    {
-        _PyErr_StackItem *exc_info = tstate->exc_info;
-      #if PY_VERSION_HEX >= 0x030B00a4
-        tmp_value = exc_info->exc_value;
-        exc_info->exc_value = local_value;
-        tmp_type = NULL;
-        tmp_tb = NULL;
-        Py_XDECREF(local_type);
-        Py_XDECREF(local_tb);
-      #else
-        tmp_type = exc_info->exc_type;
-        tmp_value = exc_info->exc_value;
-        tmp_tb = exc_info->exc_traceback;
-        exc_info->exc_type = local_type;
-        exc_info->exc_value = local_value;
-        exc_info->exc_traceback = local_tb;
-      #endif
-    }
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = local_type;
-    tstate->exc_value = local_value;
-    tstate->exc_traceback = local_tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-#elif __PYX_LIMITED_VERSION_HEX >= 0x030b0000
-    PyErr_SetHandledException(local_value);
-    Py_XDECREF(local_value);
-    Py_XDECREF(local_type);
-    Py_XDECREF(local_tb);
-#else
-    PyErr_SetExcInfo(local_type, local_value, local_tb);
-#endif
-    return 0;
-#if __PYX_LIMITED_VERSION_HEX <= 0x030C0000
-bad:
-    *type = 0;
-    *value = 0;
-    *tb = 0;
-    Py_XDECREF(local_type);
-    Py_XDECREF(local_value);
-    Py_XDECREF(local_tb);
-    return -1;
-#endif
 }
 
 /* SwapException */
@@ -33366,144 +33435,6 @@ static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value,
     *tb = tmp_tb;
 }
 #endif
-
-/* HasAttr (used by ImportImpl) */
-#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
-static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
-    PyObject *r;
-    if (unlikely(!PyUnicode_Check(n))) {
-        PyErr_SetString(PyExc_TypeError,
-                        "hasattr(): attribute name must be string");
-        return -1;
-    }
-    r = __Pyx_PyObject_GetAttrStrNoError(o, n);
-    if (!r) {
-        return (unlikely(PyErr_Occurred())) ? -1 : 0;
-    } else {
-        Py_DECREF(r);
-        return 1;
-    }
-}
-#endif
-
-/* ImportImpl (used by Import) */
-static int __Pyx__Import_GetModule(PyObject *qualname, PyObject **module) {
-    PyObject *imported_module = PyImport_GetModule(qualname);
-    if (unlikely(!imported_module)) {
-        *module = NULL;
-        if (PyErr_Occurred()) {
-            return -1;
-        }
-        return 0;
-    }
-    *module = imported_module;
-    return 1;
-}
-static int __Pyx__Import_Lookup(PyObject *qualname, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject **module) {
-    PyObject *imported_module;
-    PyObject *top_level_package_name;
-    Py_ssize_t i;
-    int status, module_found;
-    Py_ssize_t dot_index;
-    module_found = __Pyx__Import_GetModule(qualname, &imported_module);
-    if (unlikely(!module_found || module_found == -1)) {
-        *module = NULL;
-        return module_found;
-    }
-    if (imported_names) {
-        for (i = 0; i < len_imported_names; i++) {
-            PyObject *imported_name = imported_names[i];
-#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
-            int has_imported_attribute = PyObject_HasAttr(imported_module, imported_name);
-#else
-            int has_imported_attribute = PyObject_HasAttrWithError(imported_module, imported_name);
-            if (unlikely(has_imported_attribute == -1)) goto error;
-#endif
-            if (!has_imported_attribute) {
-                goto not_found;
-            }
-        }
-        *module = imported_module;
-        return 1;
-    }
-    dot_index = PyUnicode_FindChar(qualname, '.', 0, PY_SSIZE_T_MAX, 1);
-    if (dot_index == -1) {
-        *module = imported_module;
-        return 1;
-    }
-    if (unlikely(dot_index == -2)) goto error;
-    top_level_package_name = PyUnicode_Substring(qualname, 0, dot_index);
-    if (unlikely(!top_level_package_name)) goto error;
-    Py_DECREF(imported_module);
-    status = __Pyx__Import_GetModule(top_level_package_name, module);
-    Py_DECREF(top_level_package_name);
-    return status;
-error:
-    Py_DECREF(imported_module);
-    *module = NULL;
-    return -1;
-not_found:
-    Py_DECREF(imported_module);
-    *module = NULL;
-    return 0;
-}
-static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level) {
-    PyObject *module = 0;
-    PyObject *empty_dict = 0;
-    PyObject *from_list = 0;
-    int module_found;
-    if (!qualname) {
-        qualname = name;
-    }
-    module_found = __Pyx__Import_Lookup(qualname, imported_names, len_imported_names, &module);
-    if (likely(module_found == 1)) {
-        return module;
-    } else if (unlikely(module_found == -1)) {
-        return NULL;
-    }
-    empty_dict = PyDict_New();
-    if (unlikely(!empty_dict))
-        goto bad;
-    if (imported_names) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        from_list = __Pyx_PyList_FromArray(imported_names, len_imported_names);
-        if (unlikely(!from_list))
-            goto bad;
-#else
-        from_list = PyList_New(len_imported_names);
-        if (unlikely(!from_list)) goto bad;
-        for (Py_ssize_t i=0; i<len_imported_names; ++i) {
-            if (PyList_SetItem(from_list, i, __Pyx_NewRef(imported_names[i])) < 0) goto bad;
-        }
-#endif
-    }
-    if (level == -1) {
-        const char* package_sep = strchr(__Pyx_MODULE_NAME, '.');
-        if (package_sep != (0)) {
-            module = PyImport_ImportModuleLevelObject(
-                name, moddict, empty_dict, from_list, 1);
-            if (unlikely(!module)) {
-                if (unlikely(!PyErr_ExceptionMatches(PyExc_ImportError)))
-                    goto bad;
-                PyErr_Clear();
-            }
-        }
-        level = 0;
-    }
-    if (!module) {
-        module = PyImport_ImportModuleLevelObject(
-            name, moddict, empty_dict, from_list, level);
-    }
-bad:
-    Py_XDECREF(from_list);
-    Py_XDECREF(empty_dict);
-    return module;
-}
-
-/* Import */
-static PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level) {
-    return __Pyx__Import(name, imported_names, len_imported_names, qualname, __pyx_mstate_global->__pyx_d, level);
-}
 
 /* FastTypeChecks */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -34825,111 +34756,6 @@ __PYX_GOOD:
     Py_XDECREF(setstate_cython);
     return ret;
 }
-
-/* ImportFrom */
-static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
-    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
-    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
-        const char* module_name_str = 0;
-        PyObject* module_name = 0;
-        PyObject* module_dot = 0;
-        PyObject* full_name = 0;
-        PyErr_Clear();
-        module_name_str = PyModule_GetName(module);
-        if (unlikely(!module_name_str)) { goto modbad; }
-        module_name = PyUnicode_FromString(module_name_str);
-        if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_mstate_global->__pyx_kp_u__2);
-        if (unlikely(!module_dot)) { goto modbad; }
-        full_name = PyUnicode_Concat(module_dot, name);
-        if (unlikely(!full_name)) { goto modbad; }
-        #if (CYTHON_COMPILING_IN_PYPY && PYPY_VERSION_NUM  < 0x07030400) ||\
-                CYTHON_COMPILING_IN_GRAAL
-        {
-            PyObject *modules = PyImport_GetModuleDict();
-            if (unlikely(!modules))
-                goto modbad;
-            value = PyObject_GetItem(modules, full_name);
-        }
-        #else
-        value = PyImport_GetModule(full_name);
-        #endif
-      modbad:
-        Py_XDECREF(full_name);
-        Py_XDECREF(module_dot);
-        Py_XDECREF(module_name);
-    }
-    if (unlikely(!value)) {
-        PyErr_Format(PyExc_ImportError, "cannot import name %S", name);
-    }
-    return value;
-}
-
-/* ListPack */
-static PyObject *__Pyx_PyList_Pack(Py_ssize_t n, ...) {
-    va_list va;
-    PyObject *l = PyList_New(n);
-    va_start(va, n);
-    if (unlikely(!l)) goto end;
-    for (Py_ssize_t i=0; i<n; ++i) {
-        PyObject *arg = va_arg(va, PyObject*);
-        Py_INCREF(arg);
-        if (__Pyx_PyList_SET_ITEM(l, i, arg) != (0)) {
-            Py_CLEAR(l);
-            goto end;
-        }
-    }
-    end:
-    va_end(va);
-    return l;
-}
-
-/* Globals */
-static PyObject* __Pyx_Globals(void) {
-    return __Pyx_NewRef(__pyx_mstate_global->__pyx_d);
-}
-
-/* PyObjectVectorCallKwBuilder */
-#if CYTHON_VECTORCALL
-static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_PyObject_FastCallDict;
-    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
-    Py_INCREF(key);
-    args[n] = value;
-    return 0;
-}
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_VectorcallBuilder_AddArgStr;
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
-}
-static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    PyObject *pyKey = PyUnicode_FromString(key);
-    if (!pyKey) return -1;
-    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
-}
-#else // CYTHON_VECTORCALL
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return PyDict_SetItem(builder, key, value);
-}
-#endif
-
-/* PyObjectSetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_setattro))
-        return tp->tp_setattro(obj, attr_name, value);
-    return PyObject_SetAttr(obj, attr_name, value);
-}
-#endif
 
 /* dict_setdefault (used by FetchCommonType) */
 static CYTHON_INLINE PyObject *__Pyx_PyDict_SetDefault(PyObject *d, PyObject *key, PyObject *default_value) {
@@ -36914,6 +36740,38 @@ no_fail:
     return new_mvs;
 }
 
+/* PyObjectVectorCallKwBuilder (used by CIntToPy) */
+#if CYTHON_VECTORCALL
+static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_PyObject_FastCallDict;
+    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
+    Py_INCREF(key);
+    args[n] = value;
+    return 0;
+}
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_VectorcallBuilder_AddArgStr;
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
+}
+static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    PyObject *pyKey = PyUnicode_FromString(key);
+    if (!pyKey) return -1;
+    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
+}
+#else // CYTHON_VECTORCALL
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return PyDict_SetItem(builder, key, value);
+}
+#endif
+
 /* CIntToPy */
 static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -37777,75 +37635,6 @@ raise_neg_overflow:
     return (long) -1;
 }
 
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_enum__nmea_type(enum nmea_type value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const enum nmea_type neg_one = (enum nmea_type) -1, const_zero = (enum nmea_type) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(enum nmea_type) < sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(enum nmea_type) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#if !CYTHON_COMPILING_IN_PYPY
-        } else if (sizeof(enum nmea_type) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(enum nmea_type) <= sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(enum nmea_type) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(enum nmea_type),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL, *kwds = NULL;
-        PyObject *py_bytes = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(enum nmea_type));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        {
-            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-            if (!is_unsigned) {
-                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                if (!kwds) goto limited_bad;
-                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-            }
-            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-        }
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
 /* UpdateUnpickledDict */
 static int __Pyx__UpdateUnpickledDict(PyObject *obj, PyObject *state, Py_ssize_t index) {
     PyObject *state_dict = __Pyx_PySequence_ITEM(state, index);
@@ -38259,7 +38048,7 @@ __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp)
     #endif
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) goto bad;
     module = __Pyx_PyObject_GetAttrStr((PyObject *)tp,
-                                               __pyx_mstate_global->__pyx_n_u_module_2);
+                                               __pyx_mstate_global->__pyx_n_u_module);
     if (unlikely(module == NULL) || unlikely(!PyUnicode_Check(module))) goto bad;
     if (PyUnicode_CompareWithASCIIString(module, "builtins") == 0) {
         result = name;
