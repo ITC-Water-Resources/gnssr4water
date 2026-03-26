@@ -8,6 +8,7 @@
 
 from datetime import datetime
 import os
+import subprocess
 
 project = 'gnssr4water'
 copyright = str(datetime.now().year)+', Roelof Rietbroek'
@@ -35,8 +36,17 @@ apidoc_toc_file=False
 napoleon_numpy_docstring = True
 
 ## breathe stuff
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+if read_the_docs_build:
+    #run doxygen on the gnssir code
+    subprocess.call('cd ../src.gnssir/docs; doxygen', shell=True)
+
 breathe_projects = {"gnssir": apidoc_module_dir+"/../gnssir/docs/doxyxml"}
 breathe_default_project = "gnssir"
+
+
+
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
