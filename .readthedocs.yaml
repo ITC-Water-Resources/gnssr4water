@@ -7,7 +7,7 @@ build:
   apt_packages:
     - libgdal-dev
     - gdal-bin
-    - python-gdal
+    - python3-gdal
 python:
   install:
     - method: pip
