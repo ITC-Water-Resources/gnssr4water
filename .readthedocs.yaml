@@ -4,8 +4,9 @@ build:
   os: ubuntu-24.04
   tools:
     python: "3.12"
-    libgdal-dev: "3.8.4"
-    gdal-bin: "3.8.4"
+  apt_packages:
+    - libgdal-dev
+    - gdal-bin
 python:
   install:
     - method: pip
