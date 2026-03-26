@@ -40,7 +40,7 @@ read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
 if read_the_docs_build:
     #run doxygen on the gnssir code
-    subprocess.call(f'cd {apidoc_module_dir}../gnssir/docs; doxygen', shell=True)
+    subprocess.call(f'cd {apidoc_module_dir}/../gnssir/docs; doxygen', shell=True)
 
 breathe_projects = {"gnssir": apidoc_module_dir+"/../gnssir/docs/doxyxml"}
 breathe_default_project = "gnssir"
